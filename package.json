@@ -1,0 +1,25 @@
+{
+  "name": "tamagachifit",
+  "version": "1.0.0",
+  "description": "track your data w/ less pressure- Keep your Tamagachi Alive & Better Your Life",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizkane222/TamagachiFit.git"
+  },
+  "author": "Liz Kane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lizkane222/TamagachiFit/issues"
+  },
+  "homepage": "https://github.com/lizkane222/TamagachiFit#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.10.5"
+  }
+}
