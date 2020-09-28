@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const chiSchema = new mongoose.Schema({
     name : {type: String, required: true},
     color : {type: String, required: true},
+    // AGE CALCULATION IS NOT ACCURATE YET
     // =>{{user.age / 4) * 1461}  Chi ages in days
     // 1461 days in four years (leap year)
     age : {type: String, required: true},

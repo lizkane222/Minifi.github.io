@@ -22,5 +22,6 @@ mongoose.connection.on('disconnect', (event) => {
 
 module.exports = {
   User: require('./User'),
-  Chi: require('./Chi')
+  Chi: require('./Chi'),
+  Motivate: require('./Motivate')
 };

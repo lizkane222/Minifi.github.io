@@ -1,4 +1,4 @@
-// base route is /user
+// base route is /motivate
 
 const express = require('express');
 const router = express.Router();
@@ -7,7 +7,7 @@ const db = require('../models');
 
 // index view
 router.get('/', (req,res) => {
-    res.send("User's Index Route is ⇪ and 🏃🏻‍♀️")
+    res.send("Motivate's Index Route is ⇪ and 🏃🏻‍♀️")
 })
 
 

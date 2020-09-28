@@ -40,8 +40,11 @@ app.get('/', (req, res) => {
 // app.use('/', controllers.authCtrl);
 
 
+// motivate Routes
+app.use('/motivate', controllers.motivate)
+
 // chi Routes
-// app.use('/chi', controllers.chi);
+app.use('/chi', controllers.chi);
 
 // user Routes
 app.use('/user', controllers.user);
