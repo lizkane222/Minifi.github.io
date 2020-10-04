@@ -1,19 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <%- include('../partials/head') %>
+    <%- include('./partials/head') %>
 </head>
 <body>
     <header>
-        <%- include('../partials/navbar') %>
+        <%- include('./partials/navbar') %>
     </header>
-
+<main>
 <!-- welcome user to minifi, short description  -->
+<h2>minifi</h2>
+
+<p>Once user is able to login have user data display on navbar</p>
+<ul>
+    <li>
+        <a href="/user">Users</a>
+    </li>
+    <li>
+       <a href="/chi">Mi Chi</a> 
+    </li>
+    <li>
+        <a href="/motivate">Motivate</a>
+    </li>
+</ul>
+    <p>display both user data, chi data, and all motivate.name</p>
 
 
+</main>
     
 </body>
 <footer>
-    <%- include('../partials/footer') %>
+    <%- include('./partials/footer') %>
 </footer>
 </html>

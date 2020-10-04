@@ -1,12 +1,3 @@
-
-
-
-
-
-<!-- collection of completed exercises -->
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <%- include('../partials/head') %>
 </head>
@@ -15,7 +6,24 @@
     <header>
         <%- include('../partials/navbar') %>
     </header>
+<!-- collection of completed exercises -->
 
+<h2>All Mi Motivations</h2>
+
+<ul>
+    <% motivations.forEach(motivate => { %>
+        <li>
+            <a href="/motivate/<%= motivate._id %>"> <%= motivate.name %> </a>
+        </li>
+    <% }); %>
+</ul>
+
+<% if(motivations.length === 0) { %>
+    <p>There are not motivations yet, would you like to log a new one?</p>
+<% } %>
+
+
+<button><a href="/motivate/new">New Motivate</a></button>
 
 
     

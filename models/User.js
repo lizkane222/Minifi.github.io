@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 // Schema("template", optional configuration obj)
 const userSchema = new mongoose.Schema({
+    name: {type: String, required: true},
     username : {type: String, required: true},
     email : {type: String, required: true},
     // =>{{user.age / 4) * 1461} NOT ACCURACTE CALCULATION

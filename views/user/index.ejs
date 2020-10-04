@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/head') %>
+    <%- include('./partials/head') %>
 </head>
 
 <body>
     <header>
-        <%- include('../partials/navbar') %>
+        <%- include('./partials/navbar') %>
     </header>
-<!-- input user form to create user -->
+<main>
+    <h2><% user.name %></h2>
+    <ul>
+        <% users.forEach(user => { %> 
+        <li>
+            <a href="/user/<%user._id %>"> <%= user.name %> </a>
+        </li>
+        <% }) %>
+    </ul>
 
+    <% if(users.length ===0) { %>
+        <p>Looks like you're not a current user. Would you like to become one?</p>
+    <% } %>
+    <button><a href="/new">New User</a></button>
+</main>
 
 
     
 </body>
 <footer>
-    <%- include('../partials/footer') %>
+    <%- include('./partials/footer') %>
 </footer>
 </html>

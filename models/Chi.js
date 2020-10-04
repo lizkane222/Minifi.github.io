@@ -10,8 +10,8 @@ const chiSchema = new mongoose.Schema({
     // 1461 days in four years (leap year)
     age : {type: String, required: true},
     // 
-    height : {type: String, required: true},
-    weight : {type: String, required: true},
+    height : {type: String, required: false},
+    weight : {type: String, required: false},
     radar : {type: String, required: true},
 })
 

@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 // Schema("template", optional configuration obj)
 const motivateSchema = new mongoose.Schema({
     fitness: {
+        name: {type: String, require: true},
         type: {type: String, require: true},
         duration: {type: Number, require: true},
         groupSize: {type: String, require: false},

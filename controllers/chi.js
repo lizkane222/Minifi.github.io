@@ -6,19 +6,17 @@ const router = express.Router();
 const db = require('../models');
 
 // index view
-router.get('/', (req,res) => {
-    res.send("Chi's Index Route is ⇪ and 🏃🏻‍♀️")
-})
+// router.get('/', async (req,res) => {
+//     // res.send("Chi's Index Route is ⇪ and 🏃🏻‍♀️")
+//     try {
+//         const
+//     } catch (error) {
+//         console.log(error)
 
-// router.get('/', async function(req,res) => {
-//     try{
-//         const foundUsers = await db.User.find({});
-//         const context = {
-//             Users : foundUsers,
-//         }
-//         res.render('user/index')
 //     }
 // })
+
+
 
 
 
