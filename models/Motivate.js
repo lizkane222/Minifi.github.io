@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 // Schema("template", optional configuration obj)
 const motivateSchema = new mongoose.Schema({
-    fitness: {
+    // fitness: {
         name: {type: String, require: true},
         type: {type: String, require: true},
         duration: {type: Number, require: true},
@@ -14,7 +14,7 @@ const motivateSchema = new mongoose.Schema({
             caloriesBurned: {type: Number, require: false}
         },
         ]
-    }
+    // }
 })
 
 

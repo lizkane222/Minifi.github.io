@@ -12,6 +12,20 @@
 <h2>Let's LOG a new motivation</h2>
 
 <p>PUT FORM HERE</p>
+<main>
+    <form action="/motivate" method="POST">
+        <input type="text" name="name" placeholder="Motivation Name">
+        <input type="text" name="type" placeholder="Type of Motivation">
+        <input type="text" name="duration" placeholder="Duration">
+        <input type="text" name="groupSize" placeholder="Group Size: self, partner, small-group, large-group">
+        <br/>
+        <h4>Per Exercise</h4>
+        <input type="text" name="perExercise.type" placeholder="perExercise.type">
+        <input type="text" name="perExercise.duration" placeholder="perExercise.duration">
+        <input type="text" name="perExercise.caloriesBurned" placeholder="perExercise.caloriesBurned">
+        <input type="submit" value="Log Workout">
+    </form>
+</main>
 
 
     
