@@ -1,0 +1,38 @@
+Video Games
+Motivation Type: Gaming
+Duration: 480
+Group Size: self
+
+
+Air Table
+Motivation Type: Coding
+Duration: 75
+Group Size: self
+
+
+Walk
+Motivation Type: Fitness
+Duration: 35
+Group Size: self
+
+
+Book
+Motivation Type: Read
+Duration: 20
+Group Size: self
+
+Yoga
+Motivation Type: Fitness
+Duration: 55
+Group Size: partner
+
+
+
+
+SHOW
+
+<% for (perex in motivate.perExercise) {%>
+    <h5><%= motivate.perExercise[perex].type %></h5>
+    <h5><%= motivate.perExercise[perex].duration %></h5>
+    <h5><%= motivate.perExercise[perex].caloriesBurned %></h5>
+<% } %>

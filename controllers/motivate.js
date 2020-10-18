@@ -16,8 +16,8 @@ router.get('/', async (req,res)=> {
     } catch (error) {
         console.log(error)
         return res.send({message: `Internal Server Error: check motivate controller @ index route ${error}`});
-    }
-})
+    };
+});
 
 // new 
 router.get('/new', (req,res)=> {
@@ -35,7 +35,7 @@ router.post('/', (req,res) => {
    }  
     });
         res.redirect('/motivate');
-})
+});
 
 
 // show
@@ -48,16 +48,52 @@ router.get('/:id', (req,res) => {
         }
         const context = {motivate : foundMotivate}
         res.render('motivate/show.ejs', context)
-    })
-})
+    });
+});
 
 // edit
+router.get("/:id/edit", (req,res) => {
+    // res.send ("Motivate's edit Route is ⇪ and 🏃🏻‍♀️")
+    db.Motivate.findById(req.params.id, (err, foundMotivate) => {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
 
+        const context = { motivate : foundMotivate};
+
+        res.render("motivate/edit.ejs", context)
+    });
+});
 
 // update
-
+router.put("/:id", (req,res) => {
+    db.Motivate.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true },
+        (err, motivate) => {
+            if (err) {
+                console.log(err);
+                return res.send(err);
+            }
+            res.redirect(`/motivate/${motivate._id}`);
+        }
+    );
+});
 
 // delete
+// router.delete("/:id", (req,res) => {
+//     db.Motivate.findByIdAndDelete(req.params.id, (err, deletedMotivate) {
+//         if (err) {
+//             console.log(err);
+//             return res.send(err);
+//         }
+        
+//     })
+// })
+
+
 
 
 

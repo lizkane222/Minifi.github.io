@@ -14,8 +14,12 @@
 <h5>Motivation Type: <%= motivate.type %></h5>
 <h5>Duration: <%= motivate.duration %></h5>
 <h5>Group Size: <%= motivate.groupSize %></h5>
+    <h5><%= motivate.perExercise.type %></h5>
+    <h5><%= motivate.perExercise.duration %></h5>
+    <h5><%= motivate.perExercise.caloriesBurned %></h5>
     
-<a href="">Edit <%= motivate.name %></a>
+
+<a href="/motivate/<%= motivate._id %>/edit">Edit <%= motivate.name %></a>
 
 <a href="" class="delete">Delete <%= motivate.name %></a>
 
