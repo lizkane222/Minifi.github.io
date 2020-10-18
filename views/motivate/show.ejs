@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('./partials/head') %>
+    <%- include('../partials/head') %>
 </head>
 
 <body>
     <header>
-        <%- include('./partials/navbar') %>
+        <%- include('../partials/navbar') %>
     </header>
 <!-- show completed exercise on click -->
 
-
-
+<h2><%= motivate.name %></h2>
+<h5>Motivation Type: <%= motivate.type %></h5>
+<h5>Duration: <%= motivate.duration %></h5>
+<h5>Group Size: <%= motivate.groupSize %></h5>
     
+<a href="">Edit <%= motivate.name %></a>
+
+<a href="" class="delete">Delete <%= motivate.name %></a>
+
 </body>
 <footer>
-    <%- include('./partials/footer') %>
+    <%- include('../partials/footer') %>
 </footer>
 </html>
