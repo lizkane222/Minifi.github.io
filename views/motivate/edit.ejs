@@ -13,17 +13,18 @@
 <main>
     <h2>EDIT <%= motivate.name %></h2>
 
-    <form action="/motivate/<%= motivate._id %>?method=PUT" method="POST">
-        <input type="text" name="name" placeholder="Motivation Name" value="<%= motivate.name %>">
-        <input type="text" name="type" placeholder="Type of Motivation" value="<%= motivate.type %>">
-        <input type="text" name="duration" placeholder="Duration" value="<%= motivate.duration %>">
-        <input type="text" name="groupSize" placeholder="Group Size: self, partner, small-group, large-group" value="<%= motivate.groupSize %>">
+    <form action="/motivate/<%= motivate._id %>?_method=PUT" method="POST">
+        <input type="text" name="name" placeholder="Motivation Name" value="<%= motivate.name %>"/>
+        <input type="text" name="type" placeholder="Type of Motivation" value="<%= motivate.type %>"/>
+        <input type="text" name="duration" placeholder="Duration" value="<%= motivate.duration %>"/>
+        <input type="text" name="groupSize" placeholder="Group Size: self, partner, small-group, large-group" value="<%= motivate.groupSize %>"/>
         <br/>
         <h4>Per Exercise</h4>
-            <input type="text" name="perExercise.type" placeholder="Type" value="<%= motivate.perExercise.type %>">
-            <input type="text" name="perExercise.duration" placeholder="Duration" value="<%= motivate.perExercise.duration %>">
-            <input type="text" name="perExercise.caloriesBurned" placeholder="Calories Burned" value="<%= motivate.perExercise.caloriesBurned %>">
-        <input type="submit" value="Update Workout">
+            <input type="text" name="perExerciseType" placeholder="Type" value="<%= motivate.perExercise.type %>">
+            <input type="text" name="perExerciseDuration" placeholder="Duration" value="<%= motivate.perExercise.duration %>">
+            <input type="text" name="perExerciseCaloriesBurned" placeholder="Calories Burned" value="<%= motivate.perExercise.caloriesBurned %>">
+
+        <input type="submit" value="Update Workout"/>
     </form>
 </main>
 

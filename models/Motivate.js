@@ -11,7 +11,7 @@ const motivateSchema = new mongoose.Schema({
         perExercise: [{
             type: {type: String, require: false},
             duration: {type: Number, require: false},
-            caloriesBurned: {type: Number, require: false}
+            caloriesBurned: {type: String, require: false}
         },
         ]
     // }

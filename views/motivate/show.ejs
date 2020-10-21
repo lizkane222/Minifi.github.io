@@ -14,14 +14,14 @@
 <h5>Motivation Type: <%= motivate.type %></h5>
 <h5>Duration: <%= motivate.duration %></h5>
 <h5>Group Size: <%= motivate.groupSize %></h5>
-    <h5><%= motivate.perExercise.type %></h5>
-    <h5><%= motivate.perExercise.duration %></h5>
-    <h5><%= motivate.perExercise.caloriesBurned %></h5>
-    
 
-<a href="/motivate/<%= motivate._id %>/edit">Edit <%= motivate.name %></a>
 
-<a href="" class="delete">Delete <%= motivate.name %></a>
+<button><a href="/motivate/<%= motivate._id %>/edit">Edit <%= motivate.name %></a></button>
+
+
+<form action="/motivate/<%= motivate._id %>?_method=DELETE" method="POST">
+    <input type="submit" value="delete <%= motivate.name %>">
+</form>
 
 </body>
 <footer>

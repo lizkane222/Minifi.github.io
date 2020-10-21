@@ -72,26 +72,27 @@ router.put("/:id", (req,res) => {
         req.params.id,
         req.body,
         { new: true },
-        (err, motivate) => {
+        (err, updatedMotivate) => {
             if (err) {
                 console.log(err);
                 return res.send(err);
             }
-            res.redirect(`/motivate/${motivate._id}`);
+            res.redirect(`/motivate/${updatedMotivate._id}`);
         }
     );
 });
 
-// delete
-// router.delete("/:id", (req,res) => {
-//     db.Motivate.findByIdAndDelete(req.params.id, (err, deletedMotivate) {
-//         if (err) {
-//             console.log(err);
-//             return res.send(err);
-//         }
-        
-//     })
-// })
+delete
+router.delete("/:id", (req,res) => {
+    // res.send('delete route is ☝ & running')
+    db.Motivate.findByIdAndDelete(req.params.id, (err, deletedMotivate) => {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        res.redirect('/motivate/')
+    })
+})
 
 
 
