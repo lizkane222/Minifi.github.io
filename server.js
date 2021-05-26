@@ -16,12 +16,15 @@ app.set('view engine', 'ejs');
 
 
 /* middleware */
+// accent body data
 app.use(express.urlencoded({ extended: true }));
+// overrides incoming post to DELETE/PUT
 app.use(methodOverride('_method'));
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.originalUrl}`);
-    next();
-})
+// 
+// app.use((req, res, next) => {
+//     console.log(`${req.method} ${req.originalUrl}`);
+//     next();
+// })
 
 /* Routes */
 app.get('/', (req, res) => {

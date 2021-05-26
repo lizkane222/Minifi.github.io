@@ -10,13 +10,13 @@
 
 <h2>All Mi Motivations</h2>
 
-<!-- <ul>
-    <% motivations.forEach((motivation) => {return %>
+<ul>
+    <% motivations.forEach((motivation) => ({ %>
         <li>
-            <a href="/motivate/<%= motivation._id %>"> <%= motivation.name %> </a>
+            <a href="/motivate/<%=motivation._id%>"> <%= motivation.name %> </a>
         </li>
-    <% }); %>
-</ul> -->
+    <% })); %>
+</ul>
 
 <% if(motivations.length === 0) { %>
     <p>There are no motivations yet, would you like to log a new one?</p>
@@ -25,7 +25,7 @@
     <ul>
         <% motivations.forEach((motivation) => {return %>
             <li>
-                <a href="/motivate/<%= motivation._id %>"> <%= motivation.name %> </a>
+                <a href="/motivate/<%=motivation._id%>"> <%= motivation.name %> </a>
             </li>
         <% }); %>
     </ul>
