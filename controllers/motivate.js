@@ -82,7 +82,7 @@ router.put("/:id", (req,res) => {
     );
 });
 
-delete
+// delete
 router.delete("/:id", (req,res) => {
     // res.send('delete route is ☝ & running')
     db.Motivate.findByIdAndDelete(req.params.id, (err, deletedMotivate) => {
