@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 /* Internal Modules */
 const db = require('./models');
 const controllers = require("./controllers");
+// const Motivate = require('.')
 
 /* Instanced Modules */
 const app = express();
@@ -27,7 +28,11 @@ app.get('/', (req, res) => {
     // render("file", context)
     // console.log('hi')
     // res.send('MINIFI SERVER IS OFFICIALLY CONNECTED!')
-    res.render('index');
+    res.render('index',
+    // context = {
+    //     Motivate : db.Motivate
+    // }
+    );
     // res.render('index', { user: req.session.currentUser } );
 });
 
