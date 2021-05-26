@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+<!-- ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/lizkane222/Minifi.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
@@ -34,7 +34,7 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out. -->
 
 
 
@@ -49,6 +49,33 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
       analytics.page();
       }}();
     </script>
+    
+<script type="text/javascript">
+      function identify(e){
+        e.preventDefault();
+        var form = e.target;
+        var email = form["email"].value;
+        var fullname = form["fullname"].value;
+        var destination = form["destination"].value;
+        var details = form["details"].value;
+        var user = {
+            email: email, 
+            name: fullname, 
+            destination: destination, 
+            details: details
+        };
+        analytics.identify('1234', {
+            email: email, 
+            name: fullname
+        });
+        analytics.track('destination submitted', user, function() {
+            window.location.href = "";
+        });
+      }
+</script>
+
+    
+    
 </head> 
 <body> 
 <h1>What is your favorite place to travel?</h1> 
