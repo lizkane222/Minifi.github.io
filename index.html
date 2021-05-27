@@ -47,7 +47,11 @@
         console.log(user);
         analytics.identify('1234', {
             email: email, 
-            name: fullname
+            name: fullname,
+            properties : {
+                destination: destination,
+                details: details
+            }
         });
         analytics.track('destination submitted', user, function() {
             window.location.href = "";
