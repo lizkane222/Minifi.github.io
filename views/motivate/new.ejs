@@ -9,10 +9,10 @@
         <%- include('../partials/navbar') %>
     </header>
 <!-- new exercise form -->
-<h2>Let's LOG a new motivation</h2>
+<!-- <h2>Let's LOG a new motivation</h2> -->
 
-<p>PUT FORM HERE</p>
-<main>
+<!-- <p>PUT FORM HERE</p> -->
+<!-- <main>
     <form action="/motivate" method="POST">
         <input type="text" name="name" placeholder="Motivation Name">
         <input type="text" name="type" placeholder="Type of Motivation">
@@ -25,8 +25,70 @@
         <input type="text" name="perExercise.caloriesBurned" placeholder="perExercise.caloriesBurned">
         <input type="submit" value="Log Workout">
     </form>
-</main>
+</main> -->
 
+<hr/>
+<section>
+    <h1>Stay Motivated</h1> 
+    <p>Let's find out what kinds of exercises or activities motivate you.</p>  
+    <form name="motivate" onsubmit="identify(event)">
+        What is the name of the exercise / activity / motivation?
+        <input name="motivation" required="" size="81" type="text"/> 
+        <br><br><br> 
+        Motivation Description (What do you do, for how long, with whom, in repeptitions?):
+        <br><br> 
+        <section>
+            action: <input name="action" required="" size="75" type="text"/> 
+            <br><br>duration: <input name="duration" required="" size="75" type="text"/> 
+            <br><br>partners: <input name="partners" required="" size="75" type="text"/> 
+            <br><br>
+            <textarea cols="81" name="details" placeholder="additional details" required="" rows="5"></textarea> 
+        </section>
+        <br><br> 
+        Name: <input name="fullname" required="" size="75" type="text"/> 
+        <br><br> 
+        Email: <input name="email" required="" size="75" type="email"/> 
+        <br><br>
+        <input name="submit" type="submit" value="submit"/>
+    </form> 
+
+</section>
+
+<script type="text/javascript">
+    let userId
+    const createUserId = () => {
+        return userId = Math.floor((Math.random() * 100000) + 1);
+    }
+
+    function identify(e){
+      e.preventDefault();
+      var form = e.target;
+      var email = form["email"].value;
+      var fullname = form["fullname"].value;
+      var motivation = form["motivation"].value;
+      var action = form["action"].value;
+      var duration = form["duration"].value;
+      var partners = form["partners"].value;
+      var details = form["details"].value;
+      var user = {
+          email: email, 
+          name: fullname, 
+          motivation: motivation, 
+          action: action,
+          duration: duration,
+          partners: partners,
+          details: details,
+      };
+      analytics.identify(createUserId(), {
+          email: email, 
+          name: fullname
+      });
+      analytics.track('Motivation Submitted', user, function() {
+          window.location.href = "";
+      });
+    }
+    redirect="/";
+</script>
 
     
 </body>
