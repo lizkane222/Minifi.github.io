@@ -53,7 +53,7 @@
         console.log(`currentSessionId should be blank : `+currentSessionId)
         
         let newSession = true
-        const uTC = () => {
+        const uTC = (currentSessionId, newSession) => {
             if (!newSession){
                 return currentSessionId
                 console.log(`currentSessionId should be same : `+currentSessionId)
@@ -72,7 +72,7 @@
         var fullname = form["fullname"].value;
         var destination = form["destination"].value;
         var details = form["details"].value;
-        let session_id = uTC();
+        let session_id = uTC(currentSessionId, newSession);
         var user = {
             email: email, 
             name: fullname, 
