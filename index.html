@@ -91,7 +91,7 @@
                 session_id: session_id
             }
         }})
-        analytics.track('destination submitted', user, user.integrations function() {
+        analytics.track('destination submitted', user, user.options.integrations, function() {
             window.location.href = "";
         });
       }
