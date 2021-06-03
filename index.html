@@ -74,13 +74,13 @@
         var details = form["details"].value;
 //         let session_id = Date.now()
         let session_id = uTC()
-        var user = {
+        var properties = {
             email: email, 
             name: fullname, 
             destination: destination, 
             details: details,
         };
-        console.log(user);
+        console.log(properties);
         analytics.identify(createUserId(), {
             email: email, 
             name: fullname,
@@ -91,7 +91,9 @@
                 session_id: session_id
             }
         }})
-        analytics.track('destination submitted',{},{integrations: {
+//         analytics.track('destination submitted',{},{integrations: {
+
+        analytics.track('destination submitted',properties,{integrations: {
             "All": true,
             "Amplitude": {
                 session_id: session_id
