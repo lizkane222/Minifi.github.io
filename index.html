@@ -49,22 +49,22 @@
         }
         
         console.log(`Date.now() = `+ Date.now());
-        let currentSessionId
-        console.log(`currentSessionId should be blank : `+currentSessionId)
+//         let currentSessionId
+//         console.log(`currentSessionId should be blank : `+currentSessionId)
         
-        let newSession = true
-        const uTC = (currentSessionId, newSession) => {
-            if (!newSession){
-                return currentSessionId
-                console.log(`currentSessionId should be same : `+currentSessionId)
-            }
-            else {
-                return currentSessionId = Date.now()    
-                console.log(`currentSessionId should change : `+currentSessionId)
-                newSession = false
-            }
-
-        }
+//         let newSession = true
+//         const uTC = (currentSessionId, newSession) => {
+//             if (!newSession){
+//                 return currentSessionId
+//                 console.log(`currentSessionId should be same : `+currentSessionId)
+//             }
+//             else {
+//                 return currentSessionId = Date.now()    
+//                 console.log(`currentSessionId should change : `+currentSessionId)
+//                 newSession = false
+//             }
+//         }
+        
       function identify(e){
         e.preventDefault();
         var form = e.target;
@@ -80,17 +80,17 @@
             name: fullname, 
             destination: destination, 
             details: details,
-            session_id: session_id
-        };
-        console.log(user);
-        analytics.identify(createUserId(), {
-            email: email, 
-            name: fullname,
             integrations: {
                 "All": true,
                 "Amplitude_Minifi": {
                     session_id: session_id
             }
+        };
+        console.log(user);
+        analytics.identify(createUserId(), {
+            email: email, 
+            name: fullname,
+            integrations: user.integrations
         });
         analytics.track('destination submitted', user, function() {
             window.location.href = "";
