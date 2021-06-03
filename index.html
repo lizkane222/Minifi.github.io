@@ -78,18 +78,19 @@
             name: fullname, 
             destination: destination, 
             details: details,
-            integrations: {
-                "All": true,
-                "Amplitude": {
-                    session_id: session_id
-            }
         };
         console.log(user);
         analytics.identify(createUserId(), {
             email: email, 
             name: fullname,
-            integrations: user.integrations
-        });
+        },
+        {integrations: {
+            All: true,
+            Amplitude: {
+                session_id: session_id
+            }
+        }
+                          );
         analytics.track('destination submitted', user, function() {
             window.location.href = "";
         });
