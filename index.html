@@ -91,7 +91,12 @@
                 session_id: session_id
             }
         }})
-        analytics.track('destination submitted', user, user.options.integrations, function() {
+        analytics.track('destination submitted',{},{integrations: {
+            "All": true,
+            "Amplitude": {
+                session_id: session_id
+            }
+        }}, function() {
             window.location.href = "";
         });
       }
