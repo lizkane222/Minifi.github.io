@@ -81,8 +81,8 @@
         var fullname = form["fullname"].value;
         var destination = form["destination"].value;
         var details = form["details"].value;
-        let session_id = Date.now()
-//         let session_id = uTC()
+//         let session_id = Date.now()
+        let session_id = uTC()
         var properties = {
             email: email, 
             name: fullname, 
@@ -94,19 +94,14 @@
             email: email, 
             name: fullname,
             userId: userId
-        },
-        {integrations: {
-            "All": true,
-            "Amplitude": {
-                session_id: session_id
-            }
+        }
         }})
 //         analytics.track('destination submitted',{},{integrations: {
 
         analytics.track('destination submitted',properties,{integrations: {
             "All": true,
             "Amplitude": {
-                session_id: session_id
+                session_id: currentSessionId
             }
         }}, function() {
             window.location.href = "";
