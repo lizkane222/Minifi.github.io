@@ -43,7 +43,7 @@
 
     <!--Segment identify and track script -->
     <script type="text/javascript">
-        let userId
+        let userId 
         const createUserId = () => {
             return userId = Math.floor((Math.random() * 100000) + 1);
         }
@@ -81,7 +81,7 @@
             details: details,
         };
         console.log(properties);
-        analytics.identify(createUserId(), {
+        analytics.identify(user_id(), {
             email: email, 
             name: fullname,
         },
