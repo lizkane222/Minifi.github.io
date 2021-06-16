@@ -92,11 +92,10 @@
             details: details,
         };
         console.log(properties);
-        analytics.identify({},{
-            email: email, 
-            name: fullname
-        }
-        }})
+        analytics.identify({
+          email: email, 
+          name: fullname
+        });
 //         analytics.track('destination submitted',{},{integrations: {
 
         analytics.track('destination submitted',properties,{integrations: {
