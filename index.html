@@ -47,15 +47,17 @@
 //         const createUserId = () => {
 //             return userId = Math.floor((Math.random() * 100000) + 1);
 //         }
-        const createUserId = () => {
-            if(!userId){
-                return userId = Math.floor((Math.random() * 100000) + 1);
-            }
-            else{
-                console.log("userId exists:" + userId )
-                return userId
-            }
-        }
+
+// USER ID DOES NOT NEED TO BE PASSED
+//         const createUserId = () => {
+//             if(!userId){
+//                 return userId = Math.floor((Math.random() * 100000) + 1);
+//             }
+//             else{
+//                 console.log("userId exists:" + userId )
+//                 return userId
+//             }
+//         }
         
         console.log(`Date.now() = `+ Date.now());
         let currentSessionId
@@ -90,10 +92,9 @@
             details: details,
         };
         console.log(properties);
-        analytics.identify(createUserId(), {
+        analytics.identify({
             email: email, 
-            name: fullname,
-            userId: userId
+            name: fullname
         }
         }})
 //         analytics.track('destination submitted',{},{integrations: {
