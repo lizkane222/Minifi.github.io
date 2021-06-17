@@ -33,32 +33,58 @@
     <p>Let's find out what kinds of exercises or activities motivate you.</p>  
     <form name="motivate" onsubmit="identify(event)">
         What is the name of the exercise / activity / motivation?
-        <input name="motivation" required="" size="81" type="text"/> 
+        <input name="motivation" required="true" size="81" type="text"/> 
         <br><br><br> 
         Motivation Description (What do you do, for how long, with whom, in repeptitions?):
         <br><br> 
         <section>
-            action: <input name="action" required="" size="75" type="text"/> 
+            action: <input name="action" required="false" size="75" type="text"/> 
             <br><br>duration: <input name="duration" required="" size="75" type="text"/> 
             <br><br>partners: <input name="partners" required="" size="75" type="text"/> 
             <br><br>
             <textarea cols="81" name="details" placeholder="additional details" required="" rows="5"></textarea> 
         </section>
         <br><br> 
-        Name: <input name="fullname" required="" size="75" type="text"/> 
+        Name: <input name="fullname" required="false" size="75" type="text"/> 
         <br><br> 
-        Email: <input name="email" required="" size="75" type="email"/> 
+        Email: <input name="email" required="true" size="75" type="email"/> 
         <br><br>
         <input name="submit" type="submit" value="submit"/>
     </form> 
 
 </section>
 
+
 <script type="text/javascript">
     let userId
     const createUserId = () => {
-        return userId = Math.floor((Math.random() * 100000) + 1);
+        if(!userId){
+            return userId = Math.floor((Math.random() * 100000) + 1);
+        }
+        else{
+            console.log("userId exists:" + userId )
+            return userId
+        }
     }
+
+    console.log(`Date.now() = `+ Date.now());
+    let currentSessionId
+    console.log(`currentSessionId should be blank : ` + currentSessionId)
+    
+    let newSession = true
+    const uTC = () => {
+        if (!newSession){
+            return currentSessionId
+            console.log(`currentSessionId should be same : `+currentSessionId)
+        }
+        else {
+            currentSessionId = Date.now()    
+            console.log(`currentSessionId should change : `+currentSessionId)
+            return currentSessionId
+            newSession = false
+        }
+    }
+
 
     function identify(e){
       e.preventDefault();
@@ -70,7 +96,8 @@
       var duration = form["duration"].value;
       var partners = form["partners"].value;
       var details = form["details"].value;
-      var user = {
+
+      var properties = {
           email: email, 
           name: fullname, 
           motivation: motivation, 
@@ -79,15 +106,25 @@
           partners: partners,
           details: details,
       };
-      analytics.identify(createUserId(), {
+      console.log(properties)
+      analytics.identify({
           email: email, 
           name: fullname
       });
-      analytics.track('Motivation Submitted', user, function() {
+    analytics.track('Motivation Submitted', properties, 
+    {integrations: 
+        {
+            "All": true,
+            "Amplitude": {
+                session_id: currentSessionId
+            }
+        }}, 
+        function() {
           window.location.href = "";
-      });
+      }
+      );
+      redirect="/";
     }
-    redirect="/";
 </script>
 
     

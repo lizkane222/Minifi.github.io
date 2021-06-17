@@ -4,40 +4,59 @@
 <head> 
     <!--Placeholder for Segment Snippet --> 
     <script>
-        !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="GHWp3Jhvn2GBHxspEdZBRVhDmJKM4XC1";analytics.SNIPPET_VERSION="4.13.2";
-        analytics.load("GHWp3Jhvn2GBHxspEdZBRVhDmJKM4XC1");
+        !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.13.2";
+        analytics.load("XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh");
+        // analytics.load("GHWp3Jhvn2GBHxspEdZBRVhDmJKM4XC1");
         analytics.page();
         }}();
     </script>
     
     <script type="text/javascript">
-      function identify(e){
-        e.preventDefault();
-        var form = e.target;
-        var email = form["email"].value;
-        var fullname = form["fullname"].value;
-        var destination = form["destination"].value;
-        var details = form["details"].value;
-        var user = {
-            email: email, 
-            name: fullname, 
-            destination: destination, 
-            details: details
-        };
-        analytics.identify('1234', {
-            email: email, 
-            name: fullname
-        });
-        analytics.track('destination submitted', user, function() {
-            window.location.href = "";
-        });
-      }
-</script>
+        let userId
+        const createUserId = () => {
+            return userId = Math.floor((Math.random() * 100000) + 1);
+        }
+    
+        function identify(e){
+          e.preventDefault();
+          var form = e.target;
+          var email = form["email"].value;
+          var fullname = form["fullname"].value;
+          var motivation = form["motivation"].value;
+          var action = form["action"].value;
+          var duration = form["duration"].value;
+          var partners = form["partners"].value;
+          var details = form["details"].value;
+          var properties = {
+              email: email, 
+              name: fullname, 
+              motivation: motivation, 
+              action: action,
+              duration: duration,
+              partners: partners,
+              details: details,
+          };
+          analytics.identify(createUserId(), {
+              email: email, 
+              name: fullname
+          });
+          analytics.track('Motivation Submitted', properties, {integrations: {
+                "All": true,
+                "Amplitude": {
+                    session_id: session_id
+                }
+            }}, function() {
+              window.location.href = "";
+          });
+        }
+        redirect="/";
+    </script>
         <title>Home Questionnaire<span id="selection-marker-1" class="redactor-selection-marker"></span></title> 
 </head> 
 <body> 
 <h1>What is your favorite place to travel?</h1> 
 <p>I am building a directory of the sweetest travel destinations.</p>  
+
 <form name="travel" onsubmit="identify(event)">
      What is your favorite travel destination?
     <input name="destination" required="" size="81" type="text"/> 

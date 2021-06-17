@@ -59,7 +59,7 @@ app.use('/user', controllers.user);
 
 /* Server Listener */
 app.listen(PORT, () => {
-    console.log(`Server is live and listening at http://localhost:${PORT}`);
+    console.log(`Server is live and listening at http://localhost:${PORT} https://lizkane222.github.io/Minifi.github.io/`);
   });
   
 
