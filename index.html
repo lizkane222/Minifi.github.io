@@ -68,7 +68,7 @@
 
 <body> 
     
-<div id="navBar" class="header clearfix">
+<header id="navBar" class="clearfix">
     <nav class="navbar navbar-expand-lg ">
         <ul class="navbar-nav mr-auto">
             <a class="navbar-brand" onclick=trackNavRoute("logo","destinationForm") href="http://localhost:3000/"><h3>minifi</h3></a>
@@ -185,10 +185,12 @@
       }
         
       const trackNavRoute = (navLinkName, currentPage) => {
+            let properties = {
+                navLinkName : navLinkName,
+                currentPage : currentPage
+            }
 
-
-
-             analytics.track('nav link clicked',properties,{integrations: {
+             analytics.track('navlink clicked',properties,{integrations: {
                 "All": true,
                 "Amplitude": {
                     session_id: currentSessionId
