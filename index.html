@@ -11,6 +11,8 @@
       }}();
     </script> 
 
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 <!--     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-198119530-1"></script>
     <script>
@@ -23,6 +25,37 @@
 
 </head> 
 <body> 
+    <div id="navBar" class="header clearfix">
+    <nav class="navbar navbar-expand-lg ">
+        <ul class="navbar-nav mr-auto">
+            <a class="navbar-brand" onclick=trackNavRoute("logo","destinationForm") href="http://localhost:3000/"><h3>minifi</h3></a>
+            <li class="nav-item">
+                <a class="nav-link" onclick=trackNavRoute("home","destinationForm") href="http://localhost:3000/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick=trackNavRoute("motivate","destinationForm") href="http://localhost:3000/motivate">Motivate</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick=trackNavRoute("mi chi","destinationForm") href="http://localhost:3000/chi">Mi Chi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick=trackNavRoute("user","destinationForm") href="http://localhost:3000/user">User</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" onclick=trackNavRoute("about","destinationForm") href="http://localhost:3000/about">About minifi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick=trackNavRoute("ghpages","destinationForm") href="https://lizkane222.github.io/Minifi.github.io/">GH PAGES</a>
+            </li>
+
+        </ul>
+    </nav>
+    <input type="button" onclick=runResetUser() class="resetUser" value="RESET USER"/>
+
+</div>
+    
+    
 <h1>What is your favorite place to travel?</h1> 
 <p>I am building a directory of the sweetest travel destinations.</p>  
 <form name="travel" onsubmit="identify(event)">
@@ -107,7 +140,63 @@
             window.location.href = "";
         });
       }
+        
+      const trackNavRoute = (navLinkName, currentPage) => {
+
+
+
+             analytics.track('nav link clicked',properties,{integrations: {
+                "All": true,
+                "Amplitude": {
+                    session_id: currentSessionId
+                }
+            }}, function() {
+                window.location.href = "";
+            });
+       }
+        
+        
+    const runResetUser = () => {
+        analytics.reset()
+        console.log("reset has occured");
+        console.log(Headers)
+    }
+    
     </script>  
 
 </body> 
 </html>
+
+<style>
+    .navBar {
+        width: 100%;
+        /* height: 5vh; */
+        background-color: aquamarine;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    nav li, nav a {
+        font-size: 1.5em;
+        display: inline-block;
+        text-align: left;
+        margin: 0 10px;
+    } 
+
+    .resetUser {
+        background-color: maroon;  
+        color: gainsboro;
+        padding: 2.5% .5%;
+        border-radius: 50px;
+        float: right;
+        display: block;
+        border: none;
+        outline: none;
+        
+    }
+    button:focus {
+        border: none;
+        outline: none;
+    }
+
+</style>
