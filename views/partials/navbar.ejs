@@ -1,46 +1,128 @@
 <!-- views/partials/navbar.ejs -->
 
-<div id="navBar" class="header clearfix">
+<header id="headerNav" class="header clearfix">
     <nav class="navbar navbar-expand-lg ">
-        <ul class="navbar-nav mr-auto">
-            <a class="navbar-brand" href="/"><h3>minifi</h3></a>
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/motivate">Motivate</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/chi">Mi Chi</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/user">User</a>
-            </li>
+        <ul class="navbar-nav mr-auto" onclick=trackNavRoute(`logo`,`minifiSite`)>
+            <a class="navbar-brand"  href="/"><h3>minifi</h3></a>
+            <a class="nav-link"  href="/">
+                <li class="nav-item" aria-disabled="true" onclick=trackNavRoute(`Home`,`minifiSite`)>
+                    <h3>Home</h3>
+                </li>
+            </a>
+            <a class="nav-link"  href="/motivate">
+                <li class="nav-item" onclick=trackNavRoute(`Motivate`,`minifiSite`)>
+                    Motivate
+                </li>
+            </a>
+            <a class="nav-link"  href="/chi">
+                <li class="nav-item" onclick=trackNavRoute(`Chi`,`minifiSite`)>
+                    Mi Chi
+                </li>
+            </a>
+            <a class="nav-link"  href="/user">
+                <li class="nav-item" onclick=trackNavRoute(`User`,`minifiSite`)>
+                    User
+                </li>
+            </a>
 
-            <li class="nav-item">
-                <a class="nav-link" href="/about">About minifi</a>
-            </li>
+            <a class="nav-link"  href="/about">
+                <li class="nav-item" onclick=trackNavRoute(`minifi`,`minifiSite`)>
+                    About
+                </li>
+            </a>
+            <a class="nav-link"  href="https://lizkane222.github.io/Minifi.github.io/">
+                <li class="nav-item" onclick=trackNavRoute(`ghpages`,`minifiSite`)>
+                    GH-PAGES
+                </li>
+            </a>
+            <a class="nav-link"  href="/docs">
+                <li class="nav-item" onclick=trackNavRoute(`docs`,`minifiSite`)>
+                    DOCS
+                </li>
+            </a>
         </ul>
     </nav>
-</div>
+        <input type="button" onclick=runResetUser() class="resetUser" value="RESET USER"/>
+
+</header>
 
 
 <style>
-    .navBar {
+    #headerNav {
         width: 100%;
-        /* height: 5vh; */
+        height: 10vh;
         background-color: aquamarine;
-        display: flex;
-        justify-content: space-between;
+        /* display: flex; */
+        /* justify-content: space-between; */
+        /* overflow:auto; */
     }
 
-    nav li, nav a {
+    .navbar-nav {
+        display: flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        overflow: wrap;
+    }
+
+    .navbar-brand {
+        float: left;
+    }
+    
+    .nav-link {
         font-size: 1.5em;
-        display: inline-block;
+        display: inline-flex;
         text-align: left;
         margin: 0 10px;
-    } 
-    
+        color:blueviolet;
+    }
 
+    .resetUser {
+        background-color: aquamarine;  
+        color: gainsboro;
+        padding: 2.5% .5%;
+        border-radius: 50px;
+        float: right;
+        display: block;
+        border: none;
+        outline: none;
+        margin: 10px;
+        z-index: 2;
+        color: blueviolet;
+        box-shadow: -2px 2px 2px 2px rgba(90,90,90,.7);
+    }
+    .resetUser:hover {
+        transform: scale(1.15);
+        transition: 350ms ease-in-out;
+    }
+  
+
+    button:focus {
+        border: none;
+        outline: none;
+    }
 
 </style>
+
+<script>
+    runResetUser = () => {
+        analytics.reset()
+        console.log("reset has occured");
+        console.log(Headers)
+    }
+    const trackNavRoute = (navLinkName, currentPage) => {
+        let properties = {
+            navLinkName : navLinkName,
+            currentPage : currentPage
+        }
+
+            analytics.track('navlink clicked',properties,{integrations: {
+            "All": true,
+            "Amplitude": {
+                session_id: currentSessionId
+            }
+        }}, function() {
+            window.location.href = "";
+        });
+    }
+</script>

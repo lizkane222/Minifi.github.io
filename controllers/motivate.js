@@ -12,7 +12,8 @@ router.get('/', async (req,res)=> {
     try {
         const foundMotivate = await db.Motivate.find({});
         res.render('motivate/index', context = {
-            motivations : foundMotivate
+            motivations : foundMotivate,
+            page_title : "Motivate List"
         }
         )
     } catch (error) {
@@ -24,7 +25,11 @@ router.get('/', async (req,res)=> {
 // new 
 router.get('/new', (req,res)=> {
     // res.send("Motivate's NEW Route is ⇪ and 🏃🏻‍♀️")
-    res.render('motivate/new.ejs')
+    res.render('motivate/new.ejs',
+        context = {
+            page_title : "New Motivate"
+        }
+    )
 })
 
 // create
@@ -48,7 +53,10 @@ router.get('/:id', (req,res) => {
             console.log(error)
             // return res.send(`Internal Server Error: check motivate controller @ show route ${error}`);
         }
-        const context = {motivate : foundMotivate}
+        const context = {
+            motivate : foundMotivate,
+            page_title : "Show Motivate"
+        }
         res.render('motivate/show.ejs', context)
     });
 });
@@ -62,7 +70,10 @@ router.get("/:id/edit", (req,res) => {
             return res.send(err);
         }
 
-        const context = { motivate : foundMotivate};
+        const context = { 
+            motivate : foundMotivate, 
+            page_title : "Edit Motivate"
+        };
 
         res.render("motivate/edit.ejs", context)
     });

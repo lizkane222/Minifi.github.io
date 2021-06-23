@@ -1,19 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('./partials/head') %>
+    <%- include('../partials/head') %>
+    <title><%=page_title%></title>
+
 </head>
 
 <body>
     <header>
-        <%- include('./partials/navbar') %>
+        <%- include('../partials/navbar') %>
     </header>
 <!-- user's tamogotchi & all relevant headings to that tamagotchi -->
 
 
+<section>
+    <h1 class="center">Your minifi account</h1> 
+    <h6 class="center">Your data is your Chi's data</h6>
+    <br/><br/>
+    <form name="mi_chi" onsubmit="createAccount(e)">
+        <h3>Create your account by filling in your data & by designing chi</h3>
+        <p class="italic">If you can name it you can claim it!</p>
+        <br/><br/>
+        <div>
+            <h4>Let’s take the overwhelming topics of keeping good health, habits, ideas and make them bite size tasks.</h4>
+            <div>
+                <input name="fullname" required="" size="50%" type="text" placeholder=" mi full name"/> 
+                <input name="email"  required=""  size="50%" type="email" placeholder=" email"/> 
+                <input name="username"  required=""  size="50%" type="text" placeholder=" mi username"/> <br/><br/>
+                <input name="phone_number"  size="50%" type="text" placeholder=" phone number"/> 
+                <label>Birthday </label> <input name="age"  size="50%" type="date" /> 
+            </div>
+            <br/><br/>
+
+            <h4>By taking care of your tamagotchi based on your daily activity and life choices you’ll be able to take on more of a growth mindset towards achieving one goal, one habit at a time. </h4>
+            <div>
+                <input name="chi_name"  size="50%" type="text" placeholder=" chi name"/> 
+                <label>Design mi chi </label> <input name="chi_color"  size="50%" type="color" placeholder=" design chi"/> 
+            </div>
+        </div>
+        <br><br><br> 
+        <div>
+                <h4>Mindfulness is a huge part of minifi. We often find ourselves doing one task while preoccupying ourselves with the next. Being present, THERE, actually IN the task at hand will allow our full attention, mental faculties, and body to rest. </h4>
+                <textarea cols="81" name="details"  rows="10" placeholder="Describe why you are now starting your journey towards integrating holistic mindfulness into your daily routine..."></textarea> 
+            </div>
+
+            <div>
+                <h4>Focusing on one link at a time will create a stronger chain towards our own success.</h4>
+                <div >
+      
+                    
+                    <div id="newGrooves" class="">
+                    <input type="checkbox" name="healthierEating"> Healthier Eating 
+                    <input type="checkbox" name="healthierThinking"> Healthier Thinking 
+                    <input type="checkbox" name="healthierActivities"> Healthier Activities 
+                    <input type="checkbox" name="healthierSocializing"> Healthier Socializing 
+                    <input type="checkbox" name="healthierBreaks"> Healthier Breaks 
+                    <input type="checkbox" name="healthierSleep"> Healthier Sleep 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <input name="submit" type="submit" value="submit" onsubmit=createAccount(e)/>
+    </form> 
+</section>
+<script>  
+      let currentSessionId
+      console.log(`currentSessionId should be blank : ` + currentSessionId)
+      
+      let newSession = true
+      const uTC = () => {
+          if (!newSession){
+              return currentSessionId
+              console.log(`currentSessionId should be same : `+currentSessionId)
+          }
+          else {
+              currentSessionId = Date.now()    
+              console.log(`currentSessionId should change : `+currentSessionId)
+              return currentSessionId
+              newSession = false
+          }
+      }
+    
+    
+       const createAccount = (e) =>{
+        e.preventDefault();
+        console.log("CREATING...")
+        let form = e.target;
+
+
+        let newGrooves = {} 
+        const all_grooves = {
+            healthierEating : form[healthierEating].value,
+            healthierThinking : form[healthierThinking].value,
+            healthierActivities : form[healthierActivities].value,
+            healthierSocializing : form[healthierSocializing].value,
+            healthierBreaks : form[healthierBreaks].value,
+            healthierSleep : form[healthierSleep].value,
+        }
+        for(let groove in all_grooves){
+            if(groove){
+                newGrooves.push[groove]
+            }
+        }
+        console.log(newGrooves)
+
+        let fullname = form["fullname"].value;
+        let email = form["email"].value;
+        let age = form["age"].value;
+        let chi_name = form["chi_name"].value;
+        let chi_color = form["chi_color"].value;
+        let chi_age = Date.now()
+        let new_grooves = newGrooves
+        let details = form["description"].value;
+        let username = form["username"].value;
+        let phone_number = form["phone_number"].value;
+        
+        // GET FULL FORM DATA IN CONSOLE 
+        console.log( "fullname: "+ fullname + ", email: "+ email + ", age: "+ age + ", chi_name: "+ chi_name + ", chi_color: "+ chi_color + ", new_grooves: "+ new_grooves + ", details: "+ details + ", username: "+ username + ", phone_number: "+ phone_number + ", chi_age: "+ chi_age )
+    
+        //console.log(event.toLocaleDateString(undefined, options));
+    
+        let properties = {
+            name: fullname, 
+            email: email, 
+            username: username,
+            phone_number: phone_number,
+            details: details,
+            age: age,
+            chi_name : chi_name,
+            chi_color : chi_color,
+            chi_age: chi_age,
+            new_grooves: new_grooves
+        };
+        console.log(properties)
+        analytics.identify({
+            email: email, 
+            name: fullname,
+            username: username,
+            userId : username,
+            phone_number: phone_number,
+        });
+      analytics.track('Mi Chi Account Created', properties, 
+      {integrations: 
+          {
+              "All": true,
+              "Amplitude": {
+                  session_id: currentSessionId
+              }
+          }}, 
+          function() {
+            window.location.href = "";
+        }
+        );
+        redirect="/";
+      }
+    </script>
+
     
 </body>
 <footer>
-    <%- include('./partials/footer') %>
+    <%- include('../partials/footer') %>
 </footer>
+
+
+
 </html>

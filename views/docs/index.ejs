@@ -1,0 +1,96 @@
+<head>
+    <%- include('../partials/head') %>
+    <style>
+        #docIframes{
+            min-width: 95vw;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    </style>
+    <title><%=page_title%></title>
+
+    
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar') %>
+    </header>
+    <!-- user's tamogotchi & all relevant headings to that tamagotchi -->
+<% let page = docLinks.page_spec %>
+<% let group = docLinks.group_spec %>
+<% let track = docLinks.track_spec %>
+
+<button onclick=runGroupCall(`TMUD`)>GROUP IT</button>
+
+<input type="text" name="username" id="inputUsername" placeholder="username"/><button onclick="idUser()">SAVE</button>
+
+<div id="docIframes" >
+    <iframe src=<%=page%> onclick=trackDoc(`page_spec`, `page`, `Spec Page`) title="page_spec" height="500" width="300"></iframe>
+    <iframe src=<%=group%> onclick=trackDoc(`group_spec`, `group`, `Spec Group`) title="group_spec" height="500" width="300"></iframe>
+    <iframe src=<%=track%> onclick=trackDoc(`track_spec`, `track`, `Spec Track`) title="track_spec" height="500" width="300"></iframe>
+</div>
+
+
+
+    
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>
+
+
+
+<script>
+    let username
+
+    const idUser = () => {
+        username = document.getElementById("inputUsername").val();
+        
+        analytics.identify({
+            username: username
+        })
+    }
+
+    let $allDocs = document.getElementById("docIframes")
+    $allDocs.hide
+    if (username){
+        $(allDocs).show
+    }
+
+
+    const runGroupCall = (name) => {
+        console.log("triggering group call...");
+        analytics.group("5urSrBJ68rXLV4vdkvdTjv",{
+            name: name,
+            industry: "Political",
+            employees: 2,
+            plan: "startup",
+            "total billed": 300
+        });
+
+        console.log("group call triggered");
+    }
+
+    const trackDoc = (docName, link, title) => {
+        properties = {
+            name : docName,
+            link : link,
+            title : title
+        }
+
+    analytics.track('Doc Clicked', properties, 
+        {integrations: 
+            {
+                "All": true,
+                "Amplitude": {
+                    session_id: currentSessionId
+                }
+            }}, 
+            function() {
+            window.location.href = "";
+        }
+    );
+}
+</script>

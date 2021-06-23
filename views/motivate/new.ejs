@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
+    <title><%=page_title%></title>
+
 </head>
 
 <body>
@@ -27,32 +29,34 @@
     </form>
 </main> -->
 
+
 <hr/>
 <section>
     <h1>Stay Motivated</h1> 
     <p>Let's find out what kinds of exercises or activities motivate you.</p>  
     <form name="motivate" onsubmit="identify(event)">
         What is the name of the exercise / activity / motivation?
-        <input name="motivation" required="true" size="81" type="text"/> 
+        <input name="motivation"  size="81" type="text"/> 
         <br><br><br> 
         Motivation Description (What do you do, for how long, with whom, in repeptitions?):
         <br><br> 
         <section>
-            action: <input name="action" required="false" size="75" type="text"/> 
-            <br><br>duration: <input name="duration" required="" size="75" type="text"/> 
-            <br><br>partners: <input name="partners" required="" size="75" type="text"/> 
+            action: <input name="action"  size="75" type="text"/> 
+            <br><br>duration: <input name="duration"  size="75" type="text"/> 
+            <br><br>partners: <input name="partners"  size="75" type="text"/> 
             <br><br>
-            <textarea cols="81" name="details" placeholder="additional details" required="" rows="5"></textarea> 
+            <textarea cols="81" name="details" placeholder="additional details" rows="5"></textarea> 
         </section>
         <br><br> 
-        Name: <input name="fullname" required="false" size="75" type="text"/> 
+        Name: <input name="fullname"  size="75" type="text"/> 
         <br><br> 
-        Email: <input name="email" required="true" size="75" type="email"/> 
+        Email: <input name="email" required="" size="75" type="email"/> 
         <br><br>
         <input name="submit" type="submit" value="submit"/>
     </form> 
 
 </section>
+
 
 
 <script type="text/javascript">
@@ -86,18 +90,19 @@
     }
 
 
-    function identify(e){
+    const identify = (e) =>{
       e.preventDefault();
-      var form = e.target;
-      var email = form["email"].value;
-      var fullname = form["fullname"].value;
-      var motivation = form["motivation"].value;
-      var action = form["action"].value;
-      var duration = form["duration"].value;
-      var partners = form["partners"].value;
-      var details = form["details"].value;
+      let form = e.target;
+      let email = form["email"].value;
+      let fullname = form["fullname"].value;
+      let motivation = form["motivation"].value;
+      let action = form["action"].value;
+      let duration = form["duration"].value;
+      let partners = form["partners"].value;
+      let details = form["details"].value;
+      let username, phone_number
 
-      var properties = {
+      let properties = {
           email: email, 
           name: fullname, 
           motivation: motivation, 
@@ -109,7 +114,10 @@
       console.log(properties)
       analytics.identify({
           email: email, 
-          name: fullname
+          name: fullname,
+          username: username,
+          userId : username,
+          phone_number: phone_number,
       });
     analytics.track('Motivation Submitted', properties, 
     {integrations: 
@@ -125,6 +133,8 @@
       );
       redirect="/";
     }
+
+
 </script>
 
     

@@ -1,26 +1,95 @@
 <!DOCTYPE html>
+<head>
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-<title>Minifi</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
 
+
+
+
+
 <style>
+    
+    * {
+        display: border-box;
+        margin: 0 auto;
+        padding: 0 0;
+    }
+    
     body{
         /* padding-top: 50px; */
         font-family: 'Poiret One', cursive;
-        background-color: rgba(20,20,20,1);
+        background-color: rgba(40,40,40,1);
         color: rgba(220,220,220,8);
+        margin: 0 15px 15px 15px;
+        /* flex-flow:column wrap; */
+        /* display: inline; */
     }
+    .italic {
+        text-decoration: italic;
+    }
+    .center {
+        margin: 0 auto;
+        text-align: center;
+    }
+
 </style>
 
 <script>
     !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.13.2";
     analytics.load("XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh");
-    analytics.page();
+    analytics.page(
+        // context = {
+        //         ip : "1.179.112.033",
+        // }
+        // userAgent : "Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Mobile/15E148 Safari/604.1"
+    );
     }}();
 
-    
+    const identifyCall = (traits) => {
+        analytics.identify({
+            email: traits.email, 
+            name: traits.fullname,
+            username: traits.username,
+            userId : traits.username,
+            phone_number: traits.phone_number,
+        })
+
+    }
+
+
+    const trackCall = (trackEventName, props,) => {
+        let email, name, motivation, action, duration, partners, details, destination
+
+        let properties = {
+            motivation: {
+                motivation: props.motivation, 
+                action: props.action,
+                duration: props.duration,
+                partners: props.partners,
+                details: props.details,
+            },
+            destination: {
+                email: props.email, 
+                name: props.fullname, 
+                destination: props.destination, 
+                details: props.details,
+            }
+        };
+
+        analytics.track(trackEventName, properties,)
+    }
+
+
+
+
+
+
+
+
+
 </script>
+    
+</head>

@@ -11,7 +11,7 @@ const controllers = require("./controllers");
 const app = express();
 
 /* Configuration */
-const PORT = 3000;
+const PORT = 4000;
 app.set('view engine', 'ejs');
 
 
@@ -32,9 +32,10 @@ app.get('/', (req, res) => {
     // console.log('hi')
     // res.send('MINIFI SERVER IS OFFICIALLY CONNECTED!')
     res.render('index',
-    // context = {
-    //     Motivate : db.Motivate
-    // }
+    context = {
+        // Motivate : db.Motivate
+        page_title : "Home"
+    }
     );
     // res.render('index', { user: req.session.currentUser } );
 });
@@ -56,10 +57,13 @@ app.use('/chi', controllers.chi);
 // user Routes
 app.use('/user', controllers.user);
 
+// user Routes
+app.use('/docs', controllers.docs);
+
 
 /* Server Listener */
 app.listen(PORT, () => {
-    console.log(`Server is live and listening at http://localhost:${PORT} https://lizkane222.github.io/Minifi.github.io/`);
+    console.log(`Server is live and listening at http://localhost:${PORT}  http://localhost:${PORT}/docs  https://lizkane222.github.io/Minifi.github.io/ `);
   });
   
 
