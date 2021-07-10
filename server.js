@@ -20,11 +20,62 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 // overrides incoming post to DELETE/PUT
 app.use(methodOverride('_method'));
-// 
-// app.use((req, res, next) => {
-//     console.log(`${req.method} ${req.originalUrl}`);
-//     next();
-// })
+
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.originalUrl}`);
+//     let req = { query, cookies, url, path, ip, host}
+
+//     // populate campaign object with any utm params
+//   const campaign = {}
+//   if (query.utm_content) campaign.content = query.utm_content
+//   if (query.utm_campaign) campaign.name = query.utm_campaign
+//   if (query.utm_medium) campaign.medium = query.utm_medium
+//   if (query.utm_source) campaign.source = query.utm_source
+//   if (query.utm_term) campaign.keyword = query.utm_term
+
+//   // grab userId if present
+//   let userId = null
+//   if (cookies.ajs_user_id) userId = cookies.ajs_user_id
+
+//   // if no anonymousId, send a randomly generated one
+//   // otherwise grab existing to include in call to segment
+//   let anonymousId
+//   if (cookies.ajs_anonymous_id) {
+//     anonymousId = cookies.ajs_anonymous_id
+//   } else {
+//     anonymousId = = uuid.v4()
+//     res.cookie('ajs_anonymous_id', anonymousId )
+//   }
+
+//   const referrer = req.get('Referrer')
+//   const userAgent = req.get('User-Agent')
+
+//   const properties = {
+//     query: stringify(query),
+//     referrer,
+//     path,
+//     host,
+//     url
+//     /* ++ any custom props (eg. title) */
+//   }
+
+//   const context = {
+//     campaign,
+//     userAgent,
+//     ip
+//   }
+
+//   // send a page call to segment
+//   analytics.page(
+//     anonymousId, // either random (matching cookie) or from client
+//     userId, // might be null
+//     properties,
+//     context
+//   )
+    
+  // proceed!
+    next();
+})
 
 /* Routes */
 app.get('/', (req, res) => {
