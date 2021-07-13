@@ -38,6 +38,7 @@
 </style>
 
 <script>
+    // global variable anonymousId, assigned on page call, accessible if sent serverside
     let serverAnonymousId
     // function to be ran on load after .page() has completed and anonymousId is not null
     const callServer = () => {
@@ -49,340 +50,123 @@
         return serverAnonymousId
   }
 
-//   let queryForm = function(settings){
-//     let reset = settings && settings.reset ? settings.reset : false;
-//     let self = window.location.toString();
-//     let querystring = self.split("?");
-//     if (querystring.length > 1) {
-//       let pairs = querystring[1].split("&");
-//       for (i in pairs) {
-//         let keyval = pairs[i].split("=");
-//         if (reset || sessionStorage.getItem(keyval[0]) === null) {
-//           sessionStorage.setItem(keyval[0], decodeURIComponent(keyval[1]));
-//         }
-//       }
-//     }
-//     let hiddenFields = document.querySelectorAll("input[type=hidden], input[type=text]");
-//     for (let i=0; i<hiddenFields.length; i++) {
-//       let param = sessionStorage.getItem(hiddenFields[i].name);
-//       if (param) document.getElementsByName(hiddenFields[i].name)[0].value = param;
-//     }
-//     console.log(querystring)
-//   }
-
-//   setTimeout(function(){queryForm();}, 7000);
-
-
-    var output = {};
-
-    const formatQs = (query) => {
-        var qs = document.location.search.substring(1);
-        qs = qs.split('&');
-
-        for (var i = 0; i < qs.length; i++) {
-            var tokens = qs[i].split('=');
-        output[tokens[0].toLowerCase()] = tokens[1];
-        }
-        console.log(output)
-        // let query = {
-        //     context : {
-        //         campaign : {
-        //             utm_source : output.utm_source,
-        //             utm_medium : output.utm_medium,
-        //             utm_campaign : output.utm_campaign
-        //         }
-        //     }
-        // }
-        return query;
-
-        analytics.track('User Referred', {
-            formatQs(
-                (context : {
-                    campaign : {
-                        utm_source : output.utm_source,
-                        utm_medium : output.utm_medium,
-                        utm_campaign : output.utm_campaign
-                    }
-                })
-            )
-        });
-    }
-
     !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.13.2";
     analytics.load("XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh");
-    formatQs()
+
     // ***************************************************
     // EXTENSIVE EXPLANATION OF ALL CONTEXT FIELDS ↓
     // ***************************************************
-    analytics.page(
-        // [ DATATYPE = alphanumeric STRING aka "abc123" ] =>  leave blank, page generates this automatically to be carried on to all subsequent client-side calls, use preceding callback function to grab anonymousId for all server-side calls
-        anonymousId,
-        // [ DATATYPE = OBJECT/DICTIONARY aka {} ] => optional see *^table^* for which fields are auto-collected by (analytics.js vs analytics-ios vs analytics-android) and which must be sent manually
-        context = {
-                // [ DATATYPE = BOOLEAN aka true||false ] =>
-                // => "active": true,
-                active,   
+    // let context = {
+    //     // active: window.document.userActivation,
+    //     app:{
+    //         // auto by: a-ios & a-droid
+    //         // => "name": "InitechGlobal",
+    //         name: window.document.appName,
 
-                // [ DATATYPE = OBJECT/DICTIONARY aka {}   ] =>
-                app:{
-                    // auto by: a-ios & a-droid
-                    // => "name": "InitechGlobal",
-                    name,   
+    //         // auto by: a-ios & a-droid
+    //         // => "545",
+    //         version: window.clientInformation.appVersion,
+    //     },
+    //     page:{
+    //         // auto by: a.js
+    //         // => "path": "/academy/",
+    //         // window.location.path	
+    //         path: window.location.path,
 
-                    // auto by: a-ios & a-droid
-                    // => "545",
-                    version,   
+    //         // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
+    //         // auto by: a.js
+    //         // => "referrer": ""google.com, 
+    //         // window.document.referrer	
+    //         referrer: window.document.referrer,
 
-                    // auto by: a-ios & a-droid
-                    // => "3.0.1.545",
-                    build,   
+    //         // auto by: a.js
+    //         // => "search": "",
+    //         // window.location.search	
+    //         search: window.location.search,
 
-                    // not listed as auto - unknown
-                    // => "namespace": "com.production.segment"
-                    namespace    
+    //         // auto by: a.js
+    //         // => "title": "Analytics Academy",
+    //         // window.location.title	
+    //         title: window.location.title,
 
-                },
+    //         // auto by: a.js
+    //         // => "url": "https://segment.com/academy/"
+    //         // window.location.url	
+    //         url: window.location.url,
 
-                // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-                campaign:{
-                    // auto by: a.js
-                    // => "name": "TPS Innovation Newsletter",
-                    name,   
-
-                    // auto by: a.js
-                    // => "source": "Newsletter",
-                    source,   
-
-                    // auto by: a.js
-                    // => "medium": "email",
-                    medium,   
-
-                    // auto by: a.js
-                    // => "term": "tps reports",
-                    term,   
-
-                    // auto by: a.js
-                    // => "content": "image link"
-                    content   
-
-                },
-
-                // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-                device:{
-                    // auto by: a-droid
-                    // => "type": "ios",
-                    type,   
-
-                    // auto by: a-ios & a-droid
-                    // => "id": "B5372DB0-C21E-11E4-8DFC-AA07A5B093DB",
-                    id,   
-
-                    // auto by: a-ios & a-droid
-                    // => "advertisingId": "7A3CBEA0-BDF5-11E4-8DFC-AA07A5B093DB",
-                    advertisingId,   
-
-                    // auto by: a-ios & a-droid
-                    // => "adTrackingEnabled": true,
-                    adTrackingEnabled,   
-
-                    // auto by: a-ios & a-droid
-                    // => "manufacturer": "Apple",
-                    manufacturer,   
-
-                    // auto by: a-ios & a-droid
-                    // => "model": "iPhone7,2",
-                    model,   
-
-                    // auto by: a-droid
-                    // => "name": "maguro",
-                    name,   
-
-                    // not listed as auto - unknown
-                    // => "token": "ff15bc0c20c4aa6cd50854ff165fd265c838e5405bfeb9571066395b8c9da449"
-                    token   
-
-                },
-
-                // [ DATATYPE = 11 digit numeric STRING aka "000.11.222.333" ] =>
-                // auto by: a.js & a-ios & a-droid
-                // => "ip": "8.8.8.8",
-                ip,   
-
-                
-                // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-                    // => 
-                library:{   
-                    // auto by: a.js & a-ios & a-droid
-                    // => "name": "analytics.js",
-                    name,   
-                    // auto by: a.js & a-ios & a-droid
-                    // => "version": "2.11.1"
-                    version   
-                },
-
-                // [ DATATYPE = alpha STRING aka "en-US" ] =>
-                // auto by: a-ios & a-droid
-                // => "locale": "en-US",
-                locale,   
-
-
-                // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-                // auto by: none - only manually
-                    // => "city": "San Francisco",
-                location : {   
-                    
-                    // auto by: none - only manually
-                    // => "country": "United States",
-                    country,   
-
-                    // auto by: none - only manually
-                    // => "latitude": 40.2964197,
-                    latitude,   
-
-                    // auto by: none - only manually
-                    // => "longitude": -76.9411617,
-                    longitude,   
-
-                    // auto by: none - only manually
-                    // => "speed": 0
-                    speed   
-
-                },
-
-                // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-                network:{
-                    // auto by: a-droid
-                    // => "bluetooth": false,
-                    bluetooth,   
-
-                    // auto by: a-ios & a-droid
-                    // => "carrier": "T-Mobile US",
-                    carrier,   
-
-                    // auto by: a-ios & a-droid
-                    // => "cellular": true,
-                    cellular,   
-
-                    // auto by: a-ios & a-droid
-                    // => "wifi": false
-                    wifi   
-
-                },
-
-                // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-                os:{
-                    // auto by: a-ios & a-droid
-                    // => "name": "iPhone OS",
-                    name,   
-
-                    // auto by: a-ios & a-droid
-                    // => "version": "8.1.3"
-                    version   
-
-                },
-
-                // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-                page:{
-                    // auto by: a.js
-                    // => "path": "/academy/",
-                    // window.location.path	
-                    path: window.location.path,   
-
-                    // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-                    // auto by: a.js
-                    // => "referrer": ""google.com, 
-                    // window.document.referrer	
-                    referrer: window.document.referrer,
-
-                    // auto by: a.js
-                    // => "search": "",
-                    // window.location.search	
-                    search: window.location.search,   
-
-                    // auto by: a.js
-                    // => "title": "Analytics Academy",
-                    // window.location.title	
-                    title: window.location.title,   
-
-                    // auto by: a.js
-                    // => "url": "https://segment.com/academy/"
-                    // window.location.url	
-                    url: window.location.url 
-
-                },
-
-                // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-                referrer : {
-                    // not listed as auto - unknown
-                    // => "id": "ABCD582CDEFFFF01919",
-                    id,   
-                    // not listed as auto - unknown
-                    // => "type": "dataxu"
-                    type   
-                },
-
-                // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-                screen:{
-                    // auto by: a-droid
-                    // => "density": 2
-                    density,   
-
-                    // auto by: a-ios & a-droid
-                    // => "height": 568,
-                    height,   
-
-                    // auto by: a-ios & a-droid
-                    // => "width": 320,
-                    width   
-
-                },
-
-                // [ DATATYPE = alphanumeric STRING aka "abc123" ] => manually include
-                // => "groupId": "12345",
-                groupId,   
-
-                // [ DATATYPE = OBJECT/DICTIONARY aka {} ] => used only in identify calls
-                // auto by: a-ios & a-droid
-                // => 
-                traits,   
-
-                // [ DATATYPE = alphanumeric STRING aka "abc123" ] =>
-                // auto by: a-ios & a-droid
-                // => "timezone": "Europe/Amsterdam",
-                timezone,   
-
-                // [ DATATYPE = alphanumeric STRING aka "abc123" ] =>
-                // auto by: a.js & a-droid
-                // => "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
-                userAgent,   
-
-        }
-    );
-    console.log(active || "test-active", app.name || "test-app", app.version || "test-app", app.build || "test-app", app.namespace ||  "test-app" ,campaign.name || "test-campaign", campaign.source || "test-campaign", campaign.medium || "test-campaign", campaign.term || "test-campaign", campaign.content ||  "test-campaign" ,device.type || "test-device", device.id || "test-device", device.advertisingId || "test-device", device.adTrackingEnabled || "test-device", device.manufacturer || "test-device", device.model || "test-device", device.name || "test-device", device.token ||  "test-device" ,ip || "test-ip",locale || "test-locale", library.name || "test-library", library.version ||  "test-library"  ,location.city || "test-location",location.country || "test-location", location.latitude || "test-location", location.longitude || "test-location", location.speed ||  "test-location" ,network.bluetooth || "test-network", network.carrier || "test-network", network.cellular || "test-network", network.wifi ||  "test-network" ,os.name || "test-os", os.version ||  "test-os" ,page.path || "test-page", page.referrer || "test-page", page.search || "test-page", page.title || "test-page", page.url ||  "test-page" ,referrer.id || "test-referrer", referrer.type ||  "test-referrer" ,screen.density || "test-screen", screen.height || "test-screen", screen.width ||  "test-screen" ,groupId || "test-groupId", traits || "test-traits", timezone || "test-timezone", userAgent || "test-userAgent", );
-    analytics.ready(callServer);
-
-    // callItAll = function() {
-    //     anonymousIdTrue = function(){
-    //         console.log(analytics.user().anonymousId())
-    //         return analytics.user().anonymousId()
-    //         // callServer()
-    //     }.then(
-    //         userIdFalse = function() {
-    //             console.log(analytics.user().userId())
-    //             return analytics.user().userId()
-    //         }
-    //     ).then(
-    //         if(anonymousIdTrue || userIdFalse == null){
-    //             console.log('anonymousIdTrue || !userIdFalse');
-    //             console.log('calling : analytics.identify()');
-    //             analytics.identify();
-    //         }
-    //     )
-    //     console.log('AHHHHH');
+    //     },
+    //     library:{   
+    //         // auto by: a.js & a-ios & a-droid
+    //         // => "name": "analytics.js",
+    //         name: window.clientInformation.library || "TESTING-name",
+    //         // auto by: a.js & a-ios & a-droid
+    //         // => "version": "2.11.1"
+    //         version: window.clientInformation.library || "TESTING-version",
+    //     },
+    //     locale: window.document.referrer,
+    //     // [ DATATYPE = alphanumeric STRING aka "abc123" ] =>
+    //     // auto by: a.js & a-droid
+    //     // => "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
+    //     userAgent: window.clientInformation.userAgent
     // }
-    // callItAll(analytics)
-    console.log(analytics);
-        
+    
+    // analytics.page(context)
+    // analytics.page({},context={
+        // userAgent: context.userAgent,
+        // locale: context.locale,
+        // app: context.app,
+    // })
+    
+    
+    let context = {context:{
+        active: window.clientInformation.userActivation,
+        app:{
+            name: window.document.appName,
+            version: window.document.appVersion,
+        },
+        page:{
+            path: window.location.path,
+            referrer: window.document.referrer,
+            search: window.location.search,
+            title: window.location.title,
+            url: window.location.url,
+        },
+        library:{   
+            name: window.document.library,
+            version: window.clientInformation.library,
+        },
+        locale: window.document.referrer,
+        userAgent: window.clientInformation.userAgent
+    }}
+    analytics.page([],[],[],context)
+
+    // HARD CODED DATA BELOW
+    // let context = {context:{
+    //     active: window.clientInformation.userActivation,
+    //     app:{
+    //         name: "DODGEBALL",
+    //         version: "DODGE-DIP-DIVE-DUCK-DODGE",
+    //     },
+    //     page:{
+    //         path: "dodgeball/dip.com",
+    //         referrer: "www.dodgeball/.com",
+    //         search: "safety",
+    //         title: "dip",
+    //         url: "www.dodgeball.com",
+    //     },
+    //     library:{   
+    //         name: "dodgeball-US",
+    //         version: "2.0",
+    //     },
+    //     locale: "Las Vegas, NEVADA, USA",
+    //     userAgent: "macbook yo"
+    // }}
+    // analytics.page([],[],[],context)
+    
+    // console.log("!!!!  CONTEXT !!!!  : ", context)
+    
+    analytics.ready(callServer);
+    // console.log(analytics);
     }}();
     
 
