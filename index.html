@@ -15,16 +15,14 @@
             serverAnonymousId = analytics.user().anonymousId();
             // view variable value in console
             console.log('serverAnonymousId ',serverAnonymousId)
-
             console.log("serverUserId : ",serverUserId)
-            if(!serverUserId){
+
+            if(serverUserId == null){
                 serverUserId = Math.floor((Math.random() * 100000) + 1);
                 console.log("NEW USER - serverUserId :" + serverUserId )
-//                     return serverUserId
             }
             else{
                 console.log("serverUserId exists:" + serverUserId )
-//                     return serverUserId
             }
             
             console.log('serverUserId ',serverUserId)
