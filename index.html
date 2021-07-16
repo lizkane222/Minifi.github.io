@@ -16,18 +16,17 @@
             // view variable value in console
             console.log('serverAnonymousId ',serverAnonymousId)
 
-            const createUserId = () => {
-                console.log("serverUserId : ",serverUserId)
-                if(!serverUserId){
-                    serverUserId = Math.floor((Math.random() * 100000) + 1);
-                    console.log("NEW USER - serverUserId :" + serverUserId )
+            console.log("serverUserId : ",serverUserId)
+            if(!serverUserId){
+                serverUserId = Math.floor((Math.random() * 100000) + 1);
+                console.log("NEW USER - serverUserId :" + serverUserId )
 //                     return serverUserId
-                }
-                else{
-                    console.log("serverUserId exists:" + serverUserId )
-//                     return serverUserId
-                }
             }
+            else{
+                console.log("serverUserId exists:" + serverUserId )
+//                     return serverUserId
+            }
+            
             console.log('serverUserId ',serverUserId)
             
             // return value to be used on backend
