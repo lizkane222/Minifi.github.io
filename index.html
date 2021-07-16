@@ -209,6 +209,52 @@
     
     </script>  
 
+    
+<div class="main-index-container">
+    <input type="text" name="firstName" id="firstName-main-index" placeholder="First Name"/>
+    <input type="text" name="lastName" id="lastName-main-index" placeholder="Last Name"/>
+    <input type="text" name="organization" id="organization-main-index" placeholder="Organization"/>
+    <input type="email" name="email" id="email-main-index" required="" placeholder="Email"/>
+    <input type="text" name="favoriteSocialMedia" id="fav-soc-media-main-index" required="" placeholder="Favorite Social Media To Use"/>
+    <button id="submitNewAccountInputs" onclick="createNewAccount()">SAVE</button>
+</div>
+
+<script>
+    let createNewAccount = () => {
+
+    let firstName = document.getElementById("firstName-main-index").value || "test firstName";
+    let lastName = document.getElementById("lastName-main-index").value || "test lastName";
+    let organization = document.getElementById("organization-main-index").value || "test organization";
+    let email = document.getElementById("email-main-index").value || "test email";
+    let favSocMedia = document.getElementById("fav-soc-media-main-index").value || "test fav-soc-media";
+        
+    console.log("- firstName : ",firstName,"- lastName : ",lastName,"- organization : ",organization,"- email : ",email,)
+
+    let traits = {
+        firstName : firstName,
+        lastName : lastName,
+        organization : organization,
+        email : email,
+        userId : userId,
+        anonymousId : anonymousId
+    }
+
+    let properties = {
+        favSocMedia : favSocMedia
+    }
+    
+    analytics.identify({"Lead Account"},{traits})
+
+    analytics.track("New Account Created",{traits},{properties})
+
+    document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
+
+}
+</script>
+    
+    
+    
+    
 </body> 
 
 
