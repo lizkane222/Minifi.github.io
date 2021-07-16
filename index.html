@@ -5,9 +5,42 @@
 
     <!--Segment Snippet --> 
     <script>
+        // global variable anonymousId, assigned on page call, accessible if sent serverside
+        let serverAnonymousId
+        let serverUserId
+        let userId = null
+        // function to be ran on load after .page() has completed and anonymousId is not null
+        const callServer = () => {
+            // assign variable value
+            serverAnonymousId = analytics.user().anonymousId();
+            // view variable value in console
+            console.log('serverAnonymousId ',serverAnonymousId)
+
+            const createUserId = () => {
+                console.log("USERID",userId)
+                if(!userId){
+                    userId = Math.floor((Math.random() * 100000) + 1);
+                    console.log("NEW USER - userId :" + userId )
+                    return userId
+                }
+                else{
+                    console.log("userId exists:" + userId )
+                    return userId
+                }
+            }
+            
+            // return value to be used on backend
+            return (serverAnonymousId,serverUserId, userId)
+        }  
+      
+
+
+        
       !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="GHWp3Jhvn2GBHxspEdZBRVhDmJKM4XC1";analytics.SNIPPET_VERSION="4.13.2";
       analytics.load("GHWp3Jhvn2GBHxspEdZBRVhDmJKM4XC1");
       analytics.page();
+      analytics.ready(callServer);
+
       }}();
     </script> 
 
@@ -220,19 +253,7 @@
 </div>
 
 <script>
-    let userId = null
-    const createUserId = () => {
-        console.log("USERID",userId)
-        if(!userId){
-            userId = Math.floor((Math.random() * 100000) + 1);
-            console.log("NEW USER - userId :" + userId )
-            return userId
-        }
-        else{
-            console.log("userId exists:" + userId )
-            return userId
-        }
-    }
+    
 
     
     
