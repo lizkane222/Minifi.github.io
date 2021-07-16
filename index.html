@@ -220,43 +220,59 @@
 </div>
 
 <script>
+    let userId = null
+    const createUserId = () => {
+        console.log("USERID",userId)
+        if(!userId){
+            userId = Math.floor((Math.random() * 100000) + 1);
+            console.log("NEW USER - userId :" + userId )
+            return userId
+        }
+        else{
+            console.log("userId exists:" + userId )
+            return userId
+        }
+    }
+
+    
+    
     let createNewAccount = () => {
 
-    let firstName = document.getElementById("firstName-main-index").value || "test firstName";
-    let lastName = document.getElementById("lastName-main-index").value || "test lastName";
-    let organization = document.getElementById("organization-main-index").value || "test organization";
-    let email = document.getElementById("email-main-index").value || "test email";
-    let favSocMedia = document.getElementById("fav-soc-media-main-index").value || "test fav-soc-media";
+        let firstName = document.getElementById("firstName-main-index").value || "test firstName";
+        let lastName = document.getElementById("lastName-main-index").value || "test lastName";
+        let organization = document.getElementById("organization-main-index").value || "test organization";
+        let email = document.getElementById("email-main-index").value || "test email";
+        let favSocMedia = document.getElementById("fav-soc-media-main-index").value || "test fav-soc-media";
         
-    console.log("- firstName : ",firstName,"- lastName : ",lastName,"- organization : ",organization,"- email : ",email,)
+        console.log("- firstName : ",firstName,"- lastName : ",lastName,"- organization : ",organization,"- email : ",email,)
 
-    let traits = {
-        firstName : firstName,
-        lastName : lastName,
-        organization : organization,
-        email : email,
-        userId : userId,
-        anonymousId : anonymousId
-    }
-
-    let properties = {
-        favSocMedia : favSocMedia
-    }
-    
-    analytics.identify({},{traits})
-
-    analytics.track(
-        "New Account Created",
-        {traits},
-        {properties},
-       function() {
-            window.location.href = "";
+        let traits = {
+            firstName : firstName,
+            lastName : lastName,
+            organization : organization,
+            email : email,
+            userId : createUserId(),
+            anonymousId : anonymousId
         }
-   )
 
-    document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
+        let properties = {
+            favSocMedia : favSocMedia
+        }
 
-}
+        analytics.identify((userId || anonymousId),{traits})
+
+        analytics.track(
+            "New Account Created",
+            {traits},
+            {properties},
+           function() {
+                window.location.href = "";
+            }
+       )
+
+        document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
+
+} //createNewAccount function end
 </script>
     
     
