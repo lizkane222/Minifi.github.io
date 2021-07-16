@@ -7,7 +7,7 @@
     <script>
         // global variable anonymousId, assigned on page call, accessible if sent serverside
         let serverAnonymousId
-        let serverUserId
+        let serverUserId = null
         let userId = null
         // function to be ran on load after .page() has completed and anonymousId is not null
         const callServer = () => {
@@ -17,20 +17,20 @@
             console.log('serverAnonymousId ',serverAnonymousId)
 
             const createUserId = () => {
-                console.log("USERID",userId)
-                if(!userId){
-                    userId = Math.floor((Math.random() * 100000) + 1);
-                    console.log("NEW USER - userId :" + userId )
-                    return userId
+                console.log("serverUserId : ",serverUserId)
+                if(!serverUserId){
+                    serverUserId = Math.floor((Math.random() * 100000) + 1);
+                    console.log("NEW USER - serverUserId :" + serverUserId )
+//                     return serverUserId
                 }
                 else{
-                    console.log("userId exists:" + userId )
-                    return userId
+                    console.log("serverUserId exists:" + serverUserId )
+//                     return serverUserId
                 }
             }
             
             // return value to be used on backend
-            return (serverAnonymousId,serverUserId, userId)
+            return (serverAnonymousId,serverUserId)
         }  
       
 
