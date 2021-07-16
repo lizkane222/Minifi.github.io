@@ -278,7 +278,7 @@
             favSocMedia : favSocMedia
         }
 
-        analytics.identify((userId || anonymousId),{traits})
+        analytics.identify((serverUserId || serverAnonymousId),{traits})
 
         analytics.track(
             "New Account Created",
