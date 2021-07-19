@@ -11,6 +11,7 @@
     "email": "mockingJay@example.org",
     "userId": "test-user-35eryu",
     "anonymousId": "test-anonymous-user-35eryu",
+    "leadHasEmail":"Home Questionnaire"
   },
   "userId": "test-user-35eryu",
   "event": "New Account Created"
