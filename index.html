@@ -278,6 +278,7 @@
         }
 
         let properties = {
+            traits,
             favSocMedia : favSocMedia
         }
 
@@ -285,7 +286,7 @@
 
         analytics.track(
             "New Account Created",
-            {properties,traits},
+            properties,
             {},
            function() {
                 window.location.href = "";
