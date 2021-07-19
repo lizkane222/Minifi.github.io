@@ -16,3 +16,24 @@
   "userId": "test-user-35eryu",
   "event": "New Account Created"
 }
+
+
+{
+  "anonymousId":"Ludacris-an35eryu",
+  "messageId": "segment-test-message-7o2rqd",
+  "timestamp": "2021-07-19T19:19:41.531Z",
+  "type": "track",
+  "email": "ludacris@music.org",
+  "projectId": "22gUNriHNxpzsuRBBj6djsk23",
+  "properties": {
+    "firstName": "Luda",
+    "lastName": "Cris",
+    "organization": "Hollywood Music",
+    "email": "ludacris@music.org",
+    "userId": "Ludacris-user35eryu",
+    "anonymousId": "Ludacris-an35eryu",
+    "leadHasEmail":"New Mi Chi"
+  },
+  "userId": "Ludacris-user35eryu",
+  "event": "New Account Created"
+}
