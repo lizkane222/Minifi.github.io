@@ -241,15 +241,42 @@
         serverUserId = 0
     }
     
+    let firstName 
+    const chooseFirstName = (num) =>{
+        let firstNames = ["Liz","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl",]
+        firstName = firstNames[num]
+        return firstName
+    }
+    let lastName
+    const chooseLastName = (num) => {
+        let lastNames = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","","","","","","","",]
+        lastName = lastNames[num]
+        return lastName
+    }
+    let organization = (lastName+" Inc")
+    const chooseEmail = (num) => {
+        
+        let mudra = ["Earth","Wind","Fire","Ether","Water"]
+        
+        return (`${firstName}${lastName}@${mudra[num]}`)
+    }
+    
+    const chooseSocialMedia = (num) => {
+        let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music",]
+    }
     </script>  
 
     
 <div class="main-index-container">
-    <input type="text" name="firstName" id="firstName-main-index" placeholder="First Name"/>
-    <input type="text" name="lastName" id="lastName-main-index" placeholder="Last Name"/>
-    <input type="text" name="organization" id="organization-main-index" placeholder="Organization"/>
-    <input type="email" name="email" id="email-main-index" required="" placeholder="Email"/>
-    <input type="text" name="favoriteSocialMedia" id="fav-soc-media-main-index" required="" placeholder="Favorite Social Media To Use"/>
+    <input type="text" name="firstName" id="firstName-main-index" value=`${firstName}` placeholder="First Name"/>
+        <p><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button></p>
+    <input type="text" name="lastName" id="lastName-main-index" value=`${organization}` placeholder="Last Name"/>
+            <p><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button></p>
+    <input type="text" name="organization" id="organization-main-index" value="" placeholder="Organization"/>
+            <p><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button></p>
+    <input type="email" name="email" id="email-main-index" required="" value="" placeholder="Email"/>
+            <p><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button></p>
+    <input type="text" name="favoriteSocialMedia" id="fav-soc-media-main-index" required="" value="" placeholder="Favorite Social Media To Use"/>
     <button id="submitNewAccountInputs" onclick="createNewAccount()">SAVE</button>
 </div>
 
