@@ -1,0 +1,17 @@
+{
+  "messageId": "segment-test-message-7o2rqd",
+  "timestamp": "2021-07-19T19:19:41.531Z",
+  "type": "track",
+  "email": "test@example.org",
+  "projectId": "7gUNriHNxpzsuRBBj6g4SX",
+  "properties": {
+    "firstName": "Catnis",
+    "lastName": "Everdeen",
+    "organization": "District 12",
+    "email": "mockingJay@example.org",
+    "userId": "test-user-35eryu",
+    "anonymousId": "test-anonymous-user-35eryu",
+  },
+  "userId": "test-user-35eryu",
+  "event": "New Account Created"
+}
