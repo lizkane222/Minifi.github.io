@@ -257,14 +257,14 @@
     }
     let organizationInput
     let chooseOrganizationName = (num) => {
-        organizationInput = (lastName+' '+num+" Inc")
+        organizationInput = (lastNameInput+num+" Inc")
         document.getElementById("organization-main-index").value = organizationInput;
     }
     let emailInput
     const chooseEmail = (num) => {
         let mudra = ["Earth","Wind","Fire","Ether","Water","Mountain","Grass","Star","Planet","Soul","Life","Unity","Serenity","Peace","Harmony","Ocean","Magma",]
         console.log(mudra.length)
-        emailInput = (`${firstName}${lastName}${num}@${mudra[num]}.com`)
+        emailInput = (`${firstNameInput}${lastNameInput}${num}@${mudra[num]}.com`)
         document.getElementById("email-main-index").value = emailInput;
     }
     let favSocMediaInput
