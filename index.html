@@ -244,39 +244,50 @@
     let firstName 
     const chooseFirstName = (num) =>{
         let firstNames = ["Liz","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl",]
+        console.log(firstNames.length)
         firstName = firstNames[num]
-        return firstName
+        document.getElementById("firstName-main-index").value = firstName;
     }
-    let lastName
+    let laEmailme
     const chooseLastName = (num) => {
-        let lastNames = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","","","","","","","",]
+        let lastNames = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","Marketer","Engineer","Analyst","Scientist","Optometrist","Professor","Translator",]
+        console.log(lastNames.length)
         lastName = lastNames[num]
-        return lastName
+        document.getElementById("lastName-main-index").value = lastName;
     }
-    let organization = (lastName+" Inc")
+    let organization
+    let chooseOrganizationName = (num) => {
+        organization = (lastName+' '+num+" Inc")
+        document.getElementById("organization-main-index").value = organization;
+    }
+    let email
     const chooseEmail = (num) => {
-        
-        let mudra = ["Earth","Wind","Fire","Ether","Water"]
-        
-        return (`${firstName}${lastName}@${mudra[num]}`)
+        let mudra = ["Earth","Wind","Fire","Ether","Water","Mountain","Grass","Star","Planet","Soul","Life","Unity","Serenity","Peace","Harmony","Ocean","Magma",]
+        console.log(mudra.length)
+        email = (`${firstName}${lastName}${num}@${mudra[num]}.com`)
+        document.getElementById("email-main-index").value = email;
     }
-    
+    let favSocMedia
     const chooseSocialMedia = (num) => {
-        let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music",]
+        let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube",]
+        console.log(allSoc.length)
+        favSocMedia = allSoc[num]
+        document.getElementById("fav-soc-media-main-index").value = favSocMedia;
     }
     </script>  
 
     
 <div class="main-index-container">
-    <input type="text" name="firstName" id="firstName-main-index" value=`${firstName}` placeholder="First Name"/>
-        <p><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button></p>
-    <input type="text" name="lastName" id="lastName-main-index" value=`${organization}` placeholder="Last Name"/>
-            <p><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button></p>
-    <input type="text" name="organization" id="organization-main-index" value="" placeholder="Organization"/>
-            <p><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button></p>
-    <input type="email" name="email" id="email-main-index" required="" value="" placeholder="Email"/>
-            <p><button>1</button><button>2</button><button>3</button><button>4</button><button>5</button><button>6</button><button>7</button><button>8</button><button>9</button><button>10</button><button>11</button><button>12</button><button>13</button><button>14</button><button>15</button><button>16</button></p>
-    <input type="text" name="favoriteSocialMedia" id="fav-soc-media-main-index" required="" value="" placeholder="Favorite Social Media To Use"/>
+    <input type="text" name="firstName" id="firstName-main-index" placeholder="First Name"/>
+        <p><button onclick=chooseFirstName(1) class="auto-btn btn-small">1</button><button onclick=chooseFirstName(2) class="auto-btn btn-small">2</button><button onclick=chooseFirstName(3) class="auto-btn btn-small">3</button><button onclick=chooseFirstName(4) class="auto-btn btn-small">4</button><button onclick=chooseFirstName(5) class="auto-btn btn-small">5</button><button onclick=chooseFirstName(6) class="auto-btn btn-small">6</button><button onclick=chooseFirstName(7) class="auto-btn btn-small">7</button><button onclick=chooseFirstName(8) class="auto-btn btn-small">8</button><button onclick=chooseFirstName(9) class="auto-btn btn-small">9</button><button onclick=chooseFirstName(10) class="auto-btn btn-small">10</button><button onclick=chooseFirstName(11) class="auto-btn btn-small">11</button><button onclick=chooseFirstName(12) class="auto-btn btn-small">12</button><button onclick=chooseFirstName(1`13`) class="auto-btn btn-small">13</button><button onclick=chooseFirstName(14) class="auto-btn btn-small">14</button><button onclick=chooseFirstName(15) class="auto-btn btn-small">15</button><button onclick=chooseFirstName(16) class="auto-btn btn-small">16</button></p>
+    <input type="text" name="lastName" id="lastName-main-index" placeholder="Last Name"/>
+            <p><button onclick=chooseLastName(1) class="auto-btn btn-small">1</button><button onclick=chooseLastName(2) class="auto-btn btn-small">2</button><button onclick=chooseLastName(3) class="auto-btn btn-small">3</button><button onclick=chooseLastName(4) class="auto-btn btn-small">4</button><button onclick=chooseLastName(5) class="auto-btn btn-small">5</button><button onclick=chooseLastName(6) class="auto-btn btn-small">6</button><button onclick=chooseLastName(7) class="auto-btn btn-small">7</button><button onclick=chooseLastName(8) class="auto-btn btn-small">8</button><button onclick=chooseLastName(9) class="auto-btn btn-small">9</button><button onclick=chooseLastName(10) class="auto-btn btn-small">10</button><button onclick=chooseLastName(11) class="auto-btn btn-small">11</button><button onclick=chooseLastName(12) class="auto-btn btn-small">12</button><button onclick=chooseLastName(13) class="auto-btn btn-small">13</button><button onclick=chooseLastName(14) class="auto-btn btn-small">14</button><button onclick=chooseLastName(15) class="auto-btn btn-small">15</button><button onclick=chooseLastName(16) class="auto-btn btn-small">16</button></p>
+    <input type="text" name="organization" id="organization-main-index" placeholder="Organization"/>
+            <p><button onclick=chooseOrganizationName(1) class="auto-btn btn-small">1</button><button onclick=chooseOrganizationName(2) class="auto-btn btn-small">2</button><button onclick=chooseOrganizationName(3) class="auto-btn btn-small">3</button><button onclick=chooseOrganizationName(4) class="auto-btn btn-small">4</button><button onclick=chooseOrganizationName(5) class="auto-btn btn-small">5</button><button onclick=chooseOrganizationName(6) class="auto-btn btn-small">6</button><button onclick=chooseOrganizationName(7) class="auto-btn btn-small">7</button><button onclick=chooseOrganizationName(8) class="auto-btn btn-small">8</button><button onclick=chooseOrganizationName(9) class="auto-btn btn-small">9</button><button onclick=chooseOrganizationName(10) class="auto-btn btn-small">10</button><button onclick=chooseOrganizationName(11) class="auto-btn btn-small">11</button><button onclick=chooseOrganizationName(12) class="auto-btn btn-small">12</button><button onclick=chooseOrganizationName(13) class="auto-btn btn-small">13</button><button onclick=chooseOrganizationName(14) class="auto-btn btn-small">14</button><button onclick=chooseOrganizationName(15) class="auto-btn btn-small">15</button><button onclick=chooseOrganizationName(16) class="auto-btn btn-small">16</button></p>
+    <input type="email" name="email" id="email-main-index" required="" placeholder="Email"/>
+            <p><button onclick=chooseEmail(1) class="auto-btn btn-small">1</button><button onclick=chooseEmail(2) class="auto-btn btn-small">2</button><button onclick=chooseEmail(3) class="auto-btn btn-small">3</button><button onclick=chooseEmail(4) class="auto-btn btn-small">4</button><button onclick=chooseEmail(5) class="auto-btn btn-small">5</button><button onclick=chooseEmail(6) class="auto-btn btn-small">6</button><button onclick=chooseEmail(7) class="auto-btn btn-small">7</button><button onclick=chooseEmail(8) class="auto-btn btn-small">8</button><button onclick=chooseEmail(9) class="auto-btn btn-small">9</button><button onclick=chooseEmail(10) class="auto-btn btn-small">10</button><button onclick=chooseEmail(11) class="auto-btn btn-small">11</button><button onclick=chooseEmail(12) class="auto-btn btn-small">12</button><button onclick=chooseEmail(13) class="auto-btn btn-small">13</button><button onclick=chooseEmail(14) class="auto-btn btn-small">14</button><button onclick=chooseEmail(15) class="auto-btn btn-small">15</button><button onclick=chooseEmail(16) class="auto-btn btn-small">16</button></p>
+            <input type="text" name="favoriteSocialMedia" id="fav-soc-media-main-index" required="" placeholder="Favorite Social Media To Use"/>
+            <p><button onclick=chooseSocialMedia(1) class="auto-btn btn-small">1</button><button onclick=chooseSocialMedia(2) class="auto-btn btn-small">2</button><button onclick=chooseSocialMedia(3) class="auto-btn btn-small">3</button><button onclick=chooseSocialMedia(4) class="auto-btn btn-small">4</button><button onclick=chooseSocialMedia(5) class="auto-btn btn-small">5</button><button onclick=chooseSocialMedia(6) class="auto-btn btn-small">6</button><button onclick=chooseSocialMedia(7) class="auto-btn btn-small">7</button><button onclick=chooseSocialMedia(8) class="auto-btn btn-small">8</button><button onclick=chooseSocialMedia(9) class="auto-btn btn-small">9</button><button onclick=chooseSocialMedia(10) class="auto-btn btn-small">10</button><button onclick=chooseSocialMedia(11) class="auto-btn btn-small">11</button><button onclick=chooseSocialMedia(12) class="auto-btn btn-small">12</button><button onclick=chooseSocialMedia(13) class="auto-btn btn-small">13</button><button onclick=chooseSocialMedia(14) class="auto-btn btn-small">14</button><button onclick=chooseSocialMedia(15) class="auto-btn btn-small">15</button><button onclick=chooseSocialMedia(16) class="auto-btn btn-small">16</button></p>
     <button id="submitNewAccountInputs" onclick="createNewAccount()">SAVE</button>
 </div>
 
