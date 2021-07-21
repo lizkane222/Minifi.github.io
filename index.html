@@ -241,38 +241,38 @@
         serverUserId = 0
     }
     
-    let firstName 
+    let firstNameInput 
     const chooseFirstName = (num) =>{
         let firstNames = ["Liz","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl",]
         console.log(firstNames.length)
-        firstName = firstNames[num]
-        document.getElementById("firstName-main-index").value = firstName;
+        firstNameInput = firstNames[num]
+        document.getElementById("firstName-main-index").value = firstNameInput;
     }
-    let laEmailme
+    let lastNameInput
     const chooseLastName = (num) => {
         let lastNames = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","Marketer","Engineer","Analyst","Scientist","Optometrist","Professor","Translator",]
         console.log(lastNames.length)
-        lastName = lastNames[num]
-        document.getElementById("lastName-main-index").value = lastName;
+        lastNameInput = lastNames[num]
+        document.getElementById("lastName-main-index").value = lastNameInput;
     }
-    let organization
+    let organizationInput
     let chooseOrganizationName = (num) => {
-        organization = (lastName+' '+num+" Inc")
-        document.getElementById("organization-main-index").value = organization;
+        organizationInput = (lastName+' '+num+" Inc")
+        document.getElementById("organization-main-index").value = organizationInput;
     }
-    let email
+    let emailInput
     const chooseEmail = (num) => {
         let mudra = ["Earth","Wind","Fire","Ether","Water","Mountain","Grass","Star","Planet","Soul","Life","Unity","Serenity","Peace","Harmony","Ocean","Magma",]
         console.log(mudra.length)
-        email = (`${firstName}${lastName}${num}@${mudra[num]}.com`)
-        document.getElementById("email-main-index").value = email;
+        emailInput = (`${firstName}${lastName}${num}@${mudra[num]}.com`)
+        document.getElementById("email-main-index").value = emailInput;
     }
-    let favSocMedia
+    let favSocMediaInput
     const chooseSocialMedia = (num) => {
         let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube",]
         console.log(allSoc.length)
-        favSocMedia = allSoc[num]
-        document.getElementById("fav-soc-media-main-index").value = favSocMedia;
+        favSocMediaInput = allSoc[num]
+        document.getElementById("fav-soc-media-main-index").value = favSocMediaInput;
     }
     </script>  
 
