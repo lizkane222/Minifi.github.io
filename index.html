@@ -57,7 +57,7 @@
     </script> -->
 
 </head> 
-    <style>
+<style>
     body{
         /* padding-top: 50px; */
         font-family: 'Poiret One', cursive;
@@ -134,121 +134,27 @@
         </ul>
     </nav>
     <input type="button" onclick=runResetUser() class="resetUser" value="RESET USER"/>
-
-</div>
+</header>    
     
-    
-<h1>What is your favorite place to travel?</h1> 
-<p>I am building a directory of the sweetest travel destinations.</p>  
-<form name="travel" onsubmit="identify(event)">
-     What is your favorite travel destination?
-    <input name="destination"  size="81" type="text"/> 
-    <br><br><br> 
-    Any recommendations (cool things to do, places to visit or restaurants to eat)? 
-    <br><br> 
-    <textarea cols="81" name="details"  rows="10">
-    </textarea> 
-    <br><br> 
-    Name: <input name="fullname"  size="75" type="text"/> 
-    <br><br> 
-    Email: <input name="email" required="" size="75" type="email"/> 
-    <br><br>
-    <input name="submit" type="submit" value="submit"/>
-</form> 
-
-    <!--Segment identify and track script -->
-    <script type="text/javascript">
-//         let userId 
-//         const createUserId = () => {
-//             return userId = Math.floor((Math.random() * 100000) + 1);
-//         }
-
-// USER ID DOES NOT NEED TO BE PASSED
-//         const createUserId = () => {
-//             if(!userId){
-//                 return userId = Math.floor((Math.random() * 100000) + 1);
-//             }
-//             else{
-//                 console.log("userId exists:" + userId )
-//                 return userId
-//             }
-//         }
-        
-        console.log(`Date.now() = `+ Date.now());
-        let currentSessionId
-        console.log(`currentSessionId should be blank : `+currentSessionId)
-        
-        let newSession = true
-        const uTC = () => {
-            if (!newSession){
-                return currentSessionId
-                console.log(`currentSessionId should be same : `+currentSessionId)
-            }
-            else {
-                return currentSessionId = Date.now()    
-                console.log(`currentSessionId should change : `+currentSessionId)
-                newSession = false
-            }
-        }
-        
-      function identify(e){
-        e.preventDefault();
-        var form = e.target;
-        var email = form["email"].value;
-        var fullname = form["fullname"].value;
-        var destination = form["destination"].value;
-        var details = form["details"].value;
-//         let session_id = Date.now()
-        let session_id = uTC()
-        var properties = {
-            email: email, 
-            name: fullname, 
-            destination: destination, 
-            details: details,
-        };
-        console.log(properties);
-        analytics.identify({
-          email: email, 
-          name: fullname
-        });
-//         analytics.track('destination submitted',{},{integrations: {
-
-        analytics.track('destination submitted',properties,{integrations: {
-            "All": true,
-            "Amplitude": {
-                session_id: currentSessionId
-            }
-        }}, function() {
-            window.location.href = "";
-        });
-      }
-        
-      const trackNavRoute = (navLinkName, currentPage) => {
-            let properties = {
-                navLinkName : navLinkName,
-                currentPage : currentPage
-            }
-
-             analytics.track('navlink clicked',properties,{integrations: {
-                "All": true,
-                "Amplitude": {
-                    session_id: currentSessionId
-                }
-            }}, function() {
-                window.location.href = "";
-            });
-       }
-        
-        
-    const runResetUser = () => {
-        analytics.reset()
-        console.log("reset has occured");
-        console.log(Headers)
-        serverAnonymousId = 0
-        serverUserId = 0
-    }
-    
-    </script>  
+<main>
+    <h1>What is your favorite place to travel?</h1> 
+    <p>I am building a directory of the sweetest travel destinations.</p>  
+    <form name="travel" onsubmit="identify(event)">
+         What is your favorite travel destination?
+        <input name="destination"  size="81" type="text"/> 
+        <br><br><br> 
+        Any recommendations (cool things to do, places to visit or restaurants to eat)? 
+        <br><br> 
+        <textarea cols="81" name="details"  rows="10">
+        </textarea> 
+        <br><br> 
+        Name: <input name="fullname"  size="75" type="text"/> 
+        <br><br> 
+        Email: <input name="email" required="" size="75" type="email"/> 
+        <br><br>
+        <input name="submit" type="submit" value="submit"/>
+    </form> 
+</main>
 
     
 <div class="foot-index-container">
@@ -267,84 +173,154 @@
 <footer class="text-center text-muted footer">
     <p>&#169 minifi </p>
 </footer>
+<!--Segment identify and track script -->
+<script type="text/javascript">
 
+    console.log(`Date.now() = `+ Date.now());
+    let currentSessionId
+    console.log(`currentSessionId should be blank : `+currentSessionId)
 
-<script>
-    let firstNameInput 
-    const chooseFirstName = (num) =>{
-        let firstNames = ["Liz","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl",]
-        console.log(firstNames.length)
-        firstNameInput = firstNames[num]
-        document.getElementById("firstName-main-index").value = firstNameInput;
-    }
-    let lastNameInput
-    const chooseLastName = (num) => {
-        let lastNames = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","Marketer","Engineer","Analyst","Scientist","Optometrist","Professor","Translator",]
-        console.log(lastNames.length)
-        lastNameInput = lastNames[num]
-        document.getElementById("lastName-main-index").value = lastNameInput;
-    }
-    let organizationInput
-    let chooseOrganizationName = (num) => {
-        organizationInput = (lastNameInput+num+" Inc")
-        document.getElementById("organization-main-index").value = organizationInput;
-    }
-    let emailInput
-    const chooseEmail = (num) => {
-        let mudra = ["Earth","Wind","Fire","Ether","Water","Mountain","Grass","Star","Planet","Soul","Life","Unity","Serenity","Peace","Harmony","Ocean","Magma",]
-        console.log(mudra.length)
-        emailInput = (`${firstNameInput}${lastNameInput}${num}@${mudra[num]}.com`)
-        document.getElementById("email-main-index").value = emailInput;
-    }
-    let favSocMediaInput
-    const chooseSocialMedia = (num) => {
-        let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube",]
-        console.log(allSoc.length)
-        favSocMediaInput = allSoc[num]
-        document.getElementById("fav-soc-media-main-index").value = favSocMediaInput;
-    }
-    
-
-    const createNewAccount = () => {
-
-        let firstName = document.getElementById("firstName-main-index").value || "test firstName";
-        let lastName = document.getElementById("lastName-main-index").value || "test lastName";
-        let organization = document.getElementById("organization-main-index").value || "test organization";
-        let email = document.getElementById("email-main-index").value || "test email";
-        let favSocMedia = document.getElementById("fav-soc-media-main-index").value || "test fav-soc-media";
-
-        console.log(" || firstName : ",firstName," || lastName : ",lastName," || organization : ",organization," || email : ",email,)
-
-        let traits = {
-            firstName : firstName,
-            lastName : lastName,
-            organization : organization,
-            email : email,
-            userId : serverUserId,
-            anonymousId : serverAnonymousId
+    let newSession = true
+    const uTC = () => {
+        if (!newSession){
+            return currentSessionId
+            console.log(`currentSessionId should be same : `+currentSessionId)
         }
+        else {
+            return currentSessionId = Date.now()    
+            console.log(`currentSessionId should change : `+currentSessionId)
+            newSession = false
+        }
+    }
 
+  function identify(e){
+    e.preventDefault();
+    var form = e.target;
+    var email = form["email"].value;
+    var fullname = form["fullname"].value;
+    var destination = form["destination"].value;
+    var details = form["details"].value;
+//         let session_id = Date.now()
+    let session_id = uTC()
+    var properties = {
+        email: email, 
+        name: fullname, 
+        destination: destination, 
+        details: details,
+    };
+    console.log(properties);
+    analytics.identify({
+      email: email, 
+      name: fullname
+    });
+//         analytics.track('destination submitted',{},{integrations: {
+
+    analytics.track('destination submitted',properties,{integrations: {
+        "All": true,
+        "Amplitude": {
+            session_id: currentSessionId
+        }
+    }}, function() {
+        window.location.href = "";
+    });
+  }
+
+  const trackNavRoute = (navLinkName, currentPage) => {
         let properties = {
-            traits,
-            favSocMedia : favSocMedia
+            navLinkName : navLinkName,
+            currentPage : currentPage
         }
-        //serverUserId ? serverUserId : serverAnonymousId
-        analytics.identify((serverUserId ? serverUserId : serverAnonymousId),traits)
-        //analytics.identify({},traits);
 
-        // analytics.track(event, [properties], [options], [callback]);
-        analytics.track("New Account Created",properties,
-            function() {window.location.href = "";})
-        
-        document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
+         analytics.track('navlink clicked',properties,{integrations: {
+            "All": true,
+            "Amplitude": {
+                session_id: currentSessionId
+            }
+        }}, function() {
+            window.location.href = "";
+        });
+   }
 
-    } 
-    //createNewAccount function end
+
+const runResetUser = () => {
+    analytics.reset()
+    console.log("reset has occured");
+    console.log(Headers)
+    serverAnonymousId = 0
+    serverUserId = 0
+}
+
+let firstNameInput 
+const chooseFirstName = (num) =>{
+    let firstNames = ["Liz","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl",]
+    console.log(firstNames.length)
+    firstNameInput = firstNames[num]
+    document.getElementById("firstName-main-index").value = firstNameInput;
+}
+let lastNameInput
+const chooseLastName = (num) => {
+    let lastNames = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","Marketer","Engineer","Analyst","Scientist","Optometrist","Professor","Translator",]
+    console.log(lastNames.length)
+    lastNameInput = lastNames[num]
+    document.getElementById("lastName-main-index").value = lastNameInput;
+}
+let organizationInput
+let chooseOrganizationName = (num) => {
+    organizationInput = (lastNameInput+num+" Inc")
+    document.getElementById("organization-main-index").value = organizationInput;
+}
+let emailInput
+const chooseEmail = (num) => {
+    let mudra = ["Earth","Wind","Fire","Ether","Water","Mountain","Grass","Star","Planet","Soul","Life","Unity","Serenity","Peace","Harmony","Ocean","Magma",]
+    console.log(mudra.length)
+    emailInput = (`${firstNameInput}${lastNameInput}${num}@${mudra[num]}.com`)
+    document.getElementById("email-main-index").value = emailInput;
+}
+let favSocMediaInput
+const chooseSocialMedia = (num) => {
+    let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube",]
+    console.log(allSoc.length)
+    favSocMediaInput = allSoc[num]
+    document.getElementById("fav-soc-media-main-index").value = favSocMediaInput;
+}
+
+
+const createNewAccount = () => {
+
+    let firstName = document.getElementById("firstName-main-index").value || "test firstName";
+    let lastName = document.getElementById("lastName-main-index").value || "test lastName";
+    let organization = document.getElementById("organization-main-index").value || "test organization";
+    let email = document.getElementById("email-main-index").value || "test email";
+    let favSocMedia = document.getElementById("fav-soc-media-main-index").value || "test fav-soc-media";
+
+    console.log(" || firstName : ",firstName," || lastName : ",lastName," || organization : ",organization," || email : ",email,)
+
+    let traits = {
+        firstName : firstName,
+        lastName : lastName,
+        organization : organization,
+        email : email,
+        userId : serverUserId,
+        anonymousId : serverAnonymousId
+    }
+
+    let properties = {
+        traits,
+        favSocMedia : favSocMedia
+    }
+    //serverUserId ? serverUserId : serverAnonymousId
+    analytics.identify((serverUserId ? serverUserId : serverAnonymousId),traits)
+    //analytics.identify({},traits);
+
+    // analytics.track(event, [properties], [options], [callback]);
+    analytics.track("New Account Created",properties,
+        function() {window.location.href = "";})
+
+    document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
+
+} 
 
 </script>
-    
 </body> 
-
-
 </html>
 
