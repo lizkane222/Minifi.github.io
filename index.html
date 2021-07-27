@@ -95,7 +95,14 @@
         border: none;
         outline: none;
     }
-
+    .foot-index-container{
+        margin: 15vh 15vw;
+        padding: 2vh;
+        background-color: rgba(70,70,70,.5);
+        color: aqua;
+        text-align: center;
+    }
+   
 </style>
 
 <body> 
@@ -241,39 +248,6 @@
         serverUserId = 0
     }
     
-    let firstNameInput 
-    const chooseFirstName = (num) =>{
-        let firstNames = ["Liz","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl",]
-        console.log(firstNames.length)
-        firstNameInput = firstNames[num]
-        document.getElementById("firstName-main-index").value = firstNameInput;
-    }
-    let lastNameInput
-    const chooseLastName = (num) => {
-        let lastNames = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","Marketer","Engineer","Analyst","Scientist","Optometrist","Professor","Translator",]
-        console.log(lastNames.length)
-        lastNameInput = lastNames[num]
-        document.getElementById("lastName-main-index").value = lastNameInput;
-    }
-    let organizationInput
-    let chooseOrganizationName = (num) => {
-        organizationInput = (lastNameInput+num+" Inc")
-        document.getElementById("organization-main-index").value = organizationInput;
-    }
-    let emailInput
-    const chooseEmail = (num) => {
-        let mudra = ["Earth","Wind","Fire","Ether","Water","Mountain","Grass","Star","Planet","Soul","Life","Unity","Serenity","Peace","Harmony","Ocean","Magma",]
-        console.log(mudra.length)
-        emailInput = (`${firstNameInput}${lastNameInput}${num}@${mudra[num]}.com`)
-        document.getElementById("email-main-index").value = emailInput;
-    }
-    let favSocMediaInput
-    const chooseSocialMedia = (num) => {
-        let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube",]
-        console.log(allSoc.length)
-        favSocMediaInput = allSoc[num]
-        document.getElementById("fav-soc-media-main-index").value = favSocMediaInput;
-    }
     </script>  
 
     
