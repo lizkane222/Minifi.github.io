@@ -311,7 +311,7 @@
             lastName : lastName,
             organization : organization,
             email : email,
-            userId : serverUserId,
+            userId : ${`"`,serverUserId,`"`},
             anonymousId : serverAnonymousId
         }
 
