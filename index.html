@@ -6,7 +6,8 @@
     <!--Segment Snippet --> 
     <script>
         // global variable anonymousId, assigned on page call, accessible if sent serverside
-        let gaPageTitle = window.location.title
+        let gaPageTitle
+        analytics.ready(gaPageTitle = window.location.title)
         console.log(`gaPageTitle : `,gaPageTitle);
         let serverAnonymousId
         let serverUserId = 0
