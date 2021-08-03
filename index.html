@@ -374,14 +374,22 @@ const createNewAccount = () => {
 //     analytics.track("New Account Created",properties,
 //         function() {window.location.href = "";})
     // BELOW TRACK CALL WORKED
-     analytics.track("New Account Created",
+//      analytics.track("New Account Created",
+//             properties,
+//             {userId:userId,
+//                 integrations:{"All":false,"Marketo V2":true}},
+//            function() {
+//                 window.location.href = "";
+//             }
+//        )
+    analytics.track("New Subscription Created",
             properties,
-            {userId:userId,
+            {userId:properties.userId,
                 integrations:{"All":false,"Marketo V2":true}},
            function() {
                 window.location.href = "";
             }
-       )
+    )
    
 } 
 document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
