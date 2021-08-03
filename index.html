@@ -368,7 +368,7 @@ const createNewAccount = () => {
     //serverUserId ? serverUserId : serverAnonymousId
     // BELOW IDENTIFY CALL WORKED
     //     analytics.identify((serverUserId ? serverUserId : serverAnonymousId),traits)
-    analytics.identify(traits.userId,traits,{integrations:{"All":false,"Marketo V2":true}})
+    // analytics.identify(traits.userId,traits,{integrations:{"All":false,"Marketo V2":true}})
 
     //analytics.identify({},traits);
 
@@ -384,14 +384,16 @@ const createNewAccount = () => {
 //                 window.location.href = "";
 //             }
 //        )
-    analytics.track("New Subscription Created",
+        analytics.identify(traits.userId,traits,{integrations:{"All":false,"Marketo V2":true}},
+        analytics.track("New Subscription Created",
             properties,
-            {userId:properties.userId,
+            {userId:userId,
                 integrations:{"All":false,"Marketo V2":true}},
            function() {
                 window.location.href = "";
             }
-    )
+        )
+        )
    
 } 
 document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
