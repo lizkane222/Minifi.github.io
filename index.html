@@ -244,7 +244,7 @@
         "All": true,
         "Amplitude": {
             session_id: currentSessionId
-        }
+        },"Klaviyo":false
     }}, function() {
         window.location.href = "";
     });
@@ -260,7 +260,7 @@
             "All": true,
             "Amplitude": {
                 session_id: currentSessionId
-            }
+            },"Klaviyo":false
         }}, function() {
             window.location.href = "";
         });
@@ -371,30 +371,29 @@ const createNewAccount = () => {
     //serverUserId ? serverUserId : serverAnonymousId
     // BELOW IDENTIFY CALL WORKED
     //     analytics.identify((serverUserId ? serverUserId : serverAnonymousId),traits)
-    // analytics.identify(traits.userId,traits,{integrations:{"All":false,"Marketo V2":true}})
+    // analytics.identify(traits.userId,traits,{integrations:{"All":false,"Marketo V2":true,"Klaviyo":true}})
 
     //analytics.identify({},traits);
 
     // analytics.track(event, [properties], [options], [callback]);
-//     analytics.track("New Account Created",properties,
+//     analytics.track("New Account Created",properties,{integrations:{"Klaviyo":false}},
 //         function() {window.location.href = "";})
     // BELOW TRACK CALL WORKED
 //      analytics.track("New Account Created",
 //             properties,
 //             {userId:userId,
-//                 integrations:{"All":false,"Marketo V2":true}},
+//                 integrations:{"All":false,"Marketo V2":true,"Klaviyo":false}},
 //            function() {
 //                 window.location.href = "";
 //             }
 //        )
-        analytics.identify(traits.userId,traits,{integrations:{"All":false,"Marketo V2":true}},
-            analytics.track("New Subscription Created",
-                properties,
-                {integrations:{"All":false,"Marketo V2":true}},
-               function() {
-                    window.location.href = "";
-                }
-            )
+        analytics.identify(traits.userId,traits,{integrations:{"All":false,"Marketo V2":true,"Klaviyo":true}})
+        analytics.track("New Subscription Created",
+            properties,
+            {integrations:{"All":false,"Marketo V2":true,"Klaviyo":false}},
+           function() {
+                window.location.href = "";
+            }
         )
    
 } 
