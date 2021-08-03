@@ -4,17 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-
-
-
+<script src="../../server.js"></script>
+<title><%=page_title%></title>
 
 
 <style>
-    
+    /* <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/apple-touch-icon.png"> */
+    /* <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:4000/favicon-32x32.png"> */
+    /* <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:4000/favicon-16x16.png"> */
+    /* <link rel="manifest" href="http://localhost:4000/site.webmanifest"> */
+
     * {
         display: border-box;
-        margin: 0 auto;
         padding: 0 0;
     }
     
@@ -23,7 +24,9 @@
         font-family: 'Poiret One', cursive;
         background-color: rgba(40,40,40,1);
         color: rgba(220,220,220,8);
-        margin: 0 15px 15px 15px;
+        min-height: 100vh;
+        overflow: scroll;
+        /* margin: 0 15px 15px 15px;*/
         /* flex-flow:column wrap; */
         /* display: inline; */
     }
@@ -34,242 +37,296 @@
         margin: 0 auto;
         text-align: center;
     }
+    
+    main {
+        margin: 5vw,auto;
+    }
+    main {
+        margin: 5vw,auto;
+    }
+    .main-index-container {
+        margin: 5vw,auto;
+    }
+    .quick-links {
+        text-decoration: none;
+        color: pink;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgba(100,110,110,.5);
+        color: aqua;
+        text-align: center;
+        max-height: 15vh;
+    }
+    .foot-index-container{
+        margin: 15vh 15vw;
+        padding: 2vh;
+        background-color: rgba(70,70,70,.5);
+        text-align: center;
+    }
+    .foot-index-container>input{
+        color: rgba(50,50,50,1);
+        padding: .5em;
+        text-align: center;
+        width: 15vw;
+        font-size: 1em;
+    }
+    .auto-btn {
+        background-color: rgba(0,0,0,0);
+        color: aqua;
+        font-size: 1.5em;
+        /*box-shadow: 2px 2px 2px rgba(40,40,40,.8);*/
+        text-shadow: 2px 2px 2px rgba(0,0,0,1);
+
+    }
+    .auto-btn:hover {
+        transform: scale(1.3);
+        transition: 250ms ease-in-out;
+    }
+    .btn-small {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: .05vw;
+        padding: .5em;
+        radius: 10px;
+        border: none;;
+    }
+    .btn-small:focus {
+        outline: none;
+    }
+    #docIframes{
+        min-width: 95vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .product-img{
+
+    }
+    .mycomment {
+        font-style: italic;
+    }
 
 </style>
 
 <script>
-    // global variable anonymousId, assigned on page call, accessible if sent serverside
+    // let options = {
+        // context:{
+        //     active: window.clientInformation.userActivation,
+        //     app:{
+        //         name: window.document.appName,
+        //         version: window.document.appVersion,
+        //     },
+        //     page:{
+        //         path: window.location.path,
+        //         referrer: window.document.referrer,
+        //         search: window.location.search,
+        //         title: window.location.title,
+        //         url: window.location.url,
+        //     },
+        //     library:{   
+        //         name: window.document.library,
+        //         version: window.clientInformation.library,
+        //     },
+        //     locale: window.document.referrer,
+        //     userAgent: window.clientInformation.userAgent
+        // },
+    // }
+// A Function to Get a Cookie
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+    // COOKIE ANOYMOUS
+        // global variable anonymousId, assigned on page call, accessible if sent serverside
+    // let serverAnonymousId = getCookie("ajs_anonymous_id")
+    // // analytics.setAnonymousId('ABC-123-XYZ')
+    // // analytics.setAnonymousId('')
+    // let serverUserId = getCookie("ajs_user_id")
+    // let serverGroupProperties = getCookie("ajs_group_properties")
+    // let serverGroupId = getCookie("ajs_group_id")
+    // let serverUserTraits = getCookie("ajs_user_traits")
+    
     let serverAnonymousId
+    // analytics.setAnonymousId('ABC-123-XYZ')
+    // analytics.setAnonymousId('')
+    let serverUserId = getCookie("ajs_user_id")
+    let serverGroupProperties = getCookie("ajs_group_properties")
+    let serverGroupId = getCookie("ajs_group_id")
+    let serverUserTraits = getCookie("ajs_user_traits")
+    
+    let userId
     // function to be ran on load after .page() has completed and anonymousId is not null
-    const callServer = () => {
+    const callServerAnon = () => {
         // assign variable value
-        serverAnonymousId = analytics.user().anonymousId();
-        // view variable value in console
-        console.log('serverAnonymousId ',serverAnonymousId)
-        // return value to be used on backend
-        return serverAnonymousId
-  }
+        // analytics.ready(!analytics.user().anonymousId())
+        // if(analytics.ready()){
+            // serverAnonymousId = analytics.user().anonymousId();
+                // serverAnonymousId = analytics.user().anonymousId()
 
-    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.13.2";
-    analytics.load("XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh");
+            // return analytics.setAnonymousId('ABC-123-XYZ')
 
-    // ***************************************************
-    // EXTENSIVE EXPLANATION OF ALL CONTEXT FIELDS ↓
-    // ***************************************************
-    // let context = {
-    //     // active: window.document.userActivation,
-    //     app:{
-    //         // auto by: a-ios & a-droid
-    //         // => "name": "InitechGlobal",
-    //         name: window.document.appName,
+            // try{
+            //     serverAnonymousId = !analytics.user.anonymousId
+            // }
+            // catch{
+            //     serverAnonymousId = !analytics.user().anonymousId()
+            // }
+            // finally{
+            //     serverAnonymousId = !analytics.user().anonymousId()
+            // }
+            //  // view variable value in console
+            // console.log('serverAnonymousId ',serverAnonymousId)
+            // // return value to be used on backend
+            // return serverAnonymousId
+            // return analytics.user().anonymousId()
+        // }
+    }  
+    // function to be ran on load after .page() has completed and anonymousId is not null
+    const callServerUser = () => {
+        // assign variable value
+        if(analytics.ready){
+            // view variable value in console
+            console.log("serverUserId : ",serverUserId)
 
-    //         // auto by: a-ios & a-droid
-    //         // => "545",
-    //         version: window.clientInformation.appVersion,
-    //     },
-    //     page:{
-    //         // auto by: a.js
-    //         // => "path": "/academy/",
-    //         // window.location.path	
-    //         path: window.location.path,
-
-    //         // [ DATATYPE = OBJECT/DICTIONARY aka {} ] =>
-    //         // auto by: a.js
-    //         // => "referrer": ""google.com, 
-    //         // window.document.referrer	
-    //         referrer: window.document.referrer,
-
-    //         // auto by: a.js
-    //         // => "search": "",
-    //         // window.location.search	
-    //         search: window.location.search,
-
-    //         // auto by: a.js
-    //         // => "title": "Analytics Academy",
-    //         // window.location.title	
-    //         title: window.location.title,
-
-    //         // auto by: a.js
-    //         // => "url": "https://segment.com/academy/"
-    //         // window.location.url	
-    //         url: window.location.url,
-
-    //     },
-    //     library:{   
-    //         // auto by: a.js & a-ios & a-droid
-    //         // => "name": "analytics.js",
-    //         name: window.clientInformation.library || "TESTING-name",
-    //         // auto by: a.js & a-ios & a-droid
-    //         // => "version": "2.11.1"
-    //         version: window.clientInformation.library || "TESTING-version",
-    //     },
-    //     locale: window.document.referrer,
-    //     // [ DATATYPE = alphanumeric STRING aka "abc123" ] =>
-    //     // auto by: a.js & a-droid
-    //     // => "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1"
-    //     userAgent: window.clientInformation.userAgent
-    // }
+            if(!serverUserId){
+                console.log("NEW USER - serverUserId 'falsey':" + serverUserId )
+                serverUserId = Math.floor((Math.random() * 100000) + 1);
+                console.log("NEW USER - serverUserId 'truthy':" + serverUserId )
+            }
+            else{
+                console.log("serverUserId exists 'truthy': " + serverUserId )
+            }
+            
+            console.log('serverUserId ',serverUserId)
+            
+            // return value to be used on backend
+            return serverUserId
+        }
+    }  
     
-    // analytics.page(context)
-    // analytics.page({},context={
-        // userAgent: context.userAgent,
-        // locale: context.locale,
-        // app: context.app,
-    // })
-    
-    
-    let context = {context:{
-        active: window.clientInformation.userActivation,
-        app:{
-            name: window.document.appName,
-            version: window.document.appVersion,
-        },
-        page:{
-            path: window.location.path,
-            referrer: window.document.referrer,
-            search: window.location.search,
-            title: window.location.title,
-            url: window.location.url,
-        },
-        library:{   
-            name: window.document.library,
-            version: window.clientInformation.library,
-        },
-        locale: window.document.referrer,
-        userAgent: window.clientInformation.userAgent
-    }}
-    analytics.page([],[],[],context)
+    // -----TIMEOUT FUNCTION----
+    // function loadFrame() {
+    //     var iframe = document.getElementById("defframe");
+    //     iframe.src = "/frame.php"
+    // };
+    // window.onload = setTimeout(loadFrame, 10000);
+    // analytics.timeout(500); 
 
-    // HARD CODED DATA BELOW
-    // let context = {context:{
-    //     active: window.clientInformation.userActivation,
-    //     app:{
-    //         name: "DODGEBALL",
-    //         version: "DODGE-DIP-DIVE-DUCK-DODGE",
-    //     },
-    //     page:{
-    //         path: "dodgeball/dip.com",
-    //         referrer: "www.dodgeball/.com",
-    //         search: "safety",
-    //         title: "dip",
-    //         url: "www.dodgeball.com",
-    //     },
-    //     library:{   
-    //         name: "dodgeball-US",
-    //         version: "2.0",
-    //     },
-    //     locale: "Las Vegas, NEVADA, USA",
-    //     userAgent: "macbook yo"
-    // }}
-    // analytics.page([],[],[],context)
-    
-    // console.log("!!!!  CONTEXT !!!!  : ", context)
-    
-    analytics.ready(callServer);
-    // console.log(analytics);
-    }}();
-    
 
-// ___________________________________________________________________________________
-// -----------------------------------------------------------------------------------
-// ===================================================================================
-    // app.use((req, res, next) => {
-    //     const req = { query, cookies, url, path, ip, host}
-    //     console.log(`${req.method} ${req.originalUrl}`);
 
-    //     // populate campaign object with any utm params
-    // const campaign = {}
-    // if (query.utm_content) campaign.content = query.utm_content
-    // if (query.utm_campaign) campaign.name = query.utm_campaign
-    // if (query.utm_medium) campaign.medium = query.utm_medium
-    // if (query.utm_source) campaign.source = query.utm_source
-    // if (query.utm_term) campaign.keyword = query.utm_term
-
-    // // grab userId if present
-    // let userId = null
-    // if (cookies.ajs_user_id) userId = cookies.ajs_user_id
-
-    // // if no anonymousId, send a randomly generated one
-    // // otherwise grab existing to include in call to segment
-    // let anonymousId
-    // if (cookies.ajs_anonymous_id) {
-    //     anonymousId = cookies.ajs_anonymous_id
-    // } else {
-    //     anonymousId = = uuid.v4()
-    //     res.cookie('ajs_anonymous_id', anonymousId )
-    // }
-
-    // const referrer = req.get('Referrer')
-    // const userAgent = req.get('User-Agent')
-
-    // const properties = {
-    //     query: stringify(query),
-    //     referrer,
-    //     path,
-    //     host,
-    //     url
-    //     /* ++ any custom props (eg. title) */
-    // }
-
-    // const context = {
-    //     campaign,
-    //     userAgent,
-    //     ip
-    // }
-
-    // // send a page call to segment
-    // analytics.page(
-    //     anonymousId, // either random (matching cookie) or from client
-    //     userId, // might be null
-    //     properties,
-    //     context
-    // )
+    // let writeKeyEn = "XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh"
+    // let writeKeyDa = "Gkyu7cBFAaqWRB76WwDAvNLkgTXiZStj"
+    // let writeKeyGlobal
+    // console.log(`HEY LANGUAGE HERE`,navigator.language)
+    // let manualLanguageDA
+    // //let manualLanguageDA = "da-DK"
+    // // let manualLanguageDA = "ja"
+    // if(navigator.language == "da-DK" || manualLanguageDA == "da-DK"){
+    //     console.log("DANISH IS NOT ACTIVE")
+    //     console.log("ENGLISH")
+    //     writeKeyGlobal = writeKeyEn
         
-    // // proceed!
-    //     next();
-    // })
-// ===================================================================================
-// -----------------------------------------------------------------------------------
-// ___________________________________________________________________________________
-    
-    
-    
-
-    // const identifyCall = (traits) => {
-    //     analytics.identify({
-    //         email: traits.email, 
-    //         name: traits.fullname,
-    //         username: traits.username,
-    //         userId : traits.username,
-    //         phone_number: traits.phone_number,
-    //     })
-
+    //     // console.log("DANISH")
+    //     // writeKeyGlobal = writeKeyDa
+    //     // return writeKeyGlobal
+    // }
+    // else if(navigator.language == "en-US"){
+    //     console.log("ENGLISH")
+    //     writeKeyGlobal = writeKeyEn
+    //     // return writeKeyGlobal
     // }
 
 
-    // const trackCall = (trackEventName, props,) => {
-    //     let email, name, motivation, action, duration, partners, details, destination
+    
+        // console.log(`before function FIRST`, Date.now())
+    !function(){analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","timeout"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.13.2";
+        // console.log(`inside function LAST`,Date.now())
+        analytics.load("XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh");
+        analytics.timeout(500); 
 
-    //     let properties = {
-    //         motivation: {
-    //             motivation: props.motivation, 
-    //             action: props.action,
-    //             duration: props.duration,
-    //             partners: props.partners,
-    //             details: props.details,
-    //         },
-    //         destination: {
-    //             email: props.email, 
-    //             name: props.fullname, 
-    //             destination: props.destination, 
-    //             details: props.details,
-    //         }
-    //     };
+    
 
-    //     analytics.track(trackEventName, properties,)
-    // }
+    
+
+        // ---- PAGE CALL  ----
+            // console.log("calling callServerAnon function inside page");
+            // analytics.page({}, { anonymousId: !callServerAnon},{},{options});
+            console.log(`serverAnonymousId - `,serverAnonymousId)
+            // analytics.page({}, { anonymousId: !callServerAnon},{});
+            let pageCategory = "Minifi"
+            let gaPageTitle = window.document.title
+            let segmentPageFullname = `${pageCategory} ${gaPageTitle}`
+            
+            analytics.page(segmentPageFullname);
+            // analytics.page();
+            // analytics.page({},{},{},{options});
+
+            // console.log('window.location.search - QUERY STRING : ',window.location.search)
+            console.log(`window.location.href - URL : `,window.location.href)
+        
+        // QUERYSTRING EXISTS
+            const queryStringExists = () => {
+                if(!window.location.search){
+                    console.log("NO QUERY STRING EXISTS ... moving on...")
+                }
+                else{
+                    console.log("QUERY STRING EXISTS !!! : ",window.location.search)
+                    analytics.track("Page View by GTM")
+                }   
+            }
+
+        analytics.ready(callServerUser);
+        // console.log("calling callServerUser function");
+        analytics.ready(queryStringExists);
+        analytics.ready(console.log(`analytics : `,analytics));
+        console.log(`AFTER FUNCTION but before running`,Date.now())
+        // window.onload = setTimeout(segment, 50000);
+    }}();
+
+// 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 
+// A Function to Set a Cookie
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    console.log(`cookie expires : `,expires)
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 
 
+let userAnonymousId = getCookie("ajs_anonymous_id")
+console.log(userAnonymousId)
+// "\"f00c99f2-f6e5-4b88-b12f-84ce726d35dc\""
+// "\"f00c99f2-f6e5-4b88-b12f-84ce726d35dc\""
+
+
+
+// A Function to Check a Cookie
+function checkCookie() {
+    let username = getCookie("username");
+    if (username != "") {
+        alert("Welcome again " + username);
+    } else {
+        username = prompt("Please enter your name:", "");
+        if (username != "" && username != null) {
+        setCookie("username", username, 365);
+        }
+    }
+}
+    
 </script>
-    
 </head>

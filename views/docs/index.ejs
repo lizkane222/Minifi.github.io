@@ -1,40 +1,248 @@
 <head>
     <%- include('../partials/head') %>
-    <style>
-        #docIframes{
-            min-width: 95vw;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-    </style>
     <title><%=page_title%></title>
-
-    
 </head>
-
 <body>
+    <style>
+
+    </style>
     <header>
         <%- include('../partials/navbar') %>
     </header>
     <!-- user's tamogotchi & all relevant headings to that tamagotchi -->
-<% let page = docLinks.page_spec %>
-<% let group = docLinks.group_spec %>
-<% let track = docLinks.track_spec %>
+<!-- <% let page = docLinks.page_spec %> -->
+<!-- <% let group = docLinks.group_spec %> -->
+<!-- <% let track = docLinks.track_spec %> -->
 
-<button onclick=runGroupCall(`TMUD`)>GROUP IT</button>
+<!-- <button onclick=runGroupCall(`TMUD`)>GROUP IT</button> -->
 
 <input type="text" name="username" id="inputUsername" placeholder="username"/><button onclick="idUser()">SAVE</button>
 
-<div id="docIframes" >
+<!-- <div id="docIframes" >
     <iframe src=<%=page%> onclick=trackDoc(`page_spec`, `page`, `Spec Page`) title="page_spec" height="500" width="300"></iframe>
     <iframe src=<%=group%> onclick=trackDoc(`group_spec`, `group`, `Spec Group`) title="group_spec" height="500" width="300"></iframe>
     <iframe src=<%=track%> onclick=trackDoc(`track_spec`, `track`, `Spec Track`) title="track_spec" height="500" width="300"></iframe>
+</div> -->
+<br/><br/><br/><br/>
+<!-- <div class="main-index-container">
+    <input type="text" name="firstName" id="firstName-main-index" placeholder="First Name"/>
+        <p><button onclick=chooseFirstName(1) class="auto-btn btn-small">1</button><button onclick=chooseFirstName(2) class="auto-btn btn-small">2</button><button onclick=chooseFirstName(3) class="auto-btn btn-small">3</button><button onclick=chooseFirstName(4) class="auto-btn btn-small">4</button><button onclick=chooseFirstName(5) class="auto-btn btn-small">5</button><button onclick=chooseFirstName(6) class="auto-btn btn-small">6</button><button onclick=chooseFirstName(7) class="auto-btn btn-small">7</button><button onclick=chooseFirstName(8) class="auto-btn btn-small">8</button><button onclick=chooseFirstName(9) class="auto-btn btn-small">9</button><button onclick=chooseFirstName(10) class="auto-btn btn-small">10</button><button onclick=chooseFirstName(11) class="auto-btn btn-small">11</button><button onclick=chooseFirstName(12) class="auto-btn btn-small">12</button><button onclick=chooseFirstName(13) class="auto-btn btn-small">13</button><button onclick=chooseFirstName(14) class="auto-btn btn-small">14</button><button onclick=chooseFirstName(15) class="auto-btn btn-small">15</button><button onclick=chooseFirstName(16) class="auto-btn btn-small">16</button></p>
+    <input type="text" name="lastName" id="lastName-main-index" placeholder="Last Name"/>
+            <p><button onclick=chooseLastName(1) class="auto-btn btn-small">1</button><button onclick=chooseLastName(2) class="auto-btn btn-small">2</button><button onclick=chooseLastName(3) class="auto-btn btn-small">3</button><button onclick=chooseLastName(4) class="auto-btn btn-small">4</button><button onclick=chooseLastName(5) class="auto-btn btn-small">5</button><button onclick=chooseLastName(6) class="auto-btn btn-small">6</button><button onclick=chooseLastName(7) class="auto-btn btn-small">7</button><button onclick=chooseLastName(8) class="auto-btn btn-small">8</button><button onclick=chooseLastName(9) class="auto-btn btn-small">9</button><button onclick=chooseLastName(10) class="auto-btn btn-small">10</button><button onclick=chooseLastName(11) class="auto-btn btn-small">11</button><button onclick=chooseLastName(12) class="auto-btn btn-small">12</button><button onclick=chooseLastName(13) class="auto-btn btn-small">13</button><button onclick=chooseLastName(14) class="auto-btn btn-small">14</button><button onclick=chooseLastName(15) class="auto-btn btn-small">15</button><button onclick=chooseLastName(16) class="auto-btn btn-small">16</button></p>
+    <input type="text" name="organization" id="organization-main-index" placeholder="Organization"/>
+            <p><button onclick=chooseOrganizationName(1) class="auto-btn btn-small">1</button><button onclick=chooseOrganizationName(2) class="auto-btn btn-small">2</button><button onclick=chooseOrganizationName(3) class="auto-btn btn-small">3</button><button onclick=chooseOrganizationName(4) class="auto-btn btn-small">4</button><button onclick=chooseOrganizationName(5) class="auto-btn btn-small">5</button><button onclick=chooseOrganizationName(6) class="auto-btn btn-small">6</button><button onclick=chooseOrganizationName(7) class="auto-btn btn-small">7</button><button onclick=chooseOrganizationName(8) class="auto-btn btn-small">8</button><button onclick=chooseOrganizationName(9) class="auto-btn btn-small">9</button><button onclick=chooseOrganizationName(10) class="auto-btn btn-small">10</button><button onclick=chooseOrganizationName(11) class="auto-btn btn-small">11</button><button onclick=chooseOrganizationName(12) class="auto-btn btn-small">12</button><button onclick=chooseOrganizationName(13) class="auto-btn btn-small">13</button><button onclick=chooseOrganizationName(14) class="auto-btn btn-small">14</button><button onclick=chooseOrganizationName(15) class="auto-btn btn-small">15</button><button onclick=chooseOrganizationName(16) class="auto-btn btn-small">16</button></p>
+    <input type="email" name="email" id="email-main-index" required="" placeholder="Email"/>
+            <p><button onclick=chooseEmail(1) class="auto-btn btn-small">1</button><button onclick=chooseEmail(2) class="auto-btn btn-small">2</button><button onclick=chooseEmail(3) class="auto-btn btn-small">3</button><button onclick=chooseEmail(4) class="auto-btn btn-small">4</button><button onclick=chooseEmail(5) class="auto-btn btn-small">5</button><button onclick=chooseEmail(6) class="auto-btn btn-small">6</button><button onclick=chooseEmail(7) class="auto-btn btn-small">7</button><button onclick=chooseEmail(8) class="auto-btn btn-small">8</button><button onclick=chooseEmail(9) class="auto-btn btn-small">9</button><button onclick=chooseEmail(10) class="auto-btn btn-small">10</button><button onclick=chooseEmail(11) class="auto-btn btn-small">11</button><button onclick=chooseEmail(12) class="auto-btn btn-small">12</button><button onclick=chooseEmail(13) class="auto-btn btn-small">13</button><button onclick=chooseEmail(14) class="auto-btn btn-small">14</button><button onclick=chooseEmail(15) class="auto-btn btn-small">15</button><button onclick=chooseEmail(16) class="auto-btn btn-small">16</button></p>
+            <input type="text" name="favoriteSocialMedia" id="fav-soc-media-main-index" required="" placeholder="Favorite Social Media To Use"/>
+            <p><button onclick=chooseSocialMedia(1) class="auto-btn btn-small">1</button><button onclick=chooseSocialMedia(2) class="auto-btn btn-small">2</button><button onclick=chooseSocialMedia(3) class="auto-btn btn-small">3</button><button onclick=chooseSocialMedia(4) class="auto-btn btn-small">4</button><button onclick=chooseSocialMedia(5) class="auto-btn btn-small">5</button><button onclick=chooseSocialMedia(6) class="auto-btn btn-small">6</button><button onclick=chooseSocialMedia(7) class="auto-btn btn-small">7</button><button onclick=chooseSocialMedia(8) class="auto-btn btn-small">8</button><button onclick=chooseSocialMedia(9) class="auto-btn btn-small">9</button><button onclick=chooseSocialMedia(10) class="auto-btn btn-small">10</button><button onclick=chooseSocialMedia(11) class="auto-btn btn-small">11</button><button onclick=chooseSocialMedia(12) class="auto-btn btn-small">12</button><button onclick=chooseSocialMedia(13) class="auto-btn btn-small">13</button><button onclick=chooseSocialMedia(14) class="auto-btn btn-small">14</button><button onclick=chooseSocialMedia(15) class="auto-btn btn-small">15</button><button onclick=chooseSocialMedia(16) class="auto-btn btn-small">16</button></p>
+    <button id="submitNewAccountInputs" onclick="createNewAccount()">SAVE</button>
+</div>
+<br/><br/><br/><br/> -->
+<div>
+    <button onclick=AnalyticsCompanyProfileUpdated()>Make Customer Track Call</button>
+</div>
+<br/><br/><br/><br/>
+<div>
+    <p class="mycomment">Only click this button after</p>
+    Interested in :
+    <!-- <a><img src="../../public/styles/images/avery-evans-RkCvkHgfiqc-unsplash.jpg" alt="unsplash- avery-evans"/></a>
+    <a><img src="../../public/styles/images/daniel-korpai-hbTKIbuMmBI-unsplash.jpg" alt="unsplash- daniel-korpai"/></a>
+    <a><img src="../../public/styles/images/hunter-newton-yuMuWhz-PGI-unsplash.jpg" alt="unsplash- hunter-newton"/></a>
+    <a><img src="../../public/styles/images/imani-bahati-LxVxPA1LOVM-unsplash.jpg" alt="unsplash- imani-bahati"/></a>
+    <a><img src="../../public/styles/images/irene-kredenets-KStSiM1UvPw-unsplash.jpg" alt="unsplash- irene-kredenets"/></a>
+    <a><img src="../../public/styles/images/rachit-tank-2cFZ_FB08UM-unsplash.jpg" alt="unsplash- rachit-tank"/></a>
+    <a><img src="../../public/styles/images/surya-a-3o-X8WJOP5E-unsplash.jpg" alt="unsplash- surya-a"/></a> -->
+    <!-- <a><img src="../../public/styles/images" alt="unsplash"/></a> -->
+    <button onclick=identifyAddInterest(`Shoes`)>Shoes</button>
+    <button onclick=identifyAddInterest(`Watches`)>Watches</button>
+    <button onclick=identifyAddInterest(`Glasses`)>Glasses</button>
+    <button onclick=identifyAddInterest(`Pants`)>Pants</button>
+    <button onclick=identifyAddInterest(`Jackets`)>Jackets</button>
+    <button onclick=identifyAddInterest(`Gear`)>Gear</button>
+    <button onclick=identifyAddInterest(`Accessories`)>Accessories</button>
 </div>
 
-
-
+<script> 
     
+    
+
+
+
+
+
+
+const AnalyticsCompanyProfileUpdated = () => {
+    let customerProperties = {
+        "auto_print_being_used": false,
+        "chargify_product_handle": "trial",
+        "chargify_subscription_status": "developer",
+        "companyId": 23545,
+        "companyName": "Cyclopure - developer",
+        "company_created_at": "2019-10-18T11:49:27Z",
+        "company_has_right_to_use_veeqo": true,
+        "company_subscription_status": "developer",
+        "company_trial_end_date": "2024-11-01T11:49:00Z",
+        "count_admin_users": 1,
+        "count_all_users": 1,
+        "count_all_warehouses": 1,
+        "count_fba_warehouses": 0,
+        "count_non_fba_warehouses": 1,
+        "count_products": 2,
+        "count_products_with_review": 0,
+        "count_stores_active": 0,
+        "count_stores_active_remote": 0,
+        "count_stores_inactive": 1,
+        "email": "mailynavery@gmail.com",
+        "onboardings_survey_completed": false,
+        "shipments_with_label_since_last_renewal": null,
+        "shipments_without_label_since_last_renewal": null,
+        "veeqo_product_name": "veeqo-premium"
+    }
+    
+    let customerContext = {
+        "context": {
+            "library": {
+                "name": "analytics-ruby",
+                "version": "2.2.6"
+            }
+        },
+        "anonymousId": null,
+        "channel": "server",
+        "messageId": "3ad3386b-cc62-4bff-b15f-2676fa36475f",
+        "originalTimestamp": "2021-07-19T05:44:10.000Z",
+        "projectId": "D9cbNuVhDn",
+        "receivedAt": "2021-07-19T05:44:10.877Z",
+        "sentAt": "2021-07-19T05:44:10.547Z",
+        "timestamp": "2021-07-19T05:44:10.330Z",
+        "type": "track",
+        "userId": "28220",
+        "version": 2,
+    }
+    
+    let customerOptions = {
+        customerContext,
+        "integrations": {
+            "Salesforce": true
+        }
+    }
+    
+    // analytics.track(event, [properties], [options], [callback]);
+    analytics.track("Analytics:Company Profile Updated",customerProperties,customerOptions)
+
+}
+    const identifyAddInterest = (category) => {       
+        
+        const traits = {
+            interests:{
+                category : category,
+                dateUpdated : Date.now()
+            }
+        }
+        const properties = {traits}
+        analytics.identify(serverUserId,traits,[])
+        analytics.track("Interest Added",properties)
+        //analytics.track("Interest Added")
+        console.log(traits.interests.category)
+    }
+
+
+//{
+    //"anonymousId": null,
+    //"channel": "server",
+    //"context": {
+    //    "library": {
+    //        "name": "analytics-ruby",
+    //        "version": "2.2.6"
+    //}
+    //},
+    //"event": "Analytics:Company Profile Updated",
+    //"integrations": {
+    //    "Salesforce": true
+    //},
+    //"messageId": "3ad3386b-cc62-4bff-b15f-2676fa36475f",
+    //"originalTimestamp": "2021-07-19T05:44:10.000Z",
+    //"projectId": "D9cbNuVhDn",
+    //"properties": {
+    //"auto_print_being_used": false,
+    //"chargify_product_handle": "trial",
+    //"chargify_subscription_status": "developer",
+    //"companyId": 23545,
+    //"companyName": "Cyclopure - developer",
+    //"company_created_at": "2019-10-18T11:49:27Z",
+    //"company_has_right_to_use_veeqo": true,
+    //"company_subscription_status": "developer",
+    //"company_trial_end_date": "2024-11-01T11:49:00Z",
+    //"count_admin_users": 1,
+    //"count_all_users": 1,
+    //"count_all_warehouses": 1,
+    //"count_fba_warehouses": 0,
+    //"count_non_fba_warehouses": 1,
+    //"count_products": 2,
+    //"count_products_with_review": 0,
+    //"count_stores_active": 0,
+    //"count_stores_active_remote": 0,
+    //"count_stores_inactive": 1,
+    //"email": "mailynavery@gmail.com",
+    //"onboardings_survey_completed": false,
+    //"shipments_with_label_since_last_renewal": null,
+    //"shipments_without_label_since_last_renewal": null,
+    //"veeqo_product_name": "veeqo-premium"
+    //}
+    //}
+
+</script>    
+<script>
+    //let username
+
+    //    const idUser = () => {
+    //        username = document.getElementById("inputUsername").val();
+        
+    //        analytics.identify({
+    //            username: username
+    //        })
+    //    }
+
+    //    let $allDocs = document.getElementById("docIframes")
+    //    $allDocs.hide
+    //    if (username){
+    //        $(allDocs).show
+    //    }
+
+
+    //const runGroupCall = (name) => {
+    //    console.log("triggering group call...");
+    //    analytics.group("5urSrBJ68rXLV4vdkvdTjv",{
+    //        name: name,
+    //        industry: "Political",
+    //        employees: 2,
+    //        plan: "startup",
+    //        "total billed": 300
+    //    });
+
+    //    console.log("group call triggered");
+    //}
+
+    //const trackDoc = (docName, link, title) => {
+    //    properties = {
+    //        name : docName,
+    //        link : link,
+    //        title : title
+    //    }
+
+    //    analytics.track('Doc Clicked', properties, 
+    //        {integrations: 
+    //            {
+    //                "All": true,
+    //                "Amplitude": {
+    //                    session_id: currentSessionId
+    //                }
+    //            }}, 
+    //            function() {
+    //            window.location.href = "";
+    //        }
+    //    );
+    //}
+</script>
 <footer>
     <%- include('../partials/footer') %>
 </footer>
@@ -42,58 +250,3 @@
 
 
 
-<script>
-    let username
-
-    const idUser = () => {
-        username = document.getElementById("inputUsername").val();
-        
-        analytics.identify({
-            username: username
-        })
-    }
-
-    let $allDocs = document.getElementById("docIframes")
-    $allDocs.hide
-    if (username){
-        $(allDocs).show
-    }
-
-
-    const runGroupCall = (name) => {
-        console.log("triggering group call...");
-        analytics.group("5urSrBJ68rXLV4vdkvdTjv",{
-            name: name,
-            industry: "Political",
-            employees: 2,
-            plan: "startup",
-            "total billed": 300
-        });
-
-        console.log("group call triggered");
-    }
-
-    const trackDoc = (docName, link, title) => {
-        properties = {
-            name : docName,
-            link : link,
-            title : title
-        }
-
-    analytics.track('Doc Clicked', properties, 
-        {integrations: 
-            {
-                "All": true,
-                "Amplitude": {
-                    session_id: currentSessionId
-                }
-            }}, 
-            function() {
-            window.location.href = "";
-        }
-    );
-}
-
-
-
-</script>

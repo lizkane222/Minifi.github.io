@@ -1,9 +1,12 @@
 /* External Modules */
 const express = require('express');
 const methodOverride = require('method-override');
+const Analytics = require('analytics-node');
+const analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 1 })
+
 
 /* Internal Modules */
-const db = require('./models');
+// const db = require('./models');
 const controllers = require("./controllers");
 // const Motivate = require('.')
 
@@ -85,7 +88,8 @@ app.get('/', (req, res) => {
     res.render('index',
     context = {
         // Motivate : db.Motivate
-        page_title : "Home"
+        page_title : "Home",
+        analytics : analytics
     }
     );
     // res.render('index', { user: req.session.currentUser } );
@@ -98,9 +102,12 @@ app.get('/', (req, res) => {
 // app {this server.js} use{uses} ('/', {this path}  controllers.authCtrl); {to get to the authCtrl file}
 // app.use('/', controllers.authCtrl);
 
+// context={
+//     analtyics : analytics 
+// }
 
 // motivate Routes
-app.use('/motivate', controllers.motivate)
+app.use('/motivate', controllers.motivate);
 
 // chi Routes
 app.use('/chi', controllers.chi);

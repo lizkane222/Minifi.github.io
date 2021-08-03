@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('./partials/head') %>
+    <%- include('../partials/head') %>
 </head>
 
 <body>
     <header>
-        <%- include('./partials/navbar') %>
+        <%- include('../partials/navbar') %>
     </header>
-<main>
-    <h2><% user.name %></h2>
-    <ul>
-        <% users.forEach(user => { %> 
-        <li>
-            <a href="/user/<%user._id %>"> <%= user.name %> </a>
-        </li>
-        <% }) %>
-    </ul>
 
-    <% if(users.length ===0) { %>
-        <p>Looks like you're not a current user. Would you like to become one?</p>
-    <% } %>
-    <button><a href="/new">New User</a></button>
-</main>
+<style>
+    .product-image {
+        margin: 1vw 3vw;
+        min-width: 15vw;
+        min-height: 10vh;
+    }
+    .productInput {
+        margin:10% auto;
+        width: 20vw;
+        height: 30vw;
+    }
+</style>
+<!-- CUSTOMER BASIC BUTTON CLICK IDENTIFY TRACK CALL -->
 
 
+<!-- <div class="productInput">
+    <img src="../../public/images/daniel-korpai-hbTKIbuMmBI-unsplash.jpg" class="product-image"/>
+    <div class="main-index-container">
+        <input type="text" name="firstName" id="firstName-main-index" placeholder="First Name"/>
+        <input type="text" name="lastName" id="lastName-main-index" placeholder="Last Name"/>
+        <input type="text" name="organization" id="organization-main-index" placeholder="Organization"/>
+        <input type="email" name="email" id="email-main-index" required="" placeholder="Email"/>
+        <input type="text" name="favoriteSocialMedia" id="fav-soc-media-main-index" required="" placeholder="Favorite Social Media To Use"/>
+        <button id="submitNewAccountInputs" onclick="createNewAccount()">SAVE</button>
+    </div>
+</div> -->
     
 </body>
 <footer>
-    <%- include('./partials/footer') %>
+    <%- include('../partials/footer') %>
 </footer>
+
+
+
 </html>
+<!-- <main> -->
+    <!-- <h2><% 'user.name' %></h2> -->
+    <!-- <ul> -->
+        <!-- <% 'users.forEach(user => {' %>  -->
+        <!-- <li> -->
+            <!-- <a href="/user/<%'user._id '%>"> <%=' user.name' %> </a> -->
+        <!-- </li> -->
+        <!-- <% '})' %> -->
+    <!-- </ul> -->
+
+    <!-- <% 'if(users.length ===0) {' %> -->
+        <!-- <p>Looks like you're not a current user. Would you like to become one?</p> -->
+    <!-- <% '}' %> -->
+    <!-- <button><a href="/new">New User</a></button> -->
+<!-- </main> -->

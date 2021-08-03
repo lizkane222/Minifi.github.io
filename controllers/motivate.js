@@ -2,6 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
+const Analytics = require('analytics-node');
+const analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 1 })
 
 const db = require('../models');
 
@@ -13,7 +15,9 @@ router.get('/', async (req,res)=> {
         const foundMotivate = await db.Motivate.find({});
         res.render('motivate/index', context = {
             motivations : foundMotivate,
-            page_title : "Motivate List"
+            page_title : "Motivate List",
+            pageCategory : "Motivate Survey",
+            analytics : analytics
         }
         )
     } catch (error) {
@@ -27,11 +31,15 @@ router.get('/new', (req,res)=> {
     // res.send("Motivate's NEW Route is ⇪ and 🏃🏻‍♀️")
     res.render('motivate/new.ejs',
         context = {
-            page_title : "New Motivate"
+            page_title : "New Motivate",
+            pageCategory : "Motivate Survey",
+            analytics : analytics
         }
     )
 })
 
+
+            // context = {analytics : analytics}
 // create
 router.post('/', (req,res) => {
     db.Motivate.create(req.body, (error, createdMotivate) => {
@@ -44,7 +52,7 @@ router.post('/', (req,res) => {
         res.redirect('/motivate');
 });
 
-
+            // context = {analytics : analytics}
 // show
 router.get('/:id', (req,res) => {
         // res.send("Motivate's SHOW Route is ⇪ and 🏃🏻‍♀️");
@@ -55,12 +63,15 @@ router.get('/:id', (req,res) => {
         }
         const context = {
             motivate : foundMotivate,
-            page_title : "Show Motivate"
+            page_title : "Show Motivate",
+            pageCategory : "GET 1",
+            analytics : analytics
         }
         res.render('motivate/show.ejs', context)
     });
 });
 
+            // context = {analytics : analytics}
 // edit
 router.get("/:id/edit", (req,res) => {
     // res.send ("Motivate's edit Route is ⇪ and 🏃🏻‍♀️")
@@ -72,13 +83,16 @@ router.get("/:id/edit", (req,res) => {
 
         const context = { 
             motivate : foundMotivate, 
-            page_title : "Edit Motivate"
+            page_title : "Edit Motivate",
+            pageCategory : "GET 1",
+            analytics : analytics
         };
 
         res.render("motivate/edit.ejs", context)
     });
 });
 
+            // context = {analytics : analytics}
 // update
 router.put("/:id", (req,res) => {
     db.Motivate.findByIdAndUpdate(
@@ -95,6 +109,7 @@ router.put("/:id", (req,res) => {
     );
 });
 
+            // context = {analytics : analytics}
 // delete
 router.delete("/:id", (req,res) => {
     // res.send('delete route is ☝ & running')

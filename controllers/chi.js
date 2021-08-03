@@ -2,6 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
+const Analytics = require('analytics-node');
+const analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 1 })
 
 const db = require('../models');
 
@@ -21,10 +23,12 @@ const db = require('../models');
 router.get('/', async (req,res)=> {
     // res.send("Motivate's INDEX Route is ⇪ and 🏃🏻‍♀️");
     try {
-        const foundChi =  db.Chi.find({});
+        // const foundChi =  db.Chi.find({});
         await res.render('chi/index', context = {
-            chis : foundChi,
-            page_title : "Mi - Chi : Profile"
+            // chis : foundChi,
+            page_title : "Mi - Chi : Profile",
+            pageCategory : "Chi",
+            analytics : analytics
         }
         )
     } catch (error) {

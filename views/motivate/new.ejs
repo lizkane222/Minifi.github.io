@@ -36,21 +36,21 @@
     <p>Let's find out what kinds of exercises or activities motivate you.</p>  
     <form name="motivate" onsubmit="identify(event)">
         What is the name of the exercise / activity / motivation?
-        <input name="motivation"  size="81" type="text"/> 
+        <input name="motivation"  size="81" value="run" type="text"/> 
         <br><br><br> 
         Motivation Description (What do you do, for how long, with whom, in repeptitions?):
         <br><br> 
         <section>
-            action: <input name="action"  size="75" type="text"/> 
-            <br><br>duration: <input name="duration"  size="75" type="text"/> 
-            <br><br>partners: <input name="partners"  size="75" type="text"/> 
+            action: <input name="action"  size="75" value="running non-stop" type="text"/> 
+            <br><br>duration: <input name="duration"  size="75" value="25 min" type="text"/> 
+            <br><br>partners: <input name="partners"  size="75" value="solo" type="text"/> 
             <br><br>
             <textarea cols="81" name="details" placeholder="additional details" rows="5"></textarea> 
         </section>
         <br><br> 
-        Name: <input name="fullname"  size="75" type="text"/> 
+        Name: <input name="fullname"  size="75" value="" type="text"/> 
         <br><br> 
-        Email: <input name="email" required="" size="75" type="email"/> 
+        Email: <input name="email" required="" size="75" value="" type="email"/> 
         <br><br>
         <input name="submit" type="submit" value="submit"/>
     </form> 
@@ -60,16 +60,16 @@
 
 
 <script type="text/javascript">
-    let userId
-    const createUserId = () => {
-        if(!userId){
-            return userId = Math.floor((Math.random() * 100000) + 1);
-        }
-        else{
-            console.log("userId exists:" + userId )
-            return userId
-        }
-    }
+    //let userId
+    //const createUserId = () => {
+    //    if(!userId){
+    //        return userId = Math.floor((Math.random() * 100000) + 1);
+    //    }
+    //    else{
+    //        console.log("userId exists:" + userId )
+    //        return userId
+    //    }
+    //}
 
     console.log(`Date.now() = `+ Date.now());
     let currentSessionId
@@ -78,64 +78,83 @@
     let newSession = true
     const uTC = () => {
         if (!newSession){
-            return currentSessionId
             console.log(`currentSessionId should be same : `+currentSessionId)
+            return currentSessionId
         }
         else {
             currentSessionId = Date.now()    
             console.log(`currentSessionId should change : `+currentSessionId)
-            return currentSessionId
             newSession = false
+            return currentSessionId
         }
     }
 
 
     const identify = (e) =>{
-      e.preventDefault();
-      let form = e.target;
-      let email = form["email"].value;
-      let fullname = form["fullname"].value;
-      let motivation = form["motivation"].value;
-      let action = form["action"].value;
-      let duration = form["duration"].value;
-      let partners = form["partners"].value;
-      let details = form["details"].value;
-      let username, phone_number
+        e.preventDefault();
+        let form = e.target;
+        let email = form["email"].value;
+        let fullname = form["fullname"].value;
+        let motivation = form["motivation"].value;
+        let action = form["action"].value;
+        let duration = form["duration"].value;
+        let partners = form["partners"].value;
+        let details = form["details"].value;
+        let username, phone_number
 
-      let properties = {
-          email: email, 
-          name: fullname, 
-          motivation: motivation, 
-          action: action,
-          duration: duration,
-          partners: partners,
-          details: details,
-      };
-      console.log(properties)
-      analytics.identify({
-          email: email, 
-          name: fullname,
-          username: username,
-          userId : username,
-          phone_number: phone_number,
-      });
-    analytics.track('Motivation Submitted', properties, 
-    {integrations: 
-        {
-            "All": true,
-            "Amplitude": {
-                session_id: currentSessionId
+        let traits = {
+            email: email, 
+            name: fullname, 
+            username: username,
+            userId : username,
+            phone_number: phone_number,
+
+        }
+
+        let properties = {
+            motivation: motivation, 
+            action: action,
+            duration: duration,
+            partners: partners,
+            details: details,
+        };
+        console.log(properties)
+        analytics.identify({},traits);
+
+        analytics.track('Motivation Submitted', properties, 
+            {integrations: 
+                {
+                    "All": true,
+                    "Amplitude": {
+                        session_id: uTC()
+                    }
+                }}, 
+                function() {
+                window.location.href = "";
+                //window.location.reload();
             }
-        }}, 
-        function() {
-          window.location.href = "";
-      }
-      );
-      redirect="/";
-    }
+        );
+        redirect="/";
+        }
+
+
+        //analytics.track('User Logged Out', properties,
+//            {integrations: 
+//                {
+//                "All": true,
+//                "Amplitude": {
+//                    session_id: uTC()
+//                    }
+//                }
+//            }, 
+//            function() {newSession=true}
+//        );
+
+
 
 
 </script>
+
 
     
 </body>

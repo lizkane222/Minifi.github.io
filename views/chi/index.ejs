@@ -3,7 +3,7 @@
 <head>
     <%- include('../partials/head') %>
     <title><%=page_title%></title>
-
+    
 </head>
 
 <body>
@@ -11,7 +11,28 @@
         <%- include('../partials/navbar') %>
     </header>
 <!-- user's tamogotchi & all relevant headings to that tamagotchi -->
+<script>
+//     let userId = null
+//     const createUserId = () => {
+//         console.log("USERID",userId)
+//         if(!userId){
+//             userId = Math.floor((Math.random() * 100000) + 1);
+//             console.log("NEW USER - userId :" + userId )
+//             return userId
+//         }
+//         else{
+//             console.log("userId exists:" + userId )
+//             return userId
+//         }
+//     }
 
+    
+//     console.log("reached createNewLeadNewMotivation function")
+//     createUserId()
+//     console.log("PRE IDENTIFY POST CREATEUSERID userId : ",userId)
+//     analytics.identify(userId,{"Lead Account"},{traits})
+    
+//     </script>
 
 <section>
     <h1 class="center">Your minifi account</h1> 
@@ -68,22 +89,22 @@
     </form> 
 </section>
 <script>  
-      let currentSessionId
-      console.log(`currentSessionId should be blank : ` + currentSessionId)
+    //   let currentSessionId
+    //   console.log(`currentSessionId should be blank : ` + currentSessionId)
       
-      let newSession = true
-      const uTC = () => {
-          if (!newSession){
-              return currentSessionId
-              console.log(`currentSessionId should be same : `+currentSessionId)
-          }
-          else {
-              currentSessionId = Date.now()    
-              console.log(`currentSessionId should change : `+currentSessionId)
-              return currentSessionId
-              newSession = false
-          }
-      }
+    //   let newSession = true
+    //   const uTC = () => {
+    //       if (!newSession){
+    //           return currentSessionId
+    //           console.log(`currentSessionId should be same : `+currentSessionId)
+    //       }
+    //       else {
+    //           currentSessionId = Date.now()    
+    //           console.log(`currentSessionId should change : `+currentSessionId)
+    //           return currentSessionId
+    //           newSession = false
+    //       }
+    //   }
     
     // <input name="submit" type="submit" value="submit" id="submitAccountForm"/>
     //    const createAccount = (e) =>{
@@ -91,6 +112,8 @@
     //    }
 
     // console.log($submitAccountform);
+
+
 
     const createAccount = (e) =>{
         console.log(`EEEEEEE : `,e.target)
@@ -146,11 +169,11 @@
             // new_grooves: new_grooves
         };
 
-        if (window.ready()) { console.log(`window.uTC = `,window.uTC()}
+        if (window.ready()) { console.log(`window.uTC = `,window.uTC())}
 
-        let context = {
+        // let context = {
 
-        }
+        // }
 
         console.log(properties)
 
@@ -176,7 +199,6 @@
         redirect="/";
        }
 
-        document.getElementById("submitAccountForm").addEventListener("click",createAccount)
 
     </script>
 

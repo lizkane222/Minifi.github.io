@@ -1,27 +1,29 @@
-<head>
+
     <%- include('./partials/head') %>
-    <title><%=page_title%></title>
-</head>
+    
+
 <body>
         <%- include('./partials/navbar') %>
-        
+<style>
+    
+</style>        
 <main>
 <!-- welcome user to minifi, short description  -->
     <h2>minifi</h2>
 
     <p>Once user is able to login have user data display on navbar</p>
     <ul>
-        <li>
+        <li class="quick-links">
             <a href="/user">Users</a>
         </li>
-        <li>
+        <li class="quick-links">
         <a href="/chi">Mi Chi</a> 
         </li>
-        <li>
+        <li class="quick-links">
             <a href="/motivate">Motivate</a>
         </li>
-        <li>
-            <button><a href="/motivate/new">New Motivation</a></button>
+        <li class="quick-links" >
+            <button id="new-motivation-create-lead"><a href="/motivate/new">New Motivation</a></button>
         </li>
     </ul>
     <div>
@@ -37,11 +39,74 @@
 
 
 
+
+
 <footer>
     <%- include('./partials/footer') %>
 </footer>
 </body>
-</html>
+
+<script>
+// const createNewLeadNewMotivation = () => {
+//     console.log("reached createNewLeadNewMotivation function")
+//     analytics.identify({},["Lead Account"],{traits})
+// }
+// document.getElementById("new-motivation-create-lead").onclick(createNewLeadNewMotivation)
+
+
+
+
+// <div class="main-index-container">
+//     <input type="text" name="firstName" id="firstName-main-index" placeholder="First Name"/>
+//     <input type="text" name="lastName" id="lastName-main-index" placeholder="Last Name"/>
+//     <input type="text" name="organization" id="organization-main-index" placeholder="Organization"/>
+//     <input type="email" name="email" id="email-main-index" required="" placeholder="Email"/><button id="submitNewAccountInputs" onclick="createNewAccount()">SAVE</button>
+// </div>
+//     let createNewAccount = () => {
+
+//     let firstName = document.getElementById("firstName-main-index").value || "test firstName";
+//     let lastName = document.getElementById("lastName-main-index").value || "test lastName";
+//     let organization = document.getElementById("organization-main-index").value || "test organization";
+//     let email = document.getElementById("email-main-index").value || "test email";
+//     console.log("- firstName : ",firstName,"- lastName : ",lastName,"- organization : ",organization,"- email : ",email,)
+
+//     let traits = {
+//         firstName : firstName,
+//         lastName : lastName,
+//         organization : organization,
+//         email : email,
+//         userId : userId,
+//         anonymousId : anonymousId
+//     }
+
+
+// let userId
+// const createUserId = () => {
+//     if(!userId){
+//         userId = Math.floor((Math.random() * 100000) + 1);
+//         console.log("NEW USER - userId :" + userId )
+//         return userId
+//     }
+//     else{
+//         console.log("userId exists:" + userId )
+//         return userId
+//     }
+// }
+
+
+// document.getElementById("new-motivation-create-lead").onclick = function () {
+    
+//     location.href = "/motivate/new";
+//     };
+    // analytics.track("New Account Created",{
+
+    // })
+
+    // document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
+
+// }
+</script>
+
 
 
 
