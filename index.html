@@ -387,7 +387,7 @@ const createNewAccount = () => {
         analytics.identify(traits.userId,traits,{integrations:{"All":false,"Marketo V2":true}},
         analytics.track("New Subscription Created",
             properties,
-            {userId:userId,
+            {userId:traits.userId,
                 integrations:{"All":false,"Marketo V2":true}},
            function() {
                 window.location.href = "";
