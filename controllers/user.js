@@ -11,12 +11,12 @@ const db = require('../models');
 router.get('/', async (req,res) => {
     // res.send("User's Index Route is ⇪ and 🏃🏻‍♀️")
     try {
-        const foundUsers = await db.User.findById({})
+        // const foundUsers = await db.User.findById({})
         const context= {
-            users: foundUsers,
-            page_title : "USERS About",
-            pageCategory : "GET ALL",
-            analytics : analytics
+            // users: foundUsers,
+            page_title : "USERS",
+            page_category : "GET ALL | ",
+            analytics : analytics,
         }
         res.render("user/index", context);
 
@@ -33,8 +33,8 @@ router.get('/about', async (req,res)=> {
         // const foundMotivate = await db.Motivate.find({});
         res.render('user/index', context = {
             page_title : "USERS About",
-            pageCategory : "SHOW ALL",
-            analytics : analytics
+            page_category : "SHOW | ",
+            analytics : analytics,
         }
         )
     } catch (error) {

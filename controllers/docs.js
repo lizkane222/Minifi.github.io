@@ -23,7 +23,7 @@ router.get('/', async (req,res)=> {
         context = {
             docLinks : docLinks,
             page_title : "Docs",
-            pageCategory : "Survey",
+            page_category : "Survey | ",
             analytics : analytics
         }
         )

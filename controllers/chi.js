@@ -26,8 +26,8 @@ router.get('/', async (req,res)=> {
         // const foundChi =  db.Chi.find({});
         await res.render('chi/index', context = {
             // chis : foundChi,
-            page_title : "Mi - Chi : Profile",
-            pageCategory : "Chi",
+            page_category : "Mi - Chi | ",
+            page_title : "Profile",
             analytics : analytics
         }
         )

@@ -1,0 +1,122 @@
+<!-- views/partials/ecommerce.ejs -->
+
+
+<script>
+
+    let productList = {
+        p_36477 : {
+            product_id: "36477",
+            sku: "36477",
+            name: "Pumps",
+            brand: "Nike",
+            category: "Clothing/Shoes/Athletic",
+            price: 174.99,
+        },
+        p_53865 : {
+            product_id: "53865",
+            sku: "53865",
+            name: "Swipe Tops",
+            brand: "Adidas",
+            category: "Clothing/Shoes/Athletic",
+            price: 114.99
+        }
+    }
+    
+    let productCounter = 0
+    const logProducts = () => {
+        productCounter++
+        if(productCounter%10===0){
+            console.log(`Moused Over Product `,productCounter,`x !`)
+            console.log(productList.p_36477.name)
+            console.log(productList.p_53865.name)
+        }
+    }
+
+    //upon arrival at first checkout step ('Review Cart' per the screenshot example above)
+    const viewedCheckoutStep = (stepNum) => {
+        analytics.track('Viewed Checkout Step', {
+        step: stepNum
+        })
+    }
+    
+    //upon completion of first checkout step ('Review Cart')
+    const completedCheckoutStep = (stepNum, secondParam, thirdParam) => {
+        let shippingMethodVal, paymentMethodVal
+        if (stepNum == 3 || stepNum == 4){
+            shippingMethodVal = secondParam
+            paymentMethodVal = thirdParam
+        }
+        analytics.track('Completed Checkout Step', {
+            step: stepNum,
+            shippingMethod : shippingMethodVal || null,
+            paymentMethod : paymentMethodVal || null,
+            }
+        );
+    }
+
+    const productViewed = (prodId) => {
+        prodProps = productList[prodId]
+        prodProps.step = 5 || {};
+        console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
+        analytics.track('Product Viewed', prodProps);
+    }
+    const productClicked = (prodId) => {
+        prodProps = productList[prodId]
+        prodProps.step = 5 || {};
+        console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
+        analytics.track('Product Clicked', prodProps);
+    }
+    const productAdded = (prodId) => {
+        prodProps = productList[prodId]
+        prodProps.step = 5 || {};
+        console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
+        analytics.track('Product Added', prodProps);
+    }
+    const productRemoved = (prodId) => {
+        prodProps = productList[prodId]
+        prodProps.step = 5 || {};
+        console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
+        analytics.track('Product Removed', prodProps);
+    }
+
+
+
+</script>
+
+
+
+<div class="ecommerce-container">
+    <!-- <input type="text" name="reviewCart" required="" id="reviewCart-ecommerce-input" placeholder="Review Cart"/> -->
+    <p><button onclick="viewedCheckoutStep(1)" class="auto-btn btn-small">Step 1 "Viewed Checkout"</button></p>        
+    <p><button onclick="completedCheckoutStep(1)" class="auto-btn btn-small">Step 1 "Completed Checkout"</button></p>
+                
+    <!-- <input type="text" name="collectPayment" id="collectPayment-ecommerce-input" required="" placeholder="Collect Payment"/> -->
+    <p><button onclick="viewedCheckoutStep(2)" class="auto-btn btn-small">Step 2 "Viewed Checkout"</button></p>
+    <p><button onclick="completedCheckoutStep(2)" class="auto-btn btn-small">Step 2 "Completed Checkout"</button></p>
+
+    <!-- <input type="text" name="confirmPurchaseDetails" id="confirmPurchaseDetails-ecommerce-input" required="" placeholder="confirmPurchaseDetails"/> -->
+    <p><button onclick="viewedCheckoutStep(3)" class="auto-btn btn-small">Step 3 "Viewed Checkout"</button></p>
+    <p><button onclick="completedCheckoutStep(3,'FedEx','Visa')" class="auto-btn btn-small">Step 3 "Completed Checkout"</button></p>
+
+    <!-- <input type="text" name="reciept" id="reciept-ecommerce-input" required="" placeholder="reciept"/> -->
+    <p><button onclick="viewedCheckoutStep(4)" class="auto-btn btn-small">Step 4 "Viewed Checkout"</button></p>
+    <p><button onclick="completedCheckoutStep(4,'FedEx','Visa')" class="auto-btn btn-small">Step 4 "Completed Checkout"</button></p>
+                                
+
+    <div id="36477" class="product" onmouseover="logProducts()">
+        <p><button onclick="viewedCheckoutStep(5)" class="auto-btn btn-small">Step 5 "Product Clicked"</button></p>
+        <p><button onclick="productViewed(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
+        <p><button onclick="productClicked(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
+        <p><button onclick="productAdded(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
+        <p><button onclick="productRemoved(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
+    </div>        
+        
+        
+    <div id="53865" class="product" onmouseover="logProducts()">
+        <p><button onclick="viewedCheckoutStep(5)" class="auto-btn btn-small">Step 5 "Product Clicked"</button></p>
+        <p><button onclick="productViewed(`p_53865`,5)" class="auto-btn btn-small">Product: 53865 - Swipe Tops</button></p>
+        <p><button onclick="productClicked(`p_53865`,5)" class="auto-btn btn-small">Product: 53865  - Swipe Tops</button></p>
+        <p><button onclick="productAdded(`p_53865`,5)" class="auto-btn btn-small">Product: 53865  - Swipe Tops</button></p>
+        <p><button onclick="productRemoved(`p_53865`,5)" class="auto-btn btn-small">Product: 53865  - Swipe Tops</button></p>
+    </div>        
+</div>

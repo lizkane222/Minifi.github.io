@@ -16,7 +16,7 @@ router.get('/', async (req,res)=> {
         res.render('motivate/index', context = {
             motivations : foundMotivate,
             page_title : "Motivate List",
-            pageCategory : "Motivate Survey",
+            page_category : "Survey | ",
             analytics : analytics
         }
         )
@@ -32,7 +32,7 @@ router.get('/new', (req,res)=> {
     res.render('motivate/new.ejs',
         context = {
             page_title : "New Motivate",
-            pageCategory : "Motivate Survey",
+            page_category : "Survey | ",
             analytics : analytics
         }
     )

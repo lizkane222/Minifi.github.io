@@ -88,6 +88,7 @@ app.get('/', (req, res) => {
     res.render('index',
     context = {
         // Motivate : db.Motivate
+        page_category : "Minifi | ",
         page_title : "Home",
         analytics : analytics
     }

@@ -1,11 +1,7 @@
 <head>
     <%- include('../partials/head') %>
-    <title><%=page_title%></title>
 </head>
 <body>
-    <style>
-
-    </style>
     <header>
         <%- include('../partials/navbar') %>
     </header>
@@ -39,7 +35,7 @@
 </div>
 <br/><br/><br/><br/> -->
 <div>
-    <button onclick=AnalyticsCompanyProfileUpdated()>Make Customer Track Call</button>
+    <button onclick="AnalyticsCompanyProfileUpdated()">Make Customer Track Call</button>
 </div>
 <br/><br/><br/><br/>
 <div>
@@ -53,14 +49,19 @@
     <a><img src="../../public/styles/images/rachit-tank-2cFZ_FB08UM-unsplash.jpg" alt="unsplash- rachit-tank"/></a>
     <a><img src="../../public/styles/images/surya-a-3o-X8WJOP5E-unsplash.jpg" alt="unsplash- surya-a"/></a> -->
     <!-- <a><img src="../../public/styles/images" alt="unsplash"/></a> -->
-    <button onclick=identifyAddInterest(`Shoes`)>Shoes</button>
-    <button onclick=identifyAddInterest(`Watches`)>Watches</button>
-    <button onclick=identifyAddInterest(`Glasses`)>Glasses</button>
-    <button onclick=identifyAddInterest(`Pants`)>Pants</button>
-    <button onclick=identifyAddInterest(`Jackets`)>Jackets</button>
-    <button onclick=identifyAddInterest(`Gear`)>Gear</button>
-    <button onclick=identifyAddInterest(`Accessories`)>Accessories</button>
+    <button onclick="identifyAddInterest(`Shoes`)">Shoes</button>
+    <button onclick="identifyAddInterest(`Watches`)">Watches</button>
+    <button onclick="identifyAddInterest(`Glasses`)">Glasses</button>
+    <button onclick="identifyAddInterest(`Pants`)">Pants</button>
+    <button onclick="identifyAddInterest(`Jackets`)">Jackets</button>
+    <button onclick="identifyAddInterest(`Gear`)">Gear</button>
+    <button onclick="identifyAddInterest(`Accessories`)">Accessories</button>
 </div>
+
+
+<%- include('../partials/ecommerce') %>
+
+
 
 <script> 
     
@@ -138,7 +139,7 @@ const AnalyticsCompanyProfileUpdated = () => {
                 dateUpdated : Date.now()
             }
         }
-        const properties = {traits}
+        const properties = traits
         analytics.identify(serverUserId,traits,[])
         analytics.track("Interest Added",properties)
         //analytics.track("Interest Added")
@@ -190,8 +191,6 @@ const AnalyticsCompanyProfileUpdated = () => {
     //}
     //}
 
-</script>    
-<script>
     //let username
 
     //    const idUser = () => {

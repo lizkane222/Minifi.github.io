@@ -9,7 +9,8 @@
                     <h3>Home</h3>
                 </li>
             </a>
-            <a class="nav-link"  href="/motivate">
+            <!-- <a class="nav-link"  href="/motivate"> -->
+            <a class="nav-link"  href="/motivate/new">
                 <li class="nav-item" onclick="trackNavRoute(`Motivate`,`minifiSite`)">
                     Motivate
                 </li>
@@ -42,7 +43,12 @@
             </a>
         </ul>
     </nav>
-        <input type="button" onclick="runResetUser()" class="resetUser" value="RESET USER"/>
+        <input type="button" onclick="runResetAll()" class="resetUser" value="RESET ALL"/>
+        <input type="button" onclick="runResetUserId()" class="resetUser" value="RESET User"/>
+        <input type="button" onclick="runResetAnonId()" class="resetUser" value="RESET Anon"/>
+        <input type="button" onclick="runResetGroupId()" class="resetUser" value="RESET Grou"/>
+        <input type="button" onclick="changeEmployees()" class="resetUser" value="Change Employee"/>
+        <input type="button" onclick="changeCompany()" class="resetUser" value="Change Company"/>
 
 </header>
 
@@ -105,16 +111,19 @@
 </style>
 
 <script>
-   const runResetUser = () => {
+   const runResetAll = () => {
         analytics.reset()
         let reloadPage = () => {
             //return window.location.href = "";
-            reload();
+            //reload();
+            //location.href = thisURL
             location.reload();
-
         }
+        reloadPage()
         console.log("reset has occured");
         console.log("HEADERS ",Headers)
+        //location.replace()
+        analytics.ready(getPageContext());
     }
     const trackNavRoute = (navLinkName, currentPage) => {
         let properties = {
@@ -129,4 +138,35 @@
             }}
         });
     }
+    
+    const runResetUserId = () => {
+        analytics.reset()
+        analytics.ready(getPageContext());
+        if(serverUserId !== null){
+            console.log("resetting userId")
+            setCookie("ajs_user_id", null,3)
+            serverUserId = null
+        }
+    }
+    const runResetAnonId = () => {
+        analytics.reset()
+        analytics.ready(getPageContext());
+        if(serverAnonymousId !== null){
+            console.log("resetting anonymousId")
+            setCookie("ajs_anonymous_id", null,3)
+            serverAnonymousId = null
+        }   
+    }
+    const runResetGroupId = () => {
+        analytics.reset()
+        analytics.ready(getPageContext());
+        if(groupId !== null){
+                console.log("resetting groupId")
+                setCookie("ajs_group_id", null,3)
+                groupId = null;
+                idList = "";
+        }
+    }
+
+    
 </script>

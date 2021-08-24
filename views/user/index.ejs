@@ -1,13 +1,217 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <%- include('../partials/head') %>
+
 </head>
 
 <body>
     <header>
         <%- include('../partials/navbar') %>
     </header>
+    <div>
+        <label>Your First Name</label>
+        <input type="text" name="groupUser" required="" id="group-user-name-index" placeholder="Your First Name"/>
+        <p class="no-wrap"><button onclick="chooseFirstNameGroup(0,shouldersFamGroup)" class="auto-btn btn-small">0</button><button onclick="chooseFirstNameGroup(1,shouldersFamGroup)" class="auto-btn btn-small">1</button><button onclick="chooseFirstNameGroup(2,shouldersFamGroup)" class="auto-btn btn-small">2</button><button onclick="chooseFirstNameGroup(3,shouldersFamGroup)" class="auto-btn btn-small">3</button><button onclick="chooseFirstNameGroup(4,shouldersFamGroup)" class="auto-btn btn-small">4</button><button onclick="chooseFirstNameGroup(5,shouldersFamGroup)" class="auto-btn btn-small">5</button><button onclick="chooseFirstNameGroup(6,shouldersFamGroup)" class="auto-btn btn-small">6</button><button onclick="chooseFirstNameGroup(7,shouldersFamGroup)" class="auto-btn btn-small">7</button><button onclick="chooseFirstNameGroup(8,shouldersFamGroup)" class="auto-btn btn-small">8</button><button onclick="chooseFirstNameGroup(9,shouldersFamGroup)" class="auto-btn btn-small">9</button><button onclick="chooseFirstNameGroup(10,shouldersFamGroup)" class="auto-btn btn-small">10</button><button onclick="chooseFirstNameGroup(11,shouldersFamGroup)" class="auto-btn btn-small">11</button><button onclick="chooseFirstNameGroup(12,shouldersFamGroup)" class="auto-btn btn-small">12</button><button onclick="chooseFirstNameGroup(13,shouldersFamGroup)" class="auto-btn btn-small">13</button><button onclick="chooseFirstNameGroup(14,shouldersFamGroup)" class="auto-btn btn-small">14</button><button onclick="chooseFirstNameGroup(15,shouldersFamGroup)" class="auto-btn btn-small">15</button></p>
+        
+        <label>Last Name</label>
+        <input type="text" name="lastNameGroup" id="group-user-last-index" required="" placeholder="Last Name"/>
+        <p><button onclick="chooseLastNameGroup(1)" class="auto-btn btn-small">1</button><button onclick="chooseLastNameGroup(2)" class="auto-btn btn-small">2</button><button onclick="chooseLastNameGroup(3)" class="auto-btn btn-small">3</button><button onclick="chooseLastNameGroup(4)" class="auto-btn btn-small">4</button><button onclick="chooseLastNameGroup(5)" class="auto-btn btn-small">5</button><button onclick="chooseLastNameGroup(6)" class="auto-btn btn-small">6</button><button onclick="chooseLastNameGroup(7)" class="auto-btn btn-small">7</button><button onclick="chooseLastNameGroup(8)" class="auto-btn btn-small">8</button><button onclick="chooseLastNameGroup(9)" class="auto-btn btn-small">9</button><button onclick="chooseLastNameGroup(10)" class="auto-btn btn-small">10</button><button onclick="chooseLastNameGroup(11)" class="auto-btn btn-small">11</button><button onclick="chooseLastNameGroup(12)" class="auto-btn btn-small">12</button><button onclick="chooseLastNameGroup(13)" class="auto-btn btn-small">13</button><button onclick="chooseLastNameGroup(14)" class="auto-btn btn-small">14</button><button onclick="chooseLastNameGroup(15)" class="auto-btn btn-small">15</button></p>
+    
+
+        <label>Company Id</label>
+        <input type="text" name="groupId" id="inputgroupId" placeholder="groupId"/>
+        <span id="groupBtns">
+            <button class="faded-btn" onclick="giveGroupId()" >CHANGE GROUP ID</button>
+            <button onclick="groupCall()" >CALL GROUP</button>
+        </span>
+        
+        <hr/>
+         
+        <!-- -->
+        <div>
+            <h3>PROFILE</h3>
+            <p>Your Name : <span id="profileName"></span></p>
+            <p>Username : <span id="profileUsername"></span></p>
+            <p>Personal Email : <span id="profilePersonalEmail"></span></p>
+            <p>Social Media : <span id="profileSocialMedia"></span></p>
+            <hr/>
+            <p>Job Title : <span id="profileTitle"></span></p>
+            <p>Organization : <span id="profileOrganization"></span></p>
+            <p>Work Email : <span id="profileWorkEmail"></span></p>
+            <hr/>
+
+        </div>
+    </div>
+    <!-- <input type="text" name="groupId" id="inputgroupId" placeholder="groupId"/><button onclick="idUser()">SAVE</button> -->
+    <section class="employee-company">
+        <div>
+            <h4>NEW EMPLOYEE</h4>
+            <button onclick="changeEmployees()" class="auto-btn create btn-small">Add Employee Info To Company</button>
+        </div>
+        <div>
+            <h4>NEW COMPANY</h4>
+            <button onclick="changeCompany()" class="auto-btn create btn-small">Create New Company</button>
+        </div>
+    </section>
+    <script>
+        shouldersFamGroup = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","Molly","Courtney","Luke","Micah","Austin","Taylor","Lilly","Ernest","Ellis"]
+        firstNamesGroup = ["Liz","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl",]
+
+        let firstNameGroupInput,lastNameGroupInput
+        const chooseFirstNameGroup = (num,array) =>{
+            console.log(array[num])
+            firstNameGroupInput = array[num]
+
+            console.log(`firstNameGroupInput : `,firstNameGroupInput)
+            document.getElementById("group-user-name-index").value = firstNameGroupInput;
+            firstNameInput = firstNameGroupInput
+            document.getElementById("firstName-foot-index").value = firstNameInput; 
+        }
+        const chooseLastNameGroup = (num) =>{
+            console.log(lastNames[num])
+            lastNameGroupInput = lastNames[num]
+
+            console.log(`lastNameGroupInput : `,lastNameGroupInput)
+            document.getElementById("group-user-last-index").value = lastNameGroupInput;
+            lastNameInput = lastNameGroupInput
+            document.getElementById("lastName-foot-index").value = lastNameInput;
+        }
+        let firstNameGroupId = firstNameGroupInput
+
+        let groupId;
+        let groupIdList = [];
+        let idList = "";
+        // let thisGroupId
+        let cookieUserId
+        let cookieGroupId
+        let employeeEmail
+        const giveGroupId = () => {
+            if(groupId !== null){
+                console.log("resetting groupId")
+                setCookie("ajs_group_id", null,3)
+                //window.localStorage.ajs_anonymous_id = null
+                groupId = null;
+                idList = "";
+            }
+            let groupIdArray = ["0e8c78","ea9d97","a7b818","5e8632","0e8c78","fj9d87a","3b8215","ed7312","0j8b78","sa9d97","k7b728","5e9275"];
+            let item 
+            let counter = 4
+            for(let i=0; i<4;i++){
+                item = groupIdArray[Math.floor(Math.random()*(groupIdArray.length))]
+                //console.log(`***THIS IS ITEM*** `,item)
+                idList = idList.concat(item)
+                counter--
+                if(counter == 0){
+                    groupIdList.push(idList)
+                    counter = 4
+                }
+            }
+            //** update GROUPID
+            groupId = groupIdList[groupIdList.length-1]
+            console.log(`groupId = `,groupId)
+            console.log(`groupIdList = `,groupIdList)
+
+            document.getElementById("inputgroupId").value = groupId 
+            analytics.identify(serverUserId,{groupId:groupId})
+            
+            employeeEmail = `${firstNameGroupInput}${lastNameGroupInput}@kanecorp.org`
+        }
+        
+        let companyProperties
+        let employeeId, employeeName, employeeFirstName, employeeLastName, employeeUserName;
+
+        const groupCall = () => {
+
+            companyProperties = {
+                $company: document.getElementById("organization-foot-index").value,
+                $name: document.getElementById("organization-foot-index").value,
+                companyName: document.getElementById("organization-foot-index").value,
+                $avatar: "https://imgur.com/UHwbel0",
+                $groupId: groupId,
+                groupId: groupId,
+                $firstSeen : Date.now(),
+                $employees:[{
+                    employeeId : employeeId,
+                    employeeName: `${firstNameGroupInput} ${lastNameGroupInput}`,
+                    employeeFirstName: firstNameGroupInput,
+                    employeeLastName: lastNameGroupInput,
+                    employeeUserName : userNameInput,
+                    groupId:groupIdList,
+                }]
+            }
+            traits = {
+                $groupId:groupIdList,
+                groupId:groupIdList,
+                $avatar: "https://imgur.com/UHwbel0",
+                name:`${firstNameGroupInput} ${lastNameGroupInput}`,
+                employeeId : serverUserId,
+                email: document.getElementById("email-foot-index").value,
+                favSocMedia : favSocMediaInput,
+                anonymousId : serverAnonymousId,
+                username : userNameInput,
+                $company : companyProperties
+            }
+            analytics.group(groupId,companyProperties,{integrations:{"All":false,"Marketo V2":false,"Customer.io":true, "Klaviyo":true, "Google Analytics":true,"Mixpanel":true,"HubSpot":true,"Amplitude":true}})
+            analytics.identify(serverUserId,traits,{
+                $groupId:groupIdList,
+                $name: document.getElementById("organization-foot-index").value,
+                integrations:{"All":false,"Marketo V2":false,"Customer.io":true, "Klaviyo":true, "Google Analytics":true,"Mixpanel":true,"HubSpot":true,"Amplitude":true},
+                }
+            )
+            analytics.track("Group Company Traits Identified",companyProperties,{
+                $userId:userId,
+                $groupId : groupIdList,
+                $name: document.getElementById("organization-foot-index").value,
+                integrations:{"All":false,"Marketo V2":true,"Customer.io":true, "Klaviyo":true, "Google Analytics":true,"Mixpanel":true,"HubSpot":true,"Amplitude":true}
+                }
+            )
+            analytics.track("Group User Traits Identified",traits,{
+                $userId:userId,
+                $groupId : groupIdList,
+                $name: document.getElementById("organization-foot-index").value,
+                integrations:{"All":false,"Marketo V2":true,"Customer.io":true, "Klaviyo":true, "Google Analytics":true,"Mixpanel":true,"HubSpot":true,"Amplitude":true}
+                }
+            )
+            // function() {
+            //         analytics.reset();
+            //         window.location.href = "";
+            // }
+        } 
+
+        let temporaryEmployeeList = []
+        let temporaryGroupId
+        const changeEmployees = () => {
+            temporaryGroupId = groupId
+            // companyProperties.$employees.push(companyProperties.$employees)
+            let thisEmployee = companyProperties.$employees
+            temporaryEmployeeList.push(thisEmployee)
+            analytics.reset()
+            document.getElementById("firstName-foot-index").value = ""
+            document.getElementById("group-user-name-index").value = ""
+            document.getElementById("lastName-foot-index").value = ""
+            document.getElementById("group-user-last-index").value = ""
+            document.getElementById("email-foot-index").value = ""
+            document.getElementById("fav-soc-media-foot-index").value = ""
+            document.getElementById("userName-foot-index").value = ""
+            groupId = temporaryGroupId
+            setCookie("ajs_group_id",groupId,3);
+            setCookie("ajs_user_id",null,3);
+            serverUserId = null;
+            callServerUser();
+            analytics.ready(getPageContext());
+        } 
+        const changeCompany = () => {
+            giveGroupId()
+            document.getElementById("occupation-foot-index").value = "";
+            document.getElementById("organization-foot-index").value = "";
+            analytics.ready(getPageContext());
+
+        }  
+</script>
+
+
+
+
+
 
 <style>
     .product-image {
@@ -21,8 +225,15 @@
         height: 30vw;
     }
 </style>
-<!-- CUSTOMER BASIC BUTTON CLICK IDENTIFY TRACK CALL -->
+<!-- key : value in object exist -->
+<!-- groupProps = properties
+            groupProps.
+                prodProps = productList[prodId]
+                prodProps.step = 5 || {};
+                console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
+                analytics.track('Product Viewed', prodProps); -->
 
+<!-- CUSTOMER BASIC BUTTON CLICK IDENTIFY TRACK CALL -->
 
 <!-- <div class="productInput">
     <img src="../../public/images/daniel-korpai-hbTKIbuMmBI-unsplash.jpg" class="product-image"/>

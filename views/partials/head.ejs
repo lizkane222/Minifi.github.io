@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<head>
 <html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta rel="canonical">
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-<script src="../../server.js"></script>
-<title><%=page_title%></title>
+<title><%=page_category%><%=page_title%></title>
 
 
 <style>
@@ -51,18 +51,29 @@
         text-decoration: none;
         color: pink;
     }
+
+    .no-wrap{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        width: 80%;
+        min-width: 1px;
+    }
+
     .footer {
         position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;
-        background-color: rgba(100,110,110,.5);
+        background-color: rgba(190,190,190,.5);
         color: aqua;
         text-align: center;
         max-height: 15vh;
+        margin-top: 5vh;
     }
     .foot-index-container{
-        margin: 15vh 15vw;
+        margin: -5vh 20vw 5vh;
         padding: 2vh;
         background-color: rgba(70,70,70,.5);
         text-align: center;
@@ -76,11 +87,11 @@
     }
     .auto-btn {
         background-color: rgba(0,0,0,0);
-        color: aqua;
+        color: rgba(100,100,100,1);
         font-size: 1.5em;
         /*box-shadow: 2px 2px 2px rgba(40,40,40,.8);*/
         text-shadow: 2px 2px 2px rgba(0,0,0,1);
-
+        transition: 250ms ease-in-out;
     }
     .auto-btn:hover {
         transform: scale(1.3);
@@ -88,13 +99,31 @@
     }
     .btn-small {
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        margin: .05vw;
-        padding: .5em;
+        margin: .02vw;
+        padding: .25em;
         radius: 10px;
         border: none;;
     }
     .btn-small:focus {
         outline: none;
+    }
+    .faded-btn {
+        background-color: rgba(100,100,100,.5);
+    }
+    .employee-company {
+        display: flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        overflow: wrap;
+        margin: 5vh auto;
+    }
+    .employee-company>div>button{
+        background-color: rgba(175,190,200,.5);
+    }
+    .auto-btn .create:hover {
+        transform: scale(1.1);
+        transition: 200ms ease-in-out;
     }
     #docIframes{
         min-width: 95vw;
@@ -103,15 +132,61 @@
         flex-wrap: wrap;
     }
     .product-img{
-
+        
     }
     .mycomment {
         font-style: italic;
     }
 
+
+    div .product {
+        background-color: rgba(230,230,230,1);
+        box-shadow: 2px 2px 0px rgba(100,100,100,.8);
+        transition: 1000ms ease-in-out; 
+        margin: 5vh auto;
+        min-width: 30vw;
+        max-width: 45vw;
+        text-align: center;
+        text-shadow: rgba(0,0,0,0);
+    }
+    div .product:hover {
+        transition: 1000ms ease-in-out; 
+        transform: scale(1.2) ease-in-out;
+        box-shadow: 2px 2px 0px rgba(100,100,100,.8);
+        color: rgba(40,40,40,1);
+    }
 </style>
 
 <script>
+// let pageCtegory = page_category
+// let pageTitle = page_title
+
+    // -----TIMEOUT FUNCTION----
+    // function loadFrame() {
+    //     var iframe = document.getElementById("defframe");
+    //     iframe.src = "/frame.php"
+    // };
+    // window.onload = setTimeout(loadFrame, 10000);
+    // analytics.timeout(500); 
+
+        //  ↓ ! ↓ ! ↓ ! THIS TIMEOUT FUNCTION WORKS ↓ ! ↓ ! ↓ ! ↓ 
+        // const start = Date.now();
+        // console.log('starting timer...');
+            // expected output: starting timer...
+
+        // setTimeout(() => {
+        //     const millis = Date.now() - start;
+
+        //     console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
+            
+        //     expected output: seconds elapsed = 2
+        // }, 1500);
+
+        // setTimeout(let pageCategory = page_category,250) 
+        // setTimeout(console.log(`pageCategory : `,pageCategory),300) 
+        // setTimeout(let pageTitle = page_title,325) 
+        // setTimeout(console.log(`pageTitle : `,pageTitle),350) 
+
     // let options = {
         // context:{
         //     active: window.clientInformation.userActivation,
@@ -150,51 +225,27 @@ function getCookie(cname) {
     }
     return "";
 }
+    
     // COOKIE ANOYMOUS
         // global variable anonymousId, assigned on page call, accessible if sent serverside
-    // let serverAnonymousId = getCookie("ajs_anonymous_id")
+    //let serverAnonymousId = getCookie("ajs_anonymous_id") => "431c77b7-c6dd-4ab6-a20e-4138cc6075b1"
     // // analytics.setAnonymousId('ABC-123-XYZ')
     // // analytics.setAnonymousId('')
     // let serverUserId = getCookie("ajs_user_id")
     // let serverGroupProperties = getCookie("ajs_group_properties")
     // let serverGroupId = getCookie("ajs_group_id")
     // let serverUserTraits = getCookie("ajs_user_traits")
-    
+    let userAnonymousId = getCookie("ajs_anonymous_id")
     let serverAnonymousId
     // analytics.setAnonymousId('ABC-123-XYZ')
     // analytics.setAnonymousId('')
     let serverUserId = getCookie("ajs_user_id")
     let serverGroupProperties = getCookie("ajs_group_properties")
-    let serverGroupId = getCookie("ajs_group_id")
+    let [serverGroupId] = getCookie("ajs_group_id")
     let serverUserTraits = getCookie("ajs_user_traits")
     
     let userId
-    // function to be ran on load after .page() has completed and anonymousId is not null
-    const callServerAnon = () => {
-        // assign variable value
-        // analytics.ready(!analytics.user().anonymousId())
-        // if(analytics.ready()){
-            // serverAnonymousId = analytics.user().anonymousId();
-                // serverAnonymousId = analytics.user().anonymousId()
-
-            // return analytics.setAnonymousId('ABC-123-XYZ')
-
-            // try{
-            //     serverAnonymousId = !analytics.user.anonymousId
-            // }
-            // catch{
-            //     serverAnonymousId = !analytics.user().anonymousId()
-            // }
-            // finally{
-            //     serverAnonymousId = !analytics.user().anonymousId()
-            // }
-            //  // view variable value in console
-            // console.log('serverAnonymousId ',serverAnonymousId)
-            // // return value to be used on backend
-            // return serverAnonymousId
-            // return analytics.user().anonymousId()
-        // }
-    }  
+        
     // function to be ran on load after .page() has completed and anonymousId is not null
     const callServerUser = () => {
         // assign variable value
@@ -210,21 +261,11 @@ function getCookie(cname) {
             else{
                 console.log("serverUserId exists 'truthy': " + serverUserId )
             }
-            
-            console.log('serverUserId ',serverUserId)
-            
             // return value to be used on backend
             return serverUserId
         }
     }  
     
-    // -----TIMEOUT FUNCTION----
-    // function loadFrame() {
-    //     var iframe = document.getElementById("defframe");
-    //     iframe.src = "/frame.php"
-    // };
-    // window.onload = setTimeout(loadFrame, 10000);
-    // analytics.timeout(500); 
 
 
 
@@ -250,33 +291,86 @@ function getCookie(cname) {
     //     // return writeKeyGlobal
     // }
 
+    // ---- PAGE CALL  ----
+    // console.log("calling callServerAnon function inside page");
+    // analytics.page({}, { anonymousId: !callServerAnon},{},{options});
+    
+    // analytics.page({}, { anonymousId: !callServerAnon},{});
+    
+    // console.log(`pageCategory,pageTitle : `,pageCategory,pageTitle)
+    // console.log(`page_category,page_title : `,page_category,page_title)
+    const getPageContext = () => {
+        let gaPageTitle = window.document.title
+        let pageCategory
+        let pageTitle
 
+        gaPageTitle = gaPageTitle.split(" | ")
+        console.log(`gaPageTitle - `,gaPageTitle)
+        pageCategory = gaPageTitle[0]
+        pageTitle = gaPageTitle[1]
+        
+        // angularCanonicalUrl = "thisapp/"
+        // angularComponent = "userContainer/"
+        // PAGE FORMAT
+        // /* analytics.page([category], [name], [properties], [options], [callback]); */
+        analytics.page(pageCategory,pageTitle, {},
+        // {
+            // title: "OVERRIDING TITLE",
+            // url: `${angularCanonicalUrl}${angularComponent}`,
+            // path: `${angularComponent}`,
+        //},
+        {
+            integrations:{"All":true, "Mixpanel":false, "Amplitude":true},
+        }, 
+            setTimeout(() => {
+                // const millis = Date.now() - start;
+                
+                serverAnonymousId = window.localStorage.ajs_anonymous_id
+                console.log("FRESH PAGE LOAD", pageCategory,pageTitle)
+                console.log(`window.location.href - URL : `,window.location.href)
+                console.log(`serverAnonymousId - `,serverAnonymousId)
+
+                // console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
+                // expected output: seconds elapsed = 2
+            }, 1500)
+        );
+    }
     
         // console.log(`before function FIRST`, Date.now())
     !function(){analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","timeout"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.13.2";
         // console.log(`inside function LAST`,Date.now())
         analytics.load("XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh");
-        analytics.timeout(500); 
 
     
 
-    
+        
+            analytics.ready(getPageContext());
+            // console.log(`AFTER PAGE CALL: PAGE NAME = `,pageCategory,pageTitle);
 
-        // ---- PAGE CALL  ----
-            // console.log("calling callServerAnon function inside page");
-            // analytics.page({}, { anonymousId: !callServerAnon},{},{options});
-            console.log(`serverAnonymousId - `,serverAnonymousId)
-            // analytics.page({}, { anonymousId: !callServerAnon},{});
-            let pageCategory = "Minifi"
-            let gaPageTitle = window.document.title
-            let segmentPageFullname = `${pageCategory} ${gaPageTitle}`
+            //     for(let i=0; i<gaPageTitle.length; i++){
+            //         if(gaPageTitle[i]=="|"){
+            //             pageCategory = gaPageTitle[0,i+1]
+            //             console.log('pageCategory:',pageCategory)
+            //             pageTitle = gaPageTitle[i+1,gaPageTitle.length]
+            //             console.log('pageTitle:',pageTitle)
+            //         }
+            //         if(i ==gaPageTitle.length){
+            //             console.log(`pageCategory,pageTitle : `,pageCategory,pageTitle)
+            //             let pageCategoryTitle = (pageCategory,pageTitle)
+            //             analytics.page(pageCategory,pageTitle);
+            //         }
+            //     }
+
+            // Below page call passes page category and page name alright but not recognized in GA
             
-            analytics.page(segmentPageFullname);
-            // analytics.page();
+            // analytics.page(page_category, page_title);
+            // if(page_category && page_title){
+            //         analytics.page(page_category,page_title)
+            // }
+
             // analytics.page({},{},{},{options});
 
             // console.log('window.location.search - QUERY STRING : ',window.location.search)
-            console.log(`window.location.href - URL : `,window.location.href)
         
         // QUERYSTRING EXISTS
             const queryStringExists = () => {
@@ -293,8 +387,16 @@ function getCookie(cname) {
         // console.log("calling callServerUser function");
         analytics.ready(queryStringExists);
         analytics.ready(console.log(`analytics : `,analytics));
-        console.log(`AFTER FUNCTION but before running`,Date.now())
+        // console.log(`AFTER FUNCTION but before running`,Date.now())
         // window.onload = setTimeout(segment, 50000);
+        
+        // async function anonCookie(userAnonymousId){
+        if(userAnonymousId != null || userAnonymousId != undefined ){
+            console.log(`ajs_anonymous_id : userAnonymousId - `,userAnonymousId)
+        }
+        else {
+            console.log(`UNDEFINED ajs_anonymous_id : userAnonymousId - `,userAnonymousId)
+        }
     }}();
 
 // 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 
@@ -308,8 +410,7 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 
-let userAnonymousId = getCookie("ajs_anonymous_id")
-console.log(userAnonymousId)
+
 // "\"f00c99f2-f6e5-4b88-b12f-84ce726d35dc\""
 // "\"f00c99f2-f6e5-4b88-b12f-84ce726d35dc\""
 
