@@ -152,7 +152,9 @@
     </nav>
     <input type="button" onclick=runResetUser() class="resetUser" value="RESET USER"/>
 </header>    
-    
+    <br/>
+    <h4 onclick="pageUTM()">SEND UTM</h4>
+    <br/>
 <main>
     <h1>What is your favorite place to travel?</h1> 
     <p>I am building a directory of the sweetest travel destinations.</p>  
@@ -398,6 +400,45 @@ const createNewAccount = () => {
    
 } 
 //document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
+
+// START: UTM PARAMETERS CALL
+const pageUTM = () => {
+    let campaignsList = {content:"Daily Initial Post - Multitasking versus Immersive Tasks", campaignId:71234934723}
+    let campaignId = 71234934723
+
+    let url = 'https://lizkane222.github.io/Minifi.github.io/?utm_source=twitter&utm_medium=social&utm_term=keyword&utm_content=Daily%Initial%Post%-%Multitasking%versus%Immersive%Tasks&utm_campaign=71234934723'
+    let varAContent = campaignsList.content
+    let varAId = campaignsList.campaignId
+
+    let campaign = {
+        source: 'Twitter',
+        medium: 'social',
+        content: varAContent,
+        id: varAId
+    }
+
+    analytics.page({
+        url: url
+      });
+    analytics.page({},{},{},
+      {
+        context: {
+            campaign: campaign
+        }
+    });
+
+    analytics.track('Test', {}, {
+        context: {
+            campaign: campaign,
+            page: {
+                url : url
+            }
+        }   
+    });
+    console.log('CHECK LAST PAGE & TRACK')
+}
+// END: UTM PARAMETERS CALL
+
 
 </script>
 </body> 
