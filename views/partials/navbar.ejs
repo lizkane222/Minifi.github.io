@@ -3,10 +3,10 @@
 <header id="headerNav" class="header clearfix">
     <nav class="navbar navbar-expand-lg ">
         <ul class="navbar-nav mr-auto" onclick="trackNavRoute(`logo`,`minifiSite`)">
-            <a class="navbar-brand"  href="/"><h3>minifi</h3></a>
+            <a class="navbar-brand"  href="/">minifi</a>
             <a class="nav-link"  href="/">
                 <li class="nav-item" aria-disabled="true" onclick="trackNavRoute(`Home`,`minifiSite`)">
-                    <h3>Home</h3>
+                    Home
                 </li>
             </a>
             <!-- <a class="nav-link"  href="/motivate"> -->
@@ -41,21 +41,28 @@
                     DOCS
                 </li>
             </a>
+            <a class="nav-link"  href="/docs/code">
+                <li class="nav-item" onclick="trackNavRoute(`docs`,`minifiSite`)">
+                    CODE
+                </li>
+            </a>
         </ul>
     </nav>
-        <input type="button" onclick="runResetAll()" class="resetUser" value="RESET ALL"/>
-        <input type="button" onclick="runResetUserId()" class="resetUser" value="RESET User"/>
-        <input type="button" onclick="runResetAnonId()" class="resetUser" value="RESET Anon"/>
-        <input type="button" onclick="runResetGroupId()" class="resetUser" value="RESET Grou"/>
+    <div class="resetContainer">
+        <input type="button" onclick="aliasUser()" class="resetUser" value="ALIAS User"/>
         <input type="button" onclick="changeEmployees()" class="resetUser" value="Change Employee"/>
         <input type="button" onclick="changeCompany()" class="resetUser" value="Change Company"/>
-
+        <input type="button" onclick="runResetUserId()" class="resetUser" value="RESET User"/>
+        <input type="button" onclick="runResetAnonId()" class="resetUser" value="RESET Anon"/>
+        <input type="button" onclick="runResetGroupId()" class="resetUser" value="RESET Group"/>
+        <input type="button" onclick="runResetAll()" class="resetUser" value="RESET ALL"/>
+    </div>
 </header>
 
 
 <style>
     #headerNav {
-        width: 100%;
+        width: 100vw;
         height: 10vh;
         background-color: aquamarine;
         /* display: flex; */
@@ -66,25 +73,39 @@
     .navbar-nav {
         display: flex;
         flex-direction:row;
-        flex-wrap: wrap;
+        flex-wrap: no-wrap;
         justify-content: space-evenly;
-        overflow: wrap;
+        align-content: space-around;
+        align-items: flex-start;
     }
 
     .navbar-brand {
         float: left;
     }
     
-    .nav-link {
-        font-size: 1.5em;
+    .nav-link, .nav-item, .navbar-brand{
+        font-size: 1.2em;
         display: inline-flex;
-        text-align: left;
-        margin: 0 10px;
-        color:blueviolet;
+        margin: 0 5px;
+        color:rgba(90,90,90,.7);
+        text-decoration: none;
+        list-style: none;
+        text-align: center;
+    }
+    .resetContainer {
+        display:inline-flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: baseline;
+        align-content: center;
+        width: 98vw;
+        height: 7vh;
+
     }
 
     .resetUser {
         background-color: aquamarine;  
+        size: .5em;
         color: gainsboro;
         padding: 2.5% .5%;
         border-radius: 50px;
@@ -167,6 +188,17 @@
                 idList = "";
         }
     }
-
+    let aliasId
+    const aliasUser = () => {
+        aliasId = (Math.floor((Math.random() * 100000) + 1));
+            console.log("before alias", serverUserId, aliasId)
+        analytics.alias(aliasId, serverUserId, {traits:{externalId: serverUserId}})
+            //setCookie("ajs_user_traits.externalId", serverUserId,3): 
+        serverUserId = aliasId
+            console.log("after alias", serverUserId, aliasId)
+        setCookie("ajs_user_id", aliasId,3)
+        localStorage.setItem("ajs_user_id",aliasId)
+            console.log(window.localStorage.ajs_user_id)
+    }
     
 </script>

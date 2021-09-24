@@ -33,6 +33,28 @@ router.get('/', async (req,res)=> {
     };
 });
 
+
+// index code view
+// DISPLAY CODE AND RUN CALLS FROM BROWSER
+router.get('/code', async (req,res)=> {
+    
+    
+    // res.send("Motivate's INDEX Route is ⇪ and 🏃🏻‍♀️");
+    try {
+        // const foundMotivate = await db.Motivate.find({});
+        await res.render('docs/new.ejs', 
+        context = {
+            page_title : "Code",
+            page_category : "Docs | ",
+            analytics : analytics
+        }
+        )
+    } catch (error) {
+        console.log(error)
+        return res.send({message: `Internal Server Error: check docs controller @ index code route ${error}`});
+    };
+});
+
 // new 
 // router.get('/new', (req,res)=> {
 //     // res.send("Motivate's NEW Route is ⇪ and 🏃🏻‍♀️")

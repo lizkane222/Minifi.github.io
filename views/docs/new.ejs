@@ -1,19 +1,265 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <%- include('./partials/head') %>
+    <%- include('../partials/head') %>
 </head>
 
+
 <body>
-    <header>
-        <%- include('./partials/navbar') %>
-    </header>
-<!-- create new tamagotchi -->
 
+<script async>
+    let jsonPlaceholder = {
+        "userId" : '02221991',
+        "birthday":"02/22/1991",
+        "event": "identify"
+    }
 
+    let ajsPlaceholder = `analytics.identify('02221991',{birthday:"02/22/1991"})`
+        
+    let callType, callBody;
     
-</body>
+    const manuallyInputAnalytics = (lingo) => {
+        let ajsBody = document.getElementById("inputCodeBlockTextAreaAjs")
+        let jsonBody = document.getElementById("inputCodeBlockTextAreaJson")
+        
+        if(lingo == "ajs"){
+            let triggerButton = document.getElementById('ajsTrigger');
+            console.log(typeof(ajsBody))
+            console.log(ajsBody)
+            let ajs = eval(ajsBody)
+            console.log(ajs)
+        }
+
+        else if(lingo == "json"){
+            let triggerButton = document.getElementById("jsonEventType");
+            console.log(typeof(jsonBody))
+    
+            if (triggerButton != null){
+                callType = callType.toLowerCase();
+                let call = 'analytics'.concat('.',callType,'(',callBody,')')
+                let triggerCall = eval(call)
+            }
+        }
+    }
+    
+    let fillBody = (lingo) = () => {
+        let ajsBody = document.getElementById("inputCodeBlockTextAreaAjs")
+        let jsonBody = document.getElementById("inputCodeBlockTextAreaJson")
+        
+        if(lingo == "ajs"){
+            console.log(asjBody.value)
+            if (asjBody.value == null){
+                asjBody.value = ajsPlaceholder
+            }
+        }
+        else if (lingo == "json"){
+            console.log(jsonBody.value)
+            if (jsonBody.value == null){
+                jsonBody.value = jsonPlaceholder
+            }
+        }
+    }
+    
+    
+    const changeButton = (eventType) => {
+        let triggerButton = document.getElementById("jsonEventType");
+        console.log(eventType)
+        if(	triggerButton.innerText != eventType){
+            triggerButton.style.display = "block";
+            triggerButton.innerText = `Trigger ${eventType} Call`;
+          callType = eventType
+        }else{
+              triggerButton.style.display = "none";
+        }
+        let ajsBody = document.getElementById("inputCodeBlockTextAreaAjs")
+        let jsonBody = document.getElementById("inputCodeBlockTextAreaJson")
+    }
+    
+    
+    
+        
+        const manuallyInputAnalyticsCall2 = (language) => {
+            if(language == ajs){
+            }
+            if(language == json){
+                let json = document.querySelector("#inputCodeBlockTextAreaJson")
+                
+    
+            }
+        }
+        const changeButton2 = (e, eventType) => {
+            let button = document.getElementById("jsonEventType")
+            if(	button.innerHTML != `Trigger ${eventType} Call`){
+                button.innerHTML == `Trigger ${eventType} Call`;
+                button.style.display == "show";
+            }else{
+                button.style.display == "none";
+            }
+        }
+            
+            // let `checkbox+${eventType}` = document.getElementById(`radioCodeBlockJson${eventType}`)
+            //let checkbox = document.getElementById(`radioCodeBlockJson-${eventType}`)
+            
+            //let jsonButton = document.querySelector("#jsonEventType")
+            //document.querySelector(".jsonEventType").innerHtml = 
+    
+            //if(e.checked == true){
+            //    jsonButton.innerHtml = `Trigger ${eventType} call`
+            //    //jsonButton.value(`Trigger ${eventType} call`)
+            //    jsonButton.style.display = "block";
+            //}
+            //else {
+    
+            //}
+            //if(`checkbox+${eventType}` == true){
+    
+            //}
+        //}
+                //    jsonButton.style.display = "block";function myButtonFunction(e, eventType) {
+                    //}var checkBox = document.getElementById(`myCheck-${eventType}`);
+                    //else {var text = document.getElementById(`label${eventType}`);
+            //if (checkBox.checked == true){
+                      //}text.style.display = "block";
+                    //if(`checkbox+${eventType}` == true){} else {
+              // text.style.display = "none";
+                    //}}
+          //}
+        let localUserId, localAnonymousId, localUserTraits, localGroupId, localGroupTraits
+                        
+        const getItem = (item) => {
+            if(item == "Network"){
+                
+            }
+            if(item == "UserId"){
+                localUserId = window.localStorage.ajs_user_id
+                document.querySelector("#displayUserId") = localUserId
+            }
+            if(item == "AnonymousId"){
+                localAnonymousId = window.localStorage.ajs_anonymous_id
+                document.querySelector("#displayAnonymousId") = localAnonymousId
+            }
+            if(item =="UserTraits"){
+                localUserTraits =  window.localStorage.ajs_user_traits
+                document.querySelector("#displayUserTraits") = localUserTraits
+            }
+            if(item == "GroupId"){
+                localGroupId = window.localStorage.ajs_group_id
+                document.querySelector("#displayGroupId") = localGroupId
+            }
+            if(item == "GroupTraits"){
+                localGroupTraits = window.localStorage.ajs_group_traits
+                document.querySelector("#displayGroupTraits") = localGroupTraits
+            }
+        }
+        
+    
+       
+    
+    </script>
+    <header>
+    <%- include('../partials/navbar') %>
+</header>
+<!-- create new tamagotchi -->
+<div id="manualCodeBlock">
+    <section id="inputCodeBlockContainer">
+        
+        <!-- Make options run analytics code, parse json payload w/ event type -->
+        <div id="ajsBlock">
+            <h5 onclick="fillBody('ajs')">FIll AJS BODY</h5>
+            <label for="inputCodeBlockTextAreaAjs">Paste Code Block Here</label>
+            <code id="inputCodeBlockCodeAjs" ```javascript></code>
+                <textarea id="inputCodeBlockTextAreaAjs" name="textAreaCodeBlockAjs" rows="30" cols="50" ></textarea>
+            </br>
+            <label for="inputCodeBlockTextAreaAjsLabel">RUN AJS CALL</label>
+            <input type="checkbox" id="radioCodeBlockAjs" value="false">
+            <button onclick="manuallyInputAnalytics('ajs')" id="ajsTrigger">Trigger Call</button>
+        </div>
+        <div id="jsonBlock">
+            <label for="inputCodeBlockTextAreaJson">Paste Code Block Here</label><h5 onclick="fillBody('json')">FIll JSON BODY</h5>
+            <code id="inputCodeBlockCodeJson" ```json><textarea id="inputCodeBlockTextAreaJson" name="textAreaCodeBlockJson" rows="30" cols="50" placeholder="JSON" value=jsonPlaceholder></textarea></code>
+            </br>
+            <label for="inputCodeBlockTextAreaJsonLabel">RUN JSON CALL</label>
+            <input type="checkbox" id="radioCodeBlockJson" value="false">
+            
+            <!-- <label for="inputCodeBlockTextAreaJsonTrackLabel" id="labeltrack">track</label> -->
+            <!-- <input type="checkbox" id="radioCodeBlockJson-track" value="false" onclick="myButtonFunction(e,'track')"> -->
+            
+            <!-- <label for="inputCodeBlockTextAreaJsonTrackLabel" id="labelidentify">identify</label> -->
+            <!-- <input type="checkbox" id="radioCodeBlockJson-identify" value="false" onclick="myButtonFunction(e,'identify')"> -->
+            
+            <!-- <label for="inputCodeBlockTextAreaJsonTrackLabel" id="labelpage">page</label> -->
+            <!-- <input type="checkbox" id="radioCodeBlockJson-page" value="false" onclick="myButtonFunction(e,'page')"> -->
+            
+            <!-- <label for="inputCodeBlockTextAreaJsonTrackLabel" id="labelgroup">group</label> -->
+            <!-- <input type="checkbox" id="radioCodeBlockJson-group" value="false" onclick="myButtonFunction(e,'group')"> -->
+            
+            <!-- <label for="inputCodeBlockTextAreaJsonTrackLabel" id="labelalias">alias</label> -->
+            <!-- <input type="checkbox" id="radioCodeBlockJson-alias" value="false" onclick="myButtonFunction(e,'alias')"> -->
+            <div id="ajsEvents">
+                <p onclick="changeButton('TRACK')">track</p>
+                <p onclick="changeButton('IDENTIFY')">identify</p>
+                <p onclick="changeButton('PAGE')">page</p>
+                <p onclick="changeButton('GROUP')">group</p>
+                <p onclick="changeButton('ALIAS')">alias</p>
+                <button onclick="manuallyInputAnalytics('json')" id="jsonEventType">Trigger</button>
+            </div>
+            <!-- <button onclick="manuallyInputAnalyticsCall(json)" style="display:none">Trigger  <span id="jsonEventType"></span>  Call</button> -->
+            <!-- <button onclick="manuallyInputAnalyticsCall('json')" id="jsonEventType" style="display:hidden"></button> -->
+        </div>
+    </section>
+    <section id="getLocalData">
+        <label onclick="getItem('Network')">Network</label>
+        <p id="labelNetwork"></p>
+        <label onclick="getItem('UserId')">UserId</label>
+        <p id="labelUserId">UserId : <span id="displayUserId"></span></p>
+        <label onclick="getItem('AnonymousId')">AnonymousId</label>
+        <p id="labelAnonymousId">AnonymousId : <span id="displayAnonymousId"></span></p>
+        <label onclick="getItem('UserTraits')">UserTraits</label>
+        <p id="labelUserTraits">UserTraits : <span id="displayUserTraits"></span></p>
+        <label onclick="getItem('GroupId')">GroupId</label>
+        <p id="labelGroupId">GroupId : <span id="displayGroupId"></span></p>
+        <label onclick="getItem('GroupTraits')">GroupTraits</label>
+        <p id="labelGroupTraits">GroupTraits : <span id="displayGroupTraits"></span></p>
+    </section>
+</div>
+    
+    <style>
+        /* FLEX CONTAINER ROW */
+        #manualCodeBlock, #inputCodeBlockContainer { 
+            width: 98vw;
+            display: flex;
+            flex-direction:row;
+            flex-wrap: no-wrap;
+            justify-content: space-evenly;
+            align-content: space-around;
+            align-items: flex-start;
+        }
+        /* MAIN SECTION FOR CODE BLOCK */
+        #manualCodeBlock, #getLocalData, #ajsBlock, #jsonBlock {
+            margin: 5vh auto;
+            padding: 5vh;
+            flex-wrap: wrap
+        }
+        /*  FLEX CONTAINER COLUMN */
+        #getLocalData{
+            width: 98vw;
+            display: flex;
+            flex-direction:column;
+            flex-wrap: no-wrap;
+            justify-content: space-evenly;
+            align-content: space-around;
+            align-items: flex-start;
+        }
+        #ajsBlock, #jsonBlock {
+
+        }
+        #inputCodeBlockCodeJson, #inputCodeBlockCodeAjs{
+            width: 100%;
+        }
+        #jsonEventType{
+            display: block;
+        }
+    </style>
 <footer>
-    <%- include('./partials/footer') %>
+    <%- include('../partials/footer') %>
 </footer>
+</body>
 </html>
