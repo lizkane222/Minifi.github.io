@@ -219,7 +219,7 @@
             newSession = false
         }
     }
-
+  uTC()
   function identify(e){
     e.preventDefault();
     var form = e.target;
@@ -277,8 +277,11 @@ const runResetUser = () => {
     serverUserId = 0
 }
 
-let shouldersFam = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","Molly","Courtney","Luke","Micah","Austin","Taylor","Lilly","Ernest","Ellis"]
-    let firstNames = ["Liz","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl",]
+// let shouldersFam = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","Molly","Courtney","Luke","Micah","Austin","Taylor","Lilly","Ernest","Ellis"]
+//     let firstNames = ["Liz","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl",]
+    let shouldersFam = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","Molly","Courtney","Luke","Micah","Austin","Taylor","Lilly","Ernest","Ellis"]
+    let firstNames = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","Molly","Courtney","Luke","Micah","Austin","Taylor","Lilly","Ernest","Ellis","Elizabeth","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl","Jeff","Janae","Jenn","Jessica","Jillian","Jing","Jonathan","Joshua","Kacie","Katherine","Kevin","Kelsey","Kitt","Kyle","Latifa","Laurence","LeeAnne","Leslie","Alexandra","Lia","Linas","Lindsey","Loic","Lumi","Madison","Malea","Marie Lou","Martin","Mary","Megan","Melissa","Michaela","Michelle","Mishone","Maurine","Mykel","Nathan","Noel","Olivia","Pam","Patricia","Paula","Peter","Piper","Rachel","Bryn","Rachid","Ray","Rene","Richard","Rodrigo","Robyn","Royanna","Ryan","Samantha","Sandra","Sarah","Saphire","Isabelle","Sylvie","Scott","Shayelee","Shelby","Shieun","Sierra","Simone","Skylar","Stacey","Stephania","Stephen","Sydney","Sylia","Talitha","Tatiana","Terence","Tess","Tiera","Tom","Trish","Tyra","Vaneissa","Veronica","Vince","Yeaeun","Youssef","Yili","",]
+    let lastNames = ["Smith","Crawford","Hilton","Chestertown","Evers","Calhoun","Monagle","Richardson","Winters","Myers","Visscher","Garcia","Soma","Wisbon","Donzella","Irungu","Healy","Fellow","Herman","Ferguson","Cooper","Rickey","Shelly","Juminsko","Sothann","Ellison","Olson","Nerini","Murphy","Thompson","Marcos","Addae","Harris","Caswell","Grace","Duriez","Flach","Vanderslice","Pfieffer","Drouin","Lopez","Hargent","Evans","Wang","Sandoval","Jourdain","Donatien","Swan","Bell","Shugg","Robertson","Walkers","Bakrabi","Chama","Ramosa","Shawford","Heiberschtein","Daigledon","Petiprempre","Kumaresianne","Benchariffa","Asquevolt","Morelle","Soza","Simo","Ling","Wombract","Simola","Lundia","Jarimosa","Rhoades","Naus","Mosh","Haulings","Hearting","Campania","Plaza","Mezzania","Sauvages","Hardie","Arroyauna","Dilli","Gallovant","Mattitteuchi","Foxlin","Pastora","Cremensi","Ridge","Subello","Boninir","Graza","Rucel","Gardenia","Jaretsman","Focker","Traust","Dodier","Stapleton","Wist","Vagoss","Yungs","Ying","Zeleusqui",]
     
 
     let firstNameInput 
@@ -289,26 +292,39 @@ let shouldersFam = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","
     }
     let lastNameInput
     const chooseLastName = (num) => {
-        let lastNames = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","Marketer","Engineer","Analyst","Scientist","Optometrist","Professor","Translator",]
+        //let lastNames = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","Marketer","Engineer","Analyst","Scientist","Optometrist","Professor","Translator",]
+        lastNameInput = randomIndexArray(lastNames)
         console.log(lastNames.length)
         lastNameInput = lastNames[num]
         document.getElementById("lastName-foot-index").value = lastNameInput;
     }
     let organizationInput
+    let occupations = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","Marketer","Engineer","Analyst","Scientist","Optometrist","Professor","Translator","Accountant","Actor","Banker","Babysitter","Ballerina","Cab Driver","Calligrapher","Captain","Cardiologist","Dentist","Deputy","Dermatologist","Ecologist","Economist","Editor","Game Designer","Interior Designer","Gardener","Hairdresser","Harpist","Auctioneer","Blacksmith","Bookkeeper","Biologist","Barber","Chemist","Clerk","Contractor","Cartoonist","Caterer","Police Officer","Fireman","Film Director","Film Producer","DJ","Exterminator","Geneticist","Tour Guide","Jewler","Politician","Mayor","Geologist","Investigator","Interpretor","Judge","Journalist","Lifeguard","Locksmith","Paralegal","Lawyer","Librarian","Linguist","Lyricist","Landscaper","Lobbyist","Midwife","Mechanic","Muralist","Mailman","Model","Singer","Notary","Novelist","Nurse","Operator","Painter","Park Ranger","Physicist","Programmer","Publisher","Paleontologist","Pediatrician","Pharmacist","Photographer","Plumber","Principal","Psychiatrist","Pawnbroker","Psychologist","Radiologist","Real Estate Agent","Researcher","Reporter","Receptionist","Referee","Security Guard","Soldier","Statistician","Stockbroker","Investment Banker","Surgeon","Seamstress","Street Sweeper","Tailor","Taxidermist","Treasurer","Dental Hygienist","Athletic Trainer","Tutor","Travel Agent","Vicar","Verterinarian","Waiter","Welder","Writer","Woodcarver",]
     let chooseOrganizationName = (num) => {
-        organizationInput = (lastNameInput+num+" Inc")
+        occupationInput = randomIndexArray(occupations);
+        console.log(`OCCUPATION:`,occupationInput);
+        document.getElementById("occupation-foot-index").value = occupationInput;
+        arrIindex = occupations.indexOf(occupationInput)
+
+        let orgtypes = [" Baking"," Welding"," Farming"," Cooking"," Butler Services"," Maid Services"," Horses"," Ranchers"," Cleaners"," Marketing"," Engineering"," Analyses"," Sciences"," Optometry"," Schooling"," Translations","Accounting","Movies","Banking","Babysitting","Ballet","Yeller Driving","Calligraphy","Boats","Cardiology","Dental","County","Dermatology","Ecology","Economics","Editing","Graphic Designing","Interi Your Designing","Gardening","Cheveux Pelo Hair","Heavenly Strings","Auctioning","Metals","Bookkeeping","Biology","Frocks","Chems","Clerks","Contracting","Animations","Catering","County","Firehouse","Films","Productions","Disk Jockey","Extermination","Genetics","Guides","Jewlery","Politics","Democracy","Geology","Investigations","Interpretations","Justice","Journalism","Pools & Lakes","Lock Key","Law Firm","Law Firm","Library","Linguistics","Lyrics","Landscaping","Lobbying","Life Guide","Mechanics","Murals","Postal Service","Modeling","Singing","Notaries","Novels","Hospice","Phones","Paintings","Parks","Physics","Programming","Publishing","Paleontology","Pediatrics","Pharmacy","Photography","Plumbing","Schooling","Psychiatry","Pawnbrokers","Psychology","Radiology","Real Estate Agency","Researching","Reporting","Reception","Sports","Security","Service & Arms","Statistics","Stocks","Investments","Surgery","Seams","Street Sweeps","Tailoring","Taxidermy","Treasury","Dental Hygienics","Athletic Training","Tutoring","Travel Agency","Church of England","Verterinary","Waiting","Welding","Writing","Woodcarving",]
+        organizationInput = (lastNameInput+' '+orgtypes[arrIindex]+" Inc");
+        
+        //organizationInput = (lastNameInput+num+" Inc")
         document.getElementById("organization-foot-index").value = organizationInput;
     }
     let emailInput
     let mudra = ["Earth","Wind","Fire","Ether","Water","Mountain","Grass","Star","Planet","Soul","Life","Unity","Serenity","Peace","Harmony","Ocean","Magma",]
     const chooseEmail = (num) => {
         console.log(mudra.length)
-        emailInput = (`${firstNameInput}${lastNameInput}${num}@${mudra[num]}.com`)
+        emailInput = (`${firstNameInput}${lastNameInput}${num}@${randomIndexArray(mudra)}.com`)
+        //emailInput = (`${firstNameInput}${lastNameInput}${num}@${mudra[num]}.com`)
         document.getElementById("email-foot-index").value = emailInput;
     }
     let favSocMediaInput
+    let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Clubhouse","Triller","Gab","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube","Valence","Flip","Popbase","Elpha","Rumble","MeWe","Caffeine","Peanut","HouseParty","Steemit","Goodreads","Twitch","WattPad","Crunchyroll","Soundcloud","Mocospace","Medium","Ello","Giphy","Tribe","Bubbly","Open Diary","FilmAffinity","Infuenster","Imgur","Kuaishou","Vimeo","CarSwap","eToro","FictionCity","Flixter","Focus.com","Gentlemint","Hello","Ibibo","Lunchclub","Strava","Busuu","GChat","Chess","Meetup","Poshmark","Slack","Wish","Neopets","Periscope","Quora","Nextdoor","Stack Overflow","Spaces","Tagged","Thinkspot","Yelp","World of Warcraft","WordPress","Vero",]
     const chooseSocialMedia = (num) => {
-        let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube",]
+        //let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube",]
+        favSocMediaInput = randomIndexArray(allSoc)
         console.log(allSoc.length)
         favSocMediaInput = allSoc[num]
         document.getElementById("fav-soc-media-foot-index").value = favSocMediaInput;
@@ -317,10 +333,17 @@ let shouldersFam = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","
     const chooseUserName = (num) => {
         //let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube",]
         //console.log(allSoc.length)
-        userNameInput = (`${firstNameInput}${mudra[num]}${num}`)
+        //userNameInput = (`${firstNameInput}${mudra[num]}${num}`)
+        userNameInput = (`${firstNameInput}${randomIndexArray(mudra)}${num}`)
         document.getElementById("userName-foot-index").value = userNameInput;
     }
+    let arrIiVal
 
+    const randomIndexArray = (thisArray) => {
+        arrIiVal = thisArray[Math.floor(Math.random()*(thisArray.length))]
+        console.log(`*** arrIiVal random index value *** `,arrIiVal)            
+        return arrIiVal
+    }
 
 const createNewAccount = () => {
 
@@ -373,7 +396,7 @@ const createNewAccount = () => {
     //serverUserId ? serverUserId : serverAnonymousId
     // BELOW IDENTIFY CALL WORKED
     //     analytics.identify((serverUserId ? serverUserId : serverAnonymousId),traits)
-    // analytics.identify(traits.userId,traits,{integrations:{"All":false,"Marketo V2":true,"Klaviyo":true}})
+    // analytics.identify(traits.userId,traits,{integrations:{"All":true,"Marketo V2":true,"Klaviyo":true}})
 
     //analytics.identify({},traits);
 
@@ -384,15 +407,15 @@ const createNewAccount = () => {
 //      analytics.track("New Account Created",
 //             properties,
 //             {userId:userId,
-//                 integrations:{"All":false,"Marketo V2":true,"Klaviyo":false}},
+//                 integrations:{"All":true,"Marketo V2":true,"Klaviyo":false}},
 //            function() {
 //                 window.location.href = "";
 //             }
 //        )
-        analytics.identify(traits.userId,traits,{integrations:{"All":false,"Marketo V2":true,"Klaviyo":true}})
+        analytics.identify(traits.userId,traits,{integrations:{"All":true,"Marketo V2":true,"Klaviyo":true}})
         analytics.track("New Subscription Created",
             properties,
-            {integrations:{"All":false,"Marketo V2":true,"Klaviyo":false}},
+            {integrations:{"All":true,"Marketo V2":true,"Klaviyo":false}},
            function() {
                 window.location.href = "";
             }
