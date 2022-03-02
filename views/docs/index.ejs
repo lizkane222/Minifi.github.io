@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <%- include('../partials/head') %>
 </head>
@@ -9,9 +11,15 @@
 <!-- <% let page = docLinks.page_spec %> -->
 <!-- <% let group = docLinks.group_spec %> -->
 <!-- <% let track = docLinks.track_spec %> -->
+    <div class="largebox">
+        <p>docs / index</p>
+        <div id="msg" style="position:fixed; left:30%;"></div>
+        <div>First Box</div>
+    </div>
 
 <!-- <button onclick=runGroupCall(`TMUD`)>GROUP IT</button> -->
 
+<br/><br/><br/><br/>
 <input type="text" name="username" id="inputUsername" placeholder="username"/><button onclick="idUser()">SAVE</button>
 
 <!-- <div id="docIframes" >
@@ -34,36 +42,14 @@
     <button id="submitNewAccountInputs" onclick="createNewAccount()">SAVE</button>
 </div>
 <br/><br/><br/><br/> -->
-<div>
-    <button onclick="AnalyticsCompanyProfileUpdated()">Make Customer Track Call</button>
-</div>
-<br/><br/><br/><br/>
-<div>
-    <p class="mycomment">Only click this button after</p>
-    Interested in :
-    <!-- <a><img src="../../public/styles/images/avery-evans-RkCvkHgfiqc-unsplash.jpg" alt="unsplash- avery-evans"/></a>
-    <a><img src="../../public/styles/images/daniel-korpai-hbTKIbuMmBI-unsplash.jpg" alt="unsplash- daniel-korpai"/></a>
-    <a><img src="../../public/styles/images/hunter-newton-yuMuWhz-PGI-unsplash.jpg" alt="unsplash- hunter-newton"/></a>
-    <a><img src="../../public/styles/images/imani-bahati-LxVxPA1LOVM-unsplash.jpg" alt="unsplash- imani-bahati"/></a>
-    <a><img src="../../public/styles/images/irene-kredenets-KStSiM1UvPw-unsplash.jpg" alt="unsplash- irene-kredenets"/></a>
-    <a><img src="../../public/styles/images/rachit-tank-2cFZ_FB08UM-unsplash.jpg" alt="unsplash- rachit-tank"/></a>
-    <a><img src="../../public/styles/images/surya-a-3o-X8WJOP5E-unsplash.jpg" alt="unsplash- surya-a"/></a> -->
-    <!-- <a><img src="../../public/styles/images" alt="unsplash"/></a> -->
-    <button onclick="identifyAddInterest(`Shoes`)">Shoes</button>
-    <button onclick="identifyAddInterest(`Watches`)">Watches</button>
-    <button onclick="identifyAddInterest(`Glasses`)">Glasses</button>
-    <button onclick="identifyAddInterest(`Pants`)">Pants</button>
-    <button onclick="identifyAddInterest(`Jackets`)">Jackets</button>
-    <button onclick="identifyAddInterest(`Gear`)">Gear</button>
-    <button onclick="identifyAddInterest(`Accessories`)">Accessories</button>
-</div>
-
 
 <%- include('../partials/ecommerce') %>
 
-
-
 <script> 
+// <div>
+//     <button onclick="AnalyticsCompanyProfileUpdated()">Make Customer Track Call</button>
+// </div>
+// <br/><br/><br/><br/>
     
     
 
@@ -72,79 +58,60 @@
 
 
 
-const AnalyticsCompanyProfileUpdated = () => {
-    let customerProperties = {
-        "auto_print_being_used": false,
-        "chargify_product_handle": "trial",
-        "chargify_subscription_status": "developer",
-        "companyId": 23545,
-        "companyName": "Cyclopure - developer",
-        "company_created_at": "2019-10-18T11:49:27Z",
-        "company_has_right_to_use_veeqo": true,
-        "company_subscription_status": "developer",
-        "company_trial_end_date": "2024-11-01T11:49:00Z",
-        "count_admin_users": 1,
-        "count_all_users": 1,
-        "count_all_warehouses": 1,
-        "count_fba_warehouses": 0,
-        "count_non_fba_warehouses": 1,
-        "count_products": 2,
-        "count_products_with_review": 0,
-        "count_stores_active": 0,
-        "count_stores_active_remote": 0,
-        "count_stores_inactive": 1,
-        "email": "mailynavery@gmail.com",
-        "onboardings_survey_completed": false,
-        "shipments_with_label_since_last_renewal": null,
-        "shipments_without_label_since_last_renewal": null,
-        "veeqo_product_name": "veeqo-premium"
-    }
+// const AnalyticsCompanyProfileUpdated = () => {
+//     let customerProperties = {
+//         "auto_print_being_used": false,
+//         "chargify_product_handle": "trial",
+//         "chargify_subscription_status": "developer",
+//         "companyId": 23545,
+//         "companyName": "Blah - developer",
+//         "company_created_at": "2019-10-18T11:49:27Z",
+//         "company_has_right_to_use_veeqo": true,
+//         "company_subscription_status": "developer",
+//         "company_trial_end_date": "2024-11-01T11:49:00Z",
+//         "count_admin_users": 1,
+//         "count_all_users": 1,
+//         "count_all_warehouses": 1,
+//         "count_fba_warehouses": 0,
+//         "count_non_fba_warehouses": 1,
+//         "count_products": 2,
+//         "count_products_with_review": 0,
+//         "count_stores_active": 0,
+//         "count_stores_active_remote": 0,
+//         "count_stores_inactive": 1,
+//         "email": "mailynavery@gmail.com",
+//         "onboardings_survey_completed": false,
+//         "shipments_with_label_since_last_renewal": null,
+//         "shipments_without_label_since_last_renewal": null,
+//         category: "Customer"
+//     }
     
-    let customerContext = {
-        "context": {
-            "library": {
-                "name": "analytics-ruby",
-                "version": "2.2.6"
-            }
-        },
-        "anonymousId": null,
-        "channel": "server",
-        "messageId": "3ad3386b-cc62-4bff-b15f-2676fa36475f",
-        "originalTimestamp": "2021-07-19T05:44:10.000Z",
-        "projectId": "D9cbNuVhDn",
-        "receivedAt": "2021-07-19T05:44:10.877Z",
-        "sentAt": "2021-07-19T05:44:10.547Z",
-        "timestamp": "2021-07-19T05:44:10.330Z",
-        "type": "track",
-        "userId": "28220",
-        "version": 2,
-    }
+//     let customerContext = {
+//         "context": {
+//             "library": {
+//                 "name": "analytics-ruby",
+//                 "version": "2.2.6"
+//             }
+//         },
+//         "anonymousId": localStorage.ajs_anonymous_id,
+//         "type": "track",
+//         "userId": "28220",
+//         "version": 2,
+//     }
     
-    let customerOptions = {
-        customerContext,
-        "integrations": {
-            "Salesforce": true
-        }
-    }
+//     let customerOptions = {
+//         customerContext,
+//         "integrations": {
+//             "Salesforce": true,
+//             "Google Analytics": true,
+//         }
+//     }
     
-    // analytics.track(event, [properties], [options], [callback]);
-    analytics.track("Analytics:Company Profile Updated",customerProperties,customerOptions)
+//     // analytics.track(event, [properties], [options], [callback]);
+//     analytics.track("Analytics:Company Profile Updated",customerProperties,customerOptions)
 
-}
-    const identifyAddInterest = (category) => {       
-        
-        const traits = {
-            interests:{
-                category : category,
-                dateUpdated : Date.now()
-            }
-        }
-        const properties = traits
-        analytics.identify(serverUserId,traits,[])
-        analytics.track("Interest Added",properties)
-        //analytics.track("Interest Added")
-        console.log(traits.interests.category)
-    }
+// }
+
 
 
 //{

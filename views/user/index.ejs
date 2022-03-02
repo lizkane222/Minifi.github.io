@@ -41,6 +41,10 @@
 
         </div>
     </div>
+<hr/>
+<p><textarea name="addToTraits" id="addToTraits" rows="10" cols="30" required="false" placeholder="traits to add before identify"></textarea></p>
+<hr/>
+
     <!-- <input type="text" name="groupId" id="inputgroupId" placeholder="groupId"/><button onclick="idUser()">SAVE</button> -->
     <section class="employee-company">
         <div>
@@ -118,8 +122,14 @@
         
         let companyProperties
         let employeeId, employeeName, employeeFirstName, employeeLastName, employeeUserName;
-
+        let extraTraits
         const groupCall = () => {
+            let extraTraitsTemp = document.getElementById("addToTraits").value
+            
+            console.log("extraTraits & TYPE OF", typeof(extraTraitsTemp),extraTraitsTemp)
+            let extraTraitsSplit = extraTraitsTemp.split(":",",")
+            console.log("extraTraitsSplit: ",extraTraitsSplit)
+            //extraTraits = JSON.parse(extraTraitsTemp)
 
             companyProperties = {
                 $company: document.getElementById("organization-foot-index").value,
@@ -129,14 +139,14 @@
                 $groupId: groupId,
                 groupId: groupId,
                 $firstSeen : Date.now(),
-                $employees:[{
-                    employeeId : employeeId,
-                    employeeName: `${firstNameGroupInput} ${lastNameGroupInput}`,
-                    employeeFirstName: firstNameGroupInput,
-                    employeeLastName: lastNameGroupInput,
-                    employeeUserName : userNameInput,
-                    groupId:groupIdList,
-                }]
+                //$employees:[{
+                //    employeeId : employeeId,
+                //    employeeName: `${firstNameGroupInput} ${lastNameGroupInput}`,
+                //    employeeFirstName: firstNameGroupInput,
+                //    employeeLastName: lastNameGroupInput,
+                //    employeeUserName : userNameInput,
+                //    groupId:groupIdList,
+                //}]
             }
             traits = {
                 $groupId:groupIdList,
@@ -148,27 +158,29 @@
                 favSocMedia : favSocMediaInput,
                 anonymousId : serverAnonymousId,
                 username : userNameInput,
-                $company : companyProperties
+                $company : companyProperties,
+                //extraTraits: extraTraits ? extraTraits : null
             }
-            analytics.group(groupId,companyProperties,{integrations:{"All":false,"Marketo V2":false,"Customer.io":true, "Klaviyo":true, "Google Analytics":true,"Mixpanel":true,"HubSpot":true,"Amplitude":true}})
+            console.log('!!!!! --- GROUPID before group call',groupId)
+            analytics.group(groupId,companyProperties,{context:{traits:traits},integrations:{"All":false,"Marketo V2":false,"Customer.io":true, "Klaviyo":false,}})
             analytics.identify(serverUserId,traits,{
                 $groupId:groupIdList,
                 $name: document.getElementById("organization-foot-index").value,
-                integrations:{"All":false,"Marketo V2":false,"Customer.io":true, "Klaviyo":true, "Google Analytics":true,"Mixpanel":true,"HubSpot":true,"Amplitude":true},
+                integrations:{"All":false,"Marketo V2":false,"Customer.io":true, "Klaviyo":true,},
                 }
             )
             analytics.track("Group Company Traits Identified",companyProperties,{
                 $userId:userId,
                 $groupId : groupIdList,
                 $name: document.getElementById("organization-foot-index").value,
-                integrations:{"All":false,"Marketo V2":true,"Customer.io":true, "Klaviyo":true, "Google Analytics":true,"Mixpanel":true,"HubSpot":true,"Amplitude":true}
+                integrations:{"All":false,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,}
                 }
             )
             analytics.track("Group User Traits Identified",traits,{
                 $userId:userId,
                 $groupId : groupIdList,
                 $name: document.getElementById("organization-foot-index").value,
-                integrations:{"All":false,"Marketo V2":true,"Customer.io":true, "Klaviyo":true, "Google Analytics":true,"Mixpanel":true,"HubSpot":true,"Amplitude":true}
+                integrations:{"All":false,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,}
                 }
             )
             // function() {
@@ -181,6 +193,7 @@
         let temporaryGroupId
         const changeEmployees = () => {
             temporaryGroupId = groupId
+            temporaryGroupTraits = companyProperties
             // companyProperties.$employees.push(companyProperties.$employees)
             let thisEmployee = companyProperties.$employees
             temporaryEmployeeList.push(thisEmployee)
@@ -193,6 +206,8 @@
             document.getElementById("fav-soc-media-foot-index").value = ""
             document.getElementById("userName-foot-index").value = ""
             groupId = temporaryGroupId
+            companyProperties = temporaryGroupTraits
+            setCookie("ajs_group_traits",companyProperties,3)
             setCookie("ajs_group_id",groupId,3);
             setCookie("ajs_user_id",null,3);
             serverUserId = null;

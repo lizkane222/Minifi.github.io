@@ -21,7 +21,8 @@
             price: 114.99
         }
     }
-    
+    let orderCompletedProductList, orderCompletedRevenue=0
+
     let productCounter = 0
     const logProducts = () => {
         productCounter++
@@ -71,6 +72,11 @@
         prodProps.step = 5 || {};
         console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
         analytics.track('Product Added', prodProps);
+        
+        orderCompletedProductList.push(productList[prodId])
+        orderCompletedRevenue += prodProps.price
+        console.log(orderCompletedProductList)
+        console.log(orderCompletedRevenue)
     }
     const productRemoved = (prodId) => {
         prodProps = productList[prodId]
@@ -79,7 +85,13 @@
         analytics.track('Product Removed', prodProps);
     }
 
+    const orderCompleted = () => {
+        console.log("orderCompletedProductList : ",orderCompletedProductList)
+        let orderCompletedRevenue
+        let revenue = document.getElementById('orderCompletedRevenue')
+        document.getElementById('orderCompletedProductList').innerHTML() = orderCompletedProductList
 
+    }
 
 </script>
 
@@ -105,18 +117,26 @@
 
     <div id="36477" class="product" onmouseover="logProducts()">
         <p><button onclick="viewedCheckoutStep(5)" class="auto-btn btn-small">Step 5 "Product Clicked"</button></p>
-        <p><button onclick="productViewed(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
-        <p><button onclick="productClicked(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
-        <p><button onclick="productAdded(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
-        <p><button onclick="productRemoved(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
+        <p><button onclick="productViewed(`p_36477`)" class="auto-btn btn-small">Product Viewed: 36477 - Pumps</button></p>
+        <p><button onclick="productClicked(`p_36477`)" class="auto-btn btn-small">Product Clicked: 36477 - Pumps</button></p>
+        <p><button onclick="productAdded(`p_36477`)" class="auto-btn btn-small">Product Added: 36477 - Pumps</button></p>
+        <p><button onclick="productRemoved(`p_36477`)" class="auto-btn btn-small">Product Removed: 36477 - Pumps</button></p>
     </div>        
         
         
     <div id="53865" class="product" onmouseover="logProducts()">
         <p><button onclick="viewedCheckoutStep(5)" class="auto-btn btn-small">Step 5 "Product Clicked"</button></p>
-        <p><button onclick="productViewed(`p_53865`,5)" class="auto-btn btn-small">Product: 53865 - Swipe Tops</button></p>
-        <p><button onclick="productClicked(`p_53865`,5)" class="auto-btn btn-small">Product: 53865  - Swipe Tops</button></p>
-        <p><button onclick="productAdded(`p_53865`,5)" class="auto-btn btn-small">Product: 53865  - Swipe Tops</button></p>
-        <p><button onclick="productRemoved(`p_53865`,5)" class="auto-btn btn-small">Product: 53865  - Swipe Tops</button></p>
+        <p><button onclick="productViewed(`p_53865`,5)" class="auto-btn btn-small">Product Viewed: 53865 - Swipe Tops</button></p>
+        <p><button onclick="productClicked(`p_53865`,5)" class="auto-btn btn-small">Product Clicked: 53865  - Swipe Tops</button></p>
+        <p><button onclick="productAdded(`p_53865`,5)" class="auto-btn btn-small">Product Added: 53865  - Swipe Tops</button></p>
+        <p><button onclick="productRemoved(`p_53865`,5)" class="auto-btn btn-small">Product Removed: 53865  - Swipe Tops</button></p>
     </div>        
+</div>
+
+<div>
+    <p><button onclick="orderCompleted()" class="auto-btn btn-small">Order Completed</button></p>
+        <p id="orderCompletedRevenue"></p>
+        <ul id="orderCompletedProductList">
+            
+        </ul>
 </div>

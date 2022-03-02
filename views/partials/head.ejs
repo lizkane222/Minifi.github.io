@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta rel="canonical">
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-<title><%=page_category%><%=page_title%></title>
+<title><%= page_category %><%= page_title %></title>
 
 
 <style>
@@ -41,9 +41,6 @@
     main {
         margin: 5vw,auto;
     }
-    main {
-        margin: 5vw,auto;
-    }
     .main-index-container {
         margin: 5vw,auto;
     }
@@ -51,7 +48,8 @@
         text-decoration: none;
         color: pink;
     }
-
+    .largebox{
+    }
     .no-wrap{
         overflow: hidden;
         text-overflow: ellipsis;
@@ -131,29 +129,111 @@
         flex-direction: row;
         flex-wrap: wrap;
     }
-    .product-img{
-        
-    }
+
     .mycomment {
         font-style: italic;
     }
+    .flex-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        align-content: stretch;
+    }
+    .container-col{
+        flex-flow: column wrap;
+    }
 
+    .container-row{
+        flex-flow: row wrap;
+    }
+    .button-container {
+        width: 100%;
+    }
+    .button-container>*{
+        margin: .5rem;
+    }
 
-    div .product {
+    .product-images {
+        width: 94vw;
+        margin: 2vw;
+        padding: 1vw;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        align-content: stretch;
+    }
+    .product {
+        margin: 2.5vh auto;
+
+    }
+    .product-image{
         background-color: rgba(230,230,230,1);
-        box-shadow: 2px 2px 0px rgba(100,100,100,.8);
+        box-shadow: 2px 2px 0px rgba(100,100,100,.6);
         transition: 1000ms ease-in-out; 
-        margin: 5vh auto;
-        min-width: 30vw;
-        max-width: 45vw;
+        min-width: 10vw;
+        max-width: 20vw;
+        height: auto;
+        max-height: 10vh;
         text-align: center;
         text-shadow: rgba(0,0,0,0);
     }
-    div .product:hover {
+    
+    .product-image:hover {
         transition: 1000ms ease-in-out; 
         transform: scale(1.2) ease-in-out;
         box-shadow: 2px 2px 0px rgba(100,100,100,.8);
         color: rgba(40,40,40,1);
+    }
+    .interest {
+        margin: 1%;
+        padding: .1rem .5rem;
+        background-color: rgba(130,180,70,.0);
+        color: rgba(140,140,140,1);
+        border: 0 none rgba(0,0,0,0);
+        cursor:pointer
+    }
+
+    /* Shutter In Vertical */
+    .hvr-shutter-in-vertical {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    background: #2098D1;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    }
+    .hvr-shutter-in-vertical:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #e1e1e1;
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    }
+    .hvr-shutter-in-vertical:hover, .hvr-shutter-in-vertical:focus, .hvr-shutter-in-vertical:active {
+    color: white;
+    }
+    .hvr-shutter-in-vertical:hover:before, .hvr-shutter-in-vertical:focus:before, .hvr-shutter-in-vertical:active:before {
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
     }
 </style>
 
@@ -170,44 +250,44 @@
     // analytics.timeout(500); 
 
         //  ↓ ! ↓ ! ↓ ! THIS TIMEOUT FUNCTION WORKS ↓ ! ↓ ! ↓ ! ↓ 
-        // const start = Date.now();
-        // console.log('starting timer...');
-            // expected output: starting timer...
+        //  const start = Date.now();
+        //  console.log('starting timer...');
+            //  expected output: starting timer...
 
-        // setTimeout(() => {
-        //     const millis = Date.now() - start;
+        //  setTimeout(() => {
+            //  const millis = Date.now() - start;
 
-        //     console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
+            //  console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
             
-        //     expected output: seconds elapsed = 2
-        // }, 1500);
+            //  expected output: seconds elapsed = 2
+        //  }, 1500);
 
-        // setTimeout(let pageCategory = page_category,250) 
+        //  setTimeout(let pageCategory = page_category,250) 
         // setTimeout(console.log(`pageCategory : `,pageCategory),300) 
         // setTimeout(let pageTitle = page_title,325) 
         // setTimeout(console.log(`pageTitle : `,pageTitle),350) 
 
     // let options = {
-        // context:{
-        //     active: window.clientInformation.userActivation,
-        //     app:{
-        //         name: window.document.appName,
-        //         version: window.document.appVersion,
-        //     },
-        //     page:{
-        //         path: window.location.path,
-        //         referrer: window.document.referrer,
-        //         search: window.location.search,
-        //         title: window.location.title,
-        //         url: window.location.url,
-        //     },
-        //     library:{   
-        //         name: window.document.library,
-        //         version: window.clientInformation.library,
-        //     },
-        //     locale: window.document.referrer,
-        //     userAgent: window.clientInformation.userAgent
-        // },
+    //     context:{
+    //         active: window.clientInformation.userActivation,
+    //         app:{
+    //             name: window.document.appName,
+    //             version: window.document.appVersion,
+    //         },
+    //         page:{
+    //             path: window.location.path,
+    //             referrer: window.document.referrer,
+    //             search: window.location.search,
+    //             title: window.location.title,
+    //             url: window.location.url,
+    //         },
+    //         library:{   
+    //             name: window.document.library,
+    //             version: window.clientInformation.library,
+    //         },
+    //         locale: window.document.referrer,
+    //         userAgent: window.clientInformation.userAgent
+    //     },
     // }
 // A Function to Get a Cookie
 function getCookie(cname) {
@@ -235,14 +315,9 @@ function getCookie(cname) {
     // let serverGroupProperties = getCookie("ajs_group_properties")
     // let serverGroupId = getCookie("ajs_group_id")
     // let serverUserTraits = getCookie("ajs_user_traits")
-    let userAnonymousId = getCookie("ajs_anonymous_id")
-    let serverAnonymousId
     // analytics.setAnonymousId('ABC-123-XYZ')
     // analytics.setAnonymousId('')
-    let serverUserId = getCookie("ajs_user_id")
-    let serverGroupProperties = getCookie("ajs_group_properties")
-    let [serverGroupId] = getCookie("ajs_group_id")
-    let serverUserTraits = getCookie("ajs_user_traits")
+    let serverAnonymousId, userAnonymousId, serverUserId, serverGroupProperties, serverGroupId, serverUserTraits
     
     let userId
         
@@ -251,12 +326,12 @@ function getCookie(cname) {
         // assign variable value
         if(analytics.ready){
             // view variable value in console
-            console.log("serverUserId : ",serverUserId)
-
+            console.log("serverUserId : TYPE",typeof(serverUserId),serverUserId)
             if(!serverUserId){
                 console.log("NEW USER - serverUserId 'falsey':" + serverUserId )
                 serverUserId = Math.floor((Math.random() * 100000) + 1);
-                console.log("NEW USER - serverUserId 'truthy':" + serverUserId )
+                serverUserId = serverUserId.toString()
+                console.log("NEW USER - serverUserId 'truthy':", serverUserId,"  ---  TYPE  --:", typeof(serverUserId))
             }
             else{
                 console.log("serverUserId exists 'truthy': " + serverUserId )
@@ -266,7 +341,24 @@ function getCookie(cname) {
         }
     }  
     
-
+    let currentSessionId
+    console.log(`currentSessionId should be blank : ` + currentSessionId)
+    
+    let newSession = true
+    const uTC = () => {
+        if (!newSession){
+            return currentSessionId
+            console.log(`currentSessionId should be same : `+currentSessionId)
+            console.log("--- !!! Page Viewed !!! ---");
+        }
+        else {
+            currentSessionId = Date.now()    
+            console.log(`currentSessionId should change : `+currentSessionId)
+            newSession = false
+            console.log("--- !!! Page Viewed !!! ---");
+            return currentSessionId
+        }
+    }
 
 
     // let writeKeyEn = "XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh"
@@ -320,7 +412,8 @@ function getCookie(cname) {
             // path: `${angularComponent}`,
         //},
         {
-            integrations:{"All":true, "Mixpanel":true, "Amplitude":true, "HubSpot":true},
+            integrations:{Klaviyo:false, Amplitude:{sessionId:uTC()}},
+            // anonymousId : "1234567890"
         }, 
             setTimeout(() => {
                 // const millis = Date.now() - start;
@@ -341,10 +434,15 @@ function getCookie(cname) {
         // console.log(`inside function LAST`,Date.now())
         analytics.load("XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh");
 
-    
+            userAnonymousId = getCookie("ajs_anonymous_id")
+            serverAnonymousId = getCookie("ajs_anonymous_id")
+            serverUserId = getCookie("ajs_user_id")
+            serverGroupProperties = getCookie("ajs_group_properties")
+            serverGroupId = getCookie("ajs_group_id")
+            serverUserTraits = getCookie("ajs_user_traits")
 
-        
             analytics.ready(getPageContext());
+            // analytics.ready(getPageContext());
             // console.log(`AFTER PAGE CALL: PAGE NAME = `,pageCategory,pageTitle);
 
             //     for(let i=0; i<gaPageTitle.length; i++){
@@ -384,7 +482,7 @@ function getCookie(cname) {
             }
 
         analytics.ready(callServerUser);
-        // console.log("calling callServerUser function");
+        console.log("calling callServerUser function - head-line470",);
         analytics.ready(queryStringExists);
         analytics.ready(console.log(`analytics : `,analytics));
         // console.log(`AFTER FUNCTION but before running`,Date.now())
@@ -428,6 +526,9 @@ function checkCookie() {
         }
     }
 }
+    // console.log("page_view",{category:titleSplit[1],name:titleSplit[0]},context:{category:titleSplit[1],name:titleSplit[0]})
     
+
 </script>
 </head>
+</html>

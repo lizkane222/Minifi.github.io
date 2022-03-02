@@ -1,34 +1,260 @@
-<!-- views/partials/ecommerce.ejs -->
+
+
+
+
+<section class="product-images">
+    <div class="flex-container container-col product" id="p_1312425"  >
+        <h6 onmouseover="productViewed('p_1312425', 'view')">White Wash Watch</h6>
+        <picture class="product-image-container" onclick="productClicked(`p_1312425`, 'click')">
+            <!-- <img src="https://i.imgur.com/cgapzyq.jpg" title="source: imgur.com" /> -->
+            <source media="(min-width: 465px)" srcset="https://i.imgur.com/cgapzyq.jpg" class="product-image">
+            <img src="https://i.imgur.com/cgapzyq.jpg" class="product-image">
+        </picture>
+        <div class="flex-container container-row button-container">
+            <button onclick="productAdded(`p_1312425`, 'add')">Product Added</button>
+            <button onclick="productRemoved(`p_1312425`, 'view')">Product Removed</button>
+            <button onclick="identifyAddInterest(`p_1312425`, 'like')" class="hvr-shutter-in-vertical">Tap ♥️ Tap</button>
+        </div>
+    </div>
+    <div class="flex-container container-col product" id="p_1312435"  >
+        <h6 onmouseover="productViewed('p_1312435', 'view')">Sunny Side Up</h6>
+        <picture class="product-image-container" onclick="productClicked(`p_1312435`, 'click')">
+            <!-- <img src="https://i.imgur.com/cgapzyq.jpg" title="source: imgur.com" /> -->
+            <source media="(min-width: 465px)" class="product-image" srcset="https://i.imgur.com/1DGjnqv.jpg">
+            <img src="https://i.imgur.com/1DGjnqv.jpg" class="product-image">
+        </picture>
+        <div class="flex-container container-row button-container">
+            <button onclick="productAdded(`p_1312435`, 'add')">Product Added</button>
+            <button onclick="productRemoved(`p_1312435`, 'view')">Product Removed</button>
+            <button onclick="identifyAddInterest(`p_1312435`, 'like')" class="hvr-shutter-in-vertical">Tap ♥️ Tap</button>
+        </div>
+    </div>
+    <div class="flex-container container-col product" id="p_1312445"  >
+        <h6 onmouseover="productViewed('p_1312445', 'view')">Leather Blush</h6>
+        <picture class="product-image-container" onclick="productClicked(`p_1312445`, 'click')">
+            <!-- <img src="https://i.imgur.com/cgapzyq.jpg" title="source: imgur.com" /> -->
+            <source media="(min-width: 465px)" class="product-image" srcset="https://i.imgur.com/BxKrAne.jpg">
+            <img src="https://i.imgur.com/BxKrAne.jpg" class="product-image">
+        </picture>
+        <div class="flex-container container-row button-container">
+            <button onclick="productAdded(`p_1312445`, 'add')">Product Added</button>
+            <button onclick="productRemoved(`p_1312445`, 'view')">Product Removed</button>
+            <button onclick="identifyAddInterest(`p_1312445`, 'like')" class="hvr-shutter-in-vertical">Tap ♥️ Tap</button>
+        </div>
+    </div>
+    <div class="flex-container container-col product" id="p_1312455"  >
+        <h6 onmouseover="productViewed('p_1312455', 'view')">Peach Schone</h6>
+        <picture class="product-image-container" onclick="productClicked(`p_1312455`, 'click')">
+            <!-- <img src="https://i.imgur.com/cgapzyq.jpg" title="source: imgur.com" /> -->
+            <source media="(min-width: 465px)" class="product-image" srcset="https://i.imgur.com/JnQKPic.jpg">
+            <img src="https://i.imgur.com/JnQKPic.jpg" class="product-image">
+        </picture>
+        <div class="flex-container container-row button-container">
+            <button onclick="productAdded(`p_1312455`, 'add')">Product Added</button>
+            <button onclick="productRemoved(`p_1312455`, 'view')">Product Removed</button>
+            <button onclick="identifyAddInterest(`p_1312455`, 'like')" class="hvr-shutter-in-vertical">Tap ♥️ Tap</button>
+        </div>
+    </div>
+    <div class="flex-container container-col product" id="p_1312465"  >
+        <h6 onmouseover="productViewed('p_1312465', 'view')"></h6>
+        <picture class="product-image-container" onclick="productClicked(`p_1312465`, 'click')">
+            <!-- <img src="https://i.imgur.com/cgapzyq.jpg" title="source: imgur.com" /> -->
+            <source media="(min-width: 465px)" class="product-image" srcset="https://i.imgur.com/smm6dwc.jpg">
+            <img src="https://i.imgur.com/smm6dwc.jpg" class="product-image">
+        </picture>
+        <div class="flex-container container-row button-container">
+            <button onclick="productAdded(`p_1312465`, 'add')">Product Added</button>
+            <button onclick="productRemoved(`p_1312465`, 'view')">Product Removed</button>
+            <button onclick="identifyAddInterest(`p_1312465`, 'like')" class="hvr-shutter-in-vertical">Tap ♥️ Tap</button>
+        </div>
+    </div>
+    <div class="flex-container container-col" id="p_1312475"   >
+        <h6 onmouseover="productViewed('1312475', 'view')"></h6>
+        <picture class="product-image-container" onclick="productClicked(`p_1312475`, 'click')">
+            <!-- <img src="https://i.imgur.com/cgapzyq.jpg" title="source: imgur.com" /> -->
+            <source media="(min-width: 465px)" class="product-image" srcset="https://i.imgur.com/cZS5ced.jpg">
+            <img src="https://i.imgur.com/cZS5ced.jpg" class="product-image">
+        </picture>
+        <div class="flex-container container-row button-container">
+            <button onclick="productAdded(`p_1312475`, 'add')">Product Added</button>
+            <button onclick="productRemoved(`p_1312475`, 'view')">Product Removed</button>
+            <button onclick="identifyAddInterest(`p_1312475`, 'like')" class="hvr-shutter-in-vertical">Tap ♥️ Tap</button>
+        </div>
+    </div>
+</section>
+
+<div class="ecommerce-container">
+
+    <br/><br/>
+    <div>
+        <p><button onclick="orderCompleted()" class="auto-btn btn-small">Order Completed</button></p>
+        <p id="orderCompletedRevenue"></p>
+        <ul id="orderCompletedProductList">
+            
+        </ul>
+    </div>                          
+
+     <div>
+        <ul class="menu">
+            <li></li>
+        </ul>
+        <ul class="menu">
+            <li></li>
+        </ul>
+        <ul class="menu">
+            <li></li>
+        </ul>
+    </div>
+    <br/><br/>
+
+<div>
+    <p class="mycomment">Only click this button after</p>
+    Interested in :
+    <!-- <a><img src="../../public/styles/images/avery-evans-RkCvkHgfiqc-unsplash.jpg" alt="unsplash- avery-evans"/></a>
+    <a><img src="../../public/styles/images/daniel-korpai-hbTKIbuMmBI-unsplash.jpg" alt="unsplash- daniel-korpai"/></a>
+    <a><img src="../../public/styles/images/hunter-newton-yuMuWhz-PGI-unsplash.jpg" alt="unsplash- hunter-newton"/></a>
+    <a><img src="../../public/styles/images/imani-bahati-LxVxPA1LOVM-unsplash.jpg" alt="unsplash- imani-bahati"/></a>
+    <a><img src="../../public/styles/images/irene-kredenets-KStSiM1UvPw-unsplash.jpg" alt="unsplash- irene-kredenets"/></a>
+    <a><img src="../../public/styles/images/rachit-tank-2cFZ_FB08UM-unsplash.jpg" alt="unsplash- rachit-tank"/></a>
+    <a><img src="../../public/styles/images/surya-a-3o-X8WJOP5E-unsplash.jpg" alt="unsplash- surya-a"/></a> -->
+    <!-- <a><img src="../../public/styles/images" alt="unsplash"/></a> -->
+    <button onclick="identifyAddInterest('1_Shoes',`Shoes`)" class="interest">Shoes</button>
+    <button onclick="identifyAddInterest('1_Watches',`Watches`)" class="interest">Watches</button>
+    <button onclick="identifyAddInterest('1_Glasses',`Glasses`)" class="interest">Glasses</button>
+    <button onclick="identifyAddInterest('1_Pants',`Pants`)" class="interest">Pants</button>
+    <button onclick="identifyAddInterest('1_Jackets',`Jackets`)" class="interest">Jackets</button>
+    <button onclick="identifyAddInterest('1_Gear',`Gear`)" class="interest">Gear</button>
+    <button onclick="identifyAddInterest('1_Accessories',`Accessories`)" class="interest">Accessories</button>
+</div>
+    <!-- <input type="text" name="reviewCart" required="" id="reviewCart-ecommerce-input" placeholder="Review Cart"/> -->
+    <p><button onclick="viewedCheckoutStep(1)" class="auto-btn btn-small">Step 1 "Viewed Checkout"</button></p>        
+    <p><button onclick="completedCheckoutStep(1)" class="auto-btn btn-small">Step 1 "Completed Checkout"</button></p>
+                
+    <!-- <input type="text" name="collectPayment" id="collectPayment-ecommerce-input" required="" placeholder="Collect Payment"/> -->
+    <p><button onclick="viewedCheckoutStep(2)" class="auto-btn btn-small">Step 2 "Viewed Checkout"</button></p>
+    <p><button onclick="completedCheckoutStep(2)" class="auto-btn btn-small">Step 2 "Completed Checkout"</button></p>
+
+    <!-- <input type="text" name="confirmPurchaseDetails" id="confirmPurchaseDetails-ecommerce-input" required="" placeholder="confirmPurchaseDetails"/> -->
+    <p><button onclick="viewedCheckoutStep(3)" class="auto-btn btn-small">Step 3 "Viewed Checkout"</button></p>
+    <p><button onclick="completedCheckoutStep(3,'FedEx','Visa')" class="auto-btn btn-small">Step 3 "Completed Checkout"</button></p>
+
+    <!-- <input type="text" name="reciept" id="reciept-ecommerce-input" required="" placeholder="reciept"/> -->
+    <p><button onclick="viewedCheckoutStep(4)" class="auto-btn btn-small">Step 4 "Viewed Checkout"</button></p>
+    <p><button onclick="completedCheckoutStep(4,'FedEx','Visa')" class="auto-btn btn-small">Step 4 "Completed Checkout"</button></p>
+
+    <div id="36477" class="product"
+        <p><button onclick="viewedCheckoutStep(5)" class="auto-btn btn-small">Step 5 "Product Clicked"</button></p>
+        <p><button onclick="productViewed(`p_36477`)" class="auto-btn btn-small">Product Viewed: 36477 - Pumps</button></p>
+        <p><button onclick="productClicked(`p_36477`)" class="auto-btn btn-small">Product Clicked: 36477 - Pumps</button></p>
+        <p><button onclick="productAdded(`p_36477`)" class="auto-btn btn-small">Product Added: 36477 - Pumps</button></p>
+        <p><button onclick="productRemoved(`p_36477`)" class="auto-btn btn-small">Product Removed: 36477 - Pumps</button></p>
+    </div>        
+        
+        
+    <div id="53865" class="product"
+        <p><button onclick="viewedCheckoutStep(5)" class="auto-btn btn-small">Step 5 "Product Clicked"</button></p>
+        <p><button onclick="productViewed(`p_53865`)" class="auto-btn btn-small">Product Viewed: 53865 - Swipe Tops</button></p>
+        <p><button onclick="productClicked(`p_53865`)" class="auto-btn btn-small">Product Clicked: 53865  - Swipe Tops</button></p>
+        <p><button onclick="productAdded(`p_53865`)" class="auto-btn btn-small">Product Added: 53865  - Swipe Tops</button></p>
+        <p><button onclick="productRemoved(`p_53865`)" class="auto-btn btn-small">Product Removed: 53865  - Swipe Tops</button></p>
+    </div>        
+   
+   <br/><br/>
+</div>
 
 
 <script>
 
-    let productList = {
-        p_36477 : {
+    const productList = {
+        "p_36477" : {
             product_id: "36477",
             sku: "36477",
             name: "Pumps",
             brand: "Nike",
-            category: "Clothing/Shoes/Athletic",
+            shoppingCategory: "Clothing/Shoes/Athletic",
             price: 174.99,
+            quantity: 1
         },
-        p_53865 : {
+        "p_53865" : {
             product_id: "53865",
             sku: "53865",
             name: "Swipe Tops",
             brand: "Adidas",
-            category: "Clothing/Shoes/Athletic",
-            price: 114.99
+            shoppingCategory: "Clothing/Shoes/Athletic",
+            price: 114.99,
+            quantity: 1
+        },
+        //watch
+        "p_1312425" : {
+            product_id: "1312425",
+            sku: "1312425",
+            name: "White Wash Watch",
+            brand: "Go-lo-no",
+            shoppingCategory: "Accessories",
+            price: 45.99,
+            quantity: 1
+        },
+        // Yellow Shoes
+        "p_1312435" : {
+            product_id: "1312435",
+            sku: "1312435",
+            name: "Sunny Side Up",
+            brand: "Pairings",
+            shoppingCategory: "Shoes",
+            price: 45.99,
+            quantity: 1
+        },
+        // Pink Back Pack
+        "p_1312445" : {
+            product_id: "1312445",
+            sku: "1312445",
+            name: "Leather Blush",
+            brand: "Velantrice",
+            shoppingCategory: "",
+            price: 110.99,
+            quantity: 1
+        },
+        // Green Shoe
+        "p_1312455" : {
+            product_id: "1312455",
+            sku: "1312455",
+            name: "Peach Schone",
+            brand: "VE-le-GAN-t",
+            shoppingCategory: "Shoes",
+            price: 89.99,
+            quantity: 1
+        },
+
+        "p_1312465" : {
+            product_id: "1312465",
+            sku: "1312465",
+            name: "Black Bark Spile",
+            brand: "Humble Obsessions",
+            category: "Appliances",
+            price: 86.99,
+            quantity: 1
+        },
+        "p_1312475" : {
+            product_id: "1312475",
+            sku: "1312475",
+            name: "Track Packs",
+            brand: "Nike",
+            category: "Shoes",
+            price: 137.99,
+            quantity: 1
         }
     }
-    
+
+    let orderCompletedProductList = [], orderCompletedRevenue=0
+
     let productCounter = 0
-    const logProducts = () => {
+    const logProducts = (id) => {
         productCounter++
         if(productCounter%10===0){
             console.log(`Moused Over Product `,productCounter,`x !`)
-            console.log(productList.p_36477.name)
-            console.log(productList.p_53865.name)
+            console.log(productList[id].name)
+
+            //<!-- console.log(productList[id].name) -->
         }
     }
 
@@ -53,70 +279,146 @@
             }
         );
     }
-
-    const productViewed = (prodId) => {
-        prodProps = productList[prodId]
-        prodProps.step = 5 || {};
-        console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
-        analytics.track('Product Viewed', prodProps);
+    
+    const productViewed = (prodId, label) => {
+        let _id = prodId
+        logProducts(_id)
+        console.log("_id :",_id)
+        console.log("productList: ",productList)
+        let prodProps = productList._id
+        let step = 5;
+        console.log('!!! LOOK --> ',productList[_id])
+        // productList[id].name
+        console.log(step,' - ', productList[_id].name, ' : ', productList[_id].price)
+        analytics.track('Product Viewed', prodProps,{label:label});
     }
-    const productClicked = (prodId) => {
-        prodProps = productList[prodId]
-        prodProps.step = 5 || {};
-        console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
-        analytics.track('Product Clicked', prodProps);
+    const productClicked = (prodId, label) => {
+        let _id = prodId
+        let prodProps = productList._id
+        let step = 5;
+        console.log('!!! LOOK --> ',prodProps)
+        console.log(step,' - ', productList[_id].name, ' : ', productList[_id].price)
+        analytics.track('Product Clicked', prodProps,{label:label});
     }
-    const productAdded = (prodId) => {
-        prodProps = productList[prodId]
-        prodProps.step = 5 || {};
-        console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
-        analytics.track('Product Added', prodProps);
+    const productAdded = (prodId, label) => {
+        let _id = prodId
+        let prodProps = productList[_id]
+        let step = 5;
+        console.log('!!! LOOK --> ',prodProps)
+        console.log(step,'- productList[_id] - ', productList[_id].name, ' : ', productList[_id].price)
+        console.log(step,'- prodProps - ', prodProps.name, ' : ', prodProps.price)
+        analytics.track('Product Added', prodProps,{label:label});
+        
+        orderCompletedProductList.push(prodProps)
+        orderCompletedProductList[_id] ? orderCompletedProductList[_id] = productList[_id] : 0
+        orderCompletedRevenue += productList[_id].price
+        console.log(orderCompletedProductList)
+        console.log(orderCompletedRevenue)
+        //document.getElementById('orderCompletedProductList').innerHTML = orderCompletedProductList
+        document.getElementById('orderCompletedRevenue').innerHTML = orderCompletedRevenue
+        document.getElementById('orderCompletedProductList').appendChild(
+            <p></p>
+        )
     }
-    const productRemoved = (prodId) => {
-        prodProps = productList[prodId]
-        prodProps.step = 5 || {};
-        console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
-        analytics.track('Product Removed', prodProps);
+    const productRemoved = (prodId, label) => {
+        let _id = prodId
+        let productId = prodId
+        let prodProps = productList.productId
+        let step = 5;
+        console.log('!!! LOOK --> ',prodProps)
+        console.log(step,' - ', productList[_id].name, ' : ', productList[_id].price)
+        analytics.track('Product Removed', prodProps,{label:label});
     }
 
+    const orderCompleted = () => {
+        console.log("LIST : ",orderCompletedProductList)
+        //let prodList = document.getElementById('orderCompletedProductList').innerHTML = orderCompletedProductList.toString()
+        let productsUnorderedList = document.getElementById('orderCompletedProductList');
+        let productListItem = document.createElement('li');
+        let productListItemPar = document.createElement('p');
+        let productsList = []
+
+        for(let i=0; i<orderCompletedProductList.length; i++){
+            console.log('product -- ',i)
+            productsList.push(i)
+            
+            /*
+            let productChildren
+
+            for(const [key,value] of Object.entries(i)){
+                console.log(i[key,value])
+                return i[key,value].appendChild(productListItemPar)
+                //product[key] = product[key,value].appendChild(productListItemPar)
+
+            }
+            productsUnorderedList[i].appendChild(productListItem.cloneNode());
+            
+            console.log('productsUnorderedList : ',productsUnorderedList)
+            */
+            //return productsList[productsList.length] = <li>${product}</li>
+        }
+
+        // ---------------------------------------------------------------------------
+        // START -- TESTING STACK OVERFLOW 
+        var menu = document.querySelectorAll('.menu');
+        var listItem = document.createElement('li');
+        
+        for (var i=0; i < menu.length; ++i) {
+            menu[i].appendChild(listItem.cloneNode());
+            // or menu[i].appendChild(document.createElement('li'));
+            // the point is, you'll have to create a new element and append it
+        }
+        
+        // STOP -- TESTING STACK OVERFLOW 
+        // ---------------------------------------------------------------------------
 
 
+        //document.getElementById('orderCompletedProductList').innerHTML = productsList
+
+
+        // this dom element assignment prints
+        //document.getElementById('orderCompletedProductList').innerHTML = productsList
+        
+
+        console.log("orderCompletedRevenue : ",orderCompletedRevenue, "type:", typeof(orderCompletedRevenue))
+        //let revenue = document.getElementById('orderCompletedRevenue').innerHTML
+        document.getElementById('orderCompletedRevenue').innerHTML = orderCompletedRevenue
+        //revenue.innerHTML = orderCompletedRevenue
+        //for(product in orderCompletedProductList){
+        //}
+        let orderId = Math.floor((Math.random() * 100000) + 1);
+        analytics.track("Order Completed",{orderId:orderId, revenue:orderCompletedRevenue, products:orderCompletedProductList, currency:USD})
+        document.getElementById('orderCompletedRevenue').innerHTML = ""
+    }
+    const identifyAddInterest = (id, category) => {       
+        let traits = {
+            interests:{
+                product: productList.id,
+                category : category,
+                dateUpdated : Date.now()
+            }
+        }
+        let properties = traits
+        analytics.identify(serverUserId,traits,[])
+        analytics.track("Interest Added",properties)
+        //analytics.track("Interest Added")
+        console.log(traits.interests.category)
+    }
 </script>
 
+    
+
+<!-- 
+<div>
+    <picture>
+        <source media="(min-width: 650px)" srcset="./images/avery-evans-RkCvkHgfiqc-unsplash.jpg">
+        <source media="(min-width: 465px)" srcset="./images/daniel-korpai-hbTKIbuMmBI-unsplash.jpg">
+        <img src="./images/hunter-newton-yuMuWhz-PGI-unsplash.jpg">
+    </picture>
+</div> -->
 
 
-<div class="ecommerce-container">
-    <!-- <input type="text" name="reviewCart" required="" id="reviewCart-ecommerce-input" placeholder="Review Cart"/> -->
-    <p><button onclick="viewedCheckoutStep(1)" class="auto-btn btn-small">Step 1 "Viewed Checkout"</button></p>        
-    <p><button onclick="completedCheckoutStep(1)" class="auto-btn btn-small">Step 1 "Completed Checkout"</button></p>
-                
-    <!-- <input type="text" name="collectPayment" id="collectPayment-ecommerce-input" required="" placeholder="Collect Payment"/> -->
-    <p><button onclick="viewedCheckoutStep(2)" class="auto-btn btn-small">Step 2 "Viewed Checkout"</button></p>
-    <p><button onclick="completedCheckoutStep(2)" class="auto-btn btn-small">Step 2 "Completed Checkout"</button></p>
 
-    <!-- <input type="text" name="confirmPurchaseDetails" id="confirmPurchaseDetails-ecommerce-input" required="" placeholder="confirmPurchaseDetails"/> -->
-    <p><button onclick="viewedCheckoutStep(3)" class="auto-btn btn-small">Step 3 "Viewed Checkout"</button></p>
-    <p><button onclick="completedCheckoutStep(3,'FedEx','Visa')" class="auto-btn btn-small">Step 3 "Completed Checkout"</button></p>
 
-    <!-- <input type="text" name="reciept" id="reciept-ecommerce-input" required="" placeholder="reciept"/> -->
-    <p><button onclick="viewedCheckoutStep(4)" class="auto-btn btn-small">Step 4 "Viewed Checkout"</button></p>
-    <p><button onclick="completedCheckoutStep(4,'FedEx','Visa')" class="auto-btn btn-small">Step 4 "Completed Checkout"</button></p>
-                                
 
-    <div id="36477" class="product" onmouseover="logProducts()">
-        <p><button onclick="viewedCheckoutStep(5)" class="auto-btn btn-small">Step 5 "Product Clicked"</button></p>
-        <p><button onclick="productViewed(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
-        <p><button onclick="productClicked(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
-        <p><button onclick="productAdded(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
-        <p><button onclick="productRemoved(`p_36477`)" class="auto-btn btn-small">Product: 36477 - Pumps</button></p>
-    </div>        
-        
-        
-    <div id="53865" class="product" onmouseover="logProducts()">
-        <p><button onclick="viewedCheckoutStep(5)" class="auto-btn btn-small">Step 5 "Product Clicked"</button></p>
-        <p><button onclick="productViewed(`p_53865`,5)" class="auto-btn btn-small">Product: 53865 - Swipe Tops</button></p>
-        <p><button onclick="productClicked(`p_53865`,5)" class="auto-btn btn-small">Product: 53865  - Swipe Tops</button></p>
-        <p><button onclick="productAdded(`p_53865`,5)" class="auto-btn btn-small">Product: 53865  - Swipe Tops</button></p>
-        <p><button onclick="productRemoved(`p_53865`,5)" class="auto-btn btn-small">Product: 53865  - Swipe Tops</button></p>
-    </div>        
-</div>
+
