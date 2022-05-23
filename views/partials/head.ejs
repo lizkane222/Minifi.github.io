@@ -329,7 +329,7 @@ function getCookie(cname) {
             console.log("serverUserId : TYPE",typeof(serverUserId),serverUserId)
             if(!serverUserId){
                 console.log("NEW USER - serverUserId 'falsey':" + serverUserId )
-                serverUserId = Math.floor((Math.random() * 100000) + 1);
+                serverUserId = Math.floor((Math.random() * 10000000) + 1);
                 serverUserId = serverUserId.toString()
                 console.log("NEW USER - serverUserId 'truthy':", serverUserId,"  ---  TYPE  --:", typeof(serverUserId))
             }
@@ -412,7 +412,7 @@ function getCookie(cname) {
             // path: `${angularComponent}`,
         //},
         {
-            integrations:{Klaviyo:false, Amplitude:{sessionId:uTC()}},
+            // integrations:{Klaviyo:true, Amplitude:{sessionId:uTC()}},
             // anonymousId : "1234567890"
         }, 
             setTimeout(() => {
@@ -427,12 +427,29 @@ function getCookie(cname) {
                 // expected output: seconds elapsed = 2
             }, 1500)
         );
+        //analytics.track("Page Viewed",{name:document.title, path: document.location.pathname, referrer: document.referrer, search : window.location.search,  title: document.title,  url: document.URL},{integrations:{Klaviyo:true}})
     }
+    let closed = false
+    let where = ""
+    let beforeUnload = () => {
+        analytics.track("Before Unload", {now: Date.now(), closed: closed, where : where})
+    }
+
+    window.addEventListener('beforeunload', function (e) {
+        e.preventDefault();
+        closed = true
+        where = "window funk"
+        e.returnValue = beforeUnload();
+    });
     
+    if (closed)  {
+        where = "if statement"
+        beforeUnload()
+    }
         // console.log(`before function FIRST`, Date.now())
-    !function(){analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","timeout"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.13.2";
+      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.15.3";
         // console.log(`inside function LAST`,Date.now())
-        analytics.load("XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh");
+        analytics.load("XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh", {integrations:{"All":true, "Braze":true, "Segment.io": true, "Eloqua":true, "HubSpot":true, "Marketo V2":true, "Mixpanel":true, "Customer.io":true, "Klaviyo":true, "Google Analytics" : true, "Actions Amplitude":true}});
 
             userAnonymousId = getCookie("ajs_anonymous_id")
             serverAnonymousId = getCookie("ajs_anonymous_id")
@@ -528,6 +545,26 @@ function checkCookie() {
 }
     // console.log("page_view",{category:titleSplit[1],name:titleSplit[0]},context:{category:titleSplit[1],name:titleSplit[0]})
     
+
+let checkIfUserIdExist = () => {
+    let userId = analytics.user().id()
+    let email = analytics.user().traits().email;
+
+    if (userId == null & email != null){
+        analytics.identify(email, {email:email})
+        console.log("if statement : sending identify with email & email as trait")
+    }
+    else if (userId === null & email == null){
+        analytics.identify()
+        console.log("else if statement : sending identify without userId or email")
+    }
+    else {
+        analytics.identify(userId, {email:email})
+        console.log("else statement : sending identify with userId & email as trait")
+    }
+}
+
+
 
 </script>
 </head>

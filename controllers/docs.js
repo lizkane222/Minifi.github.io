@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const Analytics = require('analytics-node');
-const analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 1 })
+const analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 10 })
 
 const db = require('../models');
 

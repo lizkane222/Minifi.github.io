@@ -33,13 +33,35 @@
 
 </main>
 
+<div class="video" onclick="playVideo('Barcelona')">
+    <script src="https://fast.wistia.com/embed/medias/jrs6egq9yp.jsonp" async></script>
+    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+    <span class="wistia_embed wistia_async_jrs6egq9yp popover=true popoverAnimateThumbnail=true" style="display:inline-block;height:84px;position:relative;width:150px">&nbsp;</span>
+</div>
 
-<script src="https://fast.wistia.com/embed/medias/jrs6egq9yp.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><span class="wistia_embed wistia_async_jrs6egq9yp popover=true popoverAnimateThumbnail=true" style="display:inline-block;height:84px;position:relative;width:150px">&nbsp;</span>
-    
+</br></br></br></br>
 
+<button onclick="tagUpdate()">Update Profile</button>
+<script>
+const tagUpdate = () => {
+    let tags = {
+        tag1 : "apple",
+        tag2 : "banana",
+        tag3 : "orange"
+    }
+    analytics.track("TagUpdate", tags, {context:{traits:tags}})
+    analytics.identify(tags)
+}
+</script>
 
+</br></br></br>
+<button onclick="idTrackCallback()"> Click this to send identify call with a callback of a track call 4 seconds later</button>
 
+</br></br></br>
 
+</br></br></br>
+<button onclick="checkIfUserIdExist()"> Check if userId exists</button>
+</br></br></br>
 
 <footer>
     <%- include('./partials/footer') %>
@@ -47,6 +69,23 @@
 </body>
 
 <script>
+
+const playVideo = (videoName) => {
+    analytics.track("Video Played", {videoName: videoName, time:Date.now()})
+}
+
+const idTrackCallback = () => {
+    analytics.identify(serverUserId,{now:Date.now()},{},
+        setTimeout(() => {
+            analytics.track("After Identify",{now:Date.now()});
+            console.log("Callback : track call triggered")
+        }, 4000)
+    );
+    console.log("Identify call triggered")
+}
+
+
+
 // const createNewLeadNewMotivation = () => {
 //     console.log("reached createNewLeadNewMotivation function")
 //     analytics.identify({},["Lead Account"],{traits})

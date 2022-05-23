@@ -2,7 +2,7 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const Analytics = require('analytics-node');
-const analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 4 })
+const analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 10 })
 
 
 /* Internal Modules */

@@ -162,25 +162,25 @@
                 //extraTraits: extraTraits ? extraTraits : null
             }
             console.log('!!!!! --- GROUPID before group call',groupId)
-            analytics.group(groupId,companyProperties,{context:{traits:traits},integrations:{"All":false,"Marketo V2":false,"Customer.io":true, "Klaviyo":false,}})
+            analytics.group(groupId,companyProperties,{context:{traits:traits},integrations:{"All":true,"Marketo V2":false,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Google Analytics 4": true}})
             analytics.identify(serverUserId,traits,{
                 $groupId:groupIdList,
                 $name: document.getElementById("organization-foot-index").value,
-                integrations:{"All":false,"Marketo V2":false,"Customer.io":true, "Klaviyo":true,},
+                integrations:{"All":true,"Marketo V2":false,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Google Analytics 4": true}
                 }
             )
             analytics.track("Group Company Traits Identified",companyProperties,{
                 $userId:userId,
                 $groupId : groupIdList,
                 $name: document.getElementById("organization-foot-index").value,
-                integrations:{"All":false,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,}
+                integrations:{"All":true,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Google Analytics 4": true}
                 }
             )
             analytics.track("Group User Traits Identified",traits,{
                 $userId:userId,
                 $groupId : groupIdList,
                 $name: document.getElementById("organization-foot-index").value,
-                integrations:{"All":false,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,}
+                integrations:{"All":true,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Google Analytics 4": true}
                 }
             )
             // function() {

@@ -10,23 +10,23 @@
                 </li>
             </a>
             <!-- <a class="nav-link"  href="/motivate"> -->
-            <a class="nav-link"  href="/motivate/new">
+            <a class="nav-link"  href="/motivate/new/">
                 <li class="nav-item" onclick="trackNavRoute(`Motivate`,`minifiSite`)">
                     Motivate
                 </li>
             </a>
-            <a class="nav-link"  href="/chi">
+            <a class="nav-link"  href="/chi/">
                 <li class="nav-item" onclick="trackNavRoute(`Chi`,`minifiSite`)">
                     Mi Chi
                 </li>
             </a>
-            <a class="nav-link"  href="/user">
+            <a class="nav-link"  href="/user/">
                 <li class="nav-item" onclick="trackNavRoute(`User`,`minifiSite`)">
                     Build User
                 </li>
             </a>
 
-            <a class="nav-link"  href="/user/about">
+            <a class="nav-link"  href="/user/about/">
                 <li class="nav-item" onclick="trackNavRoute(`About`,`minifiSite`)">
                     About
                 </li>
@@ -36,12 +36,12 @@
                     GH-PAGES
                 </li>
             </a>
-            <a class="nav-link"  href="/docs">
+            <a class="nav-link"  href="/docs/">
                 <li class="nav-item" onclick="trackNavRoute(`docs`,`minifiSite`)">
                     PRODUCTS
                 </li>
             </a>
-            <a class="nav-link"  href="/docs/code">
+            <a class="nav-link"  href="/docs/code/">
                 <li class="nav-item" onclick="trackNavRoute(`docs`,`minifiSite`)">
                     CODE
                 </li>
@@ -154,10 +154,12 @@
         }
 
         analytics.track('navlink clicked',properties,{integrations: {
-            "All": true,
-            "Amplitude": {
-                session_id: currentSessionId
-            }}
+            All: true,
+            //Amplitude: {
+            //    session_id: currentSessionId
+            //},
+            Salesforce : true, "Google Analytics 4": true
+        }
         });
     }
     
