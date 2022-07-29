@@ -93,7 +93,7 @@
     const identify = (e) =>{
         e.preventDefault();
         let form = e.target;
-        let email = form["email"].value;
+        let email = form["email"].value.toLowerCase();
         let fullname = form["fullname"].value;
         let motivation = form["motivation"].value;
         let action = form["action"].value;

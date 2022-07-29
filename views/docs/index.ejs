@@ -42,10 +42,29 @@
     <button id="submitNewAccountInputs" onclick="createNewAccount()">SAVE</button>
 </div>
 <br/><br/><br/><br/> -->
+<br/><br/><br/><br/>
+<div>
+    <button onclick="idTrackCallback()"> Click this to send identify call with a callback of a track call 4 seconds later</button>
+</div>
+
+<br/><br/><br/><br/>
+
 
 <%- include('../partials/ecommerce') %>
 
 <script> 
+    const idTrackCallback = () => {
+        analytics.identify(serverUserId,{now:Date.now()},{},
+            setTimeout(() => {
+                console.log("Callback : track call triggered")
+                analytics.track("After Identify",{now:Date.now()});
+            }, 4000)
+        );
+        console.log("Identify call triggered")
+    }
+    
+
+
 // <div>
 //     <button onclick="AnalyticsCompanyProfileUpdated()">Make Customer Track Call</button>
 // </div>

@@ -1,8 +1,10 @@
 /* External Modules */
 const express = require('express');
+// const cookieParser = require('cookie-parser'); // in order to read cookie sent from client
 const methodOverride = require('method-override');
 const Analytics = require('analytics-node');
-const analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 10 })
+analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 3,  flushInterval: 10000,
+    enable: false })
 
 
 /* Internal Modules */
@@ -18,11 +20,188 @@ const PORT = 4000;
 app.set('view engine', 'ejs');
 
 
+
+app.get('/', (req,res)=>{
+
+    // read cookies
+    console.log(req.cookies) 
+
+    let options = {
+        maxAge: 1000 * 60 * 15, // would expire after 15 minutes
+        httpOnly: true, // The cookie only accessible by the web server
+        signed: true // Indicates if the cookie should be signed
+    }
+
+    // Set cookie
+    res.cookie('cookieName', 'cookieValue', options) // options is optional
+    res.send('')
+
+})
+
+
+const triggerAllEvents = () => {
+
+
+
+
+analytics.identify({
+    traits: {
+    name: 'Cynthia Silva',
+    position: 'test',
+    company: { name: 'Kevs Stores 2' },
+    },
+    anonymousId:"345678okjg87ytgbnku"
+});
+analytics.identify({
+    traits: {
+    email: 'cynthiasilva@profitfy.me',
+    name: 'Cynthia Silva',
+    position: 'test',
+    company: { name: 'Kevs Stores 2' },
+    },
+    anonymousId:"345678okjg87ytgbnku"
+});
+analytics.identify({
+    userId: '89iu789i-drtyg6',
+    traits: {
+    email: 'cynthiasilva@profitfy.me',
+    name: 'Cynthia Silva',
+    position: 'test',
+    phone: '5511979506004',
+    company: { name: 'Kevs Stores 2' },
+    },
+    anonymousId:"345678okjg87ytgbnku"
+});
+analytics.track({
+    properties: {
+      cart_id: "cart1234",
+      product_id: "product123456",
+      sku : "G-32",
+      category : "Games",
+      name: "Monopoly : 3rd Edition",
+      brand: "Hasbro",
+      variant: "200 pieces",
+      price: 18.99,
+      quantity: 1,
+      coupon: "MAYDEALS",
+      position: 3
+    },
+    context:{
+        traits: {
+            email: "cynthiasilva@profitfy.me",
+            phone: "5511979506004",
+            gender: "f",
+            name: "Cynthia Silva",
+            address: {
+                city: "East Greenwich",
+                state: "RI",
+                postalCode: "02818",
+                country: "USA"
+            }
+        }
+    },
+    anonymousId:"345678okjg87ytgbnku",
+    event: "Product Viewed",
+    type: "track",
+    userId: "89iu789i-drtyg6"
+    }
+);
+analytics.track({
+    properties: {
+      cart_id: "cart1234",
+      product_id: "product123456",
+      sku : "G-32",
+      category : "Games",
+      name: "Monopoly : 3rd Edition",
+      brand: "Hasbro",
+      variant: "200 pieces",
+      price: 18.99,
+      quantity: 1,
+      coupon: "MAYDEALS",
+      position: 3
+    },
+    context:{
+        traits: {
+            email: "cynthiasilva@profitfy.me",
+            phone: "5511979506004",
+            gender: "f",
+            name: "Cynthia Silva",
+            address: {
+                city: "East Greenwich",
+                state: "RI",
+                postalCode: "02818",
+                country: "USA"
+            }
+        }
+    },
+    event: "Product Added",
+    type: "track",
+    anonymousId:"345678okjg87ytgbnku",
+    userId: "89iu789i-drtyg6"
+    }
+);
+analytics.track({
+    properties: {
+      cart_id: "cart1234",
+      product_id: "product123456",
+      sku : "G-32",
+      category : "Games",
+      name: "Monopoly : 3rd Edition",
+      brand: "Hasbro",
+      variant: "200 pieces",
+      price: 18.99,
+      quantity: 1,
+      coupon: "MAYDEALS",
+      position: 3
+    },
+    context:{
+        traits: {
+            email: "cynthiasilva@profitfy.me",
+            phone: "5511979506004",
+            gender: "f",
+            name: "Cynthia Silva",
+            address: {
+                city: "East Greenwich",
+                state: "RI",
+                postalCode: "02818",
+                country: "USA"
+            }
+        }
+    },
+    event: "Product Removed",
+    type: "track",
+    userId: "89iu789i-drtyg6",
+    anonymousId:"345678okjg87ytgbnku"
+    }
+);
+
+    
+analytics.group({
+    groupId: 'store-y78ijhg',
+    userId: '89iu789i-drtyg6',
+    email: 'cynthiasilva@profitfy.me',
+    traits: {
+        email: 'cynthiasilva@profitfy.me',
+        website: 'https://www.example.com',
+        name: 'Example Inc.',
+    },
+    userId: '89iu789i-drtyg6',
+    anonymousId:"345678okjg87ytgbnku"
+});
+
+}
+triggerAllEvents()
+
 /* middleware */
 // accent body data
 app.use(express.urlencoded({ extended: true }));
 // overrides incoming post to DELETE/PUT
 app.use(methodOverride('_method'));
+
+// app.use(express.session({
+//     secret: analytics,
+//     cookie: { domain:'http://localhost:4000/'},
+// }));
 
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.originalUrl}`);
@@ -79,20 +258,26 @@ app.use((req, res, next) => {
   // proceed!
     next();
 })
-
+const context = {
+    // Motivate : db.Motivate
+    page_category : "Minifi | ",
+    page_title : "Home",
+    analytics : analytics
+}
 /* Routes */
-app.get('/', (req, res) => {
+app.get('/',async (req, res) => {
     // render("file", context)
     // console.log('hi')
     // res.send('MINIFI SERVER IS OFFICIALLY CONNECTED!')
-    res.render('index',
-    context = {
-        // Motivate : db.Motivate
-        page_category : "Minifi | ",
-        page_title : "Home",
-        analytics : analytics
-    }
-    );
+    try {
+        // const foundChi =  db.Chi.find({});
+        await res.render('index',
+        context = context
+    )}
+    catch (error) {
+        console.log(error)
+        return res.send({message: `Internal Server Error: check server.js file ${error}`});
+    };
     // res.render('index', { user: req.session.currentUser } );
 });
 
@@ -106,6 +291,7 @@ app.get('/', (req, res) => {
 // context={
 //     analtyics : analytics 
 // }
+
 
 // motivate Routes
 app.use('/motivate', controllers.motivate);

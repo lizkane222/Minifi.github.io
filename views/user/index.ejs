@@ -117,7 +117,7 @@
             document.getElementById("inputgroupId").value = groupId 
             analytics.identify(serverUserId,{groupId:groupId})
             
-            employeeEmail = `${firstNameGroupInput}${lastNameGroupInput}@kanecorp.org`
+            employeeEmail = `${firstNameGroupInput}${lastNameGroupInput}@kanecorp.org`.toLowerCase()
         }
         
         let companyProperties
@@ -154,7 +154,7 @@
                 $avatar: "https://imgur.com/UHwbel0",
                 name:`${firstNameGroupInput} ${lastNameGroupInput}`,
                 employeeId : serverUserId,
-                email: document.getElementById("email-foot-index").value,
+                email: document.getElementById("email-foot-index").value.toLowerCase(),
                 favSocMedia : favSocMediaInput,
                 anonymousId : serverAnonymousId,
                 username : userNameInput,
@@ -162,25 +162,25 @@
                 //extraTraits: extraTraits ? extraTraits : null
             }
             console.log('!!!!! --- GROUPID before group call',groupId)
-            analytics.group(groupId,companyProperties,{context:{traits:traits},integrations:{"All":true,"Marketo V2":false,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Google Analytics 4": true}})
+            analytics.group(groupId,companyProperties,{context:{traits:traits},integrations:{"All":true,"Marketo V2":false,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})
             analytics.identify(serverUserId,traits,{
                 $groupId:groupIdList,
                 $name: document.getElementById("organization-foot-index").value,
-                integrations:{"All":true,"Marketo V2":false,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Google Analytics 4": true}
+                integrations:{"All":true,"Marketo V2":false,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}
                 }
             )
             analytics.track("Group Company Traits Identified",companyProperties,{
                 $userId:userId,
                 $groupId : groupIdList,
                 $name: document.getElementById("organization-foot-index").value,
-                integrations:{"All":true,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Google Analytics 4": true}
+                integrations:{"All":true,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}
                 }
             )
             analytics.track("Group User Traits Identified",traits,{
                 $userId:userId,
                 $groupId : groupIdList,
                 $name: document.getElementById("organization-foot-index").value,
-                integrations:{"All":true,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Google Analytics 4": true}
+                integrations:{"All":true,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}
                 }
             )
             // function() {
@@ -202,7 +202,7 @@
             document.getElementById("group-user-name-index").value = ""
             document.getElementById("lastName-foot-index").value = ""
             document.getElementById("group-user-last-index").value = ""
-            document.getElementById("email-foot-index").value = ""
+            document.getElementById("email-foot-index").value.toLowerCase() = ""
             document.getElementById("fav-soc-media-foot-index").value = ""
             document.getElementById("userName-foot-index").value = ""
             groupId = temporaryGroupId

@@ -73,11 +73,11 @@
     const signUpSuccessful = (name,action) => {
         document.getElementById("firstNameMarketo").value = firstNameMarketo
         document.getElementById("firstName-foot-index").value = firstNameInput;
-
+        email = email.toLowerCase()
         console.log("firstName",firstNameMarketo)
         console.log(name)
-        if(action=="identify"){analytics.identify(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
-        if(track=="identify"){analytics.track(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
+        if(action=="identify"){analytics.identify(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        if(action=="track"){analytics.track(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
    
         anaytics.track("Sign Up Successful",{firstName:firstNameMarketo})
         anaytics.track("Sign Up Successful",{firstName:firstNameInput})
@@ -202,24 +202,26 @@
         if(trait == "firstNameMarketo"){
             firstNameMarketo = document.getElementById("firstNameMarketo").value;
             console.log(firstNameMarketo)
-            if(action=="track"){analytics.track("Sign Up Successful",{firstName:firstNameMarketo},{traits:{firstName:firstNameMarketo,email:email}, integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
-            if(action=="identify"){analytics.identify(serverUserId,{firstName:firstNameMarketo,email:email},{traits:{firstName:firstNameMarketo},integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
+            email = document.getElementById("email-foot-index").value.toLowerCase();
+            console.log(email)
+            if(action=="track"){analytics.track("Sign Up Successful",{firstName:firstNameMarketo},{traits:{firstName:firstNameMarketo,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{firstName:firstNameMarketo,email:email},{traits:{firstName:firstNameMarketo},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
         }
         if(trait == "firstName"){
             firstName = document.getElementById("firstName-foot-index").value;
             console.log(firstName)
-            email = document.getElementById("email-foot-index").value;
+            email = document.getElementById("email-foot-index").value.toLowerCase();
             console.log(email)
-            if(action=="track"){analytics.track("User firstName Added",{firstName:firstName,email:email},{traits:{firstName:firstName,email:email}, integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
-            if(action=="identify"){analytics.identify(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
+            if(action=="track"){analytics.track("User firstName Added",{firstName:firstName,email:email},{traits:{firstName:firstName,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
         }
         if(trait == "lastName"){
             lastName = document.getElementById("lastName-foot-index").value;
             console.log(lastName)
-            email = document.getElementById("email-foot-index").value;
+            email = document.getElementById("email-foot-index").value.toLowerCase();
             console.log(email)
-            if(action=="track"){analytics.track("User lastName Added",{lastName:lastName,email:email},{traits:{lastName:lastName,email:email}, integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
-            if(action=="identify"){analytics.identify(serverUserId,{lastName:lastName,email:email},{traits:{lastName:lastName,email:email},integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
+            if(action=="track"){analytics.track("User lastName Added",{lastName:lastName,email:email},{traits:{lastName:lastName,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{lastName:lastName,email:email},{traits:{lastName:lastName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
         }
         if(trait == "fullName"){
             firstName = document.getElementById("firstName-foot-index").value;
@@ -228,40 +230,40 @@
             console.log(lastName)
             fullName = `${firstName} ${lastName}`
             console.log(fullName)
-            email = document.getElementById("email-foot-index").value;
+            email = document.getElementById("email-foot-index").value.toLowerCase();
             console.log(email)
-            if(action=="track"){analytics.track("User fullName Added",{Name:fullName,email:email},{traits:{Name:fullName,email:email}, integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
-            if(action=="identify"){analytics.identify(serverUserId,{Name:fullName,email:email},{traits:{Name:fullName,email:email},integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
+            if(action=="track"){analytics.track("User fullName Added",{Name:fullName,email:email},{traits:{Name:fullName,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{Name:fullName,email:email},{traits:{Name:fullName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
         }
         if(trait == "organization"){
             organization = document.getElementById("organization-foot-index").value;
             console.log(organization)
-            email = document.getElementById("email-foot-index").value;
+            email = document.getElementById("email-foot-index").value.toLowerCase();
             console.log(email)
-            if(action=="track"){analytics.track("User organization Added",{organization:organization,email:email},{traits:{organization:organization,email:email}, integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
-            if(action=="identify"){analytics.identify(serverUserId,{organization:organization,email:email},{traits:{organization:organization,email:email},integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
+            if(action=="track"){analytics.track("User organization Added",{organization:organization,email:email},{traits:{organization:organization,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{organization:organization,email:email},{traits:{organization:organization,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
         }
         if(trait == "email"){
-            email = document.getElementById("email-foot-index").value;
+            email = document.getElementById("email-foot-index").value.toLowerCase();
             console.log(email)
-            if(action=="track"){analytics.track("User email Added",{email:email},{traits:{email:email}, integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
-            if(action=="identify"){analytics.identify(serverUserId,{email:email},{traits:{email:email},integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
+            if(action=="track"){analytics.track("User email Added",{email:email},{traits:{email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{email:email},{traits:{email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
         }
         if(trait == "favSocMedia"){
             favSocMedia = document.getElementById("fav-soc-media-foot-index").value;
             console.log(favSocMedia)
-            email = document.getElementById("email-foot-index").value;
+            email = document.getElementById("email-foot-index").value.toLowerCase();
             console.log(email)
-            if(action=="track"){analytics.track("User favSocMedia Added",{favSocMedia:favSocMedia,email:email},{traits:{favSocMedia:favSocMedia,email:email}, integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
-            if(action=="identify"){analytics.identify(serverUserId,{favSocMedia:favSocMedia,email:email},{traits:{favSocMedia:favSocMedia,email:email},integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
+            if(action=="track"){analytics.track("User favSocMedia Added",{favSocMedia:favSocMedia,email:email},{traits:{favSocMedia:favSocMedia,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{favSocMedia:favSocMedia,email:email},{traits:{favSocMedia:favSocMedia,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
         }
         if(trait == "userName"){
             userName = document.getElementById("userName-foot-index").value;
             console.log(userName)
-            email = document.getElementById("email-foot-index").value;
+            email = document.getElementById("email-foot-index").value.toLowerCase();
             console.log(email)
-            if(action=="track"){analytics.track("User userName Added",{userName:userName,email:email},{traits:{userName:userName,email:email}, integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
-            if(action=="identify"){analytics.identify(serverUserId,{userName:userName,email:email},{traits:{userName:userName,email:email},integrations:{"All":true, Salesforce:true, "Google Analytics 4": true}})}
+            if(action=="track"){analytics.track("User userName Added",{userName:userName,email:email},{traits:{userName:userName,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{userName:userName,email:email},{traits:{userName:userName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
         }
     }
 
@@ -270,7 +272,7 @@
         firstName = document.getElementById("firstName-foot-index").value;
         lastName = document.getElementById("lastName-foot-index").value;
         organization = document.getElementById("organization-foot-index").value;
-        email = document.getElementById("email-foot-index").value;
+        email = document.getElementById("email-foot-index").value.toLowerCase();
         favSocMedia = document.getElementById("fav-soc-media-foot-index").value;
         userName = document.getElementById("userName-foot-index").value;
         //let firstName = firstNameInput
@@ -336,7 +338,7 @@
 
         //analytics.identify([userId], [traits], [options], [callback]);
         
-        analytics.identify(traits.userId,traits,{integrations:{All:true, Salesforce:true, "Google Analytics 4": true}})
+        analytics.identify(traits.userId,traits,{integrations:{All:true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})
         analytics.track("New Subscription Created",
             properties,
             {

@@ -435,28 +435,47 @@ function getCookie(cname) {
         analytics.track("Before Unload", {now: Date.now(), closed: closed, where : where})
     }
 
-    window.addEventListener('beforeunload', function (e) {
-        e.preventDefault();
-        closed = true
-        where = "window funk"
-        e.returnValue = beforeUnload();
-    });
+    //window.addEventListener('beforeunload', function (e) {
+    //    e.preventDefault();
+    //    closed = true
+    //    where = "window funk"
+        //<!-- add statement to check redirect within this domain -->
+    //    e.returnValue = beforeUnload();
+    //});
     
-    if (closed)  {
-        where = "if statement"
-        beforeUnload()
-    }
+    //if (closed)  {
+    //    where = "if statement"
+    //    beforeUnload()
+    //}
         // console.log(`before function FIRST`, Date.now())
-      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.15.3";
-        // console.log(`inside function LAST`,Date.now())
-        analytics.load("XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh", {integrations:{"All":true, "Braze":true, "Segment.io": true, "Eloqua":true, "HubSpot":true, "Marketo V2":true, "Mixpanel":true, "Customer.io":true, "Klaviyo":true, "Google Analytics" : true, "Actions Amplitude":true}});
 
+        let SMW = function({payload, next, integrations}){
+            let mesABC = "ajs-next"
+            let mes123 = Math.floor((Math.random()*10000000000)*10000+1)
+            console.log(`${mesABC}-${mes123}`)
+           
+            payload.obj.messageId = `${mesABC}-${mes123}`
+            next(payload);
+        }
+        
+        
+        !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.15.3";
+        
+        // ADD SOURCE MIDDLEWARE TO AJS CODE : https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/middleware/#using-source-middlewares
+        analytics.addSourceMiddleware(SMW);
+        
+        analytics.load("GHWp3Jhvn2GBHxspEdZBRVhDmJKM4XC1", {integrations:{"All":true, "Braze":true, "Braze Web Mode (Actions)":true, "Segment.io": true, "Intercom":true, "Eloqua":true, "HubSpot":true, "Marketo V2":true, "Mixpanel":true, "Customer.io":true, "Klaviyo":true, "Google Analytics" : true, "Actions Amplitude":true}});
+        
+        // console.log(`inside function LAST`,Date.now())
             userAnonymousId = getCookie("ajs_anonymous_id")
             serverAnonymousId = getCookie("ajs_anonymous_id")
             serverUserId = getCookie("ajs_user_id")
             serverGroupProperties = getCookie("ajs_group_properties")
             serverGroupId = getCookie("ajs_group_id")
             serverUserTraits = getCookie("ajs_user_traits")
+
+
+
 
             analytics.ready(getPageContext());
             // analytics.ready(getPageContext());
@@ -548,7 +567,7 @@ function checkCookie() {
 
 let checkIfUserIdExist = () => {
     let userId = analytics.user().id()
-    let email = analytics.user().traits().email;
+    let email = analytics.user().traits().email.toLowerCase();
 
     if (userId == null & email != null){
         analytics.identify(email, {email:email})

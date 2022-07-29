@@ -316,9 +316,8 @@
         console.log(orderCompletedRevenue)
         //document.getElementById('orderCompletedProductList').innerHTML = orderCompletedProductList
         document.getElementById('orderCompletedRevenue').innerHTML = orderCompletedRevenue
-        document.getElementById('orderCompletedProductList').appendChild(
-            <p></p>
-        )
+        const newPar = document.createElement('p')
+        document.getElementById('orderCompletedProductList').appendChild(newPar)
     }
     const productRemoved = (prodId, label) => {
         let _id = prodId
