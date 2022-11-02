@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar') %>
+    </header>
+<!-- show new tamagotchi -->
+
+<div>
+    <button onclick="getLocation()">
+        Get User's Location : 
+    </button>
+    <p id="userlocation"></p>
+</div>
+    
+
+
+
+</body>
+<script>
+// USER LOCATION - LONGITUDE & LATITUDE
+  var x = document.getElementById("userlocation");
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+  }
+
+
+
+</script>
+
+
+</html>

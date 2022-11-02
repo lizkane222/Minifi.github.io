@@ -26,6 +26,8 @@ router.get('/', async (req,res)=> {
     };
 });
 
+
+
 // new 
 router.get('/new', (req,res)=> {
     // res.send("Motivate's NEW Route is ⇪ and 🏃🏻‍♀️")
@@ -54,22 +56,22 @@ router.post('/', (req,res) => {
 
             // context = {analytics : analytics}
 // show
-router.get('/:id', (req,res) => {
-        // res.send("Motivate's SHOW Route is ⇪ and 🏃🏻‍♀️");
-    db.Motivate.findById(req.params.id, (error, foundMotivate) => {
-        if (error) {
-            console.log(error)
-            // return res.send(`Internal Server Error: check motivate controller @ show route ${error}`);
-        }
-        const context = {
-            motivate : foundMotivate,
-            page_title : "Show Motivate",
-            pageCategory : "GET 1",
-            analytics : analytics
-        }
-        res.render('motivate/show.ejs', context)
-    });
-});
+// router.get('/:id', (req,res) => {
+//         // res.send("Motivate's SHOW Route is ⇪ and 🏃🏻‍♀️");
+//     db.Motivate.findById(req.params.id, (error, foundMotivate) => {
+//         if (error) {
+//             console.log(error)
+//             // return res.send(`Internal Server Error: check motivate controller @ show route ${error}`);
+//         }
+//         const context = {
+//             motivate : foundMotivate,
+//             page_title : "Show Motivate",
+//             pageCategory : "GET 1",
+//             analytics : analytics
+//         }
+//         res.render('motivate/show.ejs', context)
+//     });
+// });
 
             // context = {analytics : analytics}
 // edit

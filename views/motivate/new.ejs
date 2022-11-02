@@ -2,61 +2,7 @@
 <html lang="en">
 <head>
     <%- include('../partials/head') %>
-
-
 </head>
-
-<body>
-    <header>
-        <%- include('../partials/navbar') %>
-    </header>
-<!-- new exercise form -->
-<!-- <h2>Let's LOG a new motivation</h2> -->
-
-<!-- <p>PUT FORM HERE</p> -->
-<!-- <main>
-    <form action="/motivate" method="POST">
-        <input type="text" name="name" placeholder="Motivation Name">
-        <input type="text" name="type" placeholder="Type of Motivation">
-        <input type="text" name="duration" placeholder="Duration">
-        <input type="text" name="groupSize" placeholder="Group Size: self, partner, small-group, large-group">
-        <br/>
-        <h4>Per Exercise</h4>
-        <input type="text" name="perExercise.type" placeholder="perExercise.type">
-        <input type="text" name="perExercise.duration" placeholder="perExercise.duration">
-        <input type="text" name="perExercise.caloriesBurned" placeholder="perExercise.caloriesBurned">
-        <input type="submit" value="Log Workout">
-    </form>
-</main> -->
-
-
-<hr/>
-<section>
-    <h1>Stay Motivated</h1> 
-    <p>Let's find out what kinds of exercises or activities motivate you.</p>  
-    <form name="motivate" onsubmit="identify(event)">
-        What is the name of the exercise / activity / motivation?
-        <input name="motivation"  size="81" value="run" type="text"/> 
-        <br><br><br> 
-        Motivation Description (What do you do, for how long, with whom, in repeptitions?):
-        <br><br> 
-        <section>
-            action: <input name="action"  size="75" value="running non-stop" type="text"/> 
-            <br><br>duration: <input name="duration"  size="75" value="25 min" type="text"/> 
-            <br><br>partners: <input name="partners"  size="75" value="solo" type="text"/> 
-            <br><br>
-            <textarea cols="81" name="details" placeholder="additional details" rows="5"></textarea> 
-        </section>
-        <br><br> 
-        Name: <input name="fullname"  size="75" value="" type="text"/> 
-        <br><br> 
-        Email: <input name="email" required="" size="75" value="" type="email"/> 
-        <br><br>
-        <input name="submit" type="submit" value="submit"/>
-    </form> 
-
-</section>
-
 
 
 <script type="text/javascript">
@@ -90,16 +36,26 @@
     }
 
 
-    const identify = (e) =>{
-        e.preventDefault();
-        let form = e.target;
-        let email = form["email"].value.toLowerCase();
-        let fullname = form["fullname"].value;
-        let motivation = form["motivation"].value;
-        let action = form["action"].value;
-        let duration = form["duration"].value;
-        let partners = form["partners"].value;
-        let details = form["details"].value;
+    //        e.preventDefault();
+    //        let form = e.target;
+    //        let email = form["email"].value.toLowerCase();
+    //        let fullname = form["fullname"].value;
+    //        let motivation = form["motivation"].value;
+    //        let action = form["action"].value;
+    //        let duration = form["duration"].value;
+    //        let partners = form["partners"].value;
+    //        let details = form["details"].value;
+    //        let username, phone_number
+    const identify = () =>{
+        
+        let email = document.getElementById["email"].value.toLowerCase();
+        let fullname = document.getElementById["fullname"].value;
+
+        let motivation = document.getElementById["motivate_motivation"].value;
+        let action = document.getElementById["motivate_action"].value;
+        let duration = document.getElementById["motivate_duration"].value;
+        let partners = document.getElementById["motivate_partners"].value;
+        let details = document.getElementById["motivate_details"].value;
         let username, phone_number
 
         let traits = {
@@ -118,8 +74,9 @@
             partners: partners,
             details: details,
         };
-        console.log(properties)
-        analytics.identify({},traits);
+        console.log("PROPERITES line 131 : ",properties)
+
+        analytics.identify(traits);
 
         analytics.track('Motivation Submitted', properties, 
             {integrations: 
@@ -128,14 +85,15 @@
                     "Amplitude": {
                         session_id: uTC()
                     }
-                }}, 
-                function() {
-                window.location.href = "";
+                }
+            }, 
+                //function() {
+                //window.location.href = "";
                 //window.location.reload();
-            }
+            //}
         );
-        redirect="/";
-        }
+        //redirect="/";
+    }
 
 
         //analytics.track('User Logged Out', properties,
@@ -154,6 +112,61 @@
 
 
 </script>
+
+<body>
+    <header>
+        <%- include('../partials/navbar') %>
+    </header>
+<!-- new exercise form -->
+<!-- <h2>Let's LOG a new motivation</h2> -->
+
+<!-- <p>PUT FORM HERE</p> -->
+<!-- <main>
+    <form action="/motivate" method="POST">
+        <input type="text" name="name" placeholder="Motivation Name">
+        <input type="text" name="type" placeholder="Type of Motivation">
+        <input type="text" name="duration" placeholder="Duration">
+        <input type="text" name="groupSize" placeholder="Group Size: self, partner, small-group, large-group">
+        <br/>
+        <h4>Per Exercise</h4>
+        <input type="text" name="perExercise.type" placeholder="perExercise.type">
+        <input type="text" name="perExercise.duration" placeholder="perExercise.duration">
+        <input type="text" name="perExercise.caloriesBurned" placeholder="perExercise.caloriesBurned">
+        <input type="submit" value="Log Workout">
+    </form>
+</main> -->
+
+
+<hr/>
+<section>
+    <h1>Stay Motivated</h1> 
+    <p>Let's find out what kinds of exercises or activities motivate you.</p>  
+    <!-- <form name="motivate"> -->
+        What is the name of the exercise / activity / motivation?
+        <input id="motivate_motivation"  size="81" value="run" type="text"/> 
+        <br><br><br> 
+        Motivation Description (What do you do, for how long, with whom, in repeptitions?):
+        <br><br> 
+        <section>
+            action: <input id="motivate_action"  size="75" value="running non-stop" type="text"/> 
+            <br><br>duration: <input id="motivate_duration"  size="75" value="25 min" type="text"/> 
+            <br><br>partners: <input id="motivate_partners"  size="75" value="solo" type="text"/> 
+            <br><br>
+            <textarea cols="81" id="motivate_details" placeholder="additional details" rows="5"></textarea> 
+        </section>
+        <br><br> 
+        Name: <input name="fullname"  size="75" value="" type="text" id='motivateUserName'/> 
+        <br><br> 
+        Email: <input name="email" required="" size="75" value="" type="email" id='motivateEmail'/> 
+        <br><br>
+        <button onclick="identify()">Submit Motivate<button/>
+    <!-- </form>  -->
+
+</section>
+</br>
+</br>
+</br>
+
 
 
     

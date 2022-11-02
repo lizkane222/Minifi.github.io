@@ -55,6 +55,25 @@ router.get('/code', async (req,res)=> {
     };
 });
 
+// SHOW USER CONTEXT
+router.get('/user-context', async (req,res)=> {
+    // res.send("Motivate's INDEX Route is ⇪ and 🏃🏻‍♀️");
+    try {
+        // const foundMotivate = await db.Motivate.find({});
+        res.render('docs/usercontext', context = {
+            // motivations : foundMotivate,
+            page_title : "User Context",
+            page_category : "User | Context",
+            analytics : analytics
+        }
+        )
+    } catch (error) {
+        console.log(error)
+        return res.send({message: `Internal Server Error: check motivate controller @ user context route ${error}`});
+    };
+});
+
+
 // new 
 // router.get('/new', (req,res)=> {
 //     // res.send("Motivate's NEW Route is ⇪ and 🏃🏻‍♀️")
