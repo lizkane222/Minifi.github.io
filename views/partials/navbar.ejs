@@ -66,23 +66,39 @@
 
 
 <style>
+    /*COLOR PALETTE*/
+    /* dark green : rgb(121,125,98)*/
+    /* light green : rgb(155,155,122) */
+    /* neutral brown: rgb(186,165,135) */
+    /* neutral pink: rgb(217,174,148) */
+    /* neutral yellow : rgb(241,220,167) */
+    /* orangey : rgb(255,203,105) */
+    /* burnt orange : rgb(232,172,105) */
+    /* dark orange : rgb(208,140,96) */
+    /* light brown : rgb(181,132,99) */
+    /* dark brown : rgb(153,123,102) */
+
     #headerNav {
         width: 110vw;
-        height:6vh;
-        background-color: #f2f2f2;
-        /* box-shadow: 2px 2px 2px 2px rgba(90,90,90,.4);*/
+        height:6.5vh;
         position:static;
-        margin: 3vh 0 5vh 0;
-        border-bottom: 3px solid lightslategray;
-        /* display: flex; */
-        /* justify-content: space-between; */
-        /* overflow:auto; */
+        margin: 1.5vh 0 5vh 0;
+        border-bottom: 3px solid rgb(121,125,98);
+        font-family: 'Poiret One', cursive;
+        font-weight: 800;
+        /* 
+        background-color: #f2f2f2;
+        box-shadow: 2px 2px 2px 2px rgba(90,90,90,.4);
+        display: flex;
+        justify-content: space-between;
+        overflow:auto;
+        */
     }
 
     .navbar-nav {
         display: flex;
         flex-direction:row;
-        flex-wrap: no-wrap;
+        flex-wrap: nowrap;
         justify-content: space-evenly;
         align-content: space-around;
         align-items: flex-start;
@@ -96,7 +112,7 @@
         font-size: 1.2em;
         display: inline-flex;
         margin: 0 5px;
-        color:rgb(90,90,90,);
+        color:rgb(121,125,98);
         text-decoration: none;
         list-style: none;
         text-align: center;
@@ -116,13 +132,13 @@
         /*
         box-shadow: -2px 2px 2px 2px rgba(90,90,90,.4);
         color: gainsboro;
-        background-color: rgba(244, 244, 244,0);  
         */
+        background-color: rgba(244, 244, 244,0);  
         font-family: 'Poiret One', cursive;
-        color: rgb(81, 77, 128);
+        color: rgb(155,155,122);
         size: .5em;
-        padding: .5% .15%;
-        border-radius: 5px;
+        padding: .4% .15%;
+        border-radius: .2em;
         float: right;
         display: block;
         border: none;
@@ -132,11 +148,9 @@
     }
     .resetUser:hover {
         transform: scale(1.05);
-        /*transition: 300ms ease-in-out;*/
         transition: width 2s, height 4s;
+        /*transition: 300ms ease-in-out;*/
     }
-  
-
     button:focus {
         border: none;
         outline: none;

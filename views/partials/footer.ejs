@@ -1,125 +1,109 @@
 <!-- views/partials/footer.ejs -->
 
+<section id="footer-section">
+    <div class="foot-index-container">   
 
-<!-- <div>
-    <div class="from-left">
-        <input autocomplete="off" type="text" placeholder="Effect From Left To Right">
-        <span></span>
-    </div>
-    <hr>
-    <div class="from-right">
-        <input autocomplete="off" type="text" placeholder="Effect From Right To Left">
-        <span></span>
-    </div>
-    <hr>
-    <div class="from-middle">
-        <input autocomplete="off" type="text" placeholder="Effect From middle">
-        <span></span>
-    </div>
-</div> -->
+        <!-- <label>First Name</label> -->
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('firstName','track')">⍡-FN</button><button class="trackSingleTrait" onclick="trackSingleTrait('firstName','identify')">⍢-FN</button><button class="trackSingleTrait" onclick="trackSingleTrait('fullName','track')">⍡-N</button><button class="trackSingleTrait" id="trackSingleTrait-identify-fullName" onclick="trackSingleTrait('fullName','identify')">⍢-N</button>
+                <input autocomplete="off" type="text" class="footer-input" name="firstName" required="" id="firstName-foot-index" placeholder="First Name"/><span></span>
+                <button onclick="chooseFirstName()" class="auto-btn btn-small float-right gen-user-btn">New First name</button>
+            </p>
+        </div>
 
-<div class="foot-index-container">   
+        <!-- <label>Last Name</label> -->
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('lastName','track')">⍡-LN</button><button class="trackSingleTrait" id="trackSingleTrait" onclick="trackSingleTrait('lastName','identify')">⍢-LN</button><button class="trackSingleTrait" id="trackSingleTrait-" onclick="trackSingleTrait('fullName','track')">⍡-N</button><button class="trackSingleTrait" id="trackSingleTrait-" onclick="trackSingleTrait('fullName','identify')">⍢-N</button>
+                <input autocomplete="off" type="text" class="footer-input" name="lastName" id="lastName-foot-index" required="" placeholder="Last Name"/><span></span>
+                <button onclick="chooseLastName()" class="auto-btn btn-small float-right gen-user-btn">New Last Name</button>
+            </p>
+            <!-- <p><button onclick="chooseLastName(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseLastName(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseLastName(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseLastName(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseLastName(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseLastName(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseLastName(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseLastName(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseLastName(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseLastName(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseLastName(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseLastName(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseLastName(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseLastName(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseLastName(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseLastName(15)" class="auto-btn btn-small float-right">15</button></p> -->
+        </div>
+        
+        <!-- <label>Email</label> -->
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('email','track')">⍡-E</button><button class="trackSingleTrait" onclick="trackSingleTrait('email','identify')">⍢-E</button>
+                <input autocomplete="off" type="email" name="email" id="email-foot-index" required="" placeholder="Email"/><span></span>
+                <button onclick="chooseEmail(0)" class="auto-btn btn-small float-right gen-user-btn">New Email</button>
+            </p>
+            <!-- <p><button onclick="chooseEmail(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseEmail(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseEmail(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseEmail(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseEmail(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseEmail(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseEmail(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseEmail(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseEmail(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseEmail(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseEmail(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseEmail(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseEmail(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseEmail(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseEmail(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseEmail(15)" class="auto-btn btn-small float-right">15</button></p> -->
+        </div>
 
-    <!-- <label>First Name</label> -->
-    <div class="from-left">
-        <p>
-            <button class="trackSingleTrait" onclick="trackSingleTrait('firstName','track')">⍡-FN</button><button class="trackSingleTrait" onclick="trackSingleTrait('firstName','identify')">⍢-FN</button><button class="trackSingleTrait" onclick="trackSingleTrait('fullName','track')">⍡-N</button><button class="trackSingleTrait" id="trackSingleTrait-identify-fullName" onclick="trackSingleTrait('fullName','identify')">⍢-FN</button>
-            <input autocomplete="off" type="text" class="footer-input" name="firstName" required="" id="firstName-foot-index" placeholder="First Name"/><span></span>
-            <button onclick="chooseFirstName(firstNames)" class="auto-btn btn-small float-right">New First name</button>
-        </p>
+        <!-- <label>Favorite Social Media To Use</label> -->
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('favSocMedia','track')">⍡-SM</button><button class="trackSingleTrait" onclick="trackSingleTrait('favSocMedia','identify')">⍢-SM</button>
+                <input autocomplete="off" type="text" class="footer-input" name="favoriteSocialMedia" id="fav-soc-media-foot-index" required="" placeholder="Favorite Social Media"/><span></span>
+                <button onclick="chooseSocialMedia(0)" class="auto-btn btn-small float-right gen-user-btn">New Social Media</button>
+            </p>
+            <!-- <p><button onclick="chooseSocialMedia(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseSocialMedia(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseSocialMedia(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseSocialMedia(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseSocialMedia(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseSocialMedia(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseSocialMedia(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseSocialMedia(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseSocialMedia(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseSocialMedia(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseSocialMedia(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseSocialMedia(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseSocialMedia(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseSocialMedia(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseSocialMedia(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseSocialMedia(15)" class="auto-btn btn-small float-right">15</button></p> -->
+        </div>
+
+        <!-- <label>Username</label> -->
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('userName','track')">⍡-U</button><button class="trackSingleTrait" onclick="trackSingleTrait('userName','identify')">⍢-U</button>
+                <input autocomplete="off" type="text" class="footer-input" name="userName" id="userName-foot-index" required="" placeholder="Choose a username"/><span></span>
+                <button onclick="chooseUserName(0)" class="auto-btn btn-small float-right gen-user-btn">New Username</button>
+            </p>
+            <!-- <p><button onclick="chooseUserName(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseUserName(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseUserName(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseUserName(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseUserName(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseUserName(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseUserName(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseUserName(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseUserName(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseUserName(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseUserName(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseUserName(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseUserName(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseUserName(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseUserName(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseUserName(15)" class="auto-btn btn-small float-right">15</button></p> -->
+        </div>
+
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('phone','track')">⍡-P</button><button class="trackSingleTrait" onclick="trackSingleTrait('phone','identify')">⍢-P</button>
+                <input autocomplete="off" type="text" class="footer-input" required="" placeholder="phone number" id="phonenumber-foot-index" name="PHONE NUMBER"/><span></span>
+                <button onclick="trackPhoneNumber()" class="auto-btn btn-small float-right gen-user-btn">New Phone Number</button>
+            </p>
+        </div>
+
+        <div class="from-left">
+            <!-- <label>Organization</label> -->
+            <p>
+                <input autocomplete="off" type="text" class="footer-input" name="organization" id="organization-foot-index" required="" placeholder="Organization"/><span></span>
+            <!-- <label>Occupation</label> -->
+                <input autocomplete="off" type="text" class="footer-input" name="occupation" id="occupation-foot-index"  placeholder="Occupation"/><span></span>
+                <button onclick="chooseOrganizationName(0)" class="auto-btn btn-small float-right gen-user-btn">New Company</button>
+            </p>
+        </div>
+        </br>
+
+        <span id="groupBtns">
+            <button class="faded-btn trackSingleTrait auto-btn btn-small" onclick="giveGroupId()" id="groupNum">GROUP NUM</button>
+            <button class="trackSingleTrait auto-btn btn-small" onclick="groupCall()" id="groupCall">CALL GROUP</button>
+        </span>
+        <button class='auto-btn btn-small' id="submitNewAccountInputs" onclick="createNewAccount()">NEW USER</button>
+
+        <div class="employee-company">
+                <!-- <h4>NEW EMPLOYEE</h4> -->
+                <button onclick="changeEmployees()" class="auto-btn create btn-small neg-top-5">Add Employee Info To Company</button>
+                <!-- <h4>NEW COMPANY</h4> -->
+                <button onclick="changeCompany()" class="auto-btn create btn-small neg-top-5">Create New Company</button>
+        </div>
     </div>
 
-    <!-- <label>Last Name</label> -->
-    <div class="from-left">
-        <p>
-            <button class="trackSingleTrait" onclick="trackSingleTrait('lastName','track')">⍡-LN</button><button class="trackSingleTrait" id="trackSingleTrait" onclick="trackSingleTrait('lastName','identify')">⍢-LN</button><button class="trackSingleTrait" id="trackSingleTrait-" onclick="trackSingleTrait('fullName','track')">⍡-N</button><button class="trackSingleTrait" id="trackSingleTrait-" onclick="trackSingleTrait('fullName','identify')">⍢-Full Name</button>
-            <input autocomplete="off" type="text" class="footer-input" name="lastName" id="lastName-foot-index" required="" placeholder="Last Name"/><span></span>
-            <button onclick="chooseLastName(0)" class="auto-btn btn-small float-right">New Last Name</button>
-        </p>
-        <!-- <p><button onclick="chooseLastName(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseLastName(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseLastName(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseLastName(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseLastName(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseLastName(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseLastName(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseLastName(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseLastName(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseLastName(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseLastName(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseLastName(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseLastName(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseLastName(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseLastName(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseLastName(15)" class="auto-btn btn-small float-right">15</button></p> -->
+    <div id="generate-user" >
+        <p id="gen-user" onclick="generateUser()">AUTO USER!</p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-firstName-track" onclick="trackSingleTrait('firstName','track')">⍡-FN</button>  <button class="trackSingleTrait" id="trackSingleTrait-firstName-identify" onclick="trackSingleTrait('firstName','identify')">⍢-FN</button></p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-lastName-track" onclick="trackSingleTrait('lastName','track')">⍡-LN</button>  <button class="trackSingleTrait" id="trackSingleTrait-lastName-identify" onclick="trackSingleTrait('lastName','identify')">⍢-LN</button></p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-email-track" onclick="trackSingleTrait('email','track')">⍡-E</button>  <button class="trackSingleTrait" id="trackSingleTrait-email-identify" onclick="trackSingleTrait('email','identify')">⍢-E</button></p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-organization-track" onclick="trackSingleTrait('organization','track')">⍡-O</button>  <button class="trackSingleTrait" id="trackSingleTrait-organization-identify" onclick="trackSingleTrait('organization','identify')">⍢-O</button></p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-favSocMedia-track" onclick="trackSingleTrait('favSocMedia','track')">⍡-SM</button>  <button class="trackSingleTrait" id="trackSingleTrait-favSocMedia-identify" onclick="trackSingleTrait('favSocMedia','identify')">⍢-SM</button></p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-userName-track" onclick="trackSingleTrait('userName','track')">⍡-U</button>  <button class="trackSingleTrait" id="trackSingleTrait-userName-identify" onclick="trackSingleTrait('userName','identify')">⍢-U</button></p>
+        
+        <!-- <label>MARKETO: !!!! First Name</label> -->
+        <!-- <p><input autocomplete="off" type="text" class="from-left" name="firstNameMarketo" required="false" id="firstNameMarketo" placeholder="First Name- Marketo"/><span></span><br/> -->
+        <!-- <button id="firstNameMarketoButton" onclick="trackSingleTrait('firstNameMarketo','track')">⍡-Sign UP Successful</button><button id="firstNameMarketoButton" onclick="trackSingleTrait('firstNameMarketo','identify')">⍢-Sign UP Successful</button></p></p> -->
+        <!-- <button onclick="send100events()">Send 100 Events</button> -->
     </div>
-    
-    <!-- <label>Email</label> -->
-    <div class="from-left">
-        <p>
-            <button class="trackSingleTrait" onclick="trackSingleTrait('email','track')">⍡-E</button><button class="trackSingleTrait" onclick="trackSingleTrait('email','identify')">⍢-E</button>
-            <input autocomplete="off" type="email" name="email" id="email-foot-index" required="" placeholder="Email"/><span></span>
-            <button onclick="chooseEmail(0)" class="auto-btn btn-small float-right">New Email</button>
-        </p>
-        <!-- <p><button onclick="chooseEmail(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseEmail(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseEmail(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseEmail(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseEmail(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseEmail(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseEmail(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseEmail(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseEmail(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseEmail(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseEmail(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseEmail(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseEmail(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseEmail(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseEmail(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseEmail(15)" class="auto-btn btn-small float-right">15</button></p> -->
-    </div>
-
-    <!-- <label>Favorite Social Media To Use</label> -->
-    <div class="from-left">
-        <p>
-            <button class="trackSingleTrait" onclick="trackSingleTrait('favSocMedia','track')">⍡-SM</button><button class="trackSingleTrait" onclick="trackSingleTrait('favSocMedia','identify')">⍢-SM</button>
-            <input autocomplete="off" type="text" class="footer-input" name="favoriteSocialMedia" id="fav-soc-media-foot-index" required="" placeholder="Favorite Social Media To Use"/><span></span>
-            <button onclick="chooseSocialMedia(0)" class="auto-btn btn-small float-right">New Social Media</button>
-        </p>
-        <!-- <p><button onclick="chooseSocialMedia(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseSocialMedia(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseSocialMedia(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseSocialMedia(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseSocialMedia(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseSocialMedia(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseSocialMedia(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseSocialMedia(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseSocialMedia(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseSocialMedia(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseSocialMedia(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseSocialMedia(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseSocialMedia(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseSocialMedia(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseSocialMedia(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseSocialMedia(15)" class="auto-btn btn-small float-right">15</button></p> -->
-    </div>
-
-    <!-- <label>Username</label> -->
-    <div class="from-left">
-        <p>
-            <button class="trackSingleTrait" onclick="trackSingleTrait('userName','track')">⍡-U</button><button class="trackSingleTrait" onclick="trackSingleTrait('userName','identify')">⍢-U</button>
-            <input autocomplete="off" type="text" class="footer-input" name="userName" id="userName-foot-index" required="" placeholder="Choose a username"/><span></span>
-            <button onclick="chooseUserName(0)" class="auto-btn btn-small float-right">New Username</button>
-        </p>
-        <!-- <p><button onclick="chooseUserName(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseUserName(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseUserName(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseUserName(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseUserName(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseUserName(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseUserName(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseUserName(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseUserName(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseUserName(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseUserName(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseUserName(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseUserName(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseUserName(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseUserName(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseUserName(15)" class="auto-btn btn-small float-right">15</button></p> -->
-    </div>
-
-    <div class="from-left">
-        <p>
-            <button onclick="trackPhoneNumber()" class="auto-btn btn-small float-right">New Phone Number</button>
-            <input autocomplete="off" type="text" class="footer-input" required="" placeholder="phone number" id="phonenumber-foot-index" name="PHONE NUMBER"/><span></span>
-        </p>
-    </div>
-
-    <div class="from-left">
-        <!-- <label>Organization</label> -->
-        <p>
-            <input autocomplete="off" type="text" class="footer-input" name="organization" id="organization-foot-index" required="" placeholder="Organization"/><span></span>
-        </p>
-        <p>
-        <!-- <label>Occupation</label> -->
-            <input autocomplete="off" type="text" class="footer-input" name="occupation" id="occupation-foot-index"  placeholder="Occupation"/><span></span>
-        </p>
-        <button onclick="chooseOrganizationName(0)" class="auto-btn btn-small float-right neg-top-7">New Company</button>
-    </div>
-    </br>
-
-    <span id="groupBtns">
-        <button class="faded-btn trackSingleTrait" onclick="giveGroupId()" id="groupNum">GROUP NUM</button>
-        <button class="trackSingleTrait" onclick="groupCall()" id="groupCall">CALL GROUP</button>
-    </span>
-    <button class='auto-btn btn-small' id="submitNewAccountInputs" onclick="createNewAccount()">NEW USER</button>
-
-    <div class="employee-company">
-            <!-- <h4>NEW EMPLOYEE</h4> -->
-            <button onclick="changeEmployees()" class="auto-btn create btn-small neg-top-5">Add Employee Info To Company</button>
-            <!-- <h4>NEW COMPANY</h4> -->
-            <button onclick="changeCompany()" class="auto-btn create btn-small neg-top-5">Create New Company</button>
-    </div>
-</div>
-<div>
-    <p><button class="trackSingleTrait" id="trackSingleTrait-firstName-track" onclick="trackSingleTrait('firstName','track')">⍡-FN</button>  <button class="trackSingleTrait" id="trackSingleTrait-firstName-identify" onclick="trackSingleTrait('firstName','identify')">⍢-FN</button></p>
-    <p><button class="trackSingleTrait" id="trackSingleTrait-lastName-track" onclick="trackSingleTrait('lastName','track')">⍡-LN</button>  <button class="trackSingleTrait" id="trackSingleTrait-lastName-identify" onclick="trackSingleTrait('lastName','identify')">⍢-LN</button></p>
-    <p><button class="trackSingleTrait" id="trackSingleTrait-email-track" onclick="trackSingleTrait('email','track')">⍡-E</button>  <button class="trackSingleTrait" id="trackSingleTrait-email-identify" onclick="trackSingleTrait('email','identify')">⍢-E</button></p>
-    <p><button class="trackSingleTrait" id="trackSingleTrait-organization-track" onclick="trackSingleTrait('organization','track')">⍡-O</button>  <button class="trackSingleTrait" id="trackSingleTrait-organization-identify" onclick="trackSingleTrait('organization','identify')">⍢-O</button></p>
-    <p><button class="trackSingleTrait" id="trackSingleTrait-favSocMedia-track" onclick="trackSingleTrait('favSocMedia','track')">⍡-SM</button>  <button class="trackSingleTrait" id="trackSingleTrait-favSocMedia-identify" onclick="trackSingleTrait('favSocMedia','identify')">⍢-SM</button></p>
-    <p><button class="trackSingleTrait" id="trackSingleTrait-userName-track" onclick="trackSingleTrait('userName','track')">⍡-U</button>  <button class="trackSingleTrait" id="trackSingleTrait-userName-identify" onclick="trackSingleTrait('userName','identify')">⍢-U</button></p>
-</div>
-
-<label>MARKETO: !!!! First Name</label>
-<p><input autocomplete="off" type="text" class="from-left" name="firstNameMarketo" required="false" id="firstNameMarketo" placeholder="First Name- Marketo"/><span></span><br/>
-<button id="firstNameMarketoButton" onclick="trackSingleTrait('firstNameMarketo','track')">⍡-Sign UP Successful</button><button id="firstNameMarketoButton" onclick="trackSingleTrait('firstNameMarketo','identify')">⍢-Sign UP Successful</button></p></p>
-<button onclick="send100events()">Send 100 Events</button>
+</section>
 
 <footer class="text-center text-muted footer">
     <p>&#169 minifi </p>
 </footer>
-
 
 
 <script>
@@ -147,18 +131,15 @@
 
 
     let firstNameInput 
-    const chooseFirstName = (array) =>{
-        
+    const chooseFirstName = () =>{
+        let array = firstNames
         //<!-- console.log(array[num]) -->
         //<!-- firstNameInput = array[num] -->
         firstNameInput = randomIndexArray(array)
         console.log(`firstNameInput : ${firstNameInput}`)
         document.getElementById("firstName-foot-index").value = firstNameInput;
         firstNameGroupInput = firstNameInput;
-        
         document.getElementById("profileName").innerHTML = firstNameInput
-        //document.getElementById("profileName").value = firstNameInput
-        
     }
     let lastNameInput
     let fullNameProfile
@@ -170,19 +151,8 @@
         document.getElementById("lastName-foot-index").value = lastNameInput;
         lastNameGroupInput = lastNameInput;
         document.getElementById("profileName").innerHTML = `${firstNameInput} ${lastNameInput}`
-        
-        document.getElementById("group-user-last-index").value = lastNameGroupInput || null
-        document.getElementById("motivateUserName").value = `${firstNameInput} ${lastNameInput}`
-
-        if(lastNameInput && firstNameInput){
-            console.log("*****0000**********0000**********0000**********0000*****")
-            console.log("LAST NAME FIRST NAME EXIST")
-            console.log("*****0000**********0000**********0000**********0000*****")
-            fullNameProfile = `${firstNameInput} ${lastNameInput}`;
-            //tempName = document.getElementById("profileName")
-            //tempName.innerHTML = fullNameProfile;
-            document.getElementById("motivateUserName").value = fullNameProfile
-        } 
+        //document.getElementById("group-user-last-index").value = lastNameGroupInput || null
+        //document.getElementById("motivateUserName").value = `${firstNameInput} ${lastNameInput}`
     }
 
     let organizationInput, occupationInput, arrIindex
@@ -223,9 +193,8 @@
         emailInput = (`${firstNameInput}${lastNameInput}${num}@${randomIndexArray(mudra)}.com`.toLowerCase());
         document.getElementById("email-foot-index").value = emailInput;
         document.getElementById("profilePersonalEmail").innerHTML = emailInput;
-        
-        document.getElementById("motivateEmail").value = emailInput;
-        document.getElementById("motivateUserName").value = `${firstNameInput} ${lastNameInput}`;
+        //document.getElementById("motivateEmail").value = emailInput;
+        //document.getElementById("motivateUserName").value = `${firstNameInput} ${lastNameInput}`;
     }
 
     let favSocMediaInput
@@ -238,6 +207,7 @@
         document.getElementById("fav-soc-media-foot-index").value = favSocMediaInput;
         document.getElementById("profileSocialMedia").innerHTML = favSocMediaInput;
     }
+    
     let userNameInput
     const chooseUserName = (num) => {
         //let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube",]
@@ -474,6 +444,17 @@
         for (let i =0; i<100; i++){
         analytics.track(`Button Clicked${+i}`)
     }
+}
+
+const generateUser = () => {
+    // build user in one click by combining all funks above
+    chooseFirstName();
+    chooseLastName();
+    chooseEmail();
+    chooseSocialMedia();
+    chooseUserName();
+    trackPhoneNumber();
+    chooseOrganizationName();
 }
 
         //analytics.track("New Account Created",properties,{},function () {window.location.href = "";})
