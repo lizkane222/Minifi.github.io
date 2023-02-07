@@ -43,9 +43,12 @@
         font-family: 'Poiret One', cursive;
         background-color: #f2f2f2;
         font-family: "Cormorant", serif;
+        background-color: #f8f9fc;
+        background-color: rgba(255,255,255,1);
+        background-color: #39392d;
         */
         font-family: 'Poiret One', cursive;
-        background-color: rgba(255,255,255,1);
+        background-color: #f8f8f5;
         color: rgb(155,155,122);
         min-height: 100vh;
         overflow: scroll;
@@ -341,7 +344,6 @@
     }
     /**/
     div input{
-        color: rgb(155,155,122);
         background-color: rgba(250,250,250,1);
         padding: .5em;
         text-align: center;
@@ -352,6 +354,7 @@
         border: none;
         border-bottom: 1px solid rgba(204, 204, 204,0);
         width: 70%;
+        color: rgba(121,125,98,1);
     }
     
     .from-left span {
@@ -377,7 +380,7 @@
         font-size: 1.2em;
 
     }
-    #profile-container{
+    .profile-container{
         text-align: center;
         margin-top: -3vh;
         margin-bottom: 5vh;
@@ -397,6 +400,8 @@
         width: 35%;
         height: 1.5em;
         border-radius: .2em;
+        font-size: 1.5em;
+        
         /*
         */
     }
@@ -699,6 +704,11 @@ function getCookie(cname) {
             }
 
         analytics.ready(callServerUser);
+        
+        // EXAMPLE TO EXPLAIN HOW TO GENERATE AUTOMATICALLY COLLECTED EVENTS INTO GA4 - CUSTOMER NOC-NOC
+        //if(window.document.URL = "arrived"){
+        //    analytics.ready(analytics.track("Automated Event",{arrived:true}));
+        //}
         console.log("calling callServerUser function - head-line470",);
         analytics.ready(queryStringExists);
         analytics.ready(console.log(`analytics : `,analytics));
@@ -714,17 +724,35 @@ function getCookie(cname) {
         }
     }}();
 
+// GET QUERY STRING SPECIFIC PARAMETER BY 
+// http://localhost:4000/docs/?name=lizzo&utm_source=google&utm_medium=post-original&utm_content=image
+new URL(location.href).searchParams.get('utm_source') 
+// => google
+new URL(location.href).searchParams.get('utm_medium') 
+// => post-original
+new URL(location.href).searchParams.get('utm_content') 
+// => image
+    
+
 // 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 
 // A Function to Set a Cookie
-function setCookie(cname, cvalue, exdays) {
+let setCookie = (cname, cvalue, exdays) => {
     const d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     let expires = "expires="+ d.toUTCString();
     console.log(`cookie expires : `,expires)
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    document.cookie = `${cname} + "=" + ${cvalue} + ";" + expires + ";path=/"`;
+    console.log(`${cname} + "=" + ${cvalue} + ";" + expires + ";path=/"`);
 }
 
-
+let cookieExdays = (cname, cvalue, exdays) => {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    console.log(`cookie expires : `,expires)
+    document.cookie = `${cname} + "=" + ${cvalue} + ";" + expires + ";path=/"`;
+    console.log(`${cname} + "=" + ${cvalue} + ";" + expires + ";path=/"`);
+}
 
 // "\"f00c99f2-f6e5-4b88-b12f-84ce726d35dc\""
 // "\"f00c99f2-f6e5-4b88-b12f-84ce726d35dc\""

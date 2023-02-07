@@ -386,7 +386,7 @@
         //for(product in orderCompletedProductList){
         //}
         let orderId = Math.floor((Math.random() * 100000) + 1);
-        analytics.track("Order Completed",{orderId:orderId, revenue:orderCompletedRevenue, products:orderCompletedProductList, currency:USD})
+        analytics.track("Order Completed",{orderId:orderId, revenue:orderCompletedRevenue, products:orderCompletedProductList, currency:"USD"})
         document.getElementById('orderCompletedRevenue').innerHTML = ""
     }
     const identifyAddInterest = (id, category) => {       

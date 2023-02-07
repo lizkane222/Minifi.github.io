@@ -27,7 +27,7 @@
             <p>
                 <button class="trackSingleTrait" onclick="trackSingleTrait('email','track')">⍡-E</button><button class="trackSingleTrait" onclick="trackSingleTrait('email','identify')">⍢-E</button>
                 <input autocomplete="off" type="email" name="email" id="email-foot-index" required="" placeholder="Email"/><span></span>
-                <button onclick="chooseEmail(0)" class="auto-btn btn-small float-right gen-user-btn">New Email</button>
+                <button onclick="chooseEmail()" class="auto-btn btn-small float-right gen-user-btn">New Email</button>
             </p>
             <!-- <p><button onclick="chooseEmail(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseEmail(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseEmail(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseEmail(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseEmail(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseEmail(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseEmail(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseEmail(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseEmail(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseEmail(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseEmail(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseEmail(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseEmail(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseEmail(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseEmail(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseEmail(15)" class="auto-btn btn-small float-right">15</button></p> -->
         </div>
@@ -187,9 +187,10 @@
     
     let emailInput
     let mudra = ["Earth","Wind","Fire","Ether","Water","Mountain","Grass","Star","Planet","Soul","Life","Unity","Serenity","Peace","Harmony","Ocean","Magma","Hydrogen","Iron","Platinum","Alkali","Sagittarius","Aquarius","Capricorn","Aries","Taurus","Virgo","Libro","Gemini","Scorpio","Pisces","Leo","Cancer","Idyllic","Irenic","Kenshō","CarpeDiem","Elysian","Ataraxia","Yūgen","Curious","Surprise","Pācātus","Epiphany","Meraki","Yeoubi","Hülya","Saorsa","Qapla'","Solasta","Dalisay","Selcouth","Amal","Apricity","Nirvana","Ikigai","Rout","Virago","Zeal","Abditory","Noor","Arcane","Gunnen","Solivagant","Mizpah","Vasl","Logophile","Pareidolia","Kartika","Mångata","Saoirse","Onism","Outré","Kefi","Selcouth","Mudita","Inscape","Duende","Indah","Niamh","Sonder","Phosphenos","Quanitrelle","Somniate","Eutony","Coddiwomple","Peacherino","Kaizen","Metanoia",]
-    const chooseEmail = (num) => {
+    const chooseEmail = () => {
         //<!-- console.log(mudra[num]) -->
         //<!-- emailInput = (`${firstNameInput}${lastNameInput}${num}@${mudra[num]}.com`) -->
+        let num = (Math.floor(Math.random()*100));
         emailInput = (`${firstNameInput}${lastNameInput}${num}@${randomIndexArray(mudra)}.com`.toLowerCase());
         document.getElementById("email-foot-index").value = emailInput;
         document.getElementById("profilePersonalEmail").innerHTML = emailInput;
@@ -383,8 +384,8 @@
         //analytics.identify([userId], [traits], [options], [callback]);
         
         analytics.identify(traits.userId,traits,{integrations:{All:true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})
-        analytics.user().anonymousId(btoa(`${traits.email.toLowerCase()}`))
-        console.log('resetting anonymousId as email')
+        //analytics.user().anonymousId(btoa(`${traits.email.toLowerCase()}`))
+        //console.log('resetting anonymousId as email')
         analytics.track("New Subscription Created",
             properties,
             {
@@ -420,6 +421,7 @@
         let userId = localStorage.getItem('ajs_user_id')
         userId = userId.replace(/^"(.*)"$/, '$1')
         console.log(userId)
+        /*
         analytics.identify(userId, {
             phone: phone
         }, {
@@ -439,6 +441,7 @@
             current_inventory: 5
         })
         console.log('Track Finished')
+        */
     }  
     let send100events = () => {
         for (let i =0; i<100; i++){
@@ -455,6 +458,7 @@ const generateUser = () => {
     chooseUserName();
     trackPhoneNumber();
     chooseOrganizationName();
+    
 }
 
         //analytics.track("New Account Created",properties,{},function () {window.location.href = "";})
