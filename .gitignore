@@ -107,8 +107,9 @@ dist
 # TernJS port file
 .tern-port
 
-planning/
 
+
+planning/
 public/styles/.DS_Store
 public/.DS_Store
 public/styles/.DS_Store
