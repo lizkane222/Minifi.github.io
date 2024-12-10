@@ -3,7 +3,11 @@
 const express = require('express');
 const router = express.Router();
 const Analytics = require('analytics-node');
+<<<<<<< HEAD
 const analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 10 });
+=======
+const analytics = new Analytics('XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh', { flushAt: 10 })
+>>>>>>> origin/master
 
 const db = require('../models');
 

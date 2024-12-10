@@ -13,7 +13,7 @@ console.log(daysOld)
 
 }
 ageCalculator(1992)
-// removed from model anyway
+
 
 const dayOfYearCalc = function(month) {
 const monthNumbers = [31,28,31,30,31,30,31,31,30,31,30,31]

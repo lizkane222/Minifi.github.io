@@ -203,8 +203,13 @@ app.use(methodOverride('_method'));
 //     cookie: { domain:'http://localhost:4000/'},
 // }));
 
+<<<<<<< HEAD
 //app.use((req, res, next) => {
 //    console.log(`${req.method} ${req.originalUrl}`);
+=======
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.originalUrl}`);
+>>>>>>> origin/master
 //     let req = { query, cookies, url, path, ip, host}
 
 //     // populate campaign object with any utm params
@@ -256,8 +261,13 @@ app.use(methodOverride('_method'));
 //   )
     
   // proceed!
+<<<<<<< HEAD
    // next();
 //})
+=======
+    next();
+})
+>>>>>>> origin/master
 const context = {
     // Motivate : db.Motivate
     page_category : "Minifi | ",

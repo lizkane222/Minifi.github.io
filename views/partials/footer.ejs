@@ -50,7 +50,11 @@
                 <button onclick="chooseUserName(0)" class="auto-btn btn-small float-right gen-user-btn">New Username</button>
             </p>
             <!-- <p><button onclick="chooseUserName(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseUserName(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseUserName(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseUserName(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseUserName(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseUserName(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseUserName(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseUserName(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseUserName(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseUserName(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseUserName(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseUserName(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseUserName(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseUserName(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseUserName(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseUserName(15)" class="auto-btn btn-small float-right">15</button></p> -->
+<<<<<<< HEAD
         </div
+=======
+        </div>
+>>>>>>> origin/master
 
         <div class="from-left">
             <p>
@@ -97,7 +101,11 @@
         <!-- <label>MARKETO: !!!! First Name</label> -->
         <!-- <p><input autocomplete="off" type="text" class="from-left" name="firstNameMarketo" required="false" id="firstNameMarketo" placeholder="First Name- Marketo"/><span></span><br/> -->
         <!-- <button id="firstNameMarketoButton" onclick="trackSingleTrait('firstNameMarketo','track')">⍡-Sign UP Successful</button><button id="firstNameMarketoButton" onclick="trackSingleTrait('firstNameMarketo','identify')">⍢-Sign UP Successful</button></p></p> -->
+<<<<<<< HEAD
         <button onclick="send100events()">Send 100 Events</button>
+=======
+        <!-- <button onclick="send100events()">Send 100 Events</button> -->
+>>>>>>> origin/master
     </div>
 </section>
 
@@ -113,7 +121,11 @@
     let shouldersFam = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","Molly","Courtney","Luke","Micah","Austin","Taylor","Lilly","Ernest","Ellis"]
     let firstNames = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","Molly","Courtney","Luke","Micah","Austin","Taylor","Lilly","Ernest","Ellis","Elizabeth","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl","Jeff","Janae","Jenn","Jessica","Jillian","Jing","Jonathan","Joshua","Kacie","Katherine","Kevin","Kelsey","Kitt","Kyle","Latifa","Laurence","LeeAnne","Leslie","Alexandra","Lia","Linas","Lindsey","Loic","Lumi","Madison","Malea","Marie Lou","Martin","Mary","Megan","Melissa","Michaela","Michelle","Mishone","Maurine","Mykel","Nathan","Noel","Olivia","Pam","Patricia","Paula","Peter","Piper","Rachel","Bryn","Rachid","Ray","Rene","Richard","Rodrigo","Robyn","Royanna","Ryan","Samantha","Sandra","Sarah","Saphire","Isabelle","Sylvie","Scott","Shayelee","Shelby","Shieun","Sierra","Simone","Skylar","Stacey","Stephania","Stephen","Sydney","Sylia","Talitha","Tatiana","Terence","Tess","Tiera","Tom","Trish","Tyra","Vaneissa","Veronica","Vince","Yeaeun","Youssef","Yili","",]
     let lastNames = ["Smith","Crawford","Hilton","Chestertown","Evers","Calhoun","Monagle","Richardson","Winters","Myers","Visscher","Garcia","Soma","Wisbon","Donzella","Irungu","Healy","Fellow","Herman","Ferguson","Cooper","Rickey","Shelly","Juminsko","Sothann","Ellison","Olson","Nerini","Murphy","Thompson","Marcos","Addae","Harris","Caswell","Grace","Duriez","Flach","Vanderslice","Pfieffer","Drouin","Lopez","Hargent","Evans","Wang","Sandoval","Jourdain","Donatien","Swan","Bell","Shugg","Robertson","Walkers","Bakrabi","Chama","Ramosa","Shawford","Heiberschtein","Daigledon","Petiprempre","Kumaresianne","Benchariffa","Asquevolt","Morelle","Soza","Simo","Ling","Wombract","Simola","Lundia","Jarimosa","Rhoades","Naus","Mosh","Haulings","Hearting","Campania","Plaza","Mezzania","Sauvages","Hardie","Arroyauna","Dilli","Gallovant","Mattitteuchi","Foxlin","Pastora","Cremensi","Ridge","Subello","Boninir","Graza","Rucel","Gardenia","Jaretsman","Focker","Traust","Dodier","Stapleton","Wist","Vagoss","Yungs","Ying","Zeleusqui",]
+<<<<<<< HEAD
     //serverUserId = serverUserId.toString()
+=======
+    serverUserId = serverUserId.toString()
+>>>>>>> origin/master
 
     const signUpSuccessful = (name,action) => {
         document.getElementById("firstNameMarketo").value = firstNameMarketo
@@ -121,8 +133,13 @@
         email = email.toLowerCase()
         //console.log("firstName",firstNameMarketo)
         //console.log(name)
+<<<<<<< HEAD
         if(action=="identify"){analytics.identify(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true}})}
         if(action=="track"){analytics.track('SignUp Successful',{traits:{firstName:firstName,email:email},integrations:{"All":true}})}
+=======
+        if(action=="identify"){analytics.identify(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        if(action=="track"){analytics.track(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+>>>>>>> origin/master
    
         anaytics.track("Sign Up Successful",{firstName:firstNameMarketo})
         anaytics.track("Sign Up Successful",{firstName:firstNameInput})
@@ -306,6 +323,7 @@
             console.log(userName)
             email = document.getElementById("email-foot-index").value.toLowerCase();
             console.log(email)
+<<<<<<< HEAD
             if(action=="track"){analytics.track("User userName Added",{userName:userName,email:email},{traits:{username:userName,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
             if(action=="identify"){analytics.identify(serverUserId,{userName:userName,email:email},{traits:{username:userName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
         }
@@ -314,13 +332,27 @@
     
     const createNewAccount = () => {
         //userId = analytics.user().id()
+=======
+            if(action=="track"){analytics.track("User userName Added",{userName:userName,email:email},{traits:{userName:userName,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{userName:userName,email:email},{traits:{userName:userName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        }
+    }
+
+
+    const createNewAccount = () => {
+        userId = callServerUser()
+>>>>>>> origin/master
         firstName = document.getElementById("firstName-foot-index").value;
         lastName = document.getElementById("lastName-foot-index").value;
         organization = document.getElementById("organization-foot-index").value;
         email = document.getElementById("email-foot-index").value.toLowerCase();
         favSocMedia = document.getElementById("fav-soc-media-foot-index").value;
         userName = document.getElementById("userName-foot-index").value;
+<<<<<<< HEAD
         phone = trackPhoneNumber()
+=======
+        phone = 
+>>>>>>> origin/master
         //let firstName = firstNameInput
         //let lastName = lastNameInput
         //let organization = organizationInput
@@ -336,7 +368,11 @@
         console.log(`userNameInput : `,userNameInput,`  --  userName : `,userName);
         //console.log(" || firstName : ",firstName," || lastName : ",lastName," || organization : ",organization," || email : ",email,)
         
+<<<<<<< HEAD
         userId? userId = userId.toString(): userId = userId
+=======
+        userId = userId.toString()
+>>>>>>> origin/master
         console.log(`serverUserId slashes ? TYPEOF`,typeof(userId),userId)
         traits = {
             email : email,
@@ -350,7 +386,11 @@
             userId : userId,
             firstName : firstName,
             lastName : lastName,
+<<<<<<< HEAD
             username : userName,
+=======
+            userName : userName,
+>>>>>>> origin/master
             givenName : firstName,
             surName : lastName,
             $onesignal_user_id : userId,
@@ -410,6 +450,7 @@
     } 
 
     function trackPhoneNumber() {
+<<<<<<< HEAD
         if (userId ){
             let tempPhone4 = Math.floor(Math.random()*10000)
             let tempPhone3 = Math.floor(Math.random()*1000)
@@ -457,6 +498,46 @@
 //        }
 //    
 //    }
+=======
+        let tempPhone4 = Math.floor(Math.random()*10000)
+        let tempPhone3 = Math.floor(Math.random()*1000)
+        let tempPhoneCo = Math.floor(Math.random()*100)
+        let phone = `+${tempPhoneCo}-${tempPhone3}-555-${tempPhone4}`
+        console.log(phone)
+        document.getElementById('phonenumber-foot-index').value = phone
+        document.getElementById('profilePhone').innerHTML = phone
+        //let product_name = document.getElementById('producttitle').innerText
+        let userId = localStorage.getItem('ajs_user_id')
+        userId = userId.replace(/^"(.*)"$/, '$1')
+        console.log(userId)
+        /*
+        analytics.identify(userId, {
+            phone: phone
+        }, {
+            context: {
+                messaging_subscriptions: [
+                    {
+                        type: "SMS",
+                        status: "SUBSCRIBED",
+                        key: phone
+                    }
+                ]
+            }
+        })
+        //console.log('ID finished')
+        analytics.track('SMS Alerts - Single Product', {
+            //product: product_name,
+            current_inventory: 5
+        })
+        console.log('Track Finished')
+        */
+    }  
+    let send100events = () => {
+        for (let i =0; i<100; i++){
+        analytics.track(`Button Clicked${+i}`)
+    }
+}
+>>>>>>> origin/master
 
 const generateUser = () => {
     // build user in one click by combining all funks above

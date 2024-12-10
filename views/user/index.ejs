@@ -42,11 +42,17 @@
         </div>
     </section>
 
+<<<<<<< HEAD
     {{if(analytics.ready(function() {
         <footer>
             <%- include('../partials/footer') %>
         </footer>
     }))}}
+=======
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+>>>>>>> origin/master
 <!-- <p><textarea name="addToTraits" id="addToTraits" rows="10" cols="30" required="false" placeholder="traits to add before identify"></textarea></p> -->
 <!-- <hr/> -->
     <!-- <input type="text" name="groupId" id="inputgroupId" placeholder="groupId"/><button onclick="idUser()">SAVE</button> -->
@@ -94,8 +100,12 @@
             let item 
             let counter = 4
             for(let i=0; i<4;i++){
+<<<<<<< HEAD
                 //item = groupIdArray[Math.floor(Math.random()*(groupIdArray.length))]
                 item = Math.floor(Math.random()*1000000)
+=======
+                item = groupIdArray[Math.floor(Math.random()*(groupIdArray.length))]
+>>>>>>> origin/master
                 //console.log(`***THIS IS ITEM*** `,item)
                 idList = idList.concat(item)
                 counter--
@@ -105,6 +115,7 @@
                 }
             }
             //** update GROUPID
+<<<<<<< HEAD
             //groupId = groupIdList[groupIdList.length-1]
             groupId = item
             console.log(`groupId = `,groupId)
@@ -112,6 +123,13 @@
 
             //document.getElementById("inputgroupId").value = groupId 
             
+=======
+            groupId = groupIdList[groupIdList.length-1]
+            console.log(`groupId = `,groupId)
+            console.log(`groupIdList = `,groupIdList)
+
+            document.getElementById("inputgroupId").value = groupId 
+>>>>>>> origin/master
             analytics.identify(serverUserId,{groupId:groupId})
             
             employeeEmail = `${firstNameGroupInput}${lastNameGroupInput}@kanecorp.org`.toLowerCase()
@@ -121,11 +139,19 @@
         let employeeId, employeeName, employeeFirstName, employeeLastName, employeeUserName;
         let extraTraits
         const groupCall = () => {
+<<<<<<< HEAD
             //let extraTraitsTemp = document.getElementById("addToTraits").value
             
             //console.log("extraTraits & TYPE OF", typeof(extraTraitsTemp),extraTraitsTemp)
             //let extraTraitsSplit = extraTraitsTemp.split(":",",")
             //console.log("extraTraitsSplit: ",extraTraitsSplit)
+=======
+            let extraTraitsTemp = document.getElementById("addToTraits").value
+            
+            console.log("extraTraits & TYPE OF", typeof(extraTraitsTemp),extraTraitsTemp)
+            let extraTraitsSplit = extraTraitsTemp.split(":",",")
+            console.log("extraTraitsSplit: ",extraTraitsSplit)
+>>>>>>> origin/master
             //extraTraits = JSON.parse(extraTraitsTemp)
 
             companyProperties = {
