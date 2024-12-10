@@ -1,0 +1,500 @@
+<!-- views/partials/footer.ejs -->
+
+<section id="footer-section">
+    <div class="foot-index-container">   
+
+        <!-- <label>First Name</label> -->
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('firstName','track')">⍡-FN</button><button class="trackSingleTrait" onclick="trackSingleTrait('firstName','identify')">⍢-FN</button><button class="trackSingleTrait" onclick="trackSingleTrait('fullName','track')">⍡-N</button><button class="trackSingleTrait" id="trackSingleTrait-identify-fullName" onclick="trackSingleTrait('fullName','identify')">⍢-N</button>
+                <input autocomplete="off" type="text" class="footer-input" name="firstName" required="" id="firstName-foot-index" placeholder="First Name"/><span></span>
+                <button onclick="chooseFirstName()" class="auto-btn btn-small float-right gen-user-btn">New First name</button>
+            </p>
+        </div>
+
+        <!-- <label>Last Name</label> -->
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('lastName','track')">⍡-LN</button><button class="trackSingleTrait" id="trackSingleTrait" onclick="trackSingleTrait('lastName','identify')">⍢-LN</button><button class="trackSingleTrait" id="trackSingleTrait-" onclick="trackSingleTrait('fullName','track')">⍡-N</button><button class="trackSingleTrait" id="trackSingleTrait-" onclick="trackSingleTrait('fullName','identify')">⍢-N</button>
+                <input autocomplete="off" type="text" class="footer-input" name="lastName" id="lastName-foot-index" required="" placeholder="Last Name"/><span></span>
+                <button onclick="chooseLastName()" class="auto-btn btn-small float-right gen-user-btn">New Last Name</button>
+            </p>
+            <!-- <p><button onclick="chooseLastName(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseLastName(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseLastName(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseLastName(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseLastName(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseLastName(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseLastName(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseLastName(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseLastName(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseLastName(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseLastName(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseLastName(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseLastName(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseLastName(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseLastName(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseLastName(15)" class="auto-btn btn-small float-right">15</button></p> -->
+        </div>
+        
+        <!-- <label>Email</label> -->
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('email','track')">⍡-E</button><button class="trackSingleTrait" onclick="trackSingleTrait('email','identify')">⍢-E</button>
+                <input autocomplete="off" type="email" name="email" id="email-foot-index" required="" placeholder="Email"/><span></span>
+                <button onclick="chooseEmail()" class="auto-btn btn-small float-right gen-user-btn">New Email</button>
+            </p>
+            <!-- <p><button onclick="chooseEmail(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseEmail(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseEmail(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseEmail(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseEmail(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseEmail(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseEmail(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseEmail(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseEmail(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseEmail(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseEmail(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseEmail(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseEmail(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseEmail(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseEmail(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseEmail(15)" class="auto-btn btn-small float-right">15</button></p> -->
+        </div>
+
+        <!-- <label>Favorite Social Media To Use</label> -->
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('favSocMedia','track')">⍡-SM</button><button class="trackSingleTrait" onclick="trackSingleTrait('favSocMedia','identify')">⍢-SM</button>
+                <input autocomplete="off" type="text" class="footer-input" name="favoriteSocialMedia" id="fav-soc-media-foot-index" required="" placeholder="Favorite Social Media"/><span></span>
+                <button onclick="chooseSocialMedia(0)" class="auto-btn btn-small float-right gen-user-btn">New Social Media</button>
+            </p>
+            <!-- <p><button onclick="chooseSocialMedia(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseSocialMedia(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseSocialMedia(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseSocialMedia(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseSocialMedia(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseSocialMedia(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseSocialMedia(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseSocialMedia(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseSocialMedia(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseSocialMedia(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseSocialMedia(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseSocialMedia(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseSocialMedia(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseSocialMedia(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseSocialMedia(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseSocialMedia(15)" class="auto-btn btn-small float-right">15</button></p> -->
+        </div>
+
+        <!-- <label>Username</label> -->
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('userName','track')">⍡-U</button><button class="trackSingleTrait" onclick="trackSingleTrait('userName','identify')">⍢-U</button>
+                <input autocomplete="off" type="text" class="footer-input" name="userName" id="userName-foot-index" required="" placeholder="Choose a username"/><span></span>
+                <button onclick="chooseUserName(0)" class="auto-btn btn-small float-right gen-user-btn">New Username</button>
+            </p>
+            <!-- <p><button onclick="chooseUserName(0)" class="auto-btn btn-small float-right">0</button><button onclick="chooseUserName(1)" class="auto-btn btn-small float-right">1</button><button onclick="chooseUserName(2)" class="auto-btn btn-small float-right">2</button><button onclick="chooseUserName(3)" class="auto-btn btn-small float-right">3</button><button onclick="chooseUserName(4)" class="auto-btn btn-small float-right">4</button><button onclick="chooseUserName(5)" class="auto-btn btn-small float-right">5</button><button onclick="chooseUserName(6)" class="auto-btn btn-small float-right">6</button><button onclick="chooseUserName(7)" class="auto-btn btn-small float-right">7</button><button onclick="chooseUserName(8)" class="auto-btn btn-small float-right">8</button><button onclick="chooseUserName(9)" class="auto-btn btn-small float-right">9</button><button onclick="chooseUserName(10)" class="auto-btn btn-small float-right">10</button><button onclick="chooseUserName(11)" class="auto-btn btn-small float-right">11</button><button onclick="chooseUserName(12)" class="auto-btn btn-small float-right">12</button><button onclick="chooseUserName(13)" class="auto-btn btn-small float-right">13</button><button onclick="chooseUserName(14)" class="auto-btn btn-small float-right">14</button><button onclick="chooseUserName(15)" class="auto-btn btn-small float-right">15</button></p> -->
+        </div
+
+        <div class="from-left">
+            <p>
+                <button class="trackSingleTrait" onclick="trackSingleTrait('phone','track')">⍡-P</button><button class="trackSingleTrait" onclick="trackSingleTrait('phone','identify')">⍢-P</button>
+                <input autocomplete="off" type="text" class="footer-input" required="" placeholder="phone number" id="phonenumber-foot-index" name="PHONE NUMBER"/><span></span>
+                <button onclick="trackPhoneNumber()" class="auto-btn btn-small float-right gen-user-btn">New Phone Number</button>
+            </p>
+        </div>
+
+        <div class="from-left">
+            <!-- <label>Organization</label> -->
+            <p>
+                <input autocomplete="off" type="text" class="footer-input" name="organization" id="organization-foot-index" required="" placeholder="Organization"/><span></span>
+            <!-- <label>Occupation</label> -->
+                <input autocomplete="off" type="text" class="footer-input" name="occupation" id="occupation-foot-index"  placeholder="Occupation"/><span></span>
+                <button onclick="chooseOrganizationName(0)" class="auto-btn btn-small float-right gen-user-btn">New Company</button>
+            </p>
+        </div>
+        </br>
+
+        <span id="groupBtns">
+            <button class="faded-btn trackSingleTrait auto-btn btn-small" onclick="giveGroupId()" id="groupNum">GROUP NUM</button>
+            <button class="trackSingleTrait auto-btn btn-small" onclick="groupCall()" id="groupCall">CALL GROUP</button>
+        </span>
+        <button class='auto-btn btn-small' id="submitNewAccountInputs" onclick="createNewAccount()">NEW USER</button>
+
+        <div class="employee-company">
+                <!-- <h4>NEW EMPLOYEE</h4> -->
+                <button onclick="changeEmployees()" class="auto-btn create btn-small neg-top-5">Add Employee Info To Company</button>
+                <!-- <h4>NEW COMPANY</h4> -->
+                <button onclick="changeCompany()" class="auto-btn create btn-small neg-top-5">Create New Company</button>
+        </div>
+    </div>
+
+    <div id="generate-user" >
+        <p id="gen-user" onclick="generateUser()">AUTO USER!</p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-firstName-track" onclick="trackSingleTrait('firstName','track')">⍡-FN</button>  <button class="trackSingleTrait" id="trackSingleTrait-firstName-identify" onclick="trackSingleTrait('firstName','identify')">⍢-FN</button></p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-lastName-track" onclick="trackSingleTrait('lastName','track')">⍡-LN</button>  <button class="trackSingleTrait" id="trackSingleTrait-lastName-identify" onclick="trackSingleTrait('lastName','identify')">⍢-LN</button></p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-email-track" onclick="trackSingleTrait('email','track')">⍡-E</button>  <button class="trackSingleTrait" id="trackSingleTrait-email-identify" onclick="trackSingleTrait('email','identify')">⍢-E</button></p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-organization-track" onclick="trackSingleTrait('organization','track')">⍡-O</button>  <button class="trackSingleTrait" id="trackSingleTrait-organization-identify" onclick="trackSingleTrait('organization','identify')">⍢-O</button></p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-favSocMedia-track" onclick="trackSingleTrait('favSocMedia','track')">⍡-SM</button>  <button class="trackSingleTrait" id="trackSingleTrait-favSocMedia-identify" onclick="trackSingleTrait('favSocMedia','identify')">⍢-SM</button></p>
+        <p><button class="trackSingleTrait" id="trackSingleTrait-userName-track" onclick="trackSingleTrait('userName','track')">⍡-U</button>  <button class="trackSingleTrait" id="trackSingleTrait-userName-identify" onclick="trackSingleTrait('userName','identify')">⍢-U</button></p>
+        
+        <!-- <label>MARKETO: !!!! First Name</label> -->
+        <!-- <p><input autocomplete="off" type="text" class="from-left" name="firstNameMarketo" required="false" id="firstNameMarketo" placeholder="First Name- Marketo"/><span></span><br/> -->
+        <!-- <button id="firstNameMarketoButton" onclick="trackSingleTrait('firstNameMarketo','track')">⍡-Sign UP Successful</button><button id="firstNameMarketoButton" onclick="trackSingleTrait('firstNameMarketo','identify')">⍢-Sign UP Successful</button></p></p> -->
+        <button onclick="send100events()">Send 100 Events</button>
+    </div>
+</section>
+
+<footer class="text-center text-muted footer">
+    <p>&#169 minifi </p>
+</footer>
+
+
+<script>
+    //URLSearchParams(url)
+    let firstNameMarketo, traits, properties, firstName, lastName, organization, email, favSocMedia, userName
+
+    let shouldersFam = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","Molly","Courtney","Luke","Micah","Austin","Taylor","Lilly","Ernest","Ellis"]
+    let firstNames = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","Molly","Courtney","Luke","Micah","Austin","Taylor","Lilly","Ernest","Ellis","Elizabeth","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl","Jeff","Janae","Jenn","Jessica","Jillian","Jing","Jonathan","Joshua","Kacie","Katherine","Kevin","Kelsey","Kitt","Kyle","Latifa","Laurence","LeeAnne","Leslie","Alexandra","Lia","Linas","Lindsey","Loic","Lumi","Madison","Malea","Marie Lou","Martin","Mary","Megan","Melissa","Michaela","Michelle","Mishone","Maurine","Mykel","Nathan","Noel","Olivia","Pam","Patricia","Paula","Peter","Piper","Rachel","Bryn","Rachid","Ray","Rene","Richard","Rodrigo","Robyn","Royanna","Ryan","Samantha","Sandra","Sarah","Saphire","Isabelle","Sylvie","Scott","Shayelee","Shelby","Shieun","Sierra","Simone","Skylar","Stacey","Stephania","Stephen","Sydney","Sylia","Talitha","Tatiana","Terence","Tess","Tiera","Tom","Trish","Tyra","Vaneissa","Veronica","Vince","Yeaeun","Youssef","Yili","",]
+    let lastNames = ["Smith","Crawford","Hilton","Chestertown","Evers","Calhoun","Monagle","Richardson","Winters","Myers","Visscher","Garcia","Soma","Wisbon","Donzella","Irungu","Healy","Fellow","Herman","Ferguson","Cooper","Rickey","Shelly","Juminsko","Sothann","Ellison","Olson","Nerini","Murphy","Thompson","Marcos","Addae","Harris","Caswell","Grace","Duriez","Flach","Vanderslice","Pfieffer","Drouin","Lopez","Hargent","Evans","Wang","Sandoval","Jourdain","Donatien","Swan","Bell","Shugg","Robertson","Walkers","Bakrabi","Chama","Ramosa","Shawford","Heiberschtein","Daigledon","Petiprempre","Kumaresianne","Benchariffa","Asquevolt","Morelle","Soza","Simo","Ling","Wombract","Simola","Lundia","Jarimosa","Rhoades","Naus","Mosh","Haulings","Hearting","Campania","Plaza","Mezzania","Sauvages","Hardie","Arroyauna","Dilli","Gallovant","Mattitteuchi","Foxlin","Pastora","Cremensi","Ridge","Subello","Boninir","Graza","Rucel","Gardenia","Jaretsman","Focker","Traust","Dodier","Stapleton","Wist","Vagoss","Yungs","Ying","Zeleusqui",]
+    //serverUserId = serverUserId.toString()
+
+    const signUpSuccessful = (name,action) => {
+        document.getElementById("firstNameMarketo").value = firstNameMarketo
+        document.getElementById("firstName-foot-index").value = firstNameInput;
+        email = email.toLowerCase()
+        //console.log("firstName",firstNameMarketo)
+        //console.log(name)
+        if(action=="identify"){analytics.identify(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true}})}
+        if(action=="track"){analytics.track('SignUp Successful',{traits:{firstName:firstName,email:email},integrations:{"All":true}})}
+   
+        anaytics.track("Sign Up Successful",{firstName:firstNameMarketo})
+        anaytics.track("Sign Up Successful",{firstName:firstNameInput})
+        //console.log("firstName",firstName)
+    }
+
+
+    let firstNameInput 
+    const chooseFirstName = () =>{
+        let array = firstNames
+        //<!-- console.log(array[num]) -->
+        //<!-- firstNameInput = array[num] -->
+        firstNameInput = randomIndexArray(array)
+        console.log(`firstNameInput : ${firstNameInput}`)
+        document.getElementById("firstName-foot-index").value = firstNameInput;
+        firstNameGroupInput = firstNameInput;
+        document.getElementById("profileName").innerHTML = firstNameInput
+    }
+    let lastNameInput
+    let fullNameProfile
+    const chooseLastName = (num) => {
+        //<!-- console.log(lastNames[num]) -->
+        //<!-- lastNameInput = lastNames[num] -->
+        lastNameInput = randomIndexArray(lastNames)
+        console.log(lastNameInput)
+        document.getElementById("lastName-foot-index").value = lastNameInput;
+        lastNameGroupInput = lastNameInput;
+        document.getElementById("profileName").innerHTML = `${firstNameInput} ${lastNameInput}`
+        //document.getElementById("group-user-last-index").value = lastNameGroupInput || null
+        //document.getElementById("motivateUserName").value = `${firstNameInput} ${lastNameInput}`
+    }
+
+    let organizationInput, occupationInput, arrIindex
+    let occupations = ["Baker","Welder","Farmer","Cook","Butler","Maid","Equester","Rancher","Cleaner","Marketer","Engineer","Analyst","Scientist","Optometrist","Professor","Translator","Accountant","Actor","Banker","Babysitter","Ballerina","Cab Driver","Calligrapher","Captain","Cardiologist","Dentist","Deputy","Dermatologist","Ecologist","Economist","Editor","Game Designer","Interior Designer","Gardener","Hairdresser","Harpist","Auctioneer","Blacksmith","Bookkeeper","Biologist","Barber","Chemist","Clerk","Contractor","Cartoonist","Caterer","Police Officer","Fireman","Film Director","Film Producer","DJ","Exterminator","Geneticist","Tour Guide","Jewler","Politician","Mayor","Geologist","Investigator","Interpretor","Judge","Journalist","Lifeguard","Locksmith","Paralegal","Lawyer","Librarian","Linguist","Lyricist","Landscaper","Lobbyist","Midwife","Mechanic","Muralist","Mailman","Model","Singer","Notary","Novelist","Nurse","Operator","Painter","Park Ranger","Physicist","Programmer","Publisher","Paleontologist","Pediatrician","Pharmacist","Photographer","Plumber","Principal","Psychiatrist","Pawnbroker","Psychologist","Radiologist","Real Estate Agent","Researcher","Reporter","Receptionist","Referee","Security Guard","Soldier","Statistician","Stockbroker","Investment Banker","Surgeon","Seamstress","Street Sweeper","Tailor","Taxidermist","Treasurer","Dental Hygienist","Athletic Trainer","Tutor","Travel Agent","Vicar","Verterinarian","Waiter","Welder","Writer","Woodcarver",]
+    let chooseOrganizationName = (num) => {
+        //<!-- occupationInput = occupations[num]; -->
+        occupationInput = randomIndexArray(occupations);
+        console.log(`OCCUPATION:`,occupationInput);
+        document.getElementById("occupation-foot-index").value = occupationInput;
+        document.getElementById("profileTitle").innerHTML = occupationInput;
+        arrIindex = occupations.indexOf(occupationInput)
+        //<!-- arrIindex = occupations.find(occupationInput => occupationInput==occupationInput) -->
+        console.log(`* arrIindex * `,arrIindex)
+
+        let orgtypes = [" Baking"," Welding"," Farming"," Cooking"," Butler Services"," Maid Services"," Horses"," Ranchers"," Cleaners"," Marketing"," Engineering"," Analyses"," Sciences"," Optometry"," Schooling"," Translations","Accounting","Movies","Banking","Babysitting","Ballet","Yeller Driving","Calligraphy","Boats","Cardiology","Dental","County","Dermatology","Ecology","Economics","Editing","Graphic Designing","Interi Your Designing","Gardening","Cheveux Pelo Hair","Heavenly Strings","Auctioning","Metals","Bookkeeping","Biology","Frocks","Chems","Clerks","Contracting","Animations","Catering","County","Firehouse","Films","Productions","Disk Jockey","Extermination","Genetics","Guides","Jewlery","Politics","Democracy","Geology","Investigations","Interpretations","Justice","Journalism","Pools & Lakes","Lock Key","Law Firm","Law Firm","Library","Linguistics","Lyrics","Landscaping","Lobbying","Life Guide","Mechanics","Murals","Postal Service","Modeling","Singing","Notaries","Novels","Hospice","Phones","Paintings","Parks","Physics","Programming","Publishing","Paleontology","Pediatrics","Pharmacy","Photography","Plumbing","Schooling","Psychiatry","Pawnbrokers","Psychology","Radiology","Real Estate Agency","Researching","Reporting","Reception","Sports","Security","Service & Arms","Statistics","Stocks","Investments","Surgery","Seams","Street Sweeps","Tailoring","Taxidermy","Treasury","Dental Hygienics","Athletic Training","Tutoring","Travel Agency","Church of England","Verterinary","Waiting","Welding","Writing","Woodcarving",]
+        organizationInput = (lastNameInput+' '+orgtypes[arrIindex]+" Inc");
+        console.log(`OCCUPATION:`,organizationInput,`=`,lastNameInput,' ',+orgtypes[arrIindex]+" Inc");
+        document.getElementById("organization-foot-index").value = organizationInput;
+        document.getElementById("profileOrganization").innerHTML = organizationInput;
+        employeeEmail = `${firstNameGroupInput}${lastNameGroupInput}@kanecorp.org`.toLowerCase()
+        document.getElementById("profileWorkEmail").innerHTML = employeeEmail;
+        //if(organizationInput && occupationInput){
+        //    document.getElementById("profileOccupation").value = occupationInput
+        //    document.getElementById("profileOrganization").value = organizationInput
+        //} 
+        //<!--for(let i=1; i<occupations.length;i++){ -->
+        //    <!-- console.log(occupations[i]) -->
+        //    <!-- console.log(orgtypes[i]) -->
+        //<!-- } -->
+    }
+
+    
+    let emailInput
+    let mudra = ["Earth","Wind","Fire","Ether","Water","Mountain","Grass","Star","Planet","Soul","Life","Unity","Serenity","Peace","Harmony","Ocean","Magma","Hydrogen","Iron","Platinum","Alkali","Sagittarius","Aquarius","Capricorn","Aries","Taurus","Virgo","Libro","Gemini","Scorpio","Pisces","Leo","Cancer","Idyllic","Irenic","Kenshō","CarpeDiem","Elysian","Ataraxia","Yūgen","Curious","Surprise","Pācātus","Epiphany","Meraki","Yeoubi","Hülya","Saorsa","Qapla'","Solasta","Dalisay","Selcouth","Amal","Apricity","Nirvana","Ikigai","Rout","Virago","Zeal","Abditory","Noor","Arcane","Gunnen","Solivagant","Mizpah","Vasl","Logophile","Pareidolia","Kartika","Mångata","Saoirse","Onism","Outré","Kefi","Selcouth","Mudita","Inscape","Duende","Indah","Niamh","Sonder","Phosphenos","Quanitrelle","Somniate","Eutony","Coddiwomple","Peacherino","Kaizen","Metanoia",]
+    const chooseEmail = () => {
+        //<!-- console.log(mudra[num]) -->
+        //<!-- emailInput = (`${firstNameInput}${lastNameInput}${num}@${mudra[num]}.com`) -->
+        let num = (Math.floor(Math.random()*100));
+        emailInput = (`${firstNameInput}${lastNameInput}${num}@${randomIndexArray(mudra)}.com`.toLowerCase());
+        document.getElementById("email-foot-index").value = emailInput;
+        document.getElementById("profilePersonalEmail").innerHTML = emailInput;
+        //document.getElementById("motivateEmail").value = emailInput;
+        //document.getElementById("motivateUserName").value = `${firstNameInput} ${lastNameInput}`;
+    }
+
+    let favSocMediaInput
+    let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Clubhouse","Triller","Gab","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube","Valence","Flip","Popbase","Elpha","Rumble","MeWe","Caffeine","Peanut","HouseParty","Steemit","Goodreads","Twitch","WattPad","Crunchyroll","Soundcloud","Mocospace","Medium","Ello","Giphy","Tribe","Bubbly","Open Diary","FilmAffinity","Infuenster","Imgur","Kuaishou","Vimeo","CarSwap","eToro","FictionCity","Flixter","Focus.com","Gentlemint","Hello","Ibibo","Lunchclub","Strava","Busuu","GChat","Chess","Meetup","Poshmark","Slack","Wish","Neopets","Periscope","Quora","Nextdoor","Stack Overflow","Spaces","Tagged","Thinkspot","Yelp","World of Warcraft","WordPress","Vero",]
+    const chooseSocialMedia = (num) => {
+        //<!-- console.log(allSoc[num]) -->
+        //<!-- favSocMediaInput = allSoc[num] -->
+        favSocMediaInput = randomIndexArray(allSoc)
+        favSocMedia = favSocMediaInput
+        document.getElementById("fav-soc-media-foot-index").value = favSocMediaInput;
+        document.getElementById("profileSocialMedia").innerHTML = favSocMediaInput;
+    }
+    
+    let userNameInput
+    const chooseUserName = (num) => {
+        //let allSoc = ["Twitter","Instagram","Tik Tok","Facebook","Myspace","Rodeo","Food Network","Music","Pinterest","LinkedIn","Tumblr","Reddit","Snapchat","WhatsApp","BixSugar","YouTube",]
+        //console.log(allSoc.length)
+        userNameInput = (`${firstNameInput}${randomIndexArray(mudra)}${num}`)
+        document.getElementById("userName-foot-index").value = userNameInput;
+        document.getElementById("profileUsername").innerHTML = userNameInput;
+    }
+    if(!document.title === "GET ALL | USERS"){
+        //document.getElementsById("groupBtns").style.display = "block";
+        //$(".groupBtns").show();
+        //$(".groupBtns").hide();
+    }
+    else{
+        //document.getElementsById("groupBtns").style.display = "none";
+        //   document.getElementsById("groupBtns").show();
+        //$(".groupBtns").hide();
+        //$(".groupBtns").show();
+    }
+
+    // * ? RANDOM INPUT
+    
+    let arrIiVal
+
+    const randomIndexArray = (thisArray) => {
+        arrIiVal = thisArray[Math.floor(Math.random()*(thisArray.length))]
+        console.log(`*** arrIiVal random index value *** `,arrIiVal)            
+        return arrIiVal
+    }
+    //END RANDOM INPUT
+
+    
+
+    const trackSingleTrait = (trait,action) => {
+        if(trait == "firstNameMarketo"){
+            firstNameMarketo = document.getElementById("firstNameMarketo").value;
+            console.log(firstNameMarketo)
+            email = document.getElementById("email-foot-index").value.toLowerCase();
+            console.log(email)
+            if(action=="track"){analytics.track("Sign Up Successful",{firstName:firstNameMarketo},{traits:{firstName:firstNameMarketo,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{firstName:firstNameMarketo,email:email},{traits:{firstName:firstNameMarketo},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        }
+        if(trait == "firstName"){
+            firstName = document.getElementById("firstName-foot-index").value;
+            console.log(firstName)
+            email = document.getElementById("email-foot-index").value.toLowerCase();
+            console.log(email)
+            if(action=="track"){analytics.track("User firstName Added",{firstName:firstName,email:email},{traits:{firstName:firstName,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{firstName:firstName,email:email},{traits:{firstName:firstName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        }
+        if(trait == "lastName"){
+            lastName = document.getElementById("lastName-foot-index").value;
+            console.log(lastName)
+            email = document.getElementById("email-foot-index").value.toLowerCase();
+            console.log(email)
+            if(action=="track"){analytics.track("User lastName Added",{lastName:lastName,email:email},{traits:{lastName:lastName,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{lastName:lastName,email:email},{traits:{lastName:lastName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        }
+        if(trait == "fullName"){
+            firstName = document.getElementById("firstName-foot-index").value;
+            console.log(firstName)
+            lastName = document.getElementById("lastName-foot-index").value;
+            console.log(lastName)
+            fullName = `${firstName} ${lastName}`
+            console.log(fullName)
+            email = document.getElementById("email-foot-index").value.toLowerCase();
+            console.log(email)
+            if(action=="track"){analytics.track("User fullName Added",{Name:fullName,email:email},{traits:{Name:fullName,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{Name:fullName,email:email},{traits:{Name:fullName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        }
+        if(trait == "organization"){
+            organization = document.getElementById("organization-foot-index").value;
+            console.log(organization)
+            email = document.getElementById("email-foot-index").value.toLowerCase();
+            console.log(email)
+            if(action=="track"){analytics.track("User organization Added",{organization:organization,email:email},{traits:{organization:organization,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{organization:organization,email:email},{traits:{organization:organization,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        }
+        if(trait == "email"){
+            email = document.getElementById("email-foot-index").value.toLowerCase();
+            console.log(email)
+            if(action=="track"){analytics.track("User email Added",{email:email},{traits:{email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{email:email},{traits:{email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        }
+        if(trait == "favSocMedia"){
+            favSocMedia = document.getElementById("fav-soc-media-foot-index").value;
+            console.log(favSocMedia)
+            email = document.getElementById("email-foot-index").value.toLowerCase();
+            console.log(email)
+            if(action=="track"){analytics.track("User favSocMedia Added",{favSocMedia:favSocMedia,email:email},{traits:{favSocMedia:favSocMedia,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{favSocMedia:favSocMedia,email:email},{traits:{favSocMedia:favSocMedia,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        }
+        if(trait == "userName"){
+            userName = document.getElementById("userName-foot-index").value;
+            console.log(userName)
+            email = document.getElementById("email-foot-index").value.toLowerCase();
+            console.log(email)
+            if(action=="track"){analytics.track("User userName Added",{userName:userName,email:email},{traits:{username:userName,email:email}, integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+            if(action=="identify"){analytics.identify(serverUserId,{userName:userName,email:email},{traits:{username:userName,email:email},integrations:{"All":true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})}
+        }
+    }
+
+    
+    const createNewAccount = () => {
+        //userId = analytics.user().id()
+        firstName = document.getElementById("firstName-foot-index").value;
+        lastName = document.getElementById("lastName-foot-index").value;
+        organization = document.getElementById("organization-foot-index").value;
+        email = document.getElementById("email-foot-index").value.toLowerCase();
+        favSocMedia = document.getElementById("fav-soc-media-foot-index").value;
+        userName = document.getElementById("userName-foot-index").value;
+        phone = trackPhoneNumber()
+        //let firstName = firstNameInput
+        //let lastName = lastNameInput
+        //let organization = organizationInput
+        //let email = emailInput
+        //let favSocMedia = favSocMediaInput
+        //let userName = userNameInput
+        
+        console.log(`firstNameInput : `,firstNameInput,`  --  firstName : `,firstName);
+        console.log(`lastNameInput : `,lastNameInput,`  --  lastName : `,lastName);
+        console.log(`organizationInput : `,organizationInput,`  --  organization : `,organization);
+        console.log(`emailInput : `,emailInput,`  --  email : `,email);
+        console.log(`favSocMediaInput : `,favSocMediaInput,`  --  favSocMedia : `,favSocMedia);
+        console.log(`userNameInput : `,userNameInput,`  --  userName : `,userName);
+        //console.log(" || firstName : ",firstName," || lastName : ",lastName," || organization : ",organization," || email : ",email,)
+        
+        userId? userId = userId.toString(): userId = userId
+        console.log(`serverUserId slashes ? TYPEOF`,typeof(userId),userId)
+        traits = {
+            email : email,
+            $Name : `${firstName} ${lastName}`,
+            primaryEmail : email,
+            //favSocMedia : favSocMedia,
+            anonymousId : serverAnonymousId,
+            name : `${firstName} ${lastName}`,
+            organization : organization,
+            title: occupationInput,
+            userId : userId,
+            firstName : firstName,
+            lastName : lastName,
+            username : userName,
+            givenName : firstName,
+            surName : lastName,
+            $onesignal_user_id : userId,
+            external_id : userId
+        }
+
+
+        
+        // ****** PROPS BELOW WORK ****** TAKING OUT FOR TESTING ********
+        properties = {
+            //avatar: "https://firebasestorage.googleapis.com/v0/b/production-tutorbook.appspot.com/o/temp%2F4a992adc-2fdc-4859-9b43-57f76a47e53c.jpg?alt=media&token=842fc7e1-216f-4b4f-9c75-f49bb036aae6",
+            email : email,
+            $Name : `${firstName} ${lastName}`,
+            $avatar: "https://imgur.com/UHwbel0",
+            primaryEmail : email,
+            favSocMedia : favSocMedia,
+            // anonymousId : userAnonymousId,
+            // name : `${firstName} ${lastName}`,
+            // organization : organization,
+            // userId : serverUserId,
+            // firstName : firstName,
+            // lastName : lastName,
+            // userName : userName,
+            // givenName : firstName,
+            // surName : lastName,
+        }
+        //console.log(`FOOT 80 - serverUserId ? traits.userId  -- `,serverUserId,` -- `,userId)
+        //console.log(`FOOT 81 - traits --  `,traits)
+
+
+        //analytics.identify([userId], [traits], [options], [callback]);
+        
+        analytics.identify(traits.userId,traits,{integrations:{All:true, Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})
+        //analytics.user().anonymousId(btoa(`${traits.email.toLowerCase()}`))
+        //console.log('resetting anonymousId as email')
+        analytics.track("New Subscription Created",
+            properties,
+            {
+                $userId:userId,
+                traits: traits,
+                integrations:{}
+            },
+            // function() {
+            //         analytics.reset();
+            //         window.location.href = "";
+            // }
+        )
+
+        //)
+
+        
+        //console.log(`FOOT 86 - properties --  `,properties)
+        // analytics.track(event, [properties], [options], [callback]);
+        
+        // **** TRACK BELOW WORK **** TAKING OUT FOR TESTING ********
+        
+    } 
+
+    function trackPhoneNumber() {
+        if (userId ){
+            let tempPhone4 = Math.floor(Math.random()*10000)
+            let tempPhone3 = Math.floor(Math.random()*1000)
+            let tempPhoneCo = Math.floor(Math.random()*100)
+            let phone = `+${tempPhoneCo}-${tempPhone3}-555-${tempPhone4}`
+            console.log(phone)
+            document.getElementById('phonenumber-foot-index').value = phone
+            document.getElementById('profilePhone').innerHTML = phone
+            //let product_name = document.getElementById('producttitle').innerText
+            let userId = localStorage.getItem('ajs_user_id')
+            userId = userId.replace(/^"(.*)"$/, '$1')
+            console.log(userId)
+            /*
+            analytics.identify(userId, {
+                phone: phone
+            }, {
+                context: {
+                    messaging_subscriptions: [
+                        {
+                            type: "SMS",
+                            status: "SUBSCRIBED",
+                            key: phone
+                        }
+                    ]
+                }
+            })
+            //console.log('ID finished')
+            analytics.track('SMS Alerts - Single Product', {
+                //product: product_name,
+                current_inventory: 5
+            })
+            console.log('Track Finished')
+            */
+
+        }
+    }  
+
+//    let send100events = () => {
+//        for (let i =0; i<100; i++){
+//            if(i % 10 == 0){
+//                analytics.track(`Button Clicked`, {eventcount : `${+i}`})
+//                runResetAll()
+//            }
+//        analytics.track(`Button Clicked`, {eventcount : `${+i}`})
+//        }
+//    
+//    }
+
+const generateUser = () => {
+    // build user in one click by combining all funks above
+    chooseFirstName();
+    chooseLastName();
+    chooseEmail();
+    chooseSocialMedia();
+    chooseUserName();
+    trackPhoneNumber();
+    chooseOrganizationName();
+    
+}
+
+        //analytics.track("New Account Created",properties,{},function () {window.location.href = "";})
+    //document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
+    //createNewAccount function end
+
+
+
+//        { // EVENT TESTER 
+//            "messageId": "segment-test-message-tfla0hb",
+//            "timestamp": "2021-07-30T18:29:02.171Z",
+//            "type": "track",
+//            "projectId": "59QwxR3ek7JDvAqtZbPrZ1",
+//            "properties": {
+//              "Email": "helenlizkane@me.com",
+//              "anonymousId": "999-77700-444",
+//              "userId": "11223344556677",
+//              "name": "Helen Kane",
+//              "favSocMedia": "Instagram",
+//              "organization": "Segment",
+//              "givenName": "Helen",
+//              "surname": "Kane",
+//              "userName": "lizTest11"
+//            },
+//            "userId": "0111-0222-0333",
+//            "event": "New Account Created"
+//          }
+
+</script>
+

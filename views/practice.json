@@ -1,0 +1,22 @@
+{
+    "event": "Checkout Started",
+    "messageId": "messageid-testing-123",
+    "type": "track",
+    "properties": {
+      "email": "tryproven-test-1231@gmail.com",
+      "phone": "+1555-555-1122",
+      "ttclid": "12345-6789",
+      "currency": "USD",
+      "value": 100,
+      "query": "shoes"
+    },
+    "context": {
+      "page": {
+        "url": "https://segment.com/",
+        "referrer": "https://google.com/"
+      },
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_1_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16D57",
+      "ip": "0.0.0.0"
+    },
+    "userId": "testId-123"
+}

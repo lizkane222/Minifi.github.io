@@ -1,0 +1,46 @@
+{
+  "name": "mifi-tamagochi",
+  "version": "1.0.0",
+  "description": "Track your own health data with less pressure- Keep your Tamagachi Alive & Improve Your Life",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizkane222/Minifi.github.io.git"
+  },
+  "author": "Liz Kane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lizkane222/Minifi.github.io/issues"
+  },
+  "homepage": "https://github.com/lizkane222/Minifi.github.io#readme",
+  "dependencies": {
+    "-": "^0.0.1",
+    "@sentry/node": "^8.30.0",
+    "@wdio/devtools-service": "^8.15.4",
+    "analytics-node": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.7.2",
+    "connect-mongo": "^3.2.0",
+    "crypto": "^1.0.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "flexbox": "^0.0.3",
+    "iconv-lite": "^0.6.3",
+    "ipaddr.js": "^2.2.0",
+    "jquery": "^3.6.0",
+    "method-override": "^3.0.0",
+    "mongodb": "^3.6.8",
+    "mongoose": "^5.12.14",
+    "mpath": "^0.9.0",
+    "mquery": "^5.0.0",
+    "node": "^16.4.0",
+    "node-fetch": "^3.3.0",
+    "save-dev": "^0.0.1-security",
+    "sift": "^17.1.3",
+    "uuid": "^10.0.0"
+  }
+}

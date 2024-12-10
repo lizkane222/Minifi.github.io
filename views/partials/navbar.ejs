@@ -1,0 +1,235 @@
+<!-- views/partials/navbar.ejs -->
+
+<header id="headerNav" class="header clearfix">
+    <nav class="navbar navbar-expand-lg ">
+        <ul class="navbar-nav mr-auto" onclick="trackNavRoute(`logo`,`minifiSite`)">
+            <a class="navbar-brand"  href="/">minifi</a>
+            <a class="nav-link"  href="/">
+                <li class="nav-item" aria-disabled="true" onclick="trackNavRoute(`Home`,`minifiSite`)">
+                    Home
+                </li>
+            </a>
+            <!-- <a class="nav-link"  href="/motivate"> -->
+            <a class="nav-link"  href="/motivate/new/">
+                <li class="nav-item" onclick="trackNavRoute(`Motivate`,`minifiSite`)">
+                    Motivate
+                </li>
+            </a>
+            <a class="nav-link"  href="/chi/">
+                <li class="nav-item" onclick="trackNavRoute(`Chi`,`minifiSite`)">
+                    Mi Chi
+                </li>
+            </a>
+            <a class="nav-link"  href="/user/">
+                <li class="nav-item" onclick="trackNavRoute(`User`,`minifiSite`)">
+                    Build User
+                </li>
+            </a>
+
+            <a class="nav-link"  href="/user/about/">
+                <li class="nav-item" onclick="trackNavRoute(`About`,`minifiSite`)">
+                    About
+                </li>
+            </a>
+            <a class="nav-link"  href="/docs/user-context">
+                <li class="nav-item" onclick="trackNavRoute(`user-context`,`minifiSite`)">
+                    User-Context
+                </li>
+            </a>
+            <a class="nav-link"  href="https://lizkane222.github.io/Minifi.github.io/">
+                <li class="nav-item" onclick="trackNavRoute(`ghpages`,`minifiSite`)">
+                    GH-PAGES
+                </li>
+            </a>
+            <a class="nav-link"  href="/docs/">
+                <li class="nav-item" onclick="trackNavRoute(`docs`,`minifiSite`)">
+                    PRODUCTS
+                </li>
+            </a>
+            <a class="nav-link"  href="/docs/code/">
+                <li class="nav-item" onclick="trackNavRoute(`docs`,`minifiSite`)">
+                    CODE
+                </li>
+            </a>
+        </ul>
+    </nav>
+    <div class="resetContainer">
+        <input type="button" onclick="aliasUser()" class="resetUser" value="ALIAS User"/>
+        <input type="button" onclick="changeEmployees()" class="resetUser" value="Change Employee"/>
+        <input type="button" onclick="changeCompany()" class="resetUser" value="Change Company"/>
+        <input type="button" onclick="runResetUserId()" class="resetUser" value="RESET User"/>
+        <input type="button" onclick="runResetAnonId()" class="resetUser" value="RESET Anon"/>
+        <input type="button" onclick="runResetGroupId()" class="resetUser" value="RESET Group"/>
+        <input type="button" onclick="runResetAll()" class="resetUser" value="RESET ALL"/>
+    </div>
+</header>
+
+
+<style>
+    /*COLOR PALETTE*/
+    /* dark green : rgb(121,125,98)*/
+    /* light green : rgb(155,155,122) */
+    /* neutral brown: rgb(186,165,135) */
+    /* neutral pink: rgb(217,174,148) */
+    /* neutral yellow : rgb(241,220,167) */
+    /* orangey : rgb(255,203,105) */
+    /* burnt orange : rgb(232,172,105) */
+    /* dark orange : rgb(208,140,96) */
+    /* light brown : rgb(181,132,99) */
+    /* dark brown : rgb(153,123,102) */
+
+    #headerNav {
+        width: 110vw;
+        height:6.5vh;
+        position:static;
+        margin: 1.5vh 0 5vh 0;
+        border-bottom: 3px solid rgb(121,125,98);
+        font-family: 'Poiret One', cursive;
+        font-weight: 800;
+        /* 
+        background-color: #f2f2f2;
+        box-shadow: 2px 2px 2px 2px rgba(90,90,90,.4);
+        display: flex;
+        justify-content: space-between;
+        overflow:auto;
+        */
+    }
+
+    .navbar-nav {
+        display: flex;
+        flex-direction:row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-content: space-around;
+        align-items: flex-start;
+    }
+
+    .navbar-brand {
+        float: left;
+    }
+    
+    .nav-link, .nav-item, .navbar-brand{
+        font-size: 1.2em;
+        display: inline-flex;
+        margin: 0 5px;
+        color:rgb(121,125,98);
+        text-decoration: none;
+        list-style: none;
+        text-align: center;
+    }
+    .resetContainer {
+        display:inline-flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: baseline;
+        align-content: center;
+        width: 98vw;
+        height: 4vh;
+        margin-top: 1vh;
+    }
+
+    .resetUser {
+        /*
+        box-shadow: -2px 2px 2px 2px rgba(90,90,90,.4);
+        color: gainsboro;
+        */
+        background-color: rgba(244, 244, 244,0);  
+        font-family: 'Poiret One', cursive;
+        color: rgb(155,155,122);
+        size: .5em;
+        padding: .4% .15%;
+        border-radius: .2em;
+        float: right;
+        display: block;
+        border: none;
+        outline: none;
+        margin: 10px;
+        z-index: 2;
+    }
+    .resetUser:hover {
+        transform: scale(1.05);
+        transition: width 2s, height 4s;
+        /*transition: 300ms ease-in-out;*/
+    }
+    button:focus {
+        border: none;
+        outline: none;
+    }
+
+</style>
+
+<script>
+   const runResetAll = () => {
+        analytics.reset()
+        localStorage.clear();
+        let reloadPage = () => {
+            //return window.location.href = "";
+            //reload();
+            //location.href = thisURL
+            location.reload();
+        }
+        reloadPage()
+        console.log("reset has occured");
+        console.log("HEADERS ",Headers)
+        //location.replace()
+        analytics.ready(getPageContext());
+    }
+    
+    const trackNavRoute = (navLinkName, currentPage) => {
+        let properties = {
+            navLinkName : navLinkName,
+            currentPage : currentPage
+        }
+
+        analytics.track('navlink clicked',properties,{integrations: {
+            All: true,
+            //Amplitude: {
+            //    session_id: currentSessionId
+            //},
+            Salesforce : true, "Google Analytics 4": true,     "Salesforce Marketing Cloud": true
+        }
+        });
+    }
+    
+    const runResetUserId = () => {
+        analytics.reset()
+        analytics.ready(getPageContext());
+        if(serverUserId !== null){
+            console.log("resetting userId")
+            setCookie("ajs_user_id", null,3)
+            serverUserId = null
+        }
+    }
+    const runResetAnonId = () => {
+        analytics.reset()
+        analytics.ready(getPageContext());
+        if(serverAnonymousId !== null){
+            console.log("resetting anonymousId")
+            setCookie("ajs_anonymous_id", null,3)
+            serverAnonymousId = null
+        }   
+    }
+    const runResetGroupId = () => {
+        analytics.reset()
+        analytics.ready(getPageContext());
+        if(groupId !== null){
+                console.log("resetting groupId")
+                setCookie("ajs_group_id", null,3)
+                groupId = null;
+                idList = "";
+        }
+    }
+    let aliasId
+    const aliasUser = () => {
+        aliasId = (Math.floor((Math.random() * 100000) + 1));
+            console.log("before alias", serverUserId, aliasId)
+        analytics.alias(aliasId, serverUserId, {traits:{externalId: serverUserId}})
+            //setCookie("ajs_user_traits.externalId", serverUserId,3): 
+        serverUserId = aliasId
+            console.log("after alias", serverUserId, aliasId)
+        setCookie("ajs_user_id", aliasId,3)
+        localStorage.setItem("ajs_user_id",aliasId)
+            console.log(window.localStorage.ajs_user_id)
+    }
+    
+</script>

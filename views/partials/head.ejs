@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta rel="canonical">
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+<title><%= page_category %><%= page_title %></title>
+
+
+<style>
+    /* <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/apple-touch-icon.png"> */
+    /* <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:4000/favicon-32x32.png"> */
+    /* <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:4000/favicon-16x16.png"> */
+    /* <link rel="manifest" href="http://localhost:4000/site.webmanifest"> */
+
+    /*COLOR PALETTE*/
+    /* dark green : rgb(121,125,98)*/
+    /* light green : rgb(155,155,122) */
+    /* neutral brown: rgb(186,165,135) */
+    /* neutral pink: rgb(217,174,148) */
+    /* neutral yellow : rgb(241,220,167) */
+    /* orangey : rgb(255,203,105) */
+    /* burnt orange : rgb(232,172,105) */
+    /* dark orange : rgb(208,140,96) */
+    /* light brown : rgb(181,132,99) */
+    /* dark brown : rgb(153,123,102) */
+
+    * {
+        /*
+        */
+        display: border-box;
+        padding: 0 0;
+        margin:0 auto;
+    }
+    
+    body{
+        font-family: 'Poiret One', cursive;
+        background-color: #f8f8f5;
+        color: rgb(155,155,122);
+        min-height: 100vh;
+        overflow: scroll;
+    }
+    .italic {
+        text-decoration: italic;
+    }
+    .center {
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    main {
+        margin: 5vw,auto;
+    }
+    .main-index-container {
+        margin: 5vw,auto;
+    }
+    .quick-links {
+        text-decoration: none;
+        color: rgb(155,155,122);
+    }
+    .largebox{
+    }
+    .no-wrap{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        width: 80%;
+        min-width: 1px;
+    }
+    #footer-section{
+        display: flex;
+        margin: -5vh 3vw 5vh;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-items:stretch;
+        align-content: space-around;
+    }
+    #generate-user{
+        width: 10vw;
+        margin: 5vh 3vw; 
+        order:2;
+        display:flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content:flex-start;
+    }
+    #gen-user{
+        margin: 1vh 1vw;
+        padding: 1vh 1vw;
+        font-size: 2em;
+        white-space: nowrap;
+    }
+    .foot-index-container{
+        order:-1;
+        padding: 2vh;
+        width: 80%;
+    }
+
+    .auto-btn {
+        background-color: rgba(121,125,98,0);
+        font-size: 1.5em;
+        margin : 0 auto;
+        font-family: 'Poiret One', cursive;
+        color: rgb(153,123,102);
+        /*background-color: rgba(0,0,0,0);
+        text-shadow: 2px 2px 2px rgb(153,123,102);
+        color: rgba(100,100,100,1);
+        box-shadow: 2px 2px 2px rgba(40,40,40,.8);
+        transition: 250ms ease-in-out;
+        */
+    }
+    .auto-btn:hover {
+        transform: scale(1.05);
+        transition: 250ms ease-in-out;
+        box-shadow: rgba(121,125,98,.5);
+        background-color: rgba(250,250,250,.7);
+        border-radius: .2em;
+        color: rgb(121,125,98);
+    }
+    .btn-small, .trackSingleTrait {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: auto .2vw;
+        padding: .25em;
+        radius: .2em;
+        border: none;
+        background-color: rgba(250,250,250,0);
+        color: rgb(121,125,98);
+    }
+    /* dark green : rgb(121,125,98)*/
+    /* light green : rgb(155,155,122) */
+    /* neutral brown: rgb(186,165,135) */
+    /* neutral pink: rgb(217,174,148) */
+    /* neutral yellow : rgb(241,220,167) */
+    /* orangey : rgb(255,203,105) */
+    /* burnt orange : rgb(232,172,105) */
+    /* dark orange : rgb(208,140,96) */
+    /* light brown : rgb(181,132,99) */
+    /* dark brown : rgb(153,123,102) */
+    #submitNewAccountInputs{
+        background-color: rgba(250,250,250,5)
+    }
+    .float-right{
+        float: right;
+    }
+    .float-left{
+        float:left;
+    }
+    .btn-small:focus{
+        outline: none;
+        border: none;
+    }
+    .trackSingleTrait:focus{
+        box-shadow: 0 0 .2em rgba(121,125,98,.5);
+        margin: 1.5em auto 0;
+    }
+    .faded-btn {
+    }
+    .employee-company {
+        display: flex;
+        flex-flow:row nowrap;
+        justify-content: space-evenly;
+        overflow: wrap;
+        margin: 5vh auto;
+    }
+    .auto-btn .create:hover {
+        transform: scale(1.05);
+        transition: 200ms ease-in-out;
+    }
+    #docIframes{
+        min-width: 95vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .mycomment {
+        font-style: italic;
+    }
+    .flex-container {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        align-content: stretch;
+    }
+    .container-col{
+        flex-flow: column wrap;
+    }
+    .container-row{
+        flex-flow: row wrap;
+    }
+    .button-container {
+        width: 100%;
+    }
+    .button-container *{
+        margin: .5rem;
+    }
+    .product-images {
+        width: 94vw;
+        margin: 2vw;
+        padding: 1vw;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        align-content: stretch;
+    }
+    .product {
+        margin: 2.5vh auto;
+    }
+    .product-image{
+        background-color: rgba(230,230,230,1);
+        box-shadow: 2px 2px 0px rgba(121,125,98,.5);
+        transition: 1000ms ease-in-out; 
+        min-width: 10vw;
+        max-width: 20vw;
+        height: auto;
+        max-height: 10vh;
+        text-align: center;
+        text-shadow: rgba(0,0,0,0);
+    }
+    .product-image:hover {
+        transition: 1000ms ease-in-out; 
+        transform: scale(1.2) ease-in-out;
+        box-shadow: 2px 2px 0px rgba(121,125,98,.5);
+        color: rgb(155,155,122);
+    }
+    .interest {
+        margin: 1%;
+        padding: .1rem .5rem;
+        color: rgb(155,155,122);
+        border: 0 none rgba(0,0,0,0);
+        cursor:pointer
+    }
+
+    /* Shutter In Vertical */
+    .hvr-shutter-in-vertical {
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        position: relative;
+        background: #2098D1;
+        -webkit-transition-property: color;
+        transition-property: color;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+    }
+    .hvr-shutter-in-vertical:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #e1e1e1;
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        -webkit-transform-origin: 50%;
+        transform-origin: 50%;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+    }
+    .hvr-shutter-in-vertical:hover, .hvr-shutter-in-vertical:focus, .hvr-shutter-in-vertical:active {
+    color: white;
+    }
+    .hvr-shutter-in-vertical:hover:before, .hvr-shutter-in-vertical:focus:before, .hvr-shutter-in-vertical:active:before {
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    }
+
+    div .from-left {
+        border: none;
+        border-bottom: 1px solid #ccc;
+        padding: 5px .5vw;
+        width: 75%;
+        position: relative;        
+    }
+    .from-left button{
+        flex-grow: 1;
+        color:rgb(155,155,122);
+        font-family: 'Poiret One', cursive;
+        white-space: nowrap;
+    }
+    .from-left input{
+        flex-grow: 2;
+    }
+    .from-left p{
+        align-items: center;
+        display:flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+    input:focus {
+        outline: none;
+    }
+    /**/
+    div input{
+        background-color: rgba(250,250,250,1);
+        padding: .5em;
+        text-align: center;
+        font-size: 1em;
+        font-family: 'Poiret One', cursive;
+        margin: 1.25em 0;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid rgba(204, 204, 204,0);
+        width: 70%;
+        color: rgba(121,125,98,1);
+    }
+    
+    .from-left span {
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: rgb(217,174,148) ;
+        transition: all 0.6s;
+        left: 0;
+    }
+    input:focus + span {
+        width: 100%;
+    }
+    .gen-user-btn:hover{
+        transition: 350ms ease-in-out;
+        background-color: rgba(155,155,122,.5);
+        color: rgb(250,250,250);
+        box-shadow: 0 0 .2em rgba(121,125,98,.5);
+    }
+
+    p span {
+        font-size: 1.2em;
+
+    }
+    .profile-container{
+        text-align: center;
+        margin-top: -3vh;
+        margin-bottom: 5vh;
+    }
+    #profile-details {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items:center;
+        align-content: space-around;
+    }
+    .profile-p{
+        background-color: #ffffff;
+        box-shadow: 0 0 .2em rgba(121,125,98,.5);
+        padding: 1vw 1vh;
+        margin: 1vw 1vh;
+        width: 35%;
+        height: 1.5em;
+        border-radius: .2em;
+        font-size: 1.5em;
+    }
+    .profile-p span{
+        color:  rgb(155,155,122);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif bold;
+        font-size: 1.25em;
+    }
+    .neg-top-5{
+        margin-top:-5vh;
+    }
+    #groupBtns button{
+        width: 30%;
+    }
+</style>
+
+
+
+<script>
+// let pageCtegory = page_category
+// let pageTitle = page_title
+
+    // -----TIMEOUT FUNCTION----
+    // function loadFrame() {
+    //     var iframe = document.getElementById("defframe");
+    //     iframe.src = "/frame.php"
+    // };
+    // window.onload = setTimeout(loadFrame, 10000);
+    // analytics.timeout(500); 
+
+        //  ↓ ! ↓ ! ↓ ! THIS TIMEOUT FUNCTION WORKS ↓ ! ↓ ! ↓ ! ↓ 
+        //  const start = Date.now();
+        //  console.log('starting timer...');
+            //  expected output: starting timer...
+
+        //  setTimeout(() => {
+            //  const millis = Date.now() - start;
+
+            //  console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
+            
+            //  expected output: seconds elapsed = 2
+        //  }, 1500);
+
+        //  setTimeout(let pageCategory = page_category,250) 
+        // setTimeout(console.log(`pageCategory : `,pageCategory),300) 
+        // setTimeout(let pageTitle = page_title,325) 
+        // setTimeout(console.log(`pageTitle : `,pageTitle),350) 
+
+    // let options = {
+    //     context:{
+    //         active: window.clientInformation.userActivation,
+    //         app:{
+    //             name: window.document.appName,
+    //             version: window.document.appVersion,
+    //         },
+    //         page:{
+    //             path: window.location.path,
+    //             referrer: window.document.referrer,
+    //             search: window.location.search,
+    //             title: window.location.title,
+    //             url: window.location.url,
+    //         },
+    //         library:{   
+    //             name: window.document.library,
+    //             version: window.clientInformation.library,
+    //         },
+    //         locale: window.document.referrer,
+    //         userAgent: window.clientInformation.userAgent
+    //     },
+    // }
+// A Function to Get a Cookie
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+    
+    // COOKIE ANOYMOUS
+        // global variable anonymousId, assigned on page call, accessible if sent serverside
+//    let serverAnonymousId = getCookie("ajs_anonymous_id") => "431c77b7-c6dd-4ab6-a20e-4138cc6075b1"
+//     // analytics.setAnonymousId('ABC-123-XYZ')
+//     // analytics.setAnonymousId('')
+//     let serverUserId = getCookie("ajs_user_id")
+//     let serverGroupProperties = getCookie("ajs_group_properties")
+//     let serverGroupId = getCookie("ajs_group_id")
+//     let serverUserTraits = getCookie("ajs_user_traits")
+//     analytics.setAnonymousId('ABC-123-XYZ')
+//     analytics.setAnonymousId('')
+    let serverAnonymousId, userAnonymousId, serverUserId, serverGroupProperties, serverGroupId, serverUserTraits, userId
+        
+    // function to be ran on load after .page() has completed and anonymousId is not null
+    const callServerUser = () => {
+        // assign variable value
+        if(analytics.ready){
+            // view variable value in console
+            console.log("serverUserId : TYPE",typeof(serverUserId),serverUserId)
+            if(!serverUserId){
+                console.log("NEW USER - serverUserId 'falsey':" + serverUserId )
+                serverUserId = Math.floor((Math.random() * 10000000) + 1);
+                serverUserId = serverUserId.toString()
+                console.log("NEW USER - serverUserId 'truthy':", serverUserId,"  ---  TYPE  --:", typeof(serverUserId))
+            }
+            else{
+                console.log("serverUserId exists 'truthy': " + serverUserId )
+            }
+            // return value to be used on backend
+            return serverUserId
+        }
+    }  
+    
+    let currentSessionId
+    console.log(`currentSessionId should be blank : ` + currentSessionId)
+    
+    let newSession = true
+    const uTC = () => {
+        if (!newSession){
+            return currentSessionId
+            console.log(`currentSessionId should be same : `+currentSessionId)
+            console.log("--- !!! Page Viewed !!! ---");
+        }
+        else {
+            currentSessionId = Date.now()    
+            console.log(`currentSessionId should change : `+currentSessionId)
+            newSession = false
+            console.log("--- !!! Page Viewed !!! ---");
+            return currentSessionId
+        }
+    }
+
+
+    // let writeKeyEn = "XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh"
+    // let writeKeyDa = "Gkyu7cBFAaqWRB76WwDAvNLkgTXiZStj"
+    // let writeKeyGlobal
+    // console.log(`HEY LANGUAGE HERE`,navigator.language)
+    // let manualLanguageDA
+    // //let manualLanguageDA = "da-DK"
+    // // let manualLanguageDA = "ja"
+    // if(navigator.language == "da-DK" || manualLanguageDA == "da-DK"){
+    //     console.log("DANISH IS NOT ACTIVE")
+    //     console.log("ENGLISH")
+    //     writeKeyGlobal = writeKeyEn
+        
+    //     // console.log("DANISH")
+    //     // writeKeyGlobal = writeKeyDa
+    //     // return writeKeyGlobal
+    // }
+    // else if(navigator.language == "en-US"){
+    //     console.log("ENGLISH")
+    //     writeKeyGlobal = writeKeyEn
+    //     // return writeKeyGlobal
+    // }
+
+    // ---- PAGE CALL  ----
+    // console.log("calling callServerAnon function inside page");
+    // analytics.page({}, { anonymousId: !callServerAnon},{},{options});
+    
+    // analytics.page({}, { anonymousId: !callServerAnon},{});
+    
+    // console.log(`pageCategory,pageTitle : `,pageCategory,pageTitle)
+    // console.log(`page_category,page_title : `,page_category,page_title)
+    const getPageContext = () => {
+        let gaPageTitle = window.document.title
+        let pageCategory
+        let pageTitle
+
+        gaPageTitle = gaPageTitle.split(" | ")
+        console.log(`gaPageTitle - `,gaPageTitle)
+        pageCategory = gaPageTitle[0]
+        pageTitle = gaPageTitle[1]
+        
+        //const getGclidURLParam = () => {
+        //gclid = new URL(location.href).searchParams.get('gclid')
+        //    console.log('gclid : ',gclid)
+        //    analytics.user().traits({gclid:gclid});
+        //}
+        //getGclidURLParam()
+        
+        
+        // GET EMAIL FROM URL QUERYSTRING & SET IT AS BASE64 ENCODED AS ANONYMOUSID
+        //if{}
+        //window.location.search
+        //URLSearchParams.get()
+        //analytics.user().anonymousId(btoa(`${traits.email.toLowerCase()}`))
+
+        // angularCanonicalUrl = "thisapp/"
+        // angularComponent = "userContainer/"
+        // PAGE FORMAT
+        // /* analytics.page([category], [name], [properties], [options], [callback]); */
+        
+        const start = Date.now();
+        console.log('starting timer...');
+        //expected output: starting timer...
+        
+
+        analytics.page(pageCategory,pageTitle)
+        parseQString()
+    }
+
+
+    //<!-- MINIFI SNIPPET GET QUERY STRING PARAMETERS PARSE THEM ADD THEM TO LOCALSTORAGE COOKIE AND TRIGGER IDENTIFY CALL -->
+
+    const parseQString = (currentUserTraits) => {
+        // print current traits that exist on the client as ajs_user_traits
+        //console.log('currentUserTraits : ',currentUserTraits)
+    
+        // split up query string by each search parameter and assign to locally stored variable "search"
+        let search = window.location.search
+        
+        // remove ? from query string
+        if(search[0]=='?'){
+            search = search.slice(1)
+            // console.log('splitSearch[i][0] : ',splitSearch[i][0])
+            // splitSearch[i] = splitSearch[i].replace('?','')
+        }
+        console.log(search)
+    
+        // split up each search parameter into key:value pairs and assign value to locally stored variable "splitSearch"
+        let splitSearch = search.split('&')
+        console.log(splitSearch)
+    
+        // create locally stored variable to store the traits from the query string search parameters
+        let queryStringUserTraits = {}
+    
+        // loop through splitSearch array 
+        for(let i=0; i<splitSearch.length; i++){
+            // print current iteration's index and value
+            console.log('i : value = ',i, splitSearch[i])
+        
+            // split up index by = to create array where [0] is the key and [1] is the value
+            let pairString = splitSearch[i].split('=')        
+            let key = pairString[0]
+            console.log('key', key)
+            let value = pairString[1]
+            console.log('value', value)
+            console.log('key:value - ', key ,':', value)
+            
+            // add new key:value pair to the queryStringUserTraits object
+            queryStringUserTraits[key] = value
+        }
+        // print finalized queryStringUserTraits object before adding to cookie
+        console.log('queryStringUserTraits : ', queryStringUserTraits)
+    
+        // OPTION 1 (Trigger Identify Call which automatically sets these cookies)
+            // set user traits in localStorage by Identify method & add new trait gender
+                // 1st Param : pass ...analytics.user().traits() to persist the existing traits
+                // 2nd Param : pass queryStringUserTraits to add the traits that came from the URL's query string
+                // 3rd Param : pass new trait 'gender', which will be added to the cookie
+                
+        //    analytics.identify({...analytics.user().traits(), ...queryStringUserTraits, 'gender':'female'})
+    
+        // OPTION 2 (Set cookie followed by Identify Call)
+            // set user traits in localStorage by query string api method & add new trait gender
+                // 1st Param : pass ...analytics.user().traits() to persist the existing traits
+                // 2nd Param : pass queryStringUserTraits to add the traits that came from the URL's query string
+                // 3rd Param : pass new traits 'firstName' & 'lastName', which will be added to the cookie
+            //analytics.user().traits({ ...analytics.user().traits(), ...queryStringUserTraits, 'firstName':'Molly','lastName':'Howard'})
+    
+            // call identify so these new traits can be sent to Segment
+            //analytics.identify()
+        
+        // print the updated localStorage user traits
+        //console.log()
+    }
+
+
+          
+        // {
+            // title: "OVERRIDING TITLE",
+            // url: `${angularCanonicalUrl}${angularComponent}`,
+            // path: `${angularComponent}`,
+        //},
+//        {
+//            integrations:{"Google Analytics": {".trackingId" :"UA-198119530-1"}},
+//            // integrations:{Klaviyo:true, Amplitude:{sessionId:uTC()}},
+//            // anonymousId : "1234567890"
+//        }, 
+//            setTimeout(() => {
+//                // const millis = Date.now() - start;
+//                
+//                serverAnonymousId = window.localStorage.ajs_anonymous_id
+//                console.log("FRESH PAGE LOAD", pageCategory,pageTitle)
+//                console.log(`window.location.href - URL : `,window.location.href)
+//                console.log(`serverAnonymousId - `,serverAnonymousId)
+//
+//                // console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
+//                // expected output: seconds elapsed = 2
+//            }, 1500)
+//        );
+//        //analytics.track("Page Viewed",{name:document.title, path: document.location.pathname, referrer: document.referrer, search : window.location.search,  title: document.title,  url: document.URL},{integrations:{Klaviyo:true}})
+//    }
+
+
+// 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 🍪 ⏰ 
+// A Function to Set a Cookie
+let setCookie = (cname, cvalue, exdays) => {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    console.log(`cookie expires : `,expires)
+    document.cookie = `${cname} + "=" + ${cvalue} + ";" + expires + ";path=/"`;
+    console.log(`${cname} + "=" + ${cvalue} + ";" + expires + ";path=/"`);
+}
+
+let cookieExdays = (cname, cvalue, exdays) => {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    console.log(`cookie expires : `,expires)
+    document.cookie = `${cname} + "=" + ${cvalue} + ";" + expires + ";path=/"`;
+    console.log(`${cname} + "=" + ${cvalue} + ";" + expires + ";path=/"`);
+}
+
+let SMWMessageId = function({payload, next, integrations}){
+    //let mesABC = "ajs-next"
+    //let mes123 = Math.floor((Math.random()*10000000000)*10000+1)
+    //console.log(`${mesABC}-${mes123}`)
+    
+    payload.obj.messageId
+    console.log('messageId : ', payload.obj.messageId)
+    // = `${mesABC}-${mes123}-liz`
+    next(payload);
+};
+
+//let setAnonOnRedirect = ({payload, next, integrations}) => {
+//    
+//    
+//    console.log(`anonymousId : ${analytics.user().anonymousId()}`)
+//    console.log(`userId : ${analytics.user().id()}`)
+//    console.log(`mid : ${}`)
+//    setCookie('mid', analytics.user().id(), 1)
+//    console.log(`userId : ${}`)
+//    console.log(`mid : ${}`)
+//    next(payload)
+//}
+        
+
+
+
+    //const sessionIdPromise =  new  Promise(resolve => {
+    //    gtag('get', 'G-xxxxxxxxxx', 'session_id', resolve)
+    //    });
+    //    const sessionNumPromise =  new  Promise(resolve => {
+    //    gtag('get', 'G-xxxxxxxxxx', 'session_number', resolve)
+    //    });
+    //    
+    //    Promise.all([sessionIdPromise, sessionNumPromise]).then(function(session_data) {
+    //    console.log("session ID: "+session_data[0]);
+    //    console.log("session Number: "+session_data[1]);
+    //});
+    //sessionIdPromise()
+
+
+
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="XKawp9NCehDtOGuG9zaPkcrtCyMVh9kh";analytics.SNIPPET_VERSION="4.15.3";
+        // Below writeKey goes to HTTP API3 - Client Workaround : https://app.segment.com/liz-kane/sources/http_api3_client_workaround/debugger
+        //!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="th406DSrBJHUfbWVgJxGwQimn2xbkQE4";analytics.SNIPPET_VERSION="4.15.3";
+        
+        // ADD SOURCE MIDDLEWARE TO AJS CODE : https://segment.com/docs/connections/sources/catalog/libraries/website/javascript/middleware/#using-source-middlewares
+        analytics.addSourceMiddleware(SMWMessageId);
+        
+
+
+        analytics.load("GHWp3Jhvn2GBHxspEdZBRVhDmJKM4XC1");
+        analytics.load("GHWp3Jhvn2GBHxspEdZBRVhDmJKM4XC1");
+        // Below writeKey goes to HTTP API3 - Client Workaround : https://app.segment.com/liz-kane/sources/http_api3_client_workaround/debugger
+        //analytics.load("th406DSrBJHUfbWVgJxGwQimn2xbkQE4");
+        
+        //{integrations:{"All":true, "Braze":true, "Braze Web Mode (Actions)":true, "Segment.io": true, "Intercom":true, "Eloqua":true, "HubSpot":true, "Marketo V2":true, "Mixpanel":true, "Customer.io":true, "Klaviyo":true, "Google Analytics":true, "Actions Amplitude":true}});
+        
+        // console.log(`inside function LAST`,Date.now())
+//            userAnonymousId = getCookie("ajs_anonymous_id")
+//            serverAnonymousId = getCookie("ajs_anonymous_id")
+//            serverUserId = getCookie("ajs_user_id")
+//            serverGroupProperties = getCookie("ajs_group_properties")
+//            serverGroupId = getCookie("ajs_group_id")
+//            serverUserTraits = getCookie("ajs_user_traits")
+
+//            const gclid = Math.floor((Math.random() * 10000000) + 1)
+        analytics.ready(getPageContext());
+       //analytics.ready(parseQString());
+
+
+        //)
+//            analytics.ready(analytics.page('Contact IonQ', {
+//                category: '',
+//                name: 'Contact IonQ',
+//                path: `/contact?utm_source=adword&utm_medium=social&utm_campaign=adword`,
+//                //referrer: 'https://www.google.com/',
+//                search: '',
+//                title: 'Contact IonQ',
+//                url: 'https://ionq.com/contact'
+//              }, {page:{
+//                category: '',
+//                name: 'Contact IonQ',
+//                path: '/contact?utm_source=adword&utm_medium=adword&utm_campaign=adword',
+//                //referrer: 'https://www.google.com/',
+//                search: '',
+//                title: 'Contact IonQ',
+//                url: 'https://ionq.com/contact'
+//              }, campaign:{}}))
+
+
+            // analytics.ready(getPageContext());
+            // console.log(`AFTER PAGE CALL: PAGE NAME = `,pageCategory,pageTitle);
+
+            //     for(let i=0; i<gaPageTitle.length; i++){
+            //         if(gaPageTitle[i]=="|"){
+            //             pageCategory = gaPageTitle[0,i+1]
+            //             console.log('pageCategory:',pageCategory)
+            //             pageTitle = gaPageTitle[i+1,gaPageTitle.length]
+            //             console.log('pageTitle:',pageTitle)
+            //         }
+            //         if(i ==gaPageTitle.length){
+            //             console.log(`pageCategory,pageTitle : `,pageCategory,pageTitle)
+            //             let pageCategoryTitle = (pageCategory,pageTitle)
+            //             analytics.page(pageCategory,pageTitle);
+            //         }
+            //     }
+
+            // Below page call passes page category and page name alright but not recognized in GA
+            
+            // analytics.page(page_category, page_title);
+            // if(page_category && page_title){
+            //         analytics.page(page_category,page_title)
+            // }
+
+            // analytics.page({},{},{},{options});
+
+            // console.log('window.location.search - QUERY STRING : ',window.location.search)
+        
+        // QUERYSTRING EXISTS
+            const queryStringExists = () => {
+                if(!window.location.search){
+                    console.log("NO QUERY STRING EXISTS ... moving on...")
+                }
+                else{
+                    console.log("QUERY STRING EXISTS !!! : ",window.location.search)
+                    analytics.track("Page View by GTM")
+                }   
+            }
+
+        analytics.ready(callServerUser);
+        
+        // <!-- GTAG -->
+        analytics.ready(function() {
+            window.gtag('consent', 'default', {
+                'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted',
+                'analytics_storage': 'granted'
+            });
+        });
+
+        
+        
+        // EXAMPLE TO EXPLAIN HOW TO GENERATE AUTOMATICALLY COLLECTED EVENTS INTO GA4 - CUSTOMER NOC-NOC
+        //if(window.document.URL = "arrived"){
+        //    analytics.ready(analytics.track("Automated Event",{arrived:true}));
+        //}
+        console.log("calling callServerUser function - head-line470",);
+        analytics.ready(queryStringExists);
+        analytics.ready(console.log(`analytics : `,analytics));
+        // console.log(`AFTER FUNCTION but before running`,Date.now())
+        // window.onload = setTimeout(segment, 50000);
+        
+        // async function anonCookie(userAnonymousId){
+        if(userAnonymousId != null || userAnonymousId != undefined ){
+            console.log(`ajs_anonymous_id : userAnonymousId - `,userAnonymousId)
+        }
+        else {
+            console.log(`UNDEFINED ajs_anonymous_id : userAnonymousId - `,userAnonymousId)
+        }
+
+
+        let deviceId, deviceIdKey, deviceIdVal
+
+        analytics.ready(
+            getBrazeId = () => {
+                let anonId = localStorage.ajs_anonymous_id
+                //console.log(`getting braze id step 1`,anonId)
+                let deviceIdCookie
+                let keys = Object.keys(localStorage)
+                //console.log(`getting braze id step 2`,keys)
+                for(let key in keys){
+                //    console.log(keys[key])
+                //    console.log(`getting braze id step 3 - EACH KEY RETURNED`)
+                    let cookie = keys[key].split('.')
+                //    console.log(`getting braze id step 4 - EACH KEY split on '.' `, cookie)
+                    //console.log(cookie)
+                    if(cookie[0] == "ab" && cookie[1] == "storage" && cookie[2]=="deviceId"){
+                        let brazeCookieNum = cookie[3]
+                        console.log(`getting braze id step 5 - get brazeCookieNum : `,brazeCookieNum)
+                        deviceIdKey = keys[key]
+                        console.log(`deviceIdKey`,deviceIdKey)
+                        console.log(`deviceIdKey`,typeof(deviceIdKey))
+                        let deviceIdVal = localStorage.getItem(deviceIdKey)
+                        let v = "v"
+                        let g = "g"
+                        console.log(`deviceIdVal`,deviceIdVal)
+                        deviceIdVal = JSON.parse(deviceIdVal)
+                        console.log(`TYPE deviceIdVal`,typeof(deviceIdVal))
+                        let deviceId = deviceIdVal.v.g
+                        console.log(`TYPE deviceId`,typeof(deviceId))
+                        console.log("deviceId : ",deviceId)
+                        localStorage.setItem("deviceId",deviceId)
+        
+                        //onGetBrazeId(deviceId)
+                    }
+                }
+            }
+        )
+        
+    }}();
+    
+//            let utm_content, utm_campaign, utm_medium, utm_source, utm_term, campaign 
+//           //analytics.ready(
+//                setCampaign = () => {
+//                    //  SET THE URL with these params
+//                    let UTMData = { 'utm_content': 'subscribed-user-portal', 'utm_campaign': 'new-years-2024', 'utm_medium': 'click-ad', 'utm_source': 'google', 'utm_term': 'kane-subscribers-2024'}
+//                    let url_utm_campaign = ''
+//                    encodeQuery = (data) => {
+//                        let query = ""
+//                        for (let d in data){
+//                            query += encodeURIComponent(d) + '=' + encodeURIComponent(data[d]) + '&'
+//                        }
+//                        return query.slice(0, -1)
+//                    }
+//                    //let utmparams = 
+//                    let newQuery = encodeQuery(UTMData)
+//                    console.log(`QUERY : `,newQuery)
+//                    
+//                    // Only update URL if necessary to avoid infinite loop
+//                    if (!window.location.search.includes(newQuery) && !window.location.search.includes('gclid=my_gclid_value')) {
+//                        window.location.search = newQuery;
+//                    } else {
+//                        console.log("UTM parameters already present in URL, skipping update.");
+//                    }
+//    
+//                    utm_content = new URL(location.href).searchParams.get('utm_content'),
+//                    utm_campaign = new URL(location.href).searchParams.get('utm_campaign'),
+//                    utm_medium = new URL(location.href).searchParams.get('utm_medium'),
+//                    utm_source = new URL(location.href).searchParams.get('utm_source'),
+//                    utm_term = new URL(location.href).searchParams.get('utm_term'),
+//                    campaign = {"utm_content":utm_content, "utm_campaign":utm_campaign, "utm_medium":utm_medium, "utm_source":utm_source, "utm_term":utm_term},
+//                    // setCookie("campaign",campaign,1);
+//                    localStorage.setItem("campaign",campaign)
+//                    console.log('campaign : ',campaign)
+//                }
+            //)
+            //setCampaign()
+                //if (query.utm_content) campaign.content = query.utm_content
+                //if (query.utm_campaign) campaign.name = query.utm_campaign
+                //if (query.utm_medium) campaign.medium = query.utm_medium
+                //if (query.utm_source) campaign.source = query.utm_source
+                //if (query.utm_term) campaign.keyword = query.utm_term
+    
+    
+
+// GET QUERY STRING SPECIFIC PARAMETER BY 
+// http://localhost:4000/docs/?name=lizzo&utm_source=google&utm_medium=post-original&utm_content=image
+//new URL(location.href).searchParams.get('utm_source') 
+// => google
+//new URL(location.href).searchParams.get('utm_medium') 
+// => post-original
+//new URL(location.href).searchParams.get('utm_content') 
+// => image
+    
+
+    let eventQueue = [
+        //analytics.track("Queued Event 1"),
+        //analytics.track("Queued Event 2"),
+        //analytics.track("Queued Event 3")
+    ]
+    let closed = false
+    let where = ""
+    const beforeUnload = (closed, where) => {
+        console.log('closed, where', closed, where)
+        
+        if(eventQueue.length){
+            for(let i=0; i<eventQueue.length+1; i++){   
+                console.log(`eventQueue[${i}] : `, eventQueue[i])
+                return eventQueue[i]
+            }
+        }
+        console.log(`Before Unload : eventQueue : ${eventQueue}`)
+        //return analytics.track("Before Unload", {eventQueue : eventQueue, now: Date.now(), closed: closed, where : where})
+    }
+
+    // POPUP TO CONFIRM LEAVE SITE BEFORE REDIRECTING BETWEEN PAGES ON SITE
+    //    window.addEventListener('beforeunload', function (e) {
+    //        e.preventDefault();
+    //        closed = true
+    //        where = window.location.href
+    //        //<!-- add conditional statement to check if redirect is within the same domain -->
+    //        e.returnValue = beforeUnload(closed, where);
+    //    });
+    //
+    //    if (closed)  {
+    //        beforeUnload()
+    //    }
+        
+
+
+// A Function to Check a Cookie
+function checkCookie() {
+    let username = getCookie("username");
+    if (username != "") {
+        alert("Welcome again " + username);
+    } else {
+        username = prompt("Please enter your name:", "");
+        if (username != "" && username != null) {
+        setCookie("username", username, 365);
+        }
+    }
+}
+    // console.log("page_view",{category:titleSplit[1],name:titleSplit[0]},context:{category:titleSplit[1],name:titleSplit[0]})
+    
+
+let checkIfUserIdExist = () => {
+    let userId = analytics.user().id()
+    let email = analytics.user().traits().email.toLowerCase();
+
+    if (userId == null & email != null){
+        analytics.identify(email, {email:email})
+        console.log("if statement : sending identify with email & email as trait")
+    }
+    else if (userId === null & email == null){
+        analytics.identify()
+        console.log("else if statement : sending identify without userId or email")
+    }
+    else {
+        analytics.identify(userId, {email:email})
+        console.log("else statement : sending identify with userId & email as trait")
+    }
+}
+
+
+
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5VJ476SPV3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-5VJ476SPV3');
+
+    
+    
+    let sessionId, sessionNumber;
+    //<!-- analytics.load("<my-write-key>"); -->
+    //<!-- analytics.page(); -->
+    analytics.ready(function() {
+        const sessionIdPromise =  new  Promise(resolve => {gtag('get', 'G-5VJ476SPV3', 'session_id', resolve)});
+        const sessionNumPromise =  new  Promise(resolve => {gtag('get', 'G-5VJ476SPV3', 'session_number', resolve)});
+        
+        Promise.all([sessionIdPromise, sessionNumPromise]).then(function(session_data) {
+            sessionId = session_data[0]
+            sessionNumber = session_data[1]
+        });
+    });
+</script>
+
+</head>
+</html>

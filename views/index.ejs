@@ -1,0 +1,170 @@
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+        <%- include('./partials/navbar') %>
+<style>
+    
+</style>        
+<main>
+<!-- welcome user to minifi, short description  -->
+    <h2>minifi</h2>
+
+    <p>Once user is able to login have user data display on navbar</p>
+    <ul>
+        <li class="quick-links">
+            <a href="/user">Users</a>
+        </li>
+        <li class="quick-links">
+        <a href="/chi">Mi Chi</a> 
+        </li>
+        <li class="quick-links">
+            <a href="/motivate">Motivate</a>
+        </li>
+        <li class="quick-links" >
+            <button id="new-motivation-create-lead"><a href="/motivate/new">New Motivation</a></button>
+        </li>
+    </ul>
+    <div>
+        <p>display both user data, chi data, and all motivate.name</p>
+        
+    </div>
+
+</main>
+
+<div class="video" onclick="playVideo('Barcelona')">
+    <script src="https://fast.wistia.com/embed/medias/jrs6egq9yp.jsonp" async></script>
+    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+    <span class="wistia_embed wistia_async_jrs6egq9yp popover=true popoverAnimateThumbnail=true" style="display:inline-block;height:84px;position:relative;width:150px">&nbsp;</span>
+</div>
+
+</br></br></br></br>
+
+<button onclick="tagUpdate()">Update Profile</button>
+<script>
+const tagUpdate = () => {
+    let tags = {
+        tag1 : "apple",
+        tag2 : "banana",
+        tag3 : "orange"
+    }
+    analytics.track("TagUpdate", tags, {context:{traits:tags}})
+    analytics.identify(tags)
+}
+</script>
+
+</br></br></br>
+<button onclick="idTrackCallback()"> Click this to send identify call with a callback of a track call 4 seconds later</button>
+
+</br></br></br>
+
+</br></br></br>
+<button onclick="checkIfUserIdExist()"> Check if userId exists</button>
+</br></br></br>
+
+<footer>
+    <%- include('./partials/footer') %>
+</footer>
+</body>
+
+<script>
+
+const playVideo = (videoName) => {
+    analytics.track("Video Played", {videoName: videoName, time:Date.now()})
+}
+
+const idTrackCallback = () => {
+    analytics.identify(serverUserId,{now:Date.now()},{},
+        setTimeout(() => {
+            analytics.track("After Identify",{now:Date.now()});
+            console.log("Callback : track call triggered")
+        }, 4000)
+    );
+    console.log("Identify call triggered")
+}
+
+
+
+// const createNewLeadNewMotivation = () => {
+//     console.log("reached createNewLeadNewMotivation function")
+//     analytics.identify({},["Lead Account"],{traits})
+// }
+// document.getElementById("new-motivation-create-lead").onclick(createNewLeadNewMotivation)
+
+
+
+
+// <div class="main-index-container">
+//     <input type="text" name="firstName" id="firstName-main-index" placeholder="First Name"/>
+//     <input type="text" name="lastName" id="lastName-main-index" placeholder="Last Name"/>
+//     <input type="text" name="organization" id="organization-main-index" placeholder="Organization"/>
+//     <input type="email" name="email" id="email-main-index" required="" placeholder="Email"/><button id="submitNewAccountInputs" onclick="createNewAccount()">SAVE</button>
+// </div>
+//     let createNewAccount = () => {
+
+//     let firstName = document.getElementById("firstName-main-index").value || "test firstName";
+//     let lastName = document.getElementById("lastName-main-index").value || "test lastName";
+//     let organization = document.getElementById("organization-main-index").value || "test organization";
+//     let email = document.getElementById("email-main-index").value || "test email";
+//     console.log("- firstName : ",firstName,"- lastName : ",lastName,"- organization : ",organization,"- email : ",email,)
+
+//     let traits = {
+//         firstName : firstName,
+//         lastName : lastName,
+//         organization : organization,
+//         email : email,
+//         userId : userId,
+//         anonymousId : anonymousId
+//     }
+
+
+// let userId
+// const createUserId = () => {
+//     if(!userId){
+//         userId = Math.floor((Math.random() * 100000) + 1);
+//         console.log("NEW USER - userId :" + userId )
+//         return userId
+//     }
+//     else{
+//         console.log("userId exists:" + userId )
+//         return userId
+//     }
+// }
+
+
+// document.getElementById("new-motivation-create-lead").onclick = function () {
+    
+//     location.href = "/motivate/new";
+//     };
+    // analytics.track("New Account Created",{
+
+    // })
+
+    // document.getElementById("submitNewAccountInputs").addEventListener("click",createNewAccount,true)
+
+// }
+</script>
+
+
+
+
+<!-- 
+quick work out
+Biceps, Triceps, Shoulders, Chest
+10 min
+solo
+
+Biceps: 
+hammer curls x5/5/5 3 sets 8kg,
+curcls x 10/10/10 3 sets 8kg
+Shoulders:
+standing vertical twisting press x10/10/10 3 sets 8kg 
+Triceps:
+laying bench tricep press x10/10/5 2 sets 8kg,
+skull crushers x10 1 set 8kg
+Chest: 
+laying bench press x10/10/10 2 sets 8kg,
+
+Jackson Tucker
+JaTu@cat.com
+ -->

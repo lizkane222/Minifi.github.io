@@ -1,0 +1,282 @@
+<head>
+    <%- include('../partials/head') %>
+
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar') %>
+    </header>
+    <section>
+        <!-- <label>Your First Name</label>
+        <input type="text" name="groupUser" required="" id="group-user-name-index" placeholder="Your First Name"/>
+        <p class="no-wrap"><button onclick="chooseFirstName(firstNames)" class="auto-btn btn-small">New First Name</button></p>
+        
+        <label>Last Name</label>
+        <input type="text" name="lastNameGroup" id="group-user-last-index" required="" placeholder="Last Name"/>
+        <p><button onclick="chooseLastName(0)" class="auto-btn btn-small">New Last Name</button></p>
+    
+
+        <label>Company Id</label>
+        <input type="text" name="groupId" id="inputgroupId" placeholder="groupId"/>
+        <span id="groupBtns">
+            <button class="faded-btn" onclick="giveGroupId()" >CHANGE GROUP ID</button>
+            <button onclick="groupCall()" >CALL GROUP</button>
+        </span>
+        
+        <hr/> -->
+         
+        <div class="profile-container">
+            <h2>PROFILE</h2>
+            <div id="profile-details">
+                <p class="profile-p">Your Name : <span id="profileName"></span></p>
+                    <p class="profile-p">Username : <span id="profileUsername"></span></p>
+                <p class="profile-p">Email : <span id="profilePersonalEmail"></span></p>
+                    <p class="profile-p">Job Title : <span id="profileTitle"></span></p>
+                <p class="profile-p">Social Media : <span id="profileSocialMedia"></span></p>
+                    <p class="profile-p">Organization : <span id="profileOrganization"></span></p>
+                <p class="profile-p">Phone Number : <span id="profilePhone"></span></p>
+                    <p class="profile-p">Work Email : <span id="profileWorkEmail"></span></p>
+            </div>
+            <hr/>
+        </div>
+    </section>
+
+    {{if(analytics.ready(function() {
+        <footer>
+            <%- include('../partials/footer') %>
+        </footer>
+    }))}}
+<!-- <p><textarea name="addToTraits" id="addToTraits" rows="10" cols="30" required="false" placeholder="traits to add before identify"></textarea></p> -->
+<!-- <hr/> -->
+    <!-- <input type="text" name="groupId" id="inputgroupId" placeholder="groupId"/><button onclick="idUser()">SAVE</button> -->
+
+<script>
+        shouldersFamGroup = ["Randy","Helen","Lara","Tobie","Emily","Nick","Liz","Zack","Molly","Courtney","Luke","Micah","Austin","Taylor","Lilly","Ernest","Ellis"]
+        firstNamesGroup = ["Liz","Jason","Lucy","Michael","Nicole","Alison","Paige","Lyn","Louise","Isaac","Ann","Marie","Justin","Harold","Esteban","Carl",]
+
+        let firstNameGroupInput,lastNameGroupInput
+        const chooseFirstNameGroup = (num,array) =>{
+            console.log(array[num])
+            firstNameGroupInput = array[num]
+
+            console.log(`firstNameGroupInput : `,firstNameGroupInput)
+            document.getElementById("group-user-name-index").value = firstNameGroupInput;
+            firstNameInput = firstNameGroupInput
+            document.getElementById("firstName-foot-index").value = firstNameInput; 
+            
+        }
+        const chooseLastNameGroup = (num) =>{
+            console.log(lastNames[num])
+            lastNameGroupInput = lastNames[num]
+
+            console.log(`lastNameGroupInput : `,lastNameGroupInput)
+            document.getElementById("group-user-last-index").value = lastNameGroupInput;
+            lastNameInput = lastNameGroupInput
+            document.getElementById("lastName-foot-index").value = lastNameInput;
+        }
+        let firstNameGroupId = firstNameGroupInput
+
+        let groupId;
+        let groupIdList = [];
+        let idList = "";
+        // let thisGroupId
+        let cookieUserId, cookieGroupId, employeeEmail
+        const giveGroupId = () => {
+            if(groupId !== null){
+                console.log("resetting groupId")
+                setCookie("ajs_group_id", null,3)
+                //window.localStorage.ajs_anonymous_id = null
+                groupId = null;
+                idList = "";
+            }
+            let groupIdArray = ["0e8c78","ea9d97","a7b818","5e8632","0e8c78","fj9d87a","3b8215","ed7312","0j8b78","sa9d97","k7b728","5e9275"];
+            let item 
+            let counter = 4
+            for(let i=0; i<4;i++){
+                //item = groupIdArray[Math.floor(Math.random()*(groupIdArray.length))]
+                item = Math.floor(Math.random()*1000000)
+                //console.log(`***THIS IS ITEM*** `,item)
+                idList = idList.concat(item)
+                counter--
+                if(counter == 0){
+                    groupIdList.push(idList)
+                    counter = 4
+                }
+            }
+            //** update GROUPID
+            //groupId = groupIdList[groupIdList.length-1]
+            groupId = item
+            console.log(`groupId = `,groupId)
+            console.log(`groupIdList = `,groupIdList)
+
+            //document.getElementById("inputgroupId").value = groupId 
+            
+            analytics.identify(serverUserId,{groupId:groupId})
+            
+            employeeEmail = `${firstNameGroupInput}${lastNameGroupInput}@kanecorp.org`.toLowerCase()
+        }
+        
+        let companyProperties
+        let employeeId, employeeName, employeeFirstName, employeeLastName, employeeUserName;
+        let extraTraits
+        const groupCall = () => {
+            //let extraTraitsTemp = document.getElementById("addToTraits").value
+            
+            //console.log("extraTraits & TYPE OF", typeof(extraTraitsTemp),extraTraitsTemp)
+            //let extraTraitsSplit = extraTraitsTemp.split(":",",")
+            //console.log("extraTraitsSplit: ",extraTraitsSplit)
+            //extraTraits = JSON.parse(extraTraitsTemp)
+
+            companyProperties = {
+                $company: document.getElementById("organization-foot-index").value,
+                $name: document.getElementById("organization-foot-index").value,
+                companyName: document.getElementById("organization-foot-index").value,
+                $avatar: "https://imgur.com/UHwbel0",
+                $groupId: groupId,
+                groupId: groupId,
+                $firstSeen : Date.now(),
+                //$employees:[{
+                //    employeeId : employeeId,
+                //    employeeName: `${firstNameGroupInput} ${lastNameGroupInput}`,
+                //    employeeFirstName: firstNameGroupInput,
+                //    employeeLastName: lastNameGroupInput,
+                //    employeeUserName : userNameInput,
+                //    groupId:groupIdList,
+                //}]
+            }
+            traits = {
+                $groupId:groupIdList,
+                groupId:groupIdList,
+                $avatar: "https://imgur.com/UHwbel0",
+                name:`${firstNameGroupInput} ${lastNameGroupInput}`,
+                employeeId : serverUserId,
+                email: document.getElementById("email-foot-index").value.toLowerCase(),
+                favSocMedia : favSocMediaInput,
+                anonymousId : serverAnonymousId,
+                username : userNameInput,
+                $company : companyProperties,
+                //extraTraits: extraTraits ? extraTraits : null
+            }
+            console.log('!!!!! --- GROUPID before group call',groupId)
+            analytics.group(groupId,companyProperties,{context:{traits:traits},integrations:{"All":true,"Marketo V2":false,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}})
+            analytics.identify(serverUserId,traits,{
+                $groupId:groupIdList,
+                $name: document.getElementById("organization-foot-index").value,
+                integrations:{"All":true,"Marketo V2":false,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}
+                }
+            )
+            analytics.track("Group Company Traits Identified",companyProperties,{
+                $userId:userId,
+                $groupId : groupIdList,
+                $name: document.getElementById("organization-foot-index").value,
+                integrations:{"All":true,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}
+                }
+            )
+            analytics.track("Group User Traits Identified",traits,{
+                $userId:userId,
+                $groupId : groupIdList,
+                $name: document.getElementById("organization-foot-index").value,
+                integrations:{"All":true,"Marketo V2":true,"Customer.io":true, "Klaviyo":true,Salesforce:true, "Salesforce Marketing Cloud": true, "Google Analytics 4": true}
+                }
+            )
+            // function() {
+            //         analytics.reset();
+            //         window.location.href = "";
+            // }
+        } 
+
+        let temporaryEmployeeList = []
+        let temporaryGroupId
+        const changeEmployees = () => {
+            temporaryGroupId = groupId
+            temporaryGroupTraits = companyProperties
+            // companyProperties.$employees.push(companyProperties.$employees)
+            let thisEmployee = companyProperties.$employees
+            temporaryEmployeeList.push(thisEmployee)
+            analytics.reset()
+            document.getElementById("firstName-foot-index").value = ""
+            document.getElementById("group-user-name-index").value = ""
+            document.getElementById("lastName-foot-index").value = ""
+            document.getElementById("group-user-last-index").value = ""
+            document.getElementById("email-foot-index").value.toLowerCase() = ""
+            document.getElementById("fav-soc-media-foot-index").value = ""
+            document.getElementById("userName-foot-index").value = ""
+            groupId = temporaryGroupId
+            companyProperties = temporaryGroupTraits
+            setCookie("ajs_group_traits",companyProperties,3)
+            setCookie("ajs_group_id",groupId,3);
+            setCookie("ajs_user_id",null,3);
+            serverUserId = null;
+            callServerUser();
+            analytics.ready(getPageContext());
+        } 
+        const changeCompany = () => {
+            giveGroupId()
+            document.getElementById("occupation-foot-index").value = "";
+            document.getElementById("organization-foot-index").value = "";
+            analytics.ready(getPageContext());
+
+        }  
+</script>
+
+
+
+
+
+
+<style>
+    .product-image {
+        margin: 1vw 3vw;
+        min-width: 15vw;
+        min-height: 10vh;
+    }
+    .productInput {
+        margin:10% auto;
+        width: 20vw;
+        height: 30vw;
+    }
+</style>
+<!-- key : value in object exist -->
+<!-- groupProps = properties
+            groupProps.
+                prodProps = productList[prodId]
+                prodProps.step = 5 || {};
+                console.log(`${prodProps.step} - ${prodProps.name} : ${prodProps.price}`)
+                analytics.track('Product Viewed', prodProps); -->
+
+<!-- CUSTOMER BASIC BUTTON CLICK IDENTIFY TRACK CALL -->
+
+<!-- <div class="productInput">
+    <img src="../../public/images/daniel-korpai-hbTKIbuMmBI-unsplash.jpg" class="product-image"/>
+    <div class="main-index-container">
+        <input type="text" name="firstName" id="firstName-main-index" placeholder="First Name"/>
+        <input type="text" name="lastName" id="lastName-main-index" placeholder="Last Name"/>
+        <input type="text" name="organization" id="organization-main-index" placeholder="Organization"/>
+        <input type="email" name="email" id="email-main-index" required="" placeholder="Email"/>
+        <input type="text" name="favoriteSocialMedia" id="fav-soc-media-main-index" required="" placeholder="Favorite Social Media To Use"/>
+        <button id="submitNewAccountInputs" onclick="createNewAccount()">SAVE</button>
+    </div>
+</div> -->
+    
+</body>
+
+
+
+
+</html>
+<!-- <main> -->
+    <!-- <h2><% 'user.name' %></h2> -->
+    <!-- <ul> -->
+        <!-- <% 'users.forEach(user => {' %>  -->
+        <!-- <li> -->
+            <!-- <a href="/user/<%'user._id '%>"> <%=' user.name' %> </a> -->
+        <!-- </li> -->
+        <!-- <% '})' %> -->
+    <!-- </ul> -->
+
+    <!-- <% 'if(users.length ===0) {' %> -->
+        <!-- <p>Looks like you're not a current user. Would you like to become one?</p> -->
+    <!-- <% '}' %> -->
+    <!-- <button><a href="/new">New User</a></button> -->
+<!-- </main> -->

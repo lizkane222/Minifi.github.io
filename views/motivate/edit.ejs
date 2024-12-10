@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+
+<script>
+    const motivateUser = () =>{
+        
+        let email = document.getElementById["email"].value.toLowerCase();
+        let fullname = document.getElementById["fullname"].value;
+
+        let motivation = document.getElementById["motivate_motivation"].value;
+        let action = document.getElementById["motivate_action"].value;
+        let duration = document.getElementById["motivate_duration"].value;
+        let partners = document.getElementById["motivate_partners"].value;
+        let details = document.getElementById["motivate_details"].value;
+        let username, phone_number
+
+        let traits = {
+            email: email, 
+            name: fullname, 
+            username: username,
+            userId : username,
+            phone_number: phone_number,
+
+        }
+
+        let properties = {
+            motivation: motivation, 
+            action: action,
+            duration: duration,
+            partners: partners,
+            details: details,
+        };
+        console.log("PROPERITES line 131 : ",properties)
+
+        analytics.identify();
+
+        analytics.track('Motivation Submitted', properties, 
+            {integrations: 
+                {
+                    "All": true,
+                    "Amplitude": {
+                        session_id: uTC()
+                    }
+                }
+            }
+        );
+    }
+    
+    //analytics.track('User Logged Out', properties,
+    //            {integrations: 
+        //                {
+            //                "All": true,
+            //                "Amplitude": {
+                //                    session_id: uTC()
+                //                    }
+                //                }
+                //            }, 
+                //            function() {newSession=true}
+                //        );       
+</script>
+
+
+<body>
+    <header>
+        <%- include('../partials/navbar') %>
+    </header>
+<!-- edit one exercise form -->
+<main>
+    <h2>EDIT <%= motivate.name %></h2>
+
+    <form action="/motivate/<%= motivate._id %>?_method=PUT" method="POST">
+        <input type="text" name="name" placeholder="Motivation Name" value="<%= motivate.name %>"/>
+        <input type="text" name="type" placeholder="Type of Motivation" value="<%= motivate.type %>"/>
+        <input type="text" name="duration" placeholder="Duration" value="<%= motivate.duration %>"/>
+        <input type="text" name="groupSize" placeholder="Group Size: self, partner, small-group, large-group" value="<%= motivate.groupSize %>"/>
+        <br/>
+        <h4>Per Exercise</h4>
+            <input type="text" name="perExerciseType" placeholder="Type" value="<%= motivate.perExercise.type %>">
+            <input type="text" name="perExerciseDuration" placeholder="Duration" value="<%= motivate.perExercise.duration %>">
+            <input type="text" name="perExerciseCaloriesBurned" placeholder="Calories Burned" value="<%= motivate.perExercise.caloriesBurned %>">
+
+        <input type="submit" onclick="motivateUser()" value="Update Workout"/>
+    </form>
+</main>
+
+
+</body>
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+
+</html>

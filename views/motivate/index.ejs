@@ -1,0 +1,42 @@
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <header>
+        <%- include('../partials/navbar') %>
+    </header>
+<!-- collection of completed exercises -->
+
+<h2>All Mi Motivations</h2>
+
+<ul>
+    <% motivations.forEach((motivation) => ({ %>
+        <li>
+            <a href="/motivate/<%=motivation._id%>"> <%= motivation.name %> </a>
+        </li>
+    <% })); %>
+</ul>
+
+<% if(motivations.length === 0) { %>
+    <p>There are no motivations yet, would you like to log a new one?</p>
+<% } %>
+<% else { %>
+    <ul>
+        <% motivations.forEach((motivation) => {return %>
+            <li>
+                <a href="/motivate/<%=motivation._id%>"> <%= motivation.name %> </a>
+            </li>
+        <% }); %>
+    </ul>
+<% } %>
+
+<button><a href="/motivate/new">New Motivation</a></button>
+
+
+    
+</body>
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</html>
